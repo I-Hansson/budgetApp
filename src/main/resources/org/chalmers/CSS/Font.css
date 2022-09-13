@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter&family=Roboto:wght@100&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Inter&family=Roboto:wght@100&display=swap');*/
 
 .textHeader {
     -fx-font-family: 'Noto Sans';
     -fx-font-style: normal;
-    -fx-font-weight: 500;
+    /*-fx-font-weight: 500;*/
     -fx-font-size: 128px;
     -fx-line-height: 174px;
     -fx-text-align: center;

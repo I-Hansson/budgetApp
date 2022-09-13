@@ -1,50 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-<?import javafx.scene.control.TextField?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="706.0" prefWidth="954.0" stylesheets="@../../../java/CSS/Font.css" xmlns="http://javafx.com/javafx/17">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1280.0" stylesheets="@CSS/Font.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fitHeight="712.0" fitWidth="954.0" layoutX="-14.0" layoutY="-3.0">
+      <ImageView fitHeight="860.0" fitWidth="1280.0" layoutY="-6.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-6.0">
          <image>
-            <Image url="@../../../../../../../../Downloads/pexels-jayant-kulkarni-910213.jpg" />
+            <Image url="@images/background.jpg" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="281.0" layoutY="237.0" prefHeight="202.0" prefWidth="425.0" style="-fx-background-color: EDE9E5; -fx-background-radius: 10;">
+      <AnchorPane layoutX="426.0" layoutY="237.0" prefHeight="242.0" prefWidth="425.0" style="-fx-background-color: EDE9E5; -fx-background-radius: 10;">
          <children>
-            <TextField layoutX="65.0" layoutY="44.0" prefHeight="27.0" prefWidth="294.0" />
-            <TextField layoutX="64.0" layoutY="87.0" prefHeight="27.0" prefWidth="294.0" />
-            <AnchorPane layoutX="155.0" layoutY="131.0" prefHeight="42.0" prefWidth="114.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 10;">
+            <TextField layoutX="65.0" layoutY="44.0" prefHeight="27.0" prefWidth="294.0" promptText="SafeBoat ID">
+               <font>
+                  <Font size="16.0" />
+               </font></TextField>
+            <TextField layoutX="65.0" layoutY="97.0" prefHeight="35.0" prefWidth="294.0" promptText="Password">
+               <font>
+                  <Font size="16.0" />
+               </font></TextField>
+            <AnchorPane layoutX="120.0" layoutY="164.0" prefHeight="35.0" prefWidth="184.0" style="-fx-background-color: rgb(30,119,189); -fx-background-radius: 10;">
                <children>
-                  <Text layoutX="28.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textFontNormal" text="Log in" wrappingWidth="58.66999816894531">
+                  <Text fill="WHITE" layoutX="56.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textFontNormal" text="Sign In" wrappingWidth="72.66999816894531">
                      <font>
                         <Font name="Arial" size="20.0" />
                      </font>
                   </Text>
                </children>
             </AnchorPane>
-            <Text layoutX="65.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textFontNormal" text="Pawel Robert" wrappingWidth="150.6699981689453">
+            <Text layoutX="98.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not already an user? Sign up here." wrappingWidth="227.2626953125" AnchorPane.leftAnchor="101.0" AnchorPane.topAnchor="205.0">
                <font>
-                  <Font name="Arial" size="20.0" />
-               </font>
-            </Text>
-            <Text layoutX="65.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textFontNormal" text="*************" wrappingWidth="150.6699981689453">
-               <font>
-                  <Font name="Arial" size="20.0" />
+                  <Font size="14.0" />
                </font>
             </Text>
          </children>
       </AnchorPane>
-      <Text layoutX="159.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textHeader" text="SAFE BOAT" wrappingWidth="669.0699615478516">
+      <Text layoutX="304.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textHeader" text="SAFE BOAT" textAlignment="CENTER" wrappingWidth="669.0699615478516" AnchorPane.bottomAnchor="678.0" AnchorPane.leftAnchor="304.0" AnchorPane.topAnchor="0.0">
          <font>
             <Font name="Arial" size="128.0" />
          </font>
       </Text>
-      <Text layoutX="356.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textFontNormal" text="Powered by El Grupo VientitrésJonathan Svantesson, Isac Hansson, William Frisk and Oscar Cronvall" textAlignment="CENTER" wrappingWidth="276.27003479003906">
+      <Text layoutX="502.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textFontNormal" text="Powered by El Grupo Vientitrés Jonathan Svantesson, Isac Hansson, William Frisk and Oscar Cronvall" textAlignment="CENTER" wrappingWidth="276.27003479003906">
          <font>
             <Font name="Arial Italic" size="16.0" />
          </font>
