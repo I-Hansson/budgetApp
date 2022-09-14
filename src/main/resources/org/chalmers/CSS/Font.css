@@ -12,3 +12,62 @@
 .textFontNormal {
     -fx-font-family: 'Inter', sans-serif;
 }
+
+.colorCard {
+    -fx-background-color: #10564F;
+    -fx-background-radius: 15px;
+}
+
+.textNormalWhite {
+    -fx-font-family: 'Roboto';
+    -fx-font-style: normal;
+    -fx-font-weight: 700;
+    -fx-font-size: 28px;
+    -fx-line-height: 33px;
+    -fx-display: flex;
+    -fx-align-items: center;
+
+    -fx-background-color:  #FAF9F8;
+}
+
+.panelTitel{
+    -fx-font-family: 'Inter';
+    -fx-font-style: normal;
+    -fx-font-weight: 800;
+    -fx-font-size: 20px;
+    -fx-line-height: 24px;
+    -fx-color: #131210;
+}
+
+.slightOpacityWeakRectangle {
+    -fx-background-color: #EDE9E5;
+    -fx-opacity: 0.88;
+    -fx-background-radius: 30px;
+}
+
+.borderSettings {
+    -fx-background-color: #F0ECE8;
+}
+.panelButtonSettings {
+    -fx-background-color: #D9D9D9;
+    -fx-background-radius: 6px;
+}
+
+.panelNormalText{
+    -fx-font-family: 'Inter';
+    f-x-font-style: normal;
+    -fx-font-weight: 500;
+    -fx-font-size: 16px;
+    -fx-line-height: 16px;
+
+    -fx-background-color: #131210;
+}
+.overviewTitel {
+    -fx-font-family: 'Roboto';
+    -fx-font-style: normal;
+    -fx-font-weight: 600;
+    -fx-font-size: 35px;
+    -fx-line-height: 16px;
+    -fx-text-align: center;
+    -fx-background-color: #000000
+}
