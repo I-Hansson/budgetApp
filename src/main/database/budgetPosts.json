@@ -1,0 +1,194 @@
+{
+  "0": {
+    "mat": {
+      "transactions": [
+        {
+          "amount": 120,
+          "description": "Pizza på Sannegårdens",
+          "expense": true
+        },
+        {
+          "amount": 500,
+          "description": "Veckohandling ICA",
+          "expense": true
+        }
+      ]
+    },
+    "bostad": {
+      "transactions": [
+        {
+          "amount": 300,
+          "description": "El",
+          "expense": true
+        },
+        {
+          "amount": 5000,
+          "description": "Hyra",
+          "expense": true
+        }
+      ]
+    },
+    "kläder": {
+      "transactions": [
+        {
+          "amount": 499,
+          "description": "Hoodie Zara",
+          "expense": true
+        }
+      ]
+    },
+    "sparande": {
+      "transactions": [
+        {
+          "amount": 2500,
+          "description": "Månadssparande",
+          "expense": true
+        }
+      ]
+    }
+  },
+  "1": {
+    "mat": {
+      "transactions": [
+        {
+          "amount": 120,
+          "description": "Pizza på Sannegårdens",
+          "expense": true
+        },
+        {
+          "amount": 500,
+          "description": "Veckohandling ICA",
+          "expense": true
+        }
+      ]
+    },
+    "bostad": {
+      "transactions": [
+        {
+          "amount": 300,
+          "description": "El",
+          "expense": true
+        },
+        {
+          "amount": 5000,
+          "description": "Hyra",
+          "expense": true
+        }
+      ]
+    },
+    "kläder": {
+      "transactions": [
+        {
+          "amount": 499,
+          "description": "Hoodie Zara",
+          "expense": true
+        }
+      ]
+    },
+    "sparande": {
+      "transactions": [
+        {
+          "amount": 2500,
+          "description": "Månadssparande",
+          "expense": true
+        }
+      ]
+    }
+  },
+  "2": {
+    "mat": {
+      "transactions": [
+        {
+          "amount": 120,
+          "description": "Pizza på Sannegårdens",
+          "expense": true
+        },
+        {
+          "amount": 500,
+          "description": "Veckohandling ICA",
+          "expense": true
+        }
+      ]
+    },
+    "bostad": {
+      "transactions": [
+        {
+          "amount": 300,
+          "description": "El",
+          "expense": true
+        },
+        {
+          "amount": 5000,
+          "description": "Hyra",
+          "expense": true
+        }
+      ]
+    },
+    "kläder": {
+      "transactions": [
+        {
+          "amount": 499,
+          "description": "Hoodie Zara",
+          "expense": true
+        }
+      ]
+    },
+    "sparande": {
+      "transactions": [
+        {
+          "amount": 2500,
+          "description": "Månadssparande",
+          "expense": true
+        }
+      ]
+    }
+  },
+  "3": {
+    "mat": {
+      "transactions": [
+        {
+          "amount": 120,
+          "description": "Pizza på Sannegårdens",
+          "expense": true
+        },
+        {
+          "amount": 500,
+          "description": "Veckohandling ICA",
+          "expense": true
+        }
+      ]
+    },
+    "bostad": {
+      "transactions": [
+        {
+          "amount": 300,
+          "description": "El",
+          "expense": true
+        },
+        {
+          "amount": 5000,
+          "description": "Hyra",
+          "expense": true
+        }
+      ]
+    },
+    "kläder": {
+      "transactions": [
+        {
+          "amount": 499,
+          "description": "Hoodie Zara",
+          "expense": true
+        }
+      ]
+    },
+    "sparande": {
+      "transactions": [
+        {
+          "amount": 2500,
+          "description": "Månadssparande",
+          "expense": true
+        }
+      ]
+    }
+  }
+}
