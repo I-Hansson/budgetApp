@@ -1,16 +1,24 @@
 {
   "users": {
     "0": {
-      "name": "oscar"
+      "name": "oscar",
+      "currentBalance": 10000,
+      "startBalance": 25000
     },
     "1": {
-      "name": "isac"
+      "name": "isac",
+      "currentBalance": 10000,
+      "startBalance": 25000
     },
     "2": {
-      "name": "william"
+      "name": "william",
+      "currentBalance": 10000,
+      "startBalance": 25000
     },
     "3": {
-      "name": "jonathan"
+      "name": "jonathan",
+      "currentBalance": 10000,
+      "startBalance": 25000
     }
   }
 }
