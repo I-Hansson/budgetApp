@@ -1,11 +1,14 @@
 package org.chalmers.model;
 
+import java.util.ArrayList;
+
 public class BudgetPost {
 
     private String name;
     //TODO give Icon attribute
     private double budgetCap; //The most you want to spend in a surtain budget-post.
     private double currentBalance;
+    private ArrayList<IBudgetPostsObservers> observers = new ArrayList<IBudgetPostsObservers>();
     //TODO list of all transactions belonging to this budgetpost
 
     public BudgetPost(String name, double budgetCap){
@@ -14,7 +17,6 @@ public class BudgetPost {
         this.currentBalance = 0;
         //TODO Implement icon logic here aswell.
     }
-
     /**
      * Update the name of this budget post.
      * @param newName the new name.
@@ -32,5 +34,11 @@ public class BudgetPost {
         this.budgetCap = newCap;
     }
 
+    private void notifyObservers(){
+        for(IBudgetPostsObservers observer: observers){
+            //TODO Skicka vilket attribut? Det blir fel
+            observer.update();
+        }
+    }
 
 }

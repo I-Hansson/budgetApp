@@ -1,5 +1,6 @@
 package org.chalmers.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Transaction {
@@ -7,6 +8,7 @@ public class Transaction {
     private double amount;
     private String budgetPostName;
     private String description;
+
 
     public Transaction(double amount, String budgetPostName, String description){
         this.dateOfTransaction = new Date(System.currentTimeMillis());
@@ -30,4 +32,8 @@ public class Transaction {
     public String getDescription(){
         return description;
     }
+
+    // Methods
+
+    
 }
