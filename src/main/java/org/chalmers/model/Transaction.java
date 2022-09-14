@@ -8,6 +8,7 @@ public class Transaction {
     private String budgetPostName;
     private String description;
 
+
     public Transaction(double amount, String budgetPostName, String description){
         this.dateOfTransaction = new Date(System.currentTimeMillis());
         this.amount = amount;
@@ -30,4 +31,8 @@ public class Transaction {
     public String getDescription(){
         return description;
     }
+
+    // Methods
+
+    
 }
