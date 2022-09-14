@@ -1,5 +1,6 @@
 package org.chalmers.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,6 +12,7 @@ public class User {
     private int id;
     private boolean instantiatd = false;
     private Map<String, BudgetPost> budgetPosts = new HashMap<>();
+    private ArrayList<Transaction> recentTransactions = new ArrayList<>();
     //List of investments
 
     public User(){
@@ -32,8 +34,11 @@ public class User {
     public int getId(){
         return id;
     }
-
+    public ArrayList getRecentTransactions(){
+        return recentTransactions;
+    }
     //Methodology
+
 
     /**
      * Gives us (the developers) a sample values to work with in development.
