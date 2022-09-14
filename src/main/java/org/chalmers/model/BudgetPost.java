@@ -68,6 +68,25 @@ public class BudgetPost {
         return this.color.getRGBValues();
     }
 
+    public double getBudgetCap() {
+        return budgetCap;
+    }
+
+    public double getCurrentBalance() {
+        return currentBalance;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public ArrayList<Transaction> getTransactions() {
+        ArrayList<Transaction> transactionsCopy = new ArrayList<>();
+        Collections.copy(transactionsCopy, transactions);
+
+        return transactionsCopy;
+    }
+
     /**
      * Notify all observers to this budgetpost.
      * Also sends the list of transactions

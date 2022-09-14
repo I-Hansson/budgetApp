@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ColorTest {
+public class ColorTests {
 
     @Test
     public void returnsCorrectColor(){
