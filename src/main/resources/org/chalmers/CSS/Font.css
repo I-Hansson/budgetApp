@@ -1,4 +1,4 @@
-/*@import url('https://fonts.googleapis.com/css2?family=Inter&family=Roboto:wght@100&display=swap');*/
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Roboto:wght@100&display=swap');
 
 .textHeader {
     -fx-font-family: 'Noto Sans';
@@ -14,19 +14,13 @@
 }
 
 .colorCard {
-    -fx-background-color: #10564F;
     -fx-background-radius: 15px;
 }
 
 .textNormalWhite {
-    -fx-font-family: 'Roboto';
     -fx-font-style: normal;
     -fx-font-weight: 700;
     -fx-font-size: 28px;
-    -fx-line-height: 33px;
-    -fx-display: flex;
-    -fx-align-items: center;
-
     -fx-background-color:  #FAF9F8;
 }
 
