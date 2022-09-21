@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ColorTests {
+public class ColorTest {
 
     @Test
     public void returnsCorrectColor(){

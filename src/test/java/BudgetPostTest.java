@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
-public class BudgetPostTests {
+public class BudgetPostTest {
 
     @Test
     public void getColorRGBReturnsCorrectValues(){
