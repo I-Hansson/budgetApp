@@ -5,7 +5,7 @@ import javafx.scene.chart.*;
 import java.util.*;
 
 public class BudgetPostMonthLineDiagram implements IBudgetPostsObserver{
-    XYChart.Series<Integer, Integer> data = new XYChart.Series<Integer, Integer>();
+    private XYChart.Series<Integer, Integer> data = new XYChart.Series<Integer, Integer>();
 
     public BudgetPostMonthLineDiagram(){
         this.data = fillObservableList();
@@ -25,8 +25,8 @@ public class BudgetPostMonthLineDiagram implements IBudgetPostsObserver{
     public void update(ArrayList<Transaction> list) {
         for(Transaction transaction: list){
             if( transaction.getAmount() != 0){
-                Integer date = transaction.getDateOfTransaction().get(Calendar.DAY_OF_MONTH);
-                Integer amount = (int) transaction.getAmount();
+                int date = transaction.getDateOfTransaction().get(Calendar.DAY_OF_MONTH);
+                int amount = (int) transaction.getAmount();
                 var temp = this.data.getData().get(date-1);
                 int temp2 = temp.getYValue();
                 this.data.getData().set(date-1,new XYChart.Data<>(date,amount + temp2));
