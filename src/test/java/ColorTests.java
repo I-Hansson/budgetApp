@@ -2,8 +2,6 @@
 import org.chalmers.model.Color;
 import org.junit.Test;
 
-import java.util.Arrays;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ColorTests {

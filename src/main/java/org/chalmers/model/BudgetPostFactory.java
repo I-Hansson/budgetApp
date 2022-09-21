@@ -18,7 +18,7 @@ public class BudgetPostFactory {
 
     public static BudgetPost createBudgetPost(String name, double budgetCap, Color color) {
         BudgetPost bp = new BudgetPost(name, budgetCap);
-        bp.changeColor(color);
+        bp.setColor(color);
         return bp;
     }
 }
