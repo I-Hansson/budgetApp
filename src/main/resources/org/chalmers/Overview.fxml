@@ -29,10 +29,8 @@
       </AnchorPane>
       <AnchorPane layoutX="540.0" layoutY="322.0" prefHeight="686.0" prefWidth="1190.0" styleClass="slightOpacityWeakRectangle" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="128.60000000000002">
          <children>
-            <Pane id="pieChartOverview" fx:id="pieChartOverview" layoutX="34.0" layoutY="96.0" prefHeight="263.0" prefWidth="274.0">
-               <children>
-                  <PieChart fx:id="overallSpentPieChart" layoutX="8.0" prefHeight="263.0" prefWidth="274.0" />
-               </children></Pane>
+            <PieChart fx:id="overallSpentPieChart" layoutX="14.0" layoutY="71.0" prefHeight="251.0" prefWidth="272.0" stylesheets="@CSS/charts.css" AnchorPane.leftAnchor="20.0" />
+            <Pane id="pieChartOverview" fx:id="pieChartOverview" layoutX="54.0" layoutY="290.0" prefHeight="24.0" prefWidth="60.0" />
             <Pane id="pieChartConnectedInfo" fx:id="pieChartConnectedInfo" layoutX="340.0" layoutY="97.0" prefHeight="217.0" prefWidth="214.0" />
             <Text layoutX="54.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="overviewTitel" text="Overall Spent" wrappingWidth="234.9367218017578" />
             <Text layoutX="54.0" layoutY="398.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="overviewTitel" text="Budget Posts" wrappingWidth="234.9367218017578" />
