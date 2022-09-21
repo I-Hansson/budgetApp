@@ -1,5 +1,10 @@
 package org.chalmers.model;
 
+/**
+ * @author williamfrisk
+ * This class instantiates new BudgetPost instances and allows for
+ * a simpler interface than the BudgetPost constructor.
+ */
 public class BudgetPostFactory {
 
     private static Color currentColor = Color.RED;

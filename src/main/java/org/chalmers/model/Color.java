@@ -1,5 +1,9 @@
 package org.chalmers.model;
 
+/**
+ * @author williamfrisk
+ * Redundant due to JavaFX colors :(
+ */
 public enum Color {
     RED(new int[]{255, 0, 0}),
     BLUE(new int[]{0, 0, 255}),
