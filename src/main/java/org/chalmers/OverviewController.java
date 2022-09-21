@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
@@ -22,6 +23,8 @@ public class OverviewController {
 
 
     @FXML Pane pieChartOverview;
+    @FXML PieChart overallSpentPieChart;
+
     @FXML Pane pieChartConnectedInfo;
     @FXML TextArea overviewMessageTextArea;
     @FXML ScrollPane budgetPostsFlowPane;

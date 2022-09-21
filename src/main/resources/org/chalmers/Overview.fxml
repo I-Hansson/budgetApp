@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
@@ -9,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1280.0" stylesheets="@CSS/Font.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.chalmers.OverviewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1280.0" stylesheets="@CSS/Font.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.chalmers.OverviewController">
    <children>
       <ImageView fitHeight="849.0" fitWidth="1276.0" layoutX="2.0" layoutY="-3.0">
          <image>
@@ -28,7 +29,10 @@
       </AnchorPane>
       <AnchorPane layoutX="540.0" layoutY="322.0" prefHeight="686.0" prefWidth="1190.0" styleClass="slightOpacityWeakRectangle" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="128.60000000000002">
          <children>
-            <Pane id="pieChartOverview" fx:id="pieChartOverview" layoutX="34.0" layoutY="96.0" prefHeight="263.0" prefWidth="274.0" />
+            <Pane id="pieChartOverview" fx:id="pieChartOverview" layoutX="34.0" layoutY="96.0" prefHeight="263.0" prefWidth="274.0">
+               <children>
+                  <PieChart fx:id="overallSpentPieChart" layoutX="8.0" prefHeight="263.0" prefWidth="274.0" />
+               </children></Pane>
             <Pane id="pieChartConnectedInfo" fx:id="pieChartConnectedInfo" layoutX="340.0" layoutY="97.0" prefHeight="217.0" prefWidth="214.0" />
             <Text layoutX="54.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="overviewTitel" text="Overall Spent" wrappingWidth="234.9367218017578" />
             <Text layoutX="54.0" layoutY="398.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="overviewTitel" text="Budget Posts" wrappingWidth="234.9367218017578" />
