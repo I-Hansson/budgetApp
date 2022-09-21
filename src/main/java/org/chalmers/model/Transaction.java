@@ -1,16 +1,18 @@
 package org.chalmers.model;
 
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class Transaction {
-    private Date dateOfTransaction;
+    private Calendar dateOfTransaction;
     private double amount;
     private String budgetPostName;
     private String description;
 
 
     public Transaction(double amount, String budgetPostName, String description){
-        this.dateOfTransaction = new Date(System.currentTimeMillis());
+        this.dateOfTransaction = new GregorianCalendar();
         this.amount = amount;
         this.budgetPostName = budgetPostName;
         this.description = description;
@@ -19,8 +21,8 @@ public class Transaction {
     }
 
     //Getters
-    public Date getDateOfTransaction() {
-        return new Date(dateOfTransaction.getTime());
+    public Calendar getDateOfTransaction() {
+        return this.dateOfTransaction;
     }
     public double getAmount(){
         return amount;
