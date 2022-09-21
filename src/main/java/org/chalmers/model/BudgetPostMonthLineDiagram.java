@@ -1,8 +1,5 @@
 package org.chalmers.model;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.collections.ObservableListBase;
 import javafx.scene.chart.*;
 
 import java.util.*;

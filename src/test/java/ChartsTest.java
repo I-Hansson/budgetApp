@@ -4,14 +4,7 @@ import org.chalmers.model.Color;
 import org.chalmers.model.Transaction;
 import org.junit.Test;
 
-import java.sql.Time;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.concurrent.TimeUnit;
-
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 public class ChartsTest {
 
@@ -24,7 +17,5 @@ public class ChartsTest {
         temp.add(transaction);
         temp.add(transaction2);
         hej.update(temp);
-
-
     }
 }
