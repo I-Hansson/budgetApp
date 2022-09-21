@@ -12,8 +12,8 @@
     },
     "2": {
       "name": "william",
-      "currentBalance": 10000,
-      "startBalance": 25000
+      "currentBalance": 100.45,
+      "startBalance": 25000.00
     },
     "3": {
       "name": "jonathan",
