@@ -20,7 +20,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 
-public class OverviewController  implements Initializable {
+public class OverviewView implements Initializable {
 
 
     @FXML Text overviewTitelPanel;
@@ -40,7 +40,7 @@ public class OverviewController  implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         OverallSpentPieChart hej = new OverallSpentPieChart();
 
-        this.overallSpentPieChart.setStyle("-fx-pie-label-visible:False;");
+        //this.overallSpentPieChart.setStyle("-fx-pie-label-visible:False;");
         this.overallSpentPieChart.getData().addAll(hej.getData());
 
 
