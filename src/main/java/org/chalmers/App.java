@@ -20,6 +20,7 @@ public class App extends Application {
         scene = new Scene(loadFXML("LogInPage"), 1280, 860);
 
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
     }
 

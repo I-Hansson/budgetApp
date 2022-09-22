@@ -2,6 +2,7 @@ package org.chalmers.model;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import javafx.scene.paint.Color;
 
 public class BudgetPost {
 
@@ -23,7 +24,7 @@ public class BudgetPost {
      * Update the name of this budget post.
      * @param newName the new name.
      */
-    public void changeName(String newName){
+    public void setName(String newName){
         this.name = newName;
     }
 
@@ -32,7 +33,7 @@ public class BudgetPost {
      * Make sure that this change doesn't surpass the users total balance.
      * @param newCap The new cap for this post.
      */
-    public void changeBudgetCap(double newCap){
+    public void setBudgetCap(double newCap){
         this.budgetCap = newCap;
     }
 
@@ -40,7 +41,7 @@ public class BudgetPost {
      * Edits the color for this post.
      * @param color The new color.
      */
-    public void changeColor(Color color) {
+    public void setColor(Color color) {
         this.color = color;
     }
 
@@ -64,8 +65,8 @@ public class BudgetPost {
      * Returns RGB values for this budget post's color.
      * @return int[]{R, G, B}
      */
-    public int[] getColorRGB() {
-        return this.color.getRGBValues();
+    public Color getColor() {
+        return this.color;
     }
 
     public double getBudgetCap() {
