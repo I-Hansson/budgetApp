@@ -1,6 +1,6 @@
 import org.chalmers.model.BudgetPost;
 import org.chalmers.model.BudgetPostFactory;
-import org.chalmers.model.Color;
+import javafx.scene.paint.Color;
 import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -23,6 +23,6 @@ public class BudgetPostFactoryTest {
     @Test
     public void createBudgetPostNameBudgetCapColorReturnsCorrectInstance(){
         BudgetPost bp = BudgetPostFactory.createBudgetPost("test", 100, Color.BLACK);
-        assertEquals("test100.00", bp.getName() + bp.getBudgetCap() + bp.getColorRGB()[0]);
+        assertEquals("test100.00x000000ff", bp.getName() + bp.getBudgetCap() + bp.getColor().toString());
     }
 }

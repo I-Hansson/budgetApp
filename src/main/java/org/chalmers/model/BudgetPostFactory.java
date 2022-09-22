@@ -1,5 +1,6 @@
 package org.chalmers.model;
 
+import javafx.scene.paint.Color;
 /**
  * @author williamfrisk
  * This class instantiates new BudgetPost instances and allows for
@@ -7,17 +8,31 @@ package org.chalmers.model;
  */
 public class BudgetPostFactory {
 
-    private static Color currentColor = Color.RED;
+    private static final Color[] colors = {
+            Color.RED,
+            Color.BLUE,
+            Color.GREEN,
+            Color.PURPLE,
+            Color.GRAY,
+            Color.PINK,
+            Color.BLACK,
+            Color.TURQUOISE,
+            Color.CHOCOLATE
+    };
+
+    private static int currentColorIndex = 0;
 
     public static BudgetPost createBudgetPost(String name) {
         BudgetPost bp = new BudgetPost(name, 0);
-        currentColor = currentColor.next();
+        bp.setColor(colors[currentColorIndex]);
+        currentColorIndex++;
         return bp;
     }
 
     public static BudgetPost createBudgetPost(String name, double budgetCap) {
         BudgetPost bp = new BudgetPost(name, budgetCap);
-        currentColor = currentColor.next();
+        bp.setColor(colors[currentColorIndex]);
+        currentColorIndex++;
         return bp;
     }
 

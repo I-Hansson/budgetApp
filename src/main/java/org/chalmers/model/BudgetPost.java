@@ -2,6 +2,7 @@ package org.chalmers.model;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import javafx.scene.paint.Color;
 
 public class BudgetPost {
 
@@ -64,8 +65,8 @@ public class BudgetPost {
      * Returns RGB values for this budget post's color.
      * @return int[]{R, G, B}
      */
-    public int[] getColorRGB() {
-        return this.color.getRGBValues();
+    public Color getColor() {
+        return this.color;
     }
 
     public double getBudgetCap() {
