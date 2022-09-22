@@ -13,6 +13,10 @@
     -fx-font-family: 'Inter', sans-serif;
 }
 
+.primaryGrey {
+    -fx-background-color: #D9D9D9;
+}
+
 .colorCard {
     -fx-background-radius: 15px;
 }
@@ -21,7 +25,7 @@
     -fx-font-style: normal;
     -fx-font-weight: 700;
     -fx-font-size: 28px;
-    -fx-background-color:  #FAF9F8;
+    -fx-fill:  #FAF9F8;
 }
 
 .panelTitel{
