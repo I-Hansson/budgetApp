@@ -8,4 +8,6 @@ module org.chalmers {
     exports org.chalmers;
     exports org.chalmers.Controllers;
     opens org.chalmers.Controllers to javafx.fxml;
+    exports org.chalmers.View;
+    opens org.chalmers.View to javafx.fxml;
 }
