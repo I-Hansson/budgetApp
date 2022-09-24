@@ -38,15 +38,15 @@ public class UsersDB {
         return userStartBalance;
     }
 
-    public Map<String, Integer> getBudgetPosts(){
-        Map<String, Integer> result = new HashMap<>();
+    public Map<String, String> getBudgetPosts(){
+        Map<String, String> result = new HashMap<>();
 
         JSONArray posts = (JSONArray) getUser().get("budgetPosts");
         for(int i = 0; i < posts.size(); i++){
             JSONObject curr = (JSONObject) posts.get(i);
             result.put(
                     curr.get("name").toString(),
-                    Integer.parseInt(curr.get("id").toString())
+                    curr.get("id").toString()
             );
         }
         return result;
