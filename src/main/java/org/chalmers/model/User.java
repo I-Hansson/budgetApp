@@ -1,8 +1,8 @@
 package org.chalmers.model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
+
 
 public class User {
 
@@ -10,7 +10,7 @@ public class User {
     private String name;
     private int id;
     private boolean instantiatd = false;
-    private ArrayList<Budget> budgets = new ArrayList<>();
+    private List<Budget> budgets = new ArrayList<>();
 
     //List of investments
 
