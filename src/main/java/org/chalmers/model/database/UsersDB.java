@@ -2,7 +2,9 @@ package org.chalmers.model.database;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -11,9 +13,15 @@ import java.util.Map;
 
 public class UsersDB {
     private DatabaseConnector connector;
+    private JSONParser parser;
+    private FileWriter file;
+    private JSONObject oldDB;
 
     public UsersDB(int uid){
         connector = new DatabaseConnector("src/main/database/users/" + uid +".json");
+        parser = new JSONParser();
+        file = null;
+        oldDB = null;
     }
 
     public JSONObject getUser(){
@@ -52,15 +60,50 @@ public class UsersDB {
         return result;
     }
 
-    public void setUserName(Integer id, String newName){
-        //TODO set new username
+    public String getUid(){
+        String id = getUser().get("id").toString();
+        return id;
+    }
+
+    public void setUserName(String newName){
+        oldDB.put("name", newName);
     }
 
     public void setBalance(double newBalance){
-        //TODO set new balance value
+        oldDB.put("currentBalance", newBalance);
     }
 
     public void setNewStandardBalance(double newStandardBalance){
-        //TODO set new standard balance
+        oldDB.put("startBalance", newStandardBalance);
+    }
+
+    public void addBudgetPost(String name){
+        JSONArray posts = (JSONArray) oldDB.get("budgetPosts");
+        JSONObject newPost = new JSONObject();
+        newPost.put("name", name);
+        int counter = posts.size() + 1;
+        newPost.put("id", "000" + getUid() + counter);
+        posts.add(newPost);
+        oldDB.put("transactions", posts);
+    }
+
+    public void openSetters(){
+        try{
+            file = new FileWriter(connector.getDbPath());
+            oldDB = getUser();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void closeSetter(){
+        try{
+            file.write(oldDB.toJSONString());
+            file.flush();
+            file.close();
+            oldDB = null;
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
 }
