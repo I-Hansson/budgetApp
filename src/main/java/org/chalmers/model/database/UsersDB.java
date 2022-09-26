@@ -4,8 +4,6 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
@@ -58,6 +56,14 @@ public class UsersDB {
             );
         }
         return result;
+    }
+
+    public String getBudgetPostID(String postName){
+        Map<String, String> budgetPosts = getBudgetPosts();
+        if(budgetPosts.containsKey(postName)){
+            return budgetPosts.get(postName);
+        }
+        return null;
     }
 
     public String getUid(){
