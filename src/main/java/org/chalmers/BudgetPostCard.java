@@ -1,14 +1,16 @@
 package org.chalmers;
 
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.fxml.FXMLLoader;
 import org.chalmers.Controllers.BudgetPostPanelController;
+import org.chalmers.model.BudgetPost;
 
 import java.io.IOException;
 
-public class BudgetPostCard {
+public class BudgetPostCard extends AnchorPane{
 
     @FXML Text budgetPostName;
     @FXML Text budgetPostTotalAmount;
@@ -16,31 +18,12 @@ public class BudgetPostCard {
     @FXML AnchorPane increasingPaneBudgetPost;
     @FXML AnchorPane AnchorPaneBudgetPostCard;
 
-    private BudgetPostPanelController controller;
-
-
-        public BudgetPostCard() {
-
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("resources/BudgetPostPanel.fxml"));
-            fxmlLoader.setRoot(this);
-            fxmlLoader.setController(this);
-
-            try{
-                fxmlLoader.load();
-            } catch (IOException exception){
-                throw new RuntimeException(exception);
-            }
-
-            this.controller = new BudgetPostPanelController();
-
-            budgetPostName.setText("HEHEHE");
-            budgetPostTotalAmount.setText("43453543");
-            increasingPaneBudgetPost.setPrefHeight(130);
-
-
-        }
-
-
-
+    public void setData(){
+        budgetPostName.setText("HHh");
+        budgetPostTotalAmount.setText(String.valueOf(4334));
+        increasingPaneBudgetPost.setPrefHeight(146);
+        budgetPostCard.setOpacity(1);
+        AnchorPaneBudgetPostCard.setOpacity(1);
     }
 
+}
