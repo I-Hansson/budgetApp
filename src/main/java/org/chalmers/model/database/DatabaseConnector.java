@@ -11,6 +11,7 @@ import java.io.IOException;
 public class DatabaseConnector {
 
     private JSONObject dbObj;
+    private String path;
     JSONParser parser = new JSONParser();
 
     /**
@@ -18,8 +19,9 @@ public class DatabaseConnector {
      * @param JSONUri the URI for the specified JSON file.
      */
     public DatabaseConnector(String JSONUri){
+        path = JSONUri;
         try{
-            dbObj = (JSONObject) parser.parse(new FileReader(JSONUri));
+            dbObj = (JSONObject) parser.parse(new FileReader(path));
         }catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -32,4 +34,5 @@ public class DatabaseConnector {
     public JSONObject getDbObj() {
         return new JSONObject(dbObj);
     }
+    public String getDbPath() {return path;}
 }
