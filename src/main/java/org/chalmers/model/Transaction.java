@@ -1,5 +1,7 @@
 package org.chalmers.model;
 
+import javafx.scene.paint.Color;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;

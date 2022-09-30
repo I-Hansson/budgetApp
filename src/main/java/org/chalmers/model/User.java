@@ -69,15 +69,29 @@ public class User {
 
     /**
      * Add a NEW budget-post to the users budget planner.
-     * @param name the name of the new post.
-     * @param cap the maximum amount intended for this post.
+     * @param budgetPost new BudgetPost instance
      */
-    public void addBudgetPost(String name, double cap){
+    public void addBudgetPost(BudgetPost budgetPost){
         if(!budgetPosts.containsKey(name)){
-            budgetPosts.put("test", new BudgetPost(name,cap));
+            budgetPosts.put("test", budgetPost);
         } else{
             //TODO Alert user that post already exists
             System.out.println("Post " + name + " already exists");
         }
     }
+
+    public void addTransaction(Transaction transaction) {
+        recentTransactions.add(transaction);
+        addTransactionToBudgetPost(transaction);
+
+    }
+
+    public ArrayList<BudgetPost> getBudgetPosts() {
+        return (ArrayList<BudgetPost>) budgetPosts.values();
+    }
+
+    private void addTransactionToBudgetPost(Transaction transaction) {
+        budgetPosts.get(transaction.getBudgetPostName()).addTransaction(transaction);
+    }
+
 }
