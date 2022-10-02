@@ -1,22 +1,16 @@
-.chart{
-    -fx-pie-label-visible:false;
 
-}
-.chart-pie-label-line {
+chart-pie-label-line {
     -fx-stroke: #8b4513;
     -fx-fill: #8b4513;
 }
 
 .chart-pie-label { /*this is what you need for labels*/
 
-    -fx-fill: black;
-
-
+    -fx-fill: #8b4513;
+    -fx-font-size: 1em;
 }
-
 .chart-legend {
     -fx-border-style: solid;
-    -fx-border-radius:  10px;
     -fx-background-color:  #FAF9F8;
-    -fx-border-color: white;
+    -fx-border-color: #131210;
 }
