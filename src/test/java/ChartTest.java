@@ -51,12 +51,11 @@ public class ChartTest {
         lineChart.update(List.of(testTransactionsLine));
 
         Map<Integer, Integer> correctMap = new HashMap<>();
+        for (int i = 1; i <= 7; i++) {
+            correctMap.put(i, 0);
+        }
         for (Transaction transaction : testTransactionsLine) {
-            if (correctMap.containsKey(transaction.getDayOfWeek())) {
-                correctMap.put(transaction.getDayOfWeek(), (int) transaction.getAmount() + correctMap.get(transaction.getDayOfWeek()));
-            } else {
-                correctMap.put(transaction.getDayOfWeek(), (int) transaction.getAmount());
-            }
+            correctMap.put(transaction.getDayOfWeek(), (int) transaction.getAmount() + correctMap.get(transaction.getDayOfWeek()));
         }
 
         assertEquals(correctMap, lineChart.getDataMap());

@@ -24,7 +24,7 @@ public class LineChartFX {
     private static XYChart.Series<Integer, Integer> createSeries(int len) {
         XYChart.Series<Integer, Integer> series = new XYChart.Series<>();
 
-        for(int i = 0; i <= len; i++) {
+        for(int i = 1; i <= len; i++) {
             series.getData().add(new XYChart.Data<>(i, 0));
         }
 
