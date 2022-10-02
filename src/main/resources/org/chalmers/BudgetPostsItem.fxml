@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Text?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0"
+         prefWidth="300.0" stylesheets="@CSS/Font.css" type="AnchorPane" xmlns="http://javafx.com/javafx/17"
+         xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.chalmers.BudgetPostsItem">
+   <Text fx:id="budgetBannerName" layoutX="104.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0"
+         styleClass="normalStrongText" text="Name" textAlignment="CENTER"/>
+   <Text fx:id="budgetBannerAmountTransactions" layoutX="45.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0"
+         styleClass="greySmallTextBudgetBanner" text="Amount of transactions" textAlignment="CENTER"
+         wrappingWidth="210.2789306640625"/>
+   <Text layoutX="117.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="greySmallTextBudgetBanner"
+         text="Remainig" textAlignment="CENTER"/>
+   <Text fx:id="budgetBannerLastTransaction" layoutX="45.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0"
+         styleClass="greySmallTextBudgetBanner" text="Last Transaction" textAlignment="CENTER"
+         wrappingWidth="210.2789306640625"/>
+   <Text fx:id="budgetBannerAmount" layoutX="77.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0"
+         styleClass="priceTitelBudgetBanner" text="Amount" textAlignment="CENTER"/>
+   <Line endX="100.0" layoutX="150.0" layoutY="235.0" startX="-100.0"/>
+   <Text fx:id="budgetBannerDescription" layoutX="84.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0"
+         styleClass="greySmallTextBudgetBanner" text="Description" textAlignment="CENTER" wrappingWidth="132.4296875"/>
+   <BorderPane fx:id="budgetBannerColorBoard" layoutX="70.0" layoutY="362.0" prefHeight="55.0" prefWidth="160.0"
+               style="-fx-background-color: #1E77BD;" styleClass="colorCard"/>
+</fx:root>
