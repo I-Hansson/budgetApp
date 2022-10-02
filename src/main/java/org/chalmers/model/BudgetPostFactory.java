@@ -7,7 +7,7 @@ import javafx.scene.paint.Color;
  * a simpler interface than the BudgetPost constructor.
  */
 public class BudgetPostFactory {
-
+    //TODO Jonas sa något om statiska färger?
     private static final Color[] colors = {
             Color.RED,
             Color.BLUE,
