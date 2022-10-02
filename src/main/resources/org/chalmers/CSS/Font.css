@@ -37,8 +37,7 @@
 }
 
 .slightOpacityWeakRectangle {
-    -fx-background-color: #EDE9E5;
-    -fx-opacity: 0.88;
+    -fx-background-color: rgba(237,233,229,0.88);
     -fx-background-radius: 30px;
 }
 
@@ -92,9 +91,9 @@
 .budgetPostsTitel {
 
     -fx-font-family: 'Inter';
-    -fx-font-style: normal;
+    -fx-font-style: bold;
     -fx-font-weight: 800;
-    -fx-font-size: 35px;
+    -fx-font-size: 37px;
     -fx-line-height: 24px;
     -fx-color: #131210;
 
@@ -111,4 +110,9 @@
     -fx-font-size: 16px;
     -fx-font-family: 'Inter';
     -fx-fill: #4B5563;
+}
+
+.opacityFixNoInhertiance {
+
+    -fx-background-color: rgba(255,255,255, 1);
 }

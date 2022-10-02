@@ -25,7 +25,7 @@ public class BudgetPostsItem extends AnchorPane {
 
     public BudgetPostsItem(){
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("BudgetPostItem.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("BudgetPostsItem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
@@ -39,9 +39,10 @@ public class BudgetPostsItem extends AnchorPane {
         budgetBannerName.setText("Yaki-Da");
         budgetBannerDescription.setText("Här samlas alla gånger användaren har varit på Yaki-Da");
         budgetBannerAmount.setText(3420 + "kr");
-        budgetBannerAmountTransactions.setText("Amount of transactions" + 32);
+        budgetBannerAmountTransactions.setText("Total transactions: " + 32);
         budgetBannerLastTransaction.setText("3/10 - 2022");
         budgetBannerColorBoard.setBackground(Background.fill(Paint.valueOf("#1E77BD")));
+
 
 
     }

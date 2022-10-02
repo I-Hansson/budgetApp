@@ -3,6 +3,7 @@ package org.chalmers;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -36,9 +37,15 @@ public class BudgetPostsView implements Initializable {
     @Override
     public void initialize (URL url, ResourceBundle resourceBundle) {
 
+
+
+
+
         for(int i = 0;i<4; i++) {
             this.budgetPostsViewGridPane.add(new BudgetPostsItem(), i, 0);
+
         }
+
 
 
     }
