@@ -15,10 +15,12 @@ public class BudgetPost {
     private ArrayList<IBudgetPostsObserver> observers = new ArrayList<IBudgetPostsObserver>();
     private ArrayList<Transaction> transactions = new ArrayList<>();
 
-    public BudgetPost(String name, double budgetCap){
+    public BudgetPost(String name, double budgetCap, Color color){
         this.name = name;
         this.budgetCap = budgetCap;
         this.currentBalance = 0;
+        this.color = color;
+        this.complementColor = color.brighter();
         //TODO Implement icon logic here aswell.
     }
     /**
@@ -68,6 +70,9 @@ public class BudgetPost {
      * Returns RGB values for this budget post's color.
      * @return int[]{R, G, B}
      */
+    public Color getColorr() {
+        return this.color;
+    }
     public String getColor() {
         return ""+this.color.getRed()*255+"," + this.color.getGreen()*255 +","+this.color.getBlue()*255;
     }

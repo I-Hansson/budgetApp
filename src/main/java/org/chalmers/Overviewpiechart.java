@@ -29,8 +29,6 @@ public class Overviewpiechart extends AnchorPane {
             throw new RuntimeException(exception);
         }
         this.piechart.getData().addAll(controller.getData());
-        //this.piechart.setStyle("default-color0.chart-pie { -fx-pie-color: white; }");
-        //this.piechart.setStyle("#default-color4.chart-pie { -fx-pie-color: white; }");
 
 
 

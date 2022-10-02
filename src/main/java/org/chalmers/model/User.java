@@ -49,6 +49,7 @@ public class User {
      * Add a NEW budget-post to the users budget planner.
      * @param budgetPost new BudgetPost instance
      */
+/*
     public void addBudgetPost(BudgetPost budgetPost){
         if(!budgetPosts.containsKey(name)){
             budgetPosts.put("test", budgetPost);
@@ -71,5 +72,6 @@ public class User {
     private void addTransactionToBudgetPost(Transaction transaction) {
         budgetPosts.get(transaction.getBudgetPostName()).addTransaction(transaction);
     }
+*/
 
 }
