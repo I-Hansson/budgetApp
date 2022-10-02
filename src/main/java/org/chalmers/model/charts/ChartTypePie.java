@@ -8,7 +8,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ChartTypePie implements IChart<String, Integer> {
+class ChartTypePie implements IChart<String, Integer> {
 
     private final Map<String, Integer> data;
 

@@ -5,7 +5,7 @@ import org.chalmers.model.Transaction;
 
 import java.util.*;
 
-public class ChartTypeLine implements IChart<Integer, Integer> {
+class ChartTypeLine implements IChart<Integer, Integer> {
 
     private final ILineChartExtent extent;
     private final Map<Integer, Integer> data;
