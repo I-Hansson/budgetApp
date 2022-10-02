@@ -36,6 +36,16 @@ public class Transaction {
         return description;
     }
 
+    public int getDayOfWeek() {
+        return dateOfTransaction.get(Calendar.DAY_OF_WEEK);
+    }
+    public int getDayOfMonth() {
+        return dateOfTransaction.get(Calendar.DAY_OF_MONTH);
+    }
+    public int getDayOfYear() {
+        return dateOfTransaction.get(Calendar.DAY_OF_YEAR);
+    }
+
     // Methods
 
     
