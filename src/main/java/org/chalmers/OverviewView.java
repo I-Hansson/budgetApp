@@ -22,7 +22,12 @@ import java.util.ResourceBundle;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+
+import org.chalmers.Controllers.BudgetPostPanelController;
+import org.chalmers.Overviewpiechart;
+
 import javafx.stage.Stage;
+
 
 
 
@@ -43,14 +48,16 @@ public class OverviewView implements Initializable {
     @FXML TextArea overviewMessageTextArea;
     @FXML GridPane budgetPostsGridPane;
     @FXML Button newTransactionButton;
+    // controllers
 
+    BudgetPostPanelController  budgetCardController = new BudgetPostPanelController();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
        this.PiechartFlowPane.getChildren().add(new Overviewpiechart());
-       for(int i = 0;i<4; i++){
-            this.budgetPostsGridPane.add(new OverviewBudgetPost(),i,0);
-        }
+       for (int i = 0; i < 4; i++){
+           budgetPostsGridPane.add(budgetCardController.getBudgetPostCards().get(i),i,0);
+       }
 
     }
 
