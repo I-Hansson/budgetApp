@@ -1,7 +1,7 @@
 package org.chalmers.model.charts;
 
-import org.chalmers.model.IBudgetPostsObserver;
 import org.chalmers.model.Transaction;
+import org.chalmers.model.charts.lineChartExtents.ILineChartExtent;
 
 import java.util.*;
 
