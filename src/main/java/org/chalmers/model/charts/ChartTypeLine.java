@@ -20,8 +20,13 @@ class ChartTypeLine implements IChart<Integer, Integer> {
         for(Transaction transaction : transactions){
             if( transaction.getAmount() != 0){
                 int date = extent.getDateAsInt(transaction);
-                int amount = (int) transaction.getAmount();
-                data.put(date, amount);
+
+                if (data.containsKey(date)) {
+                    int temp = data.get(date) + (int) transaction.getAmount();
+                    data.put(date, temp);
+                } else {
+                    data.put(date, (int) transaction.getAmount());
+                }
             }
         }
     }

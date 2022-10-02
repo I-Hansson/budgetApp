@@ -10,7 +10,7 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-public class ChartsTest {
+public class ChartTest {
 
     private final Transaction[] testTransactionsLine = {
             new Transaction(100, "test", ""),
@@ -52,7 +52,11 @@ public class ChartsTest {
 
         Map<Integer, Integer> correctMap = new HashMap<>();
         for (Transaction transaction : testTransactionsLine) {
-            correctMap.put(transaction.getDayOfWeek(), (int) transaction.getAmount());
+            if (correctMap.containsKey(transaction.getDayOfWeek())) {
+                correctMap.put(transaction.getDayOfWeek(), (int) transaction.getAmount() + correctMap.get(transaction.getDayOfWeek()));
+            } else {
+                correctMap.put(transaction.getDayOfWeek(), (int) transaction.getAmount());
+            }
         }
 
         assertEquals(correctMap, lineChart.getDataMap());
