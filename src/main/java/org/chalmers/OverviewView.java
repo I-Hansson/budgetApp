@@ -1,8 +1,7 @@
 package org.chalmers;
 
-import javafx.event.ActionEvent;
+
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -11,16 +10,27 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.text.Text;
-import javafx.stage.Stage;
-import org.chalmers.model.OverallSpentPieChart;
+import javafx.scene.layout.GridPane;
 
+import javafx.scene.text.Text;
+
+import java.io.IOException;
 import java.net.URL;
+
 import java.util.ResourceBundle;
 
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
+
+
+
 public class OverviewView implements Initializable {
+
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
 
 
     @FXML Text overviewTitelPanel;
@@ -28,25 +38,37 @@ public class OverviewView implements Initializable {
     @FXML Text pastTransactionsTitelPanel;
 
 
-    @FXML Pane pieChartOverview;
-    @FXML PieChart overallSpentPieChart;
+    @FXML FlowPane PiechartFlowPane;
 
-    @FXML Pane pieChartConnectedInfo;
     @FXML TextArea overviewMessageTextArea;
-    @FXML ScrollPane budgetPostsFlowPane;
+    @FXML GridPane budgetPostsGridPane;
     @FXML Button newTransactionButton;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        OverallSpentPieChart hej = new OverallSpentPieChart();
 
-        //this.overallSpentPieChart.setStyle("-fx-pie-label-visible:False;");
-        this.overallSpentPieChart.getData().addAll(hej.getData());
-
-
+       this.PiechartFlowPane.getChildren().add(new Overviewpiechart());
+       for(int i = 0;i<4; i++){
+            this.budgetPostsGridPane.add(new OverviewBudgetPost(),i,0);
+        }
 
     }
+
+    @FXML
+    public void SwitchToPastTransactionPage(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+
+        root = FXMLLoader.load(getClass().getResource("PastTransactionView.fxml"));
+        stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+
 }
+
+
 
 
 
