@@ -6,11 +6,11 @@
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="99.0" prefWidth="1038.0" stylesheets="@CSS/Font.css" type="AnchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <Text fx:id="nameTransaction" layoutX="32.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="normalStrongText" text="Name" wrappingWidth="56.27001953125" />
-        <Text fx:id="dateTransaction" layoutX="697.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="normalStrongText" text="Date" wrappingWidth="127.469970703125" />
-        <Text fx:id="budgetpostTransaction" layoutX="895.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="normalStrongText" text="Budget Post" wrappingWidth="98.93670654296875" />
-        <Text fx:id="costTransaction" layoutX="232.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="normalStrongText" text="Cost" wrappingWidth="56.27001953125" />
-        <Text fx:id="descriptionTransaction" layoutX="450.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="normalStrongText" text="Description" wrappingWidth="108.27008056640625" />
+        <Text fx:id="nameTransaction" layoutX="32.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="normalStrongTextSmall" text="Name" wrappingWidth="56.27001953125" />
+        <Text fx:id="dateTransaction" layoutX="697.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="normalStrongTextSmall" text="Date" wrappingWidth="127.469970703125" />
+        <Text fx:id="budgetpostTransaction" layoutX="895.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="normalStrongTextSmall" text="Budget Post" wrappingWidth="98.93670654296875" />
+        <Text fx:id="costTransaction" layoutX="232.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="normalStrongTextSmall" text="Cost" wrappingWidth="56.27001953125" />
+        <Text fx:id="descriptionTransaction" layoutX="450.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="normalStrongTextSmall" text="Description" wrappingWidth="108.27008056640625" />
         <Text fx:id="remainingBalanceTransation" layoutX="232.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textFontNormal" text="Remaining" wrappingWidth="80.80340576171875" />
         <Text fx:id="dayTransaction" layoutX="697.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textFontNormal" text="Day of the week" wrappingWidth="91.47003173828125" />
         <BorderPane fx:id="colorBoardTransaction" layoutX="895.0" layoutY="56.0" prefHeight="17.0" prefWidth="66.0" style="-fx-background-color: #1E77BD;" styleClass="colorCard" />

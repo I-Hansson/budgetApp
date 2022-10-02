@@ -17,6 +17,7 @@ public class OverviewBudgetPost extends AnchorPane{
     @FXML AnchorPane budgetPostCard;
     @FXML AnchorPane increasingPaneBudgetPost;
     @FXML AnchorPane AnchorPaneBudgetPostCard;
+
     public OverviewBudgetPost(){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("OverviewBudgetPost.fxml"));
         fxmlLoader.setRoot(this);

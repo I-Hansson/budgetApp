@@ -78,6 +78,37 @@
 .normalStrongText {
     -fx-font-size: 35px;
     -fx-font-family: 'Inter';
-    -fx-font-size: 17px;
+    -fx-fill: #131210;
+}
+
+.normalStrongTextSmall {
+    -fx-font-size: 20px;
+    -fx-font-family: 'Inter';
+    -fx-fill: #131210;
+}
+
+
+
+.budgetPostsTitel {
+
+    -fx-font-family: 'Inter';
+    -fx-font-style: normal;
+    -fx-font-weight: 800;
+    -fx-font-size: 35px;
+    -fx-line-height: 24px;
     -fx-color: #131210;
+
+}
+
+.priceTitelBudgetBanner {
+
+    -fx-font-size: 41px;
+    -fx-fill: #1D4ED8;
+
+}
+
+.greySmallTextBudgetBanner {
+    -fx-font-size: 16px;
+    -fx-font-family: 'Inter';
+    -fx-fill: #4B5563;
 }
