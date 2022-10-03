@@ -9,42 +9,20 @@ import org.chalmers.model.database.BudgetPostsDB;
 import org.chalmers.model.database.UsersDB;
 
 import java.io.IOException;
+import java.util.Objects;
 
 /**
  * JavaFX App
  */
-public class App extends Application {
+public class App extends Application{
 
-    private static Scene scene;
-
-    @Override
-    public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 640, 480);
-        stage.setScene(scene);
-        stage.show();
+    public void start (Stage primaryStage) throws Exception{
+        Parent root = FXMLLoader.load((getClass().getResource("LogInPage.fxml")));
+        primaryStage.setTitle("LogInView");
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
     }
 
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-    }
-
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
-    }
-
-    public static void main(String[] args) {
-        UsersDB udb = new UsersDB(22230000);
-        BudgetPostsDB bdb = new BudgetPostsDB("000001");
-
-        udb.openSetters();
-        udb.setUserName("Kalle");
-        udb.setNewStandardBalance(420);
-        udb.setBalance(69);
-        udb.addBudgetPost("Kläder");
-        udb.closeSetter();
-
-        launch();
-    }
+    public static void main(String[] args) {launch(args);}
 
 }
