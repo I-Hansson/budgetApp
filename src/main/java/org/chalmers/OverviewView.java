@@ -6,9 +6,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.chart.PieChart;
+
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
+
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 
@@ -62,13 +62,26 @@ public class OverviewView implements Initializable {
     }
 
     @FXML
-    public void SwitchToPastTransactionPage(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    public void SwitchToPastTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
 
         root = FXMLLoader.load(getClass().getResource("PastTransactionView.fxml"));
         stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+
+
+    }
+
+    @FXML
+    public void SwitchToBudgetPosts(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+
+        root = FXMLLoader.load(getClass().getResource("BudgetPostsView.fxml"));
+        stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
 
     }
 
