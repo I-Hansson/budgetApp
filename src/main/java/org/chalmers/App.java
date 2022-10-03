@@ -5,6 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.chalmers.model.database.BudgetPostsDB;
+import org.chalmers.model.database.UsersDB;
 
 import java.io.IOException;
 
@@ -32,6 +34,16 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
+        UsersDB udb = new UsersDB(22230000);
+        BudgetPostsDB bdb = new BudgetPostsDB("000001");
+
+        udb.openSetters();
+        udb.setUserName("Kalle");
+        udb.setNewStandardBalance(420);
+        udb.setBalance(69);
+        udb.addBudgetPost("Kläder");
+        udb.closeSetter();
+
         launch();
     }
 

@@ -1,1 +1,7 @@
-{"name":"Kalle","budgetPosts":[{"name":"mat","id":"00001"},{"name":"bostad","id":"00002"},{"name":"snus","id":"000003"},{"name":"streaming tjänster","id":"000004"},{"name":"Transport","id":"00005"}],"id":"0","transactions":[{"name":"mat","id":"000001"},{"name":"bostad","id":"000002"},{"name":"snus","id":"00003"},{"name":"streaming tjänster","id":"00004"},{"name":"Transport","id":"00005"}],"startBalance":69420.0,"currentBalance":69.0}
+{"name":"Kalle",
+  "budgetPosts":[
+    {"name":"mat","id":"000001"},
+    {"name":"bostad","id":"000002"},
+    {"name":"snus","id":"000003"},
+    {"name":"streaming tjänster","id":"000004"},
+    {"name":"Kläder","id":"00005"}],"id":"0","startBalance":420.0,"currentBalance":69.0}
