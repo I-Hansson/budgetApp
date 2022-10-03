@@ -24,8 +24,10 @@ public class OverviewBudgetPost extends AnchorPane{
     @FXML AnchorPane increasingPaneBudgetPost;
     @FXML AnchorPane AnchorPaneBudgetPostCard;
 
+
     public OverviewBudgetPost(String name, String moneyLeft, double procent, String color, String complementColor){
-        ;
+
+
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("OverviewBudgetPost.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);

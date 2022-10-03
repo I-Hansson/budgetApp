@@ -8,7 +8,6 @@ public class ModelFacade {
 
     //TODO koppla till databasen på något vänster
     private static final User currentUser = new User();
-
     /*public void addTransaction(int amount, String budgetPostName, String description) {
         Transaction transaction = new Transaction(amount, budgetPostName, description);
         currentUser.addTransaction(transaction);
@@ -25,4 +24,5 @@ public class ModelFacade {
     private void switchUser() {
         //TODO Koppla till databasen mannen
     }*/
+
 }

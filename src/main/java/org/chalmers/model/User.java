@@ -42,36 +42,4 @@ public class User {
         instantiatd = true;
     }
 
-
-
-
-    /**
-     * Add a NEW budget-post to the users budget planner.
-     * @param budgetPost new BudgetPost instance
-     */
-/*
-    public void addBudgetPost(BudgetPost budgetPost){
-        if(!budgetPosts.containsKey(name)){
-            budgetPosts.put("test", budgetPost);
-        } else{
-            //TODO Alert user that post already exists
-            System.out.println("Post " + name + " already exists");
-        }
-    }
-
-    public void addTransaction(Transaction transaction) {
-        recentTransactions.add(transaction);
-        addTransactionToBudgetPost(transaction);
-
-    }
-
-    public ArrayList<BudgetPost> getBudgetPosts() {
-        return (ArrayList<BudgetPost>) budgetPosts.values();
-    }
-
-    private void addTransactionToBudgetPost(Transaction transaction) {
-        budgetPosts.get(transaction.getBudgetPostName()).addTransaction(transaction);
-    }
-*/
-
 }
