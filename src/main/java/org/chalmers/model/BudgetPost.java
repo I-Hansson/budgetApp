@@ -9,6 +9,7 @@ public class BudgetPost {
     private String name;
     //TODO give Icon attribute
     private Color color;
+    private Color complementColor;
     private double budgetCap; //The most you want to spend in a surtain budget-post.
     private double currentBalance;
     private ArrayList<IBudgetPostsObserver> observers = new ArrayList<IBudgetPostsObserver>();
@@ -42,9 +43,11 @@ public class BudgetPost {
      * @param color The new color.
      */
     public void setColor(Color color) {
-        this.color = color;
+         this.color = color;
     }
-
+    public void setComplementColorColor(Color color) {
+        this.complementColor = color;
+    }
     /**
      * Add a transaction to the list of past transactions.
      * @param transaction Transaction to be added.
@@ -65,8 +68,11 @@ public class BudgetPost {
      * Returns RGB values for this budget post's color.
      * @return int[]{R, G, B}
      */
-    public Color getColor() {
-        return this.color;
+    public String getColor() {
+        return ""+this.color.getRed()*255+"," + this.color.getGreen()*255 +","+this.color.getBlue()*255;
+    }
+    public String getComplementColor() {
+        return ""+this.complementColor.getRed()*255+"," + this.complementColor.getGreen()*255 +","+this.complementColor.getBlue()*255;
     }
 
     public double getBudgetCap() {
@@ -99,6 +105,11 @@ public class BudgetPost {
         for(IBudgetPostsObserver observer: observers){
             observer.update(transactionsCopy);
         }
+    }
+
+
+    public void setCurrentBalance(int x){
+        this.currentBalance = x;
     }
 
 }

@@ -2,7 +2,6 @@ package org.chalmers.model.database;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -11,13 +10,11 @@ import java.util.Map;
 
 public class UsersDB {
     private DatabaseConnector connector;
-    private JSONParser parser;
     private FileWriter file;
     private JSONObject oldDB;
 
     public UsersDB(int uid){
         connector = new DatabaseConnector("src/main/database/users/" + uid +".json");
-        parser = new JSONParser();
         file = null;
         oldDB = null;
     }
@@ -129,7 +126,7 @@ public class UsersDB {
         int counter = posts.size() + 1;
         newPost.put("id", "000" + getUid() + counter);
         posts.add(newPost);
-        oldDB.put("transactions", posts);
+        oldDB.put("budgetPosts", posts);
     }
 
     /**

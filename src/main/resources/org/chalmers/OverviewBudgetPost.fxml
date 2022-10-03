@@ -5,12 +5,11 @@
 
 <fx:root prefHeight="100.0" prefWidth="200.0" stylesheets="@CSS/Font.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <AnchorPane fx:id="AnchorPaneBudgetPostCard" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" />
+        <AnchorPane fx:id="AnchorPaneBudgetPostCard" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
          <AnchorPane fx:id="budgetPostCard" prefHeight="250.0" prefWidth="200.0" style="-fx-background-color: #10564F;" styleClass="colorCard">
-             <AnchorPane fx:id="increasingPaneBudgetPost" layoutY="115.0" prefHeight="115.0" prefWidth="200.0" style="-fx-background-color: #167067;" styleClass="colorCard" AnchorPane.bottomAnchor="-0.5999999999999943" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-                 <Text fx:id="budgetPostTotalAmount" layoutX="7.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textNormalWhite" text="Amount" wrappingWidth="114.13671875" AnchorPane.bottomAnchor="17.200000000000003" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="78.86328125" />
-             </AnchorPane>
-             <Text fx:id="budgetPostName" layoutX="14.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textNormalWhite" text="Name" wrappingWidth="103.7366943359375" />
+             <AnchorPane fx:id="increasingPaneBudgetPost" layoutY="250.0" prefHeight="0.0" prefWidth="200.0" style="-fx-background-color: #167067;" styleClass="colorCard" translateY="1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+             <Text fx:id="budgetPostName" layoutX="8.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textNormalWhite" text="Name" wrappingWidth="183.7366943359375" AnchorPane.leftAnchor="8.0" />
+              <Text fx:id="budgetPostTotalAmount" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textNormalWhite" text="Amount" wrappingWidth="183.7366943359375" AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="14.0" />
          </AnchorPane>
     </children>
 </fx:root>

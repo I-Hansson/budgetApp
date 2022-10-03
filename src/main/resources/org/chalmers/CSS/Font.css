@@ -36,6 +36,7 @@
     -fx-color: #131210;
 }
 
+
 .slightOpacityWeakRectangle {
     -fx-background-color: rgba(237,233,229,0.88);
     -fx-background-radius: 30px;
