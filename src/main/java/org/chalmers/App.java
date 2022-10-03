@@ -5,6 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.chalmers.model.database.BudgetPostsDB;
+import org.chalmers.model.database.UsersDB;
 
 import java.io.IOException;
 import java.util.Objects;

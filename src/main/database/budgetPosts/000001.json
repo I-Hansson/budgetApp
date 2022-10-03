@@ -2,7 +2,7 @@
   "name": "mat",
   "cap": 2500,
   "transactions": [
-    {"description":  "ica", "total": 267.78, "date": 202209231305},
-    {"description":  "coop", "total": 19.95, "date": 202209171933}
+    {"description":  "ica", "total": 267.78, "date": "202209231305"},
+    {"description":  "coop", "total": 19.95, "date": "202209171933"}
   ]
 }
