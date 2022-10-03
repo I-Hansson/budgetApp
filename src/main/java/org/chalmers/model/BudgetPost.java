@@ -2,25 +2,22 @@ package org.chalmers.model;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import javafx.scene.paint.Color;
 
 public class BudgetPost {
 
     private String name;
     //TODO give Icon attribute
-    private Color color;
-    private Color complementColor;
+    private String color;
     private double budgetCap; //The most you want to spend in a surtain budget-post.
     private double currentBalance;
     private ArrayList<IBudgetPostsObserver> observers = new ArrayList<IBudgetPostsObserver>();
     private ArrayList<Transaction> transactions = new ArrayList<>();
 
-    public BudgetPost(String name, double budgetCap, Color color){
+    public BudgetPost(String name, double budgetCap,String  color){
         this.name = name;
         this.budgetCap = budgetCap;
         this.currentBalance = 0;
         this.color = color;
-        this.complementColor = color.brighter();
         //TODO Implement icon logic here aswell.
     }
     /**
@@ -44,12 +41,10 @@ public class BudgetPost {
      * Edits the color for this post.
      * @param color The new color.
      */
-    public void setColor(Color color) {
+    public void setColor(String color) {
          this.color = color;
     }
-    public void setComplementColorColor(Color color) {
-        this.complementColor = color;
-    }
+
     /**
      * Add a transaction to the list of past transactions.
      * @param transaction Transaction to be added.
@@ -70,14 +65,9 @@ public class BudgetPost {
      * Returns RGB values for this budget post's color.
      * @return int[]{R, G, B}
      */
-    public Color getColorr() {
-        return this.color;
-    }
+
     public String getColor() {
-        return ""+this.color.getRed()*255+"," + this.color.getGreen()*255 +","+this.color.getBlue()*255;
-    }
-    public String getComplementColor() {
-        return ""+this.complementColor.getRed()*255+"," + this.complementColor.getGreen()*255 +","+this.complementColor.getBlue()*255;
+        return this.color;
     }
 
     public double getBudgetCap() {

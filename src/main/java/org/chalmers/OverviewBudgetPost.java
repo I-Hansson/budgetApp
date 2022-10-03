@@ -38,8 +38,8 @@ public class OverviewBudgetPost extends AnchorPane{
         }
         budgetPostName.setText(name);
         budgetPostTotalAmount.setText( moneyLeft + " Kr");
-        budgetPostCard.setStyle("-fx-background-color: rgba("+ color+" );");
-        increasingPaneBudgetPost.setStyle("-fx-background-color: rgba("+ complementColor+" );");
+        budgetPostCard.setStyle("-fx-background-color: rgb("+ color+" );");
+        increasingPaneBudgetPost.setStyle("-fx-background-color: rgb("+ complementColor+" );");
 
         increasingPaneBudgetPost.setPrefHeight(0);
 

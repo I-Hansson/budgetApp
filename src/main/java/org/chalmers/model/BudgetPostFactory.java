@@ -22,7 +22,7 @@ public class BudgetPostFactory {
 
     private static int currentColorIndex = 0;
 
-    public static BudgetPost createBudgetPost(String name) {
+    /*public static BudgetPost createBudgetPost(String name) {
         BudgetPost bp = new BudgetPost(name, 0, Color.color(0.02, 0.20, 0.36));
         bp.setColor(colors[currentColorIndex]);
         currentColorIndex++;
@@ -40,5 +40,5 @@ public class BudgetPostFactory {
         BudgetPost bp = new BudgetPost(name, budgetCap, Color.color(0.02, 0.20, 0.36));
         bp.setColor(color);
         return bp;
-    }
+    }*/
 }

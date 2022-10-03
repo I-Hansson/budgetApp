@@ -17,6 +17,7 @@ import java.util.List;
 public class Overviewpiechart extends AnchorPane {
     @FXML private PieChart piechart;
     OverviewpiechartController controller = new OverviewpiechartController();
+
     public Overviewpiechart(){
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Overviewpiechart.fxml"));
