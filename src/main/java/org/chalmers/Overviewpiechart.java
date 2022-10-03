@@ -17,6 +17,7 @@ import java.util.List;
 public class Overviewpiechart extends AnchorPane {
     @FXML private PieChart piechart;
     OverviewpiechartController controller = new OverviewpiechartController();
+
     public Overviewpiechart(){
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Overviewpiechart.fxml"));
@@ -29,6 +30,7 @@ public class Overviewpiechart extends AnchorPane {
             throw new RuntimeException(exception);
         }
         this.piechart.getData().addAll(controller.getData());
+
         //this.piechart.setStyle("default-color0.chart-pie { -fx-pie-color: white; }");
         //this.piechart.setStyle("#default-color4.chart-pie { -fx-pie-color: white; }");
     }

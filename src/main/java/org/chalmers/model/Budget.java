@@ -1,5 +1,7 @@
 package org.chalmers.model;
 
+import javafx.scene.paint.Color;
+
 import java.util.*;
 
 public class Budget {
@@ -15,7 +17,10 @@ public class Budget {
     public Budget(){
         this.year = calender.get(Calendar.YEAR);
         this.month = calender.get(Calendar.MONTH);
-
+        this.budgetPosts.add(new BudgetPost("Matvaror",0, "5, 51, 92"));
+        this.budgetPosts.add(new BudgetPost("Transport",0, "15, 87, 79"));
+        this.budgetPosts.add(new BudgetPost("Kläder",0, "31, 120, 189"));
+        this.budgetPosts.add(new BudgetPost("Resturang",0, "166, 212, 227"));
     }
 
     public double getCurrentBalance() {
