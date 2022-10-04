@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.chalmers.Controllers.PastTransactionController;
 
 import java.io.IOException;
 import java.net.URL;
@@ -26,17 +27,17 @@ public class PastTransactionView implements Initializable {
     @FXML Text budgetPostsTitelPanel;
     @FXML Text pastTransactionsTitelPanel;
     @FXML Button newTransactionButton;
-
-
     @FXML FlowPane pastTransactionFlowPane;
 
 
-
+    PastTransactionController PastTransactionController = new PastTransactionController();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
 
+        for(PastTransactionItem i : PastTransactionController.getPastTransactionItemList()){
+            this.pastTransactionFlowPane.getChildren().add(i);
+        }
 
-        this.pastTransactionFlowPane.getChildren().add(new PastTransactionItem());
 
 
     }

@@ -23,6 +23,10 @@ public class Budget {
         this.budgetPosts.add(new BudgetPost("Resturang",0, "166, 212, 227"));
     }
 
+    public List<BudgetPost> getBudgetPosts() {
+        return this.budgetPosts;
+    }
+
     public double getCurrentBalance() {
         return currentBalance;
     }
@@ -32,8 +36,8 @@ public class Budget {
     public int getId(){
         return id;
     }
-    public List getRecentTransactions(){
-        return recentTransactions;
+    public List<Transaction> getRecentTransactions(){
+        return this.recentTransactions;
     }
 
     /**
@@ -51,7 +55,9 @@ public class Budget {
     public void updateBalance(double change){
         currentBalance += change;
     }
-
+    public void addTransaction(String name, double amount, BudgetPost budgetPost, String description){
+        this.recentTransactions.add(new Transaction(name, amount,budgetPost,description));
+    }
     /**
      * Add a NEW budget-post to the users budget planner.
      * @param name the name of the new post.

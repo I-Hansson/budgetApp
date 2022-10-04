@@ -1,6 +1,6 @@
 package org.chalmers.model.charts;
 
-import org.chalmers.model.IBudgetPostsObserver;
+import org.chalmers.model.BudgetPost;
 import org.chalmers.model.Transaction;
 
 
@@ -25,12 +25,12 @@ class ChartTypePie implements IChart<String, Integer> {
     public void update(Collection<Transaction> transactions) {
         for(Transaction transaction : transactions){
             if( transaction.getAmount() != 0){
-                String budgetPostName = transaction.getBudgetPostName();
-                if (data.containsKey(budgetPostName)) {
+                BudgetPost budgetPostName = transaction.getBudgetPost();
+                if (data.containsKey(budgetPostName.getName())) {
                     int temp = data.get(budgetPostName) + (int) transaction.getAmount();
-                    data.put(budgetPostName, temp);
+                    data.put(budgetPostName.getName(), temp);
                 } else {
-                    data.put(budgetPostName, (int) transaction.getAmount());
+                    data.put(budgetPostName.getName(), (int) transaction.getAmount());
                 }
             }
         }
