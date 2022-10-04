@@ -1,7 +1,7 @@
 import org.chalmers.model.database.UsersDB;
 import org.junit.Test;
 
-import java.util.concurrent.TimeUnit;
+import java.io.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 public class UserDBTest {
@@ -9,11 +9,28 @@ public class UserDBTest {
     UsersDB db = new UsersDB(0);
 
     private void resetDB(){
-        db.openSetters();
-            db.setUserName("Kalle");
-            db.setBalance(420);
-            db.setNewStandardBalance(42069);
-        db.closeSetter();
+        File source = new File("./src/main/database/users/template.json");
+        File dest = new File("./src/main/database/users/0.json");
+        InputStream is = null;
+        OutputStream os = null;
+        try {
+            is = new FileInputStream(source);
+            os = new FileOutputStream(dest);
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = is.read(buffer)) > 0) {
+                os.write(buffer, 0, length);
+            }
+        }catch (IOException e ){
+            e.printStackTrace();
+        }finally {
+            try{
+                is.close();
+                os.close();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
+        }
     }
 
     @Test
