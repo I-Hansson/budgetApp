@@ -117,3 +117,24 @@
 
     -fx-background-color: rgba(255,255,255, 1);
 }
+
+#borderOverviewMonths {
+    -fx-background-color: rgba(217, 217, 217, 1);
+    -fx-background-radius: 45px;
+}
+#borderOverviewText {
+    -fx-background-color: rgb(255, 255, 255);
+    -fx-background-radius: 10px;
+}
+
+.overviewText {
+
+    -fx-font-family: 'Inter';
+    -fx-font-style: normal;
+    -fx-font-weight: 800;
+    -fx-font-size: 30px;
+    -fx-line-height: 24px;
+    -fx-color: #131210;
+
+}
+

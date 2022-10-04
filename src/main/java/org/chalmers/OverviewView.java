@@ -24,8 +24,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 
 import org.chalmers.Controllers.BudgetPostPanelController;
-import org.chalmers.Overviewpiechart;
-
 import javafx.stage.Stage;
 
 
@@ -45,7 +43,7 @@ public class OverviewView implements Initializable {
 
     @FXML FlowPane PiechartFlowPane;
 
-    @FXML TextArea overviewMessageTextArea;
+
     @FXML GridPane budgetPostsGridPane;
     @FXML Button newTransactionButton;
     // controllers
