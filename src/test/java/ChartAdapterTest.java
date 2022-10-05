@@ -35,13 +35,13 @@ public class ChartAdapterTest {
     };
 
     private final Transaction[] testTransactionsPie = {
-            new Transaction(100, "test", ""),
-            new Transaction(200, "test1", ""),
-            new Transaction(300, "test2", ""),
-            new Transaction(400, "test", ""),
-            new Transaction(500, "test1", ""),
-            new Transaction(600, "test2", ""),
-            new Transaction(700, "test", ""),
+            new Transaction("Test" ,100, bp, "test"),
+            new Transaction("Test1" ,200, bp, "test"),
+            new Transaction("Test2" ,300, bp, "test"),
+            new Transaction("Test" ,400, bp, "test"),
+            new Transaction("Test1" ,500, bp, "test"),
+            new Transaction("Test2" ,600, bp, "test"),
+            new Transaction("Test" ,700, bp, "test"),
     };
 
     @Test
