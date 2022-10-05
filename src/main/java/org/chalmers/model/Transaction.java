@@ -8,21 +8,28 @@ import java.util.GregorianCalendar;
 public class Transaction {
     private Calendar dateOfTransaction;
     private double amount;
-    private BudgetPost budgetPost;
+    private BudgetPostID budgetPostID;
     private String description;
     private String name;
 
-    public Transaction(String name, double amount, BudgetPost budgetPost, String description){
+    public Transaction(String name, double amount, BudgetPostID budgetPostID, String description){
         this.dateOfTransaction = new GregorianCalendar();
         this.name = name;
         this.amount = amount;
-        this.budgetPost = budgetPost;
+        this.budgetPostID = budgetPostID;
         this.description = description;
-        //TODO if budgetPostName doesn't exist create it or throw error?
-        //TODO if amount surpasses budget-post's cap alert user and add it to post.
     }
 
     //Getters
+    public String getBudgetPostName(){
+        return this.budgetPostID.getName();
+    }
+    public String getBudgetPostColor(){
+        return this.budgetPostID.getColor();
+    }
+    public String getBudgetPostID(){
+        return this.budgetPostID.getId();
+    }
 
     public String getName() {
         return name;
@@ -46,9 +53,7 @@ public class Transaction {
     public double getAmount(){
         return amount;
     }
-    public BudgetPost getBudgetPost(){
-        return this.budgetPost;
-    }
+
     public String getDescription(){
         return description;
     }

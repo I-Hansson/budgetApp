@@ -1,5 +1,6 @@
 import org.chalmers.model.BudgetPost;
 import org.chalmers.model.BudgetPostFactory;
+import org.chalmers.model.BudgetPostID;
 import org.chalmers.model.Transaction;
 import org.chalmers.model.charts.ChartFactory;
 import org.chalmers.model.charts.ChartTypePie;
@@ -14,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class ChartTest {
-    BudgetPost bp = BudgetPostFactory.createBudgetPost("test");
+    BudgetPostID bp = new BudgetPostID("TEST","COLOR","ID");
     private final Transaction[] testTransactionsLine = {
             new Transaction("Test" ,100, bp, "test"),
             new Transaction("Test1" ,200, bp, "test"),

@@ -43,8 +43,8 @@ public class PastTransactionItem extends AnchorPane {
         dateTransaction.setText(transaction.getTransactionDate());
         descriptionTransaction.setText(transaction.getDescription());
         dayTransaction.setText(transaction.getDayOfWeeks());
-        budgetpostTransaction.setText(transaction.getBudgetPost().getName());
-        colorBoardTransaction.setStyle("-fx-background-color: rgb("+ transaction.getBudgetPost().getColor()+" );");
+        budgetpostTransaction.setText(transaction.getBudgetPostName());
+        colorBoardTransaction.setStyle("-fx-background-color: rgb("+ transaction.getBudgetPostColor()+" );");
     }
 
 

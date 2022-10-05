@@ -5,6 +5,7 @@ import javafx.scene.chart.XYChart;
 import org.chalmers.model.Budget;
 import org.chalmers.model.BudgetPost;
 import org.chalmers.model.BudgetPostFactory;
+import org.chalmers.model.BudgetPostID;
 import org.chalmers.model.Transaction;
 import org.chalmers.model.charts.ChartFactory;
 import org.chalmers.model.charts.ChartTypeLine;
@@ -20,7 +21,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ChartAdapterTest {
-    BudgetPost bp = BudgetPostFactory.createBudgetPost("test");
+    BudgetPostID bp = new BudgetPostID("TEST","COLOR","ID");
     private final Transaction[] testTransactionsLine = {
             new Transaction("Test0" ,100, bp, "test"),
             new Transaction("Test1" ,200, bp, "test"),

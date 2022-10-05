@@ -7,8 +7,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
-import javafx.scene.control.*;
-
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 
@@ -35,6 +33,9 @@ public class OverviewView implements Initializable {
     private Scene scene;
     private Parent root;
 
+
+
+    @FXML FlowPane AddTransactionFlowPane;
 
     @FXML Text overviewTitelPanel;
     @FXML Text budgetPostsTitelPanel;
@@ -83,8 +84,15 @@ public class OverviewView implements Initializable {
 
     }
 
+    @FXML
+    public void SwitchToAddTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("AddTransaction.fxml"));
+        stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
 
-}
+    }}
 
 
 

@@ -22,6 +22,7 @@ public class PastTransactionView implements Initializable {
     private Scene scene;
     private Parent root;
 
+    @FXML FlowPane AddTransactionFlowPane;
 
     @FXML Text overviewTitelPanel;
     @FXML Text budgetPostsTitelPanel;
@@ -37,8 +38,6 @@ public class PastTransactionView implements Initializable {
         for(PastTransactionItem i : PastTransactionController.getPastTransactionItemList()){
             this.pastTransactionFlowPane.getChildren().add(i);
         }
-
-
 
     }
 
@@ -65,4 +64,17 @@ public class PastTransactionView implements Initializable {
 
 
     }
+    @FXML
+    public void SwitchToAddTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("AddTransaction.fxml"));
+        stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+
+
+
 }

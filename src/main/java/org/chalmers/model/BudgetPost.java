@@ -1,32 +1,35 @@
 package org.chalmers.model;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
+
 
 public class BudgetPost {
 
-    private String name;
+
     //TODO give Icon attribute
-    private String color;
+
     private double budgetCap; //The most you want to spend in a surtain budget-post.
     private double currentBalance;
-    private ArrayList<IBudgetPostsObserver> observers = new ArrayList<IBudgetPostsObserver>();
-    private ArrayList<Transaction> transactions = new ArrayList<>();
 
-    public BudgetPost(String name, double budgetCap,String  color){
-        this.name = name;
+    private BudgetPostID id;
+    private List<IBudgetPostsObserver> observers = new ArrayList<IBudgetPostsObserver>();
+    private List<Transaction> transactions = new ArrayList<>();
+
+    public BudgetPost(double budgetCap, String name, String color,String id){
+        this.id = new BudgetPostID(name, color, "0000001");
+        //TODO TEMP
         this.budgetCap = budgetCap;
         this.currentBalance = 0;
-        this.color = color;
         //TODO Implement icon logic here aswell.
     }
     /**
      * Update the name of this budget post.
      * @param newName the new name.
      */
-    public void setName(String newName){
-        this.name = newName;
-    }
+
 
     /**
      * Edits the budget cap for this post.
@@ -37,12 +40,8 @@ public class BudgetPost {
         this.budgetCap = newCap;
     }
 
-    /**
-     * Edits the color for this post.
-     * @param color The new color.
-     */
-    public void setColor(String color) {
-         this.color = color;
+    public BudgetPostID getId() {
+        return id;
     }
 
     /**
@@ -66,10 +65,6 @@ public class BudgetPost {
      * @return int[]{R, G, B}
      */
 
-    public String getColor() {
-        return this.color;
-    }
-
     public double getBudgetCap() {
         return budgetCap;
     }
@@ -78,14 +73,11 @@ public class BudgetPost {
         return currentBalance;
     }
 
-    public String getName() {
-        return this.name;
-    }
 
-    public ArrayList<Transaction> getTransactions() {
-        ArrayList<Transaction> transactionsCopy = new ArrayList<>();
+
+    public Collection<Transaction> getTransactions() {
+        List<Transaction> transactionsCopy = new ArrayList<>();
         Collections.copy(transactionsCopy, transactions);
-
         return transactionsCopy;
     }
 
