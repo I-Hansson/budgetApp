@@ -19,6 +19,8 @@ import java.util.ResourceBundle;
 
 public class BudgetPostsView implements Initializable {
 
+    @FXML FlowPane AddTransactionFlowPane;
+
     @FXML Text overviewTitelPanel;
     @FXML Text budgetPostsTitelPanel;
     @FXML Text pastTransactionsTitelPanel;
@@ -36,10 +38,6 @@ public class BudgetPostsView implements Initializable {
 
     @Override
     public void initialize (URL url, ResourceBundle resourceBundle) {
-
-
-
-
 
         for(int i = 0;i<4; i++) {
             this.budgetPostsViewGridPane.add(new BudgetPostsItem(), i, 0);
@@ -73,6 +71,16 @@ public class BudgetPostsView implements Initializable {
 
 
     }
+
+    @FXML
+    public void AddTransactionView(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
+
+        AddTransactionFlowPane.toFront();
+        this.AddTransactionFlowPane.getChildren().add(new AddTransaction());
+
+    }
+
+
 
 
 

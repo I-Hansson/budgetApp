@@ -22,6 +22,7 @@ public class PastTransactionView implements Initializable {
     private Scene scene;
     private Parent root;
 
+    @FXML FlowPane AddTransactionFlowPane;
 
     @FXML Text overviewTitelPanel;
     @FXML Text budgetPostsTitelPanel;
@@ -65,4 +66,14 @@ public class PastTransactionView implements Initializable {
 
 
     }
+
+    @FXML
+    public void AddTransactionView(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
+
+        AddTransactionFlowPane.toFront();
+        this.AddTransactionFlowPane.getChildren().add(new AddTransaction());
+
+    }
+
+
 }

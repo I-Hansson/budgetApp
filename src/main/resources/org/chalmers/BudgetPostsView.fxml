@@ -6,12 +6,15 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1280.0" stylesheets="@CSS/Font.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.chalmers.BudgetPostsView">
    <children>
+      <FlowPane fx:id="AddTransactionFlowPane" layoutX="10.0" layoutY="10.0" prefHeight="858.0" prefWidth="1278.0" />
       <ImageView fitHeight="849.0" fitWidth="1276.0" layoutX="2.0" layoutY="-3.0">
          <image>
             <Image url="@images/background.jpg" />
@@ -23,13 +26,13 @@
             <Text fx:id="overviewTitelPanel" layoutX="477.0" layoutY="54.0" onMouseClicked="#SwitchToOverview" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="panelNormalText" text="Overview" wrappingWidth="75.73675537109398" AnchorPane.bottomAnchor="37.984375" AnchorPane.leftAnchor="477.0" AnchorPane.rightAnchor="727.263244628906" AnchorPane.topAnchor="36.734375" />
             <Text fx:id="pastTransactionsTitelPanel" layoutX="714.0" layoutY="55.0" onMouseClicked="#SwitchToPastTransaction" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="panelNormalText" text="Past Transactions" wrappingWidth="145.33685302734398" AnchorPane.bottomAnchor="40.984375" AnchorPane.leftAnchor="714.0" AnchorPane.rightAnchor="420.663146972656" AnchorPane.topAnchor="37.734375" />
             <Text fx:id="budgetPostsTitelPanel" layoutX="590.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="panelNormalText" text="Budget Posts" underline="true" wrappingWidth="109.00263977050804" AnchorPane.bottomAnchor="42.0" AnchorPane.leftAnchor="590.0" AnchorPane.rightAnchor="581.0" AnchorPane.topAnchor="37.0" />
-            <Button fx:id="newTransactionButton" layoutX="1103.0" layoutY="25.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="154.0" styleClass="panelButtonSettings" text="New Transaction" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="1103.0" AnchorPane.rightAnchor="22.599999999999994" AnchorPane.topAnchor="25.0" />
+            <Button fx:id="newTransactionButton" layoutX="1103.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#AddTransactionView" prefHeight="44.0" prefWidth="154.0" styleClass="panelButtonSettings" text="New Transaction" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="1103.0" AnchorPane.rightAnchor="22.599999999999994" AnchorPane.topAnchor="25.0" />
             <ImageView fitHeight="21.0" fitWidth="27.0" layoutX="1230.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="45.0" layoutY="134.0" pickOnBounds="false" prefHeight="699.0" prefWidth="1190.0" styleClass="slightOpacityWeakRectangle" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="134.0">
          <children>
-            <Text layoutX="487.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="budgetPostsTitel" text="Budget Posts" />
+            <Text layoutX="481.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="budgetPostsTitel" text="Budget Posts" />
             <GridPane fx:id="budgetPostsViewGridPane" hgap="10.0" layoutX="22.0" layoutY="154.0" prefHeight="470.0" prefWidth="1141.0" vgap="10.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -44,6 +47,15 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
             </GridPane>
+            <AnchorPane id="borderOverviewMonths" layoutX="346.0" layoutY="73.0" prefHeight="52.0" prefWidth="497.0">
+               <children>
+                  <Text layoutX="170.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textNormalWhite" text="September" textAlignment="CENTER" wrappingWidth="169.336669921875" />
+                  <Line endX="-74.20001220703125" endY="-15.600006103515625" layoutX="103.0" layoutY="33.0" startX="-92.5999755859375" startY="-6.8000030517578125" stroke="#f2efef" strokeWidth="5.0" />
+                  <Line endX="-52.20001220703125" endY="-26.600006103515625" layoutX="81.0" layoutY="60.0" startX="-71.30706787109375" startY="-33.0928955078125" stroke="#fcf8f8" strokeWidth="5.0" />
+                  <Line endX="-73.20001220703125" endY="-18.20001220703125" layoutX="542.0" layoutY="39.0" startX="-54.79998779296875" startY="-10.20001220703125" stroke="#faf6f6" strokeWidth="5.0" />
+                  <Line endX="-52.79998779296875" endY="-30.0" layoutX="521.0" layoutY="67.0" startX="-33.09283447265625" startY="-37.49290466308594" stroke="#f7f5f5" strokeWidth="5.0" />
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </children>

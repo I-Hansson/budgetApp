@@ -75,6 +75,18 @@
 
 }
 
+.focusWhiteWithRadius {
+    -fx-background-radius: 15px;
+    -fx-background-color: #FFFFFF;
+
+}
+
+.focusWhiteGreyWithRadius {
+    -fx-background-radius: 15px;
+    -fx-background-color: #EDE9E5;
+
+}
+
 .normalStrongText {
     -fx-font-size: 35px;
     -fx-font-family: 'Inter';
@@ -137,4 +149,11 @@
     -fx-color: #131210;
 
 }
+
+.structureFormatStandardSettings {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #000000;
+
+}
+
 
