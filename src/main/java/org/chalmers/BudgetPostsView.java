@@ -3,7 +3,6 @@ package org.chalmers;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -18,6 +17,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class BudgetPostsView implements Initializable {
+
+    @FXML FlowPane AddTransactionFlowPane;
 
     @FXML Text overviewTitelPanel;
     @FXML Text budgetPostsTitelPanel;
@@ -37,10 +38,6 @@ public class BudgetPostsView implements Initializable {
     @Override
     public void initialize (URL url, ResourceBundle resourceBundle) {
 
-
-
-
-
         for(int i = 0;i<4; i++) {
             this.budgetPostsViewGridPane.add(new BudgetPostsItem(), i, 0);
 
@@ -49,6 +46,7 @@ public class BudgetPostsView implements Initializable {
 
 
     }
+
 
 
     @FXML
@@ -73,6 +71,19 @@ public class BudgetPostsView implements Initializable {
 
 
     }
+    @FXML
+    public void SwitchToAddTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("AddTransaction.fxml"));
+        stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+
+
+
 
 
 
