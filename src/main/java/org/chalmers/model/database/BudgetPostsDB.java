@@ -80,7 +80,6 @@ public class BudgetPostsDB {
             file.write(oldDB.toJSONString());
             file.flush();
             file.close();
-            oldDB = null;
         } catch (IOException e){
             e.printStackTrace();
         }

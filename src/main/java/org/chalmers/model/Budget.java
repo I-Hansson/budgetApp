@@ -17,10 +17,14 @@ public class Budget {
     public Budget(){
         this.year = calender.get(Calendar.YEAR);
         this.month = calender.get(Calendar.MONTH);
-        this.budgetPosts.add(new BudgetPost("Matvaror",0, "5, 51, 92"));
-        this.budgetPosts.add(new BudgetPost("Transport",0, "15, 87, 79"));
-        this.budgetPosts.add(new BudgetPost("Kläder",0, "31, 120, 189"));
-        this.budgetPosts.add(new BudgetPost("Resturang",0, "166, 212, 227"));
+        this.budgetPosts.add(new BudgetPost("Matvaror",5000, "5, 51, 92"));
+        this.budgetPosts.add(new BudgetPost("Transport",1000, "15, 87, 79"));
+        this.budgetPosts.add(new BudgetPost("Kläder",800, "31, 120, 189"));
+        this.budgetPosts.add(new BudgetPost("Resturang",800, "166, 212, 227"));
+    }
+
+    public List<BudgetPost> getBudgetPosts() {
+        return this.budgetPosts;
     }
 
     public double getCurrentBalance() {
@@ -32,8 +36,8 @@ public class Budget {
     public int getId(){
         return id;
     }
-    public List getRecentTransactions(){
-        return recentTransactions;
+    public List<Transaction> getRecentTransactions(){
+        return this.recentTransactions;
     }
 
     /**
@@ -51,7 +55,9 @@ public class Budget {
     public void updateBalance(double change){
         currentBalance += change;
     }
-
+    public void addTransaction(String name, double amount, BudgetPost budgetPost, String description){
+        this.recentTransactions.add(new Transaction(name, amount,budgetPost,description));
+    }
     /**
      * Add a NEW budget-post to the users budget planner.
      * @param name the name of the new post.
