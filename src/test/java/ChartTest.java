@@ -32,13 +32,13 @@ public class ChartTest {
     BudgetPost test1 = BudgetPostFactory.createBudgetPost("test1");
     BudgetPost test2 = BudgetPostFactory.createBudgetPost("test2");
     private final Transaction[] testTransactionsPie = {
-            new Transaction("Test" ,100, test, "bana"),
-            new Transaction("Test1" ,200, test1, "sxds"),
-            new Transaction("Test2" ,300, test2, "tess"),
-            new Transaction("Test" ,400, test, "ts"),
-            new Transaction("Test1" ,500, test1, "terfsst"),
-            new Transaction("Test2" ,600, test2, "tessst"),
-            new Transaction("Test" ,700, test, "tesst"),
+            new Transaction("Test" ,100, test.getId(), "bana"),
+            new Transaction("Test1" ,200, test1.getId(), "sxds"),
+            new Transaction("Test2" ,300, test2.getId(), "tess"),
+            new Transaction("Test" ,400, test.getId(), "ts"),
+            new Transaction("Test1" ,500, test1.getId(), "terfsst"),
+            new Transaction("Test2" ,600, test2.getId(), "tessst"),
+            new Transaction("Test" ,700, test.getId(), "tesst"),
     };
     //Sämsta testet någonsin william
     @Test

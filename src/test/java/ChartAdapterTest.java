@@ -38,13 +38,13 @@ public class ChartAdapterTest {
     BudgetPost test2 = BudgetPostFactory.createBudgetPost("test2");
 
     private final Transaction[] testTransactionsPie = {
-            new Transaction("test",100, test, ""),
-            new Transaction("test",200, test1, ""),
-            new Transaction("test",300, test2, ""),
-            new Transaction("test",400, test, ""),
-            new Transaction("test",500, test1, ""),
-            new Transaction("test",600, test2, ""),
-            new Transaction("test",700, test, ""),
+            new Transaction("test",100, test.getId(), ""),
+            new Transaction("test",200, test1.getId(), ""),
+            new Transaction("test",300, test2.getId(), ""),
+            new Transaction("test",400, test.getId(), ""),
+            new Transaction("test",500, test1.getId(), ""),
+            new Transaction("test",600, test2.getId(), ""),
+            new Transaction("test",700, test.getId(), ""),
     };
 
     @Test
