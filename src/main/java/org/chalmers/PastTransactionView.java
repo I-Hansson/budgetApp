@@ -38,8 +38,6 @@ public class PastTransactionView implements Initializable {
             this.pastTransactionFlowPane.getChildren().add(i);
         }
 
-
-
     }
 
 
