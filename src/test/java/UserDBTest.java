@@ -41,7 +41,7 @@ public class UserDBTest {
             db.setUserName(newName);
         db.closeSetter();
         try {
-            Thread.sleep(1000);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
@@ -56,7 +56,7 @@ public class UserDBTest {
             db.setBalance(newBalance);
         db.closeSetter();
         try {
-            Thread.sleep(1000);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
@@ -71,10 +71,28 @@ public class UserDBTest {
             db.setNewStandardBalance(newBalanceStandard);
         db.closeSetter();
         try {
-            Thread.sleep(1000);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
         assertEquals(newBalanceStandard,db.getStandardBalance());
+    }
+
+    @Test
+    public void assertNotNewBudgetPost(){
+        resetDB();
+        Integer startLength = db.getBudgetPosts().size();
+        db.openSetters();
+            db.addBudgetPost("name");
+            db.addBudgetPost("bostad");
+            db.addBudgetPost("telefon");
+        db.closeSetter();
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+        //Plus one since telefon isn't already a budgetPost.
+        assertEquals(startLength+1, db.getBudgetPosts().size());
     }
 }

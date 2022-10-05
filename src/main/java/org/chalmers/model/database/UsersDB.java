@@ -12,11 +12,13 @@ public class UsersDB {
     private DatabaseConnector connector;
     private FileWriter file;
     private JSONObject oldDB;
+    JSONArray budgetPosts;
 
     public UsersDB(int uid){
         connector = new DatabaseConnector("src/main/database/users/" + uid +".json");
         file = null;
         oldDB = null;
+        budgetPosts = (JSONArray) oldDB.get("budgetPosts");
     }
 
     /**
@@ -40,7 +42,6 @@ public class UsersDB {
      * @return Returns the current balance of the user in this document
      */
     public Double getBalance(){
-        //TODO get balance
         Double userBalance = Double.parseDouble(getUser().get("currentBalance").toString());
         return userBalance;
     }
@@ -49,7 +50,6 @@ public class UsersDB {
      * @return Returns the standard balance (the start balance for each month) of the user in this document
      */
     public Double getStandardBalance(){
-        //TODO get standard balance
         Double userStartBalance = Double.parseDouble(getUser().get("startBalance").toString());
         return userStartBalance;
     }
@@ -117,16 +117,20 @@ public class UsersDB {
     /**
      * Adds a new budgetPost to the db
      * @param name the name of the new budget post
-     * TODO add safety so that two budgetPosts can't have the same name
+     * TODO add safety so that two budgetPosts can't have the same name, W.I.P
      */
     public void addBudgetPost(String name){
-        JSONArray posts = (JSONArray) oldDB.get("budgetPosts");
-        JSONObject newPost = new JSONObject();
-        newPost.put("name", name);
-        int counter = posts.size() + 1;
-        newPost.put("id", "000" + getUid() + counter);
-        posts.add(newPost);
-        oldDB.put("budgetPosts", posts);
+
+        if(budgetPosts.contains(name)){
+            System.out.println("Finns redan lmao");
+        }else{
+            JSONObject newPost = new JSONObject();
+            newPost.put("name", name);
+            int counter = budgetPosts.size() + 1;
+            newPost.put("id", "000" + getUid() + counter);
+            budgetPosts.add(newPost);
+            oldDB.put("budgetPosts", budgetPosts);
+        }
     }
 
     /**
