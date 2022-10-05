@@ -4,6 +4,8 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import org.chalmers.model.Transaction;
 import org.chalmers.model.charts.ChartFactory;
+import org.chalmers.model.charts.ChartTypeLine;
+import org.chalmers.model.charts.ChartTypePie;
 import org.chalmers.model.charts.IChart;
 import org.chalmers.modelAdapters.chartAdapters.LineChartFX;
 import org.chalmers.modelAdapters.chartAdapters.PieChartFX;
@@ -38,10 +40,11 @@ public class ChartAdapterTest {
 
     @Test
     public void LineChartFXReturnsCorrectSeries() {
-        IChart<Integer, Integer> lineChart = ChartFactory.createMonthLineChart();
-        lineChart.update(List.of(testTransactionsLine));
+        ChartTypeLine lineChart = ChartFactory.createMonthLineChart();
+        LineChartFX FXChart = new LineChartFX(lineChart);
 
-        XYChart.Series<Integer, Integer> result = LineChartFX.getDataAsXYSeries(lineChart.getDataMap());
+        lineChart.update(List.of(testTransactionsLine));
+        XYChart.Series<Integer, Integer> result = FXChart.getXYSeries();
         Calendar calendar = new GregorianCalendar();
 
         assertEquals(2800, result.getData().get(calendar.get(Calendar.DAY_OF_MONTH)-1).getYValue());
@@ -49,10 +52,11 @@ public class ChartAdapterTest {
 
     @Test
     public void PieChartFXReturnsCorrectList() {
-        IChart<String, Integer> pieChart = ChartFactory.createPieChart();
-        pieChart.update(List.of(testTransactionsPie));
+        ChartTypePie pieChart = ChartFactory.createPieChart();
+        PieChartFX FXChart = new PieChartFX(pieChart);
 
-        ObservableList<PieChart.Data> result = PieChartFX.getDataAsObservableList(pieChart.getDataMap());
+        pieChart.update(List.of(testTransactionsPie));
+        ObservableList<PieChart.Data> result = FXChart.getObservableList();
 
         assertEquals(1200, result.get(1).getPieValue());
 
