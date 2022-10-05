@@ -15,9 +15,9 @@ public class PastTransactionController {
     private List<PastTransactionItem>  pastTransactionItemList = new ArrayList<PastTransactionItem>();
     public PastTransactionController(){
 
-        budget.addTransaction("Uber",100,budget.getBudgetPosts().get(1),"JKPG to GBG");
-        budget.addTransaction("ICA",100,budget.getBudgetPosts().get(0),"milk, sugar");
-        budget.addTransaction("H&M",100,budget.getBudgetPosts().get(2),"T-shirt");
+        budget.addTransaction("Uber",100,budget.getBudgetPosts().get(1).getId(),"JKPG to GBG");
+        budget.addTransaction("ICA",100,budget.getBudgetPosts().get(0).getId(),"milk, sugar");
+        budget.addTransaction("H&M",100,budget.getBudgetPosts().get(2).getId(),"T-shirt");
         for(Transaction t : budget.getRecentTransactions()){
             pastTransactionItemList.add(new PastTransactionItem(t));
         }

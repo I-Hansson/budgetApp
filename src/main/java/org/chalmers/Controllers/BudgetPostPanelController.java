@@ -14,26 +14,10 @@ public class BudgetPostPanelController {
     private List<OverviewBudgetPost> budgetPostCards = new ArrayList<OverviewBudgetPost>();
     Budget budget = new Budget();
     public BudgetPostPanelController (){
-
-        /*BudgetPost budget1 = new BudgetPost("Matvaror",3000, "5, 51, 92");
-        BudgetPost budget2 = new BudgetPost("Kläder",500, "15, 87, 79");
-        BudgetPost budget3 = new BudgetPost("Transport",1500, "31, 120, 189");
-        BudgetPost budget4 = new BudgetPost("Fika",300, "166, 212, 227");
-        BudgetPost budget5 = new BudgetPost("Resturang", 800, "166, 212, 227");
-
-
-
-
-        budgets.add(budget1);
-        budgets.add(budget2);
-        budgets.add(budget3);
-        budgets.add(budget4);
-        budgets.add(budget5);*/
         budget.getBudgetPosts().get(0).setCurrentBalance(1000);
         budget.getBudgetPosts().get(1).setCurrentBalance(99);
         budget.getBudgetPosts().get(2).setCurrentBalance(100);
         budget.getBudgetPosts().get(3).setCurrentBalance(110);
-
 
         createBudgetPostCards();
     }
@@ -48,8 +32,9 @@ public class BudgetPostPanelController {
             double moneyLeft = 0;
             if (i.getBudgetCap()-i.getCurrentBalance() > 0){
                 moneyLeft = i.getBudgetCap()-i.getCurrentBalance();
+                System.out.println(moneyLeft);
             }
-            budgetPostCards.add(new OverviewBudgetPost(i.getName(),String.valueOf(moneyLeft), i.getCurrentBalance()/i.getBudgetCap(),i.getColor(),getComplementColor(i.getColor())));
+            budgetPostCards.add(new OverviewBudgetPost(i.getId().getName(),String.valueOf(moneyLeft), 1 -i.getCurrentBalance()/i.getBudgetCap(),i.getId().getColor(),getComplementColor(i.getId().getColor())));
         }
 
     }
