@@ -3,15 +3,10 @@ package org.chalmers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.ImageCursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
-import javafx.scene.control.*;
-
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 
@@ -26,7 +21,6 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 
-import javafx.scene.text.TextFlow;
 import org.chalmers.Controllers.BudgetPostPanelController;
 import javafx.stage.Stage;
 
@@ -91,18 +85,14 @@ public class OverviewView implements Initializable {
     }
 
     @FXML
-    public void AddTransactionView(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
+    public void SwitchToAddTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("AddTransaction.fxml"));
+        stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
 
-        AddTransactionFlowPane.toFront();
-        this.AddTransactionFlowPane.getChildren().add(new AddTransaction());
-
-    }
-
-
-
-
-
-}
+    }}
 
 
 

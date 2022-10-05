@@ -66,14 +66,17 @@ public class PastTransactionView implements Initializable {
 
 
     }
-
     @FXML
-    public void AddTransactionView(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
-
-        AddTransactionFlowPane.toFront();
-        this.AddTransactionFlowPane.getChildren().add(new AddTransaction());
+    public void SwitchToAddTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("AddTransaction.fxml"));
+        stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
 
     }
+
+
 
 
 }

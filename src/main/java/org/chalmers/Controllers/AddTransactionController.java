@@ -1,6 +1,19 @@
 package org.chalmers.Controllers;
 
-public class AddTransactionController {
+import javafx.scene.layout.AnchorPane;
+import org.chalmers.model.BudgetPost;
+
+public class AddTransactionController{
+
+
+
+
+
+    public AddTransactionController () {
+
+
+    }
+
 
 
 

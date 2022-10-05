@@ -42,6 +42,11 @@
     -fx-background-radius: 30px;
 }
 
+.whiteRectangle {
+    -fx-background-color: rgba(237,233,229,1);
+    -fx-background-radius: 30px;
+}
+
 .borderSettings {
     -fx-background-color: #F0ECE8;
 }

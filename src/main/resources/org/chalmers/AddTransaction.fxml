@@ -2,78 +2,76 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-<?import javafx.scene.text.TextFlow?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1280.0" stylesheets="@CSS/Font.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" type="AnchorPane">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1280.0" stylesheets="@CSS/Font.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.chalmers.AddTransactionView">
    <children>
-      <AnchorPane fx:id="NewTransactionPane" layoutX="-1.0" prefHeight="860.0" prefWidth="1280.0" styleClass="slightOpacityWeakRectangle">
+      <ImageView fitHeight="860.0" fitWidth="1280.0">
+         <image>
+            <Image url="@images/background.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane fx:id="newBudgetPostPane" layoutX="664.0" layoutY="224.0" prefHeight="328.0" prefWidth="403.0" styleClass="focusWhiteGreyWithRadius">
          <children>
-            <AnchorPane layoutX="122.0" layoutY="97.0" prefHeight="680.0" prefWidth="1050.0" styleClass="focusWhiteWithRadius">
-               <children>
-                  <AnchorPane layoutX="34.0" layoutY="36.0" prefHeight="608.0" prefWidth="984.0" styleClass="focusGreyWithRadius">
-                     <children>
-                        <TextArea layoutX="44.0" layoutY="104.0" prefHeight="39.0" prefWidth="403.0" styleClass="structureFormatStandardSettings" />
-                        <TextArea layoutX="44.0" layoutY="297.0" prefHeight="41.0" prefWidth="403.0" styleClass="structureFormatStandardSettings" />
-                        <TextArea layoutX="44.0" layoutY="185.0" prefHeight="67.0" prefWidth="403.0" styleClass="structureFormatStandardSettings" />
-                        <Text layoutX="44.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="panelTitel" text="New Transaction" />
-                        <Text layoutX="44.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="primaryGrey" text="Fill in the information for the transaction" wrappingWidth="216.778076171875" />
-                        <Text layoutX="44.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="panelNormalText" text="Transaction name" wrappingWidth="216.778076171875" />
-                        <Text layoutX="44.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="panelNormalText" text="Description" wrappingWidth="216.778076171875" />
-                        <Text layoutX="44.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="panelNormalText" text="Amount" wrappingWidth="216.778076171875" />
-                        <ChoiceBox layoutX="44.0" layoutY="398.0" prefHeight="26.0" prefWidth="76.0" styleClass="structureFormatStandardSettings" />
-                        <ChoiceBox layoutX="131.0" layoutY="398.0" prefHeight="27.0" prefWidth="121.0" styleClass="structureFormatStandardSettings" />
-                        <ChoiceBox layoutX="264.0" layoutY="398.0" prefHeight="27.0" prefWidth="179.0" styleClass="structureFormatStandardSettings" />
-                        <Text layoutX="44.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="primaryGrey" text="Day" wrappingWidth="35.17802429199219" />
-                        <Text layoutX="132.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="primaryGrey" text="Month" wrappingWidth="46.37803649902344" />
-                        <Text layoutX="264.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="primaryGrey" text="Date" wrappingWidth="35.17802429199213" />
-                        <Text layoutX="44.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="panelNormalText" text="Date" wrappingWidth="46.37803649902344" />
-                        <Text layoutX="44.0" layoutY="465.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="panelTitel" text="Select budget post" wrappingWidth="216.778076171875" />
-                        <Text layoutX="47.0" layoutY="559.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="primaryGrey" text="Add New Budget Post" underline="true" wrappingWidth="216.778076171875" />
-                        <Button layoutX="603.0" layoutY="492.0" mnemonicParsing="false" prefHeight="78.0" prefWidth="274.0" style="-fx-background-color: rgb(30,119,189); -fx-border-radius: 10;" text="Done" textFill="#f2ecec">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Button>
-                        <AnchorPane fx:id="newBudgetPostPane" layoutX="538.0" layoutY="101.0" prefHeight="325.0" prefWidth="403.0" styleClass="focusWhiteGreyWithRadius">
-                           <children>
-                              <TextArea layoutX="27.0" layoutY="41.0" prefHeight="42.0" prefWidth="355.0" styleClass="structureFormatStandardSettings" />
-                              <TextArea layoutX="27.0" layoutY="121.0" prefHeight="41.0" prefWidth="158.0" styleClass="structureFormatStandardSettings" />
-                              <Text layoutX="30.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="panelNormalText" text="Transaction name" wrappingWidth="216.778076171875" />
-                              <Text layoutX="27.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="panelNormalText" text="Total Amount" wrappingWidth="128.778076171875" />
-                              <Text layoutX="208.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="panelNormalText" text="Color" wrappingWidth="46.37803649902338" />
-                              <ChoiceBox layoutX="205.0" layoutY="121.0" prefHeight="38.0" prefWidth="179.0" styleClass="structureFormatStandardSettings" />
-                              <Text layoutX="30.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="panelNormalText" text="Description" wrappingWidth="216.778076171875" />
-                              <TextArea layoutX="27.0" layoutY="198.0" prefHeight="67.0" prefWidth="355.0" styleClass="structureFormatStandardSettings" />
-                              <Button layoutX="64.0" layoutY="284.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="274.0" style="-fx-background-color: rgb(30,119,189); -fx-background-radius: 10;" text="Add" textFill="WHITE">
-                                 <font>
-                                    <Font name="System Bold" size="12.0" />
-                                 </font>
-                              </Button>
-                              <ImageView fx:id="XnewBudgetPost" fitHeight="29.0" fitWidth="19.0" layoutX="374.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@images/X.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </AnchorPane>
-                        <Text layoutX="562.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="panelNormalText" text="Add New Budget Post" wrappingWidth="216.778076171875" />
-                        <ImageView fx:id="XnewTransaction" fitHeight="29.0" fitWidth="35.0" layoutX="936.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@images/X.png" />
-                           </image>
-                        </ImageView>
-                        <TextFlow fx:id="BudgetPostsTextFlowPane" layoutX="44.0" layoutY="478.0" prefHeight="67.0" prefWidth="378.0" />
-                     </children>
-                  </AnchorPane>
-               </children>
-            </AnchorPane>
+            <TextArea layoutX="27.0" layoutY="41.0" prefHeight="42.0" prefWidth="355.0" styleClass="structureFormatStandardSettings" />
+            <TextArea layoutX="27.0" layoutY="121.0" prefHeight="41.0" prefWidth="158.0" styleClass="structureFormatStandardSettings" />
+            <Text layoutX="30.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="panelNormalText" text="Budget Post name" wrappingWidth="216.778076171875" />
+            <Text layoutX="27.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="panelNormalText" text="Total Amount" wrappingWidth="128.778076171875" />
+            <Text layoutX="208.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="panelNormalText" text="Color" wrappingWidth="46.37803649902338" />
+            <ChoiceBox layoutX="205.0" layoutY="121.0" prefHeight="38.0" prefWidth="179.0" styleClass="structureFormatStandardSettings" />
+            <Text layoutX="30.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="panelNormalText" text="Description" wrappingWidth="216.778076171875" />
+            <TextArea layoutX="27.0" layoutY="198.0" prefHeight="67.0" prefWidth="355.0" styleClass="structureFormatStandardSettings" />
+            <Button layoutX="64.0" layoutY="284.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="274.0" style="-fx-background-color: rgb(30,119,189); -fx-background-radius: 10;" text="Add" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <ImageView fx:id="XnewBudgetPost" fitHeight="29.0" fitWidth="19.0" layoutX="374.0" layoutY="10.0" onMouseClicked="#closeAddBudgetPost" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/X.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="131.0" layoutY="132.0" prefHeight="608.0" prefWidth="998.0" styleClass="whiteRectangle">
+         <children>
+            <TextArea layoutX="44.0" layoutY="104.0" prefHeight="39.0" prefWidth="403.0" styleClass="structureFormatStandardSettings" />
+            <TextArea layoutX="44.0" layoutY="297.0" prefHeight="41.0" prefWidth="403.0" styleClass="structureFormatStandardSettings" />
+            <TextArea layoutX="44.0" layoutY="185.0" prefHeight="67.0" prefWidth="403.0" styleClass="structureFormatStandardSettings" />
+            <Text layoutX="44.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="panelTitel" text="New Transaction" />
+            <Text layoutX="44.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="primaryGrey" text="Fill in the information for the transaction" wrappingWidth="216.778076171875" />
+            <Text layoutX="44.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="panelNormalText" text="Transaction name" wrappingWidth="216.778076171875" />
+            <Text layoutX="44.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="panelNormalText" text="Description" wrappingWidth="216.778076171875" />
+            <Text layoutX="44.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="panelNormalText" text="Amount" wrappingWidth="216.778076171875" />
+            <Text layoutX="44.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="panelNormalText" text="Date" wrappingWidth="46.37803649902344" />
+            <Text layoutX="44.0" layoutY="465.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="panelTitel" text="Select budget post" wrappingWidth="216.778076171875" />
+            <Text layoutX="47.0" layoutY="559.0" onMouseClicked="#showAddBudgetPost" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="primaryGrey" text="Add New Budget Post" underline="true" wrappingWidth="216.778076171875" />
+            <Button layoutX="603.0" layoutY="492.0" mnemonicParsing="false" prefHeight="78.0" prefWidth="274.0" style="-fx-background-color: rgb(30,119,189); -fx-border-radius: 10;" text="Done" textFill="#f2ecec">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <DatePicker fx:id="datePicker" layoutX="47.0" layoutY="381.0" prefHeight="27.0" prefWidth="403.0" styleClass="structureFormatStandardSettings" />
+            <FlowPane fx:id="BudgetPostsTexFlowPane" layoutX="44.0" layoutY="473.0" prefHeight="67.0" prefWidth="403.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="-1.0" layoutY="-4.0" prefHeight="96.0" prefWidth="1280.0" styleClass="borderSettings" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="-4.0">
+         <children>
+            <Text layoutX="47.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="panelTitel" text="SAFE BOAT" wrappingWidth="121.33673095703125" AnchorPane.bottomAnchor="45.98046875" AnchorPane.leftAnchor="47.0" AnchorPane.rightAnchor="1111.6632690429688" AnchorPane.topAnchor="31.41796875" />
+            <Text fx:id="overviewTitelPanel" layoutX="477.0" layoutY="54.0" onMouseClicked="#SwitchToOverview" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="panelNormalText" text="Overview" wrappingWidth="75.73675537109398" AnchorPane.bottomAnchor="37.984375" AnchorPane.leftAnchor="477.0" AnchorPane.rightAnchor="727.263244628906" AnchorPane.topAnchor="36.734375" />
+            <Text fx:id="pastTransactionsTitelPanel" layoutX="714.0" layoutY="55.0" onMouseClicked="#SwitchToPastTransaction" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="panelNormalText" text="Past Transactions" wrappingWidth="145.33685302734398" AnchorPane.bottomAnchor="40.984375" AnchorPane.leftAnchor="714.0" AnchorPane.rightAnchor="420.663146972656" AnchorPane.topAnchor="37.734375" />
+            <Text fx:id="budgetPostsTitelPanel" layoutX="590.0" layoutY="55.0" onMouseClicked="#SwitchToBudgetPosts" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="panelNormalText" text="Budget Posts" wrappingWidth="109.00263977050804" AnchorPane.bottomAnchor="42.0" AnchorPane.leftAnchor="590.0" AnchorPane.rightAnchor="581.0" AnchorPane.topAnchor="37.0" />
+            <Button fx:id="newTransactionButton" layoutX="1103.0" layoutY="25.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="154.0" styleClass="panelButtonSettings" text="New Transaction" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="1103.0" AnchorPane.rightAnchor="22.599999999999994" AnchorPane.topAnchor="25.0" />
+            <ImageView fitHeight="21.0" fitWidth="27.0" layoutX="1230.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
    </children>
-</fx:root>
+</AnchorPane>
