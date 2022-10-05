@@ -25,12 +25,13 @@ class ChartTypePie implements IChart<String, Integer> {
     public void update(Collection<Transaction> transactions) {
         for(Transaction transaction : transactions){
             if( transaction.getAmount() != 0){
-                BudgetPost budgetPostName = transaction.getBudgetPost();
-                if (data.containsKey(budgetPostName.getName())) {
-                    int temp = data.get(budgetPostName) + (int) transaction.getAmount();
-                    data.put(budgetPostName.getName(), temp);
+                BudgetPost budgetPost = transaction.getBudgetPost();
+                if (data.containsKey(transaction.getName())) {
+                    int temp = data.get(transaction.getName()) + (int) transaction.getAmount();
+                    data.put(transaction.getName(), temp);
+
                 } else {
-                    data.put(budgetPostName.getName(), (int) transaction.getAmount());
+                    data.put(transaction.getName(), (int) transaction.getAmount());
                 }
             }
         }

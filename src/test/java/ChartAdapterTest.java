@@ -1,4 +1,6 @@
 import javafx.scene.chart.XYChart;
+import org.chalmers.model.BudgetPost;
+import org.chalmers.model.BudgetPostFactory;
 import org.chalmers.model.Transaction;
 import org.chalmers.model.charts.ChartFactory;
 import org.chalmers.model.charts.IChart;
@@ -13,15 +15,18 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ChartAdapterTest {
-
+    BudgetPost bp = BudgetPostFactory.createBudgetPost("test");
     private final Transaction[] testTransactionsLine = {
-            new Transaction(100, "test", ""),
-            new Transaction(200, "test1", ""),
-            new Transaction(300, "test2", ""),
-            new Transaction(400, "test3", ""),
-            new Transaction(500, "test4", ""),
-            new Transaction(600, "test5", ""),
-            new Transaction(700, "test6", ""),
+            new Transaction("Test0" ,100, bp, "test"),
+            new Transaction("Test1" ,200, bp, "test"),
+            new Transaction("Test2" ,300, bp, "test"),
+            new Transaction("Test3" ,400, bp, "test"),
+            new Transaction("Test4" ,500, bp, "test"),
+            new Transaction("Test5" ,600, bp, "test"),
+            new Transaction("Test6" ,700, bp, "test"),
+
+
+
     };
 
     @Test
