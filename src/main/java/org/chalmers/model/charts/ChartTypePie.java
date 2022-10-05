@@ -8,11 +8,11 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-class ChartTypePie implements IChart<String, Integer> {
+public class ChartTypePie implements IChart<String, Integer> {
 
     private final Map<String, Integer> data;
 
-    ChartTypePie() {
+    public ChartTypePie() {
         this.data = new HashMap<>();
     }
 

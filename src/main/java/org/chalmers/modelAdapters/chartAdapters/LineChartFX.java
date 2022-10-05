@@ -1,17 +1,26 @@
 package org.chalmers.modelAdapters.chartAdapters;
 
 import javafx.scene.chart.XYChart;
+import org.chalmers.model.charts.ChartFactory;
+import org.chalmers.model.charts.ChartTypeLine;
 
 import java.util.Map;
 
 public class LineChartFX {
 
-    public static XYChart.Series<Integer, Integer> getDataAsXYSeries(Map<Integer, Integer> dataMap) {
-        XYChart.Series<Integer, Integer> series = createSeries(dataMap.size());
+    private final ChartTypeLine modelChart;
+    private final XYChart.Series<Integer, Integer> series;
 
-        for (Integer date : dataMap.keySet()) {
-            if(dataMap.get(date) != 0) {
-                int amount = dataMap.get(date);
+
+    public LineChartFX(ChartTypeLine chart) {
+        this.modelChart = chart;
+        this.series = createSeries(modelChart.getDataMap().size());
+    }
+    
+    public XYChart.Series<Integer, Integer> getXYSeries() {
+        for (Integer date : modelChart.getDataMap().keySet()) {
+            if(modelChart.getDataMap().get(date) != 0) {
+                int amount = modelChart.getDataMap().get(date);
                 var temp = series.getData().get(date - 1);
                 int temp2 = temp.getYValue();
                 series.getData().set(date - 1, new XYChart.Data<>(date, amount + temp2));
@@ -21,7 +30,7 @@ public class LineChartFX {
         return series;
     }
 
-    private static XYChart.Series<Integer, Integer> createSeries(int len) {
+    private XYChart.Series<Integer, Integer> createSeries(int len) {
         XYChart.Series<Integer, Integer> series = new XYChart.Series<>();
 
         for(int i = 1; i <= len; i++) {
