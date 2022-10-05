@@ -2,6 +2,8 @@ import org.chalmers.model.database.UsersDB;
 import org.junit.Test;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 public class UserDBTest {
@@ -11,25 +13,10 @@ public class UserDBTest {
     private void resetDB(){
         File source = new File("./src/main/database/users/template.json");
         File dest = new File("./src/main/database/users/0.json");
-        InputStream is = null;
-        OutputStream os = null;
-        try {
-            is = new FileInputStream(source);
-            os = new FileOutputStream(dest);
-            byte[] buffer = new byte[1024];
-            int length;
-            while ((length = is.read(buffer)) > 0) {
-                os.write(buffer, 0, length);
-            }
-        }catch (IOException e ){
+        try{
+            Files.copy(source.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e){
             e.printStackTrace();
-        }finally {
-            try{
-                is.close();
-                os.close();
-            } catch (IOException e){
-                e.printStackTrace();
-            }
         }
     }
 
@@ -38,10 +25,10 @@ public class UserDBTest {
         resetDB();
         String newName = "Gilfoyle";
         db.openSetters();
-            db.setUserName(newName);
+        db.setUserName(newName);
         db.closeSetter();
         try {
-            Thread.sleep(1000);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
@@ -53,10 +40,10 @@ public class UserDBTest {
         resetDB();
         Double newBalance = 10420.0;
         db.openSetters();
-            db.setBalance(newBalance);
+        db.setBalance(newBalance);
         db.closeSetter();
         try {
-            Thread.sleep(1000);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
@@ -68,13 +55,26 @@ public class UserDBTest {
         resetDB();
         Double newBalanceStandard = 10469.0;
         db.openSetters();
-            db.setNewStandardBalance(newBalanceStandard);
+        db.setNewStandardBalance(newBalanceStandard);
         db.closeSetter();
         try {
-            Thread.sleep(1000);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
         assertEquals(newBalanceStandard,db.getStandardBalance());
+    }
+
+    @Test
+    public void assertNoDuplicateBudgetPosts(){
+        resetDB();
+
+        int expected = db.getBudgetPosts().size();
+
+        db.openSetters();
+        db.addBudgetPost("mat");
+        db.addBudgetPost("matvaror");
+        db.closeSetter();
+        assertEquals(expected, db.getBudgetPosts().size());
     }
 }

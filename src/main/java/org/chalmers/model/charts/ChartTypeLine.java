@@ -5,6 +5,11 @@ import org.chalmers.model.charts.lineChartExtents.ILineChartExtent;
 
 import java.util.*;
 
+/**
+ * This class gives functionality for displaying line charts
+ *
+ * @author williamfrisk
+ */
 public class ChartTypeLine implements IChart<Integer, Integer> {
 
     private final ILineChartExtent extent;
@@ -15,6 +20,10 @@ public class ChartTypeLine implements IChart<Integer, Integer> {
         this.data = extent.createEmptyDateMap();
     }
 
+    /**
+     *
+     * @param transactions
+     */
     @Override
     public void update(Collection<Transaction> transactions) {
         for(Transaction transaction : transactions){

@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.chalmers.model.User;
 import org.chalmers.model.database.BudgetPostsDB;
 import org.chalmers.model.database.UsersDB;
 
@@ -24,6 +25,10 @@ public class App extends Application{
         primaryStage.setResizable(false);
     }
 
-    public static void main(String[] args) {launch(args);}
+    public static void main(String[] args) {
+        launch(args);
+        UsersDB db = new UsersDB(0);
+        db.addBudgetPost("mat");
+    }
 
 }

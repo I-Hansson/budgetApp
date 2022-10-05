@@ -8,6 +8,11 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * This class gives functionality for displaying pie charts
+ *
+ * @author williamfrisk
+ */
 public class ChartTypePie implements IChart<String, Integer> {
 
     private final Map<String, Integer> data;
@@ -24,13 +29,14 @@ public class ChartTypePie implements IChart<String, Integer> {
     @Override
     public void update(Collection<Transaction> transactions) {
         for(Transaction transaction : transactions){
-            if( transaction.getAmount() != 0){
-                //BudgetPost budgetPost = transaction.getBudgetPost();
-                if (data.containsKey(transaction.getName())) {
-                    int temp = data.get(transaction.getName()) + (int) transaction.getAmount();
-                    data.put(transaction.getName(), temp);
+
+            if(transaction.getAmount() != 0){
+                String budgetPostName = transaction.getBudgetPostName();
+                if (data.containsKey(budgetPostName)) {
+                    int temp = data.get(budgetPostName) + (int) transaction.getAmount();
+                    data.put(budgetPostName, temp);
                 } else {
-                    data.put(transaction.getName(), (int) transaction.getAmount());
+                    data.put(budgetPost.getName(), (int) transaction.getAmount());
                 }
             }
         }
