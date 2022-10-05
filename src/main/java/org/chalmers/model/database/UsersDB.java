@@ -12,13 +12,13 @@ public class UsersDB {
     private DatabaseConnector connector;
     private FileWriter file;
     private JSONObject oldDB;
-    JSONArray budgetPosts;
+    private JSONArray budgetPosts;
 
     public UsersDB(int uid){
         connector = new DatabaseConnector("src/main/database/users/" + uid +".json");
         file = null;
         oldDB = null;
-        budgetPosts = (JSONArray) oldDB.get("budgetPosts");
+        budgetPosts = null;
     }
 
     /**
@@ -42,6 +42,7 @@ public class UsersDB {
      * @return Returns the current balance of the user in this document
      */
     public Double getBalance(){
+        //TODO get balance
         Double userBalance = Double.parseDouble(getUser().get("currentBalance").toString());
         return userBalance;
     }
@@ -117,19 +118,20 @@ public class UsersDB {
     /**
      * Adds a new budgetPost to the db
      * @param name the name of the new budget post
-     * TODO add safety so that two budgetPosts can't have the same name, W.I.P
+     * TODO add safety so that two budgetPosts can't have the same name
      */
     public void addBudgetPost(String name){
+        budgetPosts = (JSONArray) oldDB.get("budgetPosts");
 
-        if(budgetPosts.contains(name)){
-            System.out.println("Finns redan lmao");
-        }else{
+        if(!budgetPostExists(name)){
             JSONObject newPost = new JSONObject();
             newPost.put("name", name);
             int counter = budgetPosts.size() + 1;
             newPost.put("id", "000" + getUid() + counter);
             budgetPosts.add(newPost);
             oldDB.put("budgetPosts", budgetPosts);
+        }else{
+            System.out.println("ALERT: a budget post with that name already exists (" + name + ")");
         }
     }
 
@@ -140,6 +142,7 @@ public class UsersDB {
         try{
             file = new FileWriter(connector.getDbPath());
             oldDB = getUser();
+            budgetPosts = (JSONArray) oldDB.get("budgetPosts");
         } catch (IOException e){
             e.printStackTrace();
         }
@@ -157,5 +160,15 @@ public class UsersDB {
         } catch (IOException e){
             e.printStackTrace();
         }
+    }
+
+
+    private boolean budgetPostExists(String postName){
+        for(Object obj: budgetPosts){
+            JSONObject object = (JSONObject) obj;
+            if(object.get("name").equals(postName))
+                return true;
+        }
+        return false;
     }
 }
