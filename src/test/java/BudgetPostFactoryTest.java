@@ -11,13 +11,13 @@ public class BudgetPostFactoryTest {
     @Test
     public void createBudgetPostNameReturnsCorrectInstance() {
         BudgetPost bp = BudgetPostFactory.createBudgetPost("test");
-        assertEquals("test0.0", bp.getName() + bp.getBudgetCap());
+        assertEquals("test0.0", bp.getId().getName() + bp.getBudgetCap());
     }
 
     @Test
     public void createBudgetPostNameBudgetCapReturnsCorrectInstance(){
         BudgetPost bp = BudgetPostFactory.createBudgetPost("test", 100);
-        assertEquals( "test100.0", bp.getName() + bp.getBudgetCap());
+        assertEquals( "test100.0", bp.getId().getName() + bp.getBudgetCap());
     }
 
     /**@Test
