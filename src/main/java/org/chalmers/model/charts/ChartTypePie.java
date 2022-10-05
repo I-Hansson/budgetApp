@@ -36,7 +36,7 @@ public class ChartTypePie implements IChart<String, Integer> {
                     int temp = data.get(budgetPostName) + (int) transaction.getAmount();
                     data.put(budgetPostName, temp);
                 } else {
-                    data.put(budgetPost.getName(), (int) transaction.getAmount());
+                    data.put(budgetPostName, (int) transaction.getAmount());
                 }
             }
         }
