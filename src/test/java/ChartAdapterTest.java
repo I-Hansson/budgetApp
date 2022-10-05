@@ -2,6 +2,7 @@ import javafx.collections.ObservableList;
 
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
+import org.chalmers.model.Budget;
 import org.chalmers.model.BudgetPost;
 import org.chalmers.model.BudgetPostFactory;
 import org.chalmers.model.Transaction;
@@ -28,19 +29,21 @@ public class ChartAdapterTest {
             new Transaction("Test4" ,500, bp, "test"),
             new Transaction("Test5" ,600, bp, "test"),
             new Transaction("Test6" ,700, bp, "test"),
-
-
-
     };
 
+
+    BudgetPost test = BudgetPostFactory.createBudgetPost("test");
+    BudgetPost test1 = BudgetPostFactory.createBudgetPost("test1");
+    BudgetPost test2 = BudgetPostFactory.createBudgetPost("test2");
+
     private final Transaction[] testTransactionsPie = {
-            new Transaction(100, "test", ""),
-            new Transaction(200, "test1", ""),
-            new Transaction(300, "test2", ""),
-            new Transaction(400, "test", ""),
-            new Transaction(500, "test1", ""),
-            new Transaction(600, "test2", ""),
-            new Transaction(700, "test", ""),
+            new Transaction("test",100, test, ""),
+            new Transaction("test",200, test1, ""),
+            new Transaction("test",300, test2, ""),
+            new Transaction("test",400, test, ""),
+            new Transaction("test",500, test1, ""),
+            new Transaction("test",600, test2, ""),
+            new Transaction("test",700, test, ""),
     };
 
     @Test

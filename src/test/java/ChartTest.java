@@ -2,6 +2,7 @@ import org.chalmers.model.BudgetPost;
 import org.chalmers.model.BudgetPostFactory;
 import org.chalmers.model.Transaction;
 import org.chalmers.model.charts.ChartFactory;
+import org.chalmers.model.charts.ChartTypePie;
 import org.chalmers.model.charts.IChart;
 import org.junit.Test;
 
@@ -25,27 +26,30 @@ public class ChartTest {
 
     };
 
+
+    BudgetPost test = BudgetPostFactory.createBudgetPost("test");
+    BudgetPost test1 = BudgetPostFactory.createBudgetPost("test1");
+    BudgetPost test2 = BudgetPostFactory.createBudgetPost("test2");
     private final Transaction[] testTransactionsPie = {
-            new Transaction("Test" ,100, bp, "bana"),
-            new Transaction("Test1" ,200, bp, "sxds"),
-            new Transaction("Test2" ,300, bp, "tess"),
-            new Transaction("Test" ,400, bp, "ts"),
-            new Transaction("Test1" ,500, bp, "terfsst"),
-            new Transaction("Test2" ,600, bp, "tessst"),
-            new Transaction("Test" ,700, bp, "tesst"),
+            new Transaction("Test" ,100, test, "bana"),
+            new Transaction("Test1" ,200, test1, "sxds"),
+            new Transaction("Test2" ,300, test2, "tess"),
+            new Transaction("Test" ,400, test, "ts"),
+            new Transaction("Test1" ,500, test1, "terfsst"),
+            new Transaction("Test2" ,600, test2, "tessst"),
+            new Transaction("Test" ,700, test, "tesst"),
     };
     //Sämsta testet någonsin william
     @Test
     public void chartTypePieReturnsCorrectData() {
-        IChart<String, Integer> pieChart = ChartFactory.createPieChart();
-        System.out.println(pieChart.getDataMap());
+        ChartTypePie pieChart = ChartFactory.createPieChart();
         pieChart.update(List.of(testTransactionsPie));
 
 
         Map<String, Integer> correctMap = new HashMap<>();
-        correctMap.put("Test", 1200);
-        correctMap.put("Test1", 700);
-        correctMap.put("Test2", 900);
+        correctMap.put("test", 1200);
+        correctMap.put("test1", 700);
+        correctMap.put("test2", 900);
 
         assertEquals(correctMap, pieChart.getDataMap());
     }
