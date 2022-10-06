@@ -1,29 +1,21 @@
 package org.chalmers;
 
 import javafx.animation.ScaleTransition;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
-import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Side;
 import javafx.scene.chart.PieChart;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
-import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 import org.chalmers.Controllers.OverviewPieChartController;
 import org.chalmers.model.BudgetPost;
 
 import java.io.IOException;
-import java.util.Timer;
+import java.util.List;
 
 public class OverviewPieChart extends AnchorPane {
     @FXML private PieChart piechart;
-    private boolean animationFinished = true;
 
     OverviewPieChartController controller = new OverviewPieChartController();
 
@@ -43,9 +35,9 @@ public class OverviewPieChart extends AnchorPane {
         applyColors();
 
         piechart.setLegendVisible(false);
-        piechart.setLabelLineLength(3);
         piechart.setLabelsVisible(false);
-        
+
+        // Lägger till animation i piecharten
         for (final PieChart.Data data : piechart.getData()) {
             data.getNode().addEventHandler(MouseEvent.MOUSE_ENTERED_TARGET,
                     new EventHandler<MouseEvent>() {
@@ -83,12 +75,15 @@ public class OverviewPieChart extends AnchorPane {
 
     }
 
+    /**
+     * Used for applying correct colors to the pie chart.
+     */
     private void applyColors() {
-        BudgetPost[] bps = controller.getBudgetPosts();
+        List<BudgetPost> bps = controller.getBudgetPosts();
 
         int i = 0;
         for (PieChart.Data data : piechart.getData()) {
-            data.getNode().setStyle("-fx-pie-color: rgb(" + bps[i].getId().getColor() + ");");
+            data.getNode().setStyle("-fx-pie-color: rgb(" + bps.get(i).getId().getColor() + ");");
             i++;
         }
     }

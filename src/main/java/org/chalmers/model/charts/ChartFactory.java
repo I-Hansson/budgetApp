@@ -20,7 +20,7 @@ public class ChartFactory {
         ILineChartExtent temp = new LineChartWeek();
         return new ChartTypeLine(temp);
     }
-/*
+
     public static ChartTypeLine createMonthLineChart() {
          return new ChartTypeLine(new LineChartMonth());
     }
@@ -28,5 +28,6 @@ public class ChartFactory {
     public static ChartTypeLine createYearLineChart() {
         return new ChartTypeLine(new LineChartYear());
     }
+    
  */
 }
