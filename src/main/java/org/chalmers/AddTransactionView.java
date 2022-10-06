@@ -23,8 +23,9 @@ import java.util.ResourceBundle;
 
 public class AddTransactionView implements Initializable {
 
-    AddTransactionController addTransactionController = new AddTransactionController();
-    AddTransactionBudgetPostsController budgetPostsController = new AddTransactionBudgetPostsController();
+   private AddTransactionController addTransactionController = new AddTransactionController();
+   private AddTransactionBudgetPostsController budgetPostsController = new AddTransactionBudgetPostsController();
+
 
 
 
@@ -40,8 +41,6 @@ public class AddTransactionView implements Initializable {
     @FXML FlowPane BudgetPostsTexFlowPane;
 
 
-    int sizePosts = budgetPostsController.getBudgetPosts().size();
-
 
 
     @Override
@@ -52,11 +51,6 @@ public class AddTransactionView implements Initializable {
             this.BudgetPostsTexFlowPane.getChildren().add(new AddTransactionBudgetPosts(post.getId().getName()));
                 }
         }
-
-
-
-
-
 
 
     @FXML
@@ -105,6 +99,8 @@ public class AddTransactionView implements Initializable {
 
 
     }
+
+
 
     }
 

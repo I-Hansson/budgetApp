@@ -49,7 +49,7 @@ public class OverviewView implements Initializable {
     @FXML Button newTransactionButton;
     // controllers
 
-    BudgetPostPanelController  budgetCardController = new BudgetPostPanelController();
+    private BudgetPostPanelController  budgetCardController = new BudgetPostPanelController();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

@@ -18,7 +18,7 @@ import java.util.Objects;
 public class App extends Application{
 
     public void start (Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load((getClass().getResource("LogInPage.fxml")));
+        Parent root = FXMLLoader.load((getClass().getResource("LogInView.fxml")));
         primaryStage.setTitle("LogInView");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();

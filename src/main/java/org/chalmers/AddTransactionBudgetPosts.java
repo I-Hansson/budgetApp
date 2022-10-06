@@ -3,6 +3,7 @@ package org.chalmers;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import org.chalmers.Controllers.AddTransactionBudgetPostsController;
 
@@ -13,6 +14,7 @@ public class AddTransactionBudgetPosts extends AnchorPane {
     @FXML RadioButton budgetPost;
 
     AddTransactionBudgetPostsController controller = new AddTransactionBudgetPostsController();
+    ToggleGroup toggleGroup = new ToggleGroup();
 
 
     public AddTransactionBudgetPosts(String name) {
@@ -28,9 +30,9 @@ public class AddTransactionBudgetPosts extends AnchorPane {
         }
 
         budgetPost.setText(name);
+        budgetPost.setToggleGroup(toggleGroup);
 
     }
-
 
 
 }
