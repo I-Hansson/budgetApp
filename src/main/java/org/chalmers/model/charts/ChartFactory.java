@@ -28,6 +28,6 @@ public class ChartFactory {
     public static ChartTypeLine createYearLineChart() {
         return new ChartTypeLine(new LineChartYear());
     }
-    
+
  */
 }
