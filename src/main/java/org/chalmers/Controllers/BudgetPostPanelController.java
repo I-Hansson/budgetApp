@@ -37,7 +37,6 @@ public class BudgetPostPanelController {
                 moneyLeft = i.getBudgetCap()-i.getCurrentBalance();
 
             }
-            System.out.println(i.getCurrentBalance());
             budgetPostCards.add(new OverviewBudgetPost(i.getId().getName(),String.valueOf(moneyLeft), i.getCurrentBalance()/i.getBudgetCap(), i.getId().getColor(),getComplementColor(i.getId().getColor())));
         }
 
