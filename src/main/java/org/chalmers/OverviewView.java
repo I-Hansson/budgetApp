@@ -52,12 +52,10 @@ public class OverviewView implements Initializable {
     BudgetPostPanelController  budgetCardController = new BudgetPostPanelController();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-       this.PiechartFlowPane.getChildren().add(new Overviewpiechart());
+       this.PiechartFlowPane.getChildren().add(new OverviewPieChart());
        for (int i = 0; i < 4; i++){
            budgetPostsGridPane.add(budgetCardController.getBudgetPostCards().get(i),i,0);
        }
-
     }
 
     @FXML

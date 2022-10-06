@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LineChartYear implements ILineChartExtent {
+
+    public LineChartYear() {}
     @Override
     public int getDateAsInt(Transaction transaction) {
         return transaction.getDayOfYear();
