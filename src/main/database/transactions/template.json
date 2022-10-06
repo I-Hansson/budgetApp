@@ -1,0 +1,25 @@
+{
+  "transactions": [
+    {
+      "name": "ica",
+      "date": "2210061247",
+      "budgetPostName": "matvaror",
+      "amount": 125.59,
+      "description": "Snus & Nocco"
+    },
+    {
+      "name": "coop",
+      "date": "2210021453",
+      "budgetPostName": "matvaror",
+      "amount": 49.0,
+      "description": "Virke"
+    },
+    {
+      "name": "Excet",
+      "date": "2210012354",
+      "budgetPostName": "alkohol",
+      "amount": 120.0,
+      "description": "Grogg"
+    }
+  ]
+}
