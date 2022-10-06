@@ -15,8 +15,9 @@ public class Budget {
 
     private int year;
     private int month;
-    private Calendar calender = new GregorianCalendar();
-    public Budget(){
+    private Calendar calender;
+    public Budget(int year, int month){
+        this.calender = new GregorianCalendar(year,month,1);
         this.year = calender.get(Calendar.YEAR);
         this.month = calender.get(Calendar.MONTH);
 
@@ -26,7 +27,12 @@ public class Budget {
         this.budgetPosts.add(BudgetPostFactory.createBudgetPost("Kläder",800,"31, 120, 189"));
 
     }
+    public String getMonth(){
+            String[] month =
+                    {"Decemeber","January", "February", "Mars", "April", "May", "june", "July", "august", "September", "October", "November"};
+            return  month[this.month];
 
+    }
     public List<BudgetPost> getBudgetPosts() {
         return this.budgetPosts;
     }

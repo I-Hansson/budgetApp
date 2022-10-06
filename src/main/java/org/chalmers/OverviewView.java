@@ -23,8 +23,8 @@ import javafx.scene.control.Button;
 
 import org.chalmers.Controllers.BudgetPostPanelController;
 import javafx.stage.Stage;
-
-
+import org.chalmers.Controllers.OverviewController;
+import org.chalmers.model.User;
 
 
 public class OverviewView implements Initializable {
@@ -40,7 +40,7 @@ public class OverviewView implements Initializable {
     @FXML Text overviewTitelPanel;
     @FXML Text budgetPostsTitelPanel;
     @FXML Text pastTransactionsTitelPanel;
-
+    @FXML Text currentBudgetMonth;
 
     @FXML FlowPane PiechartFlowPane;
 
@@ -48,15 +48,13 @@ public class OverviewView implements Initializable {
     @FXML GridPane budgetPostsGridPane;
     @FXML Button newTransactionButton;
     // controllers
+    OverviewController overviewController = new OverviewController();
+    BudgetPostPanelController  budgetCardController = new BudgetPostPanelController(overviewController);
 
-    BudgetPostPanelController  budgetCardController = new BudgetPostPanelController();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-       this.PiechartFlowPane.getChildren().add(new Overviewpiechart());
-       for (int i = 0; i < 4; i++){
-           budgetPostsGridPane.add(budgetCardController.getBudgetPostCards().get(i),i,0);
-       }
+        update();
 
     }
 
@@ -92,7 +90,36 @@ public class OverviewView implements Initializable {
         stage.setScene(scene);
         stage.show();
 
-    }}
+    }
+
+
+    @FXML
+    public void nextMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        overviewController.clickedNextMonth();
+
+        update();
+    }
+
+    @FXML
+    public void prevMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        overviewController.clickedPrevMonth();
+
+        update();
+    }
+    public void update(){
+
+        currentBudgetMonth.setText(overviewController.getUser().getCurrentBudget().getMonth());
+        this.PiechartFlowPane.getChildren().clear();
+        this.budgetPostsGridPane.getChildren().clear();
+        this.PiechartFlowPane.getChildren().add(new Overviewpiechart());
+        //System.out.println(budgetCardController.getBudgetPosts().get(0).getId().getName());
+        budgetCardController.createBudgetPostCards();
+        for (int i = 0; i < 4; i++){
+
+            budgetPostsGridPane.add(budgetCardController.getBudgetPostCards().get(i),i,0);
+        }
+    }
+}
 
 
 

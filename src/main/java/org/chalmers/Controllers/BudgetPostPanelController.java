@@ -5,6 +5,7 @@ import javafx.scene.paint.Color;
 import org.chalmers.OverviewBudgetPost;
 import org.chalmers.model.Budget;
 import org.chalmers.model.BudgetPost;
+import org.chalmers.model.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,13 +13,13 @@ import java.util.List;
 public class BudgetPostPanelController {
     private List<BudgetPost> budgets = new ArrayList<BudgetPost>( );
     private List<OverviewBudgetPost> budgetPostCards = new ArrayList<OverviewBudgetPost>();
-    Budget budget = new Budget();
-    public BudgetPostPanelController (){
-        budget.getBudgetPosts().get(0).setCurrentBalance(1000);
+    User user;
+    public BudgetPostPanelController (OverviewController controller){
+    this.user = controller.getUser();
+        /*budget.getBudgetPosts().get(0).setCurrentBalance(1000);
         budget.getBudgetPosts().get(1).setCurrentBalance(99);
         budget.getBudgetPosts().get(2).setCurrentBalance(100);
-        budget.getBudgetPosts().get(3).setCurrentBalance(110);
-
+        budget.getBudgetPosts().get(3).setCurrentBalance(110);*/
         createBudgetPostCards();
     }
     public List<BudgetPost> getBudgetPosts(){
@@ -28,15 +29,16 @@ public class BudgetPostPanelController {
         return this.budgetPostCards;
     }
     public  void createBudgetPostCards(){
-        for (BudgetPost i : budget.getBudgetPosts()){
+        budgetPostCards.clear();
+        for (BudgetPost i : user.getCurrentBudget().getBudgetPosts()){
+            i.getCurrentBalance();
             double moneyLeft = 0;
             if (i.getBudgetCap()-i.getCurrentBalance() > 0){
                 moneyLeft = i.getBudgetCap()-i.getCurrentBalance();
-                System.out.println(moneyLeft);
+
             }
-
+            System.out.println(i.getCurrentBalance());
             budgetPostCards.add(new OverviewBudgetPost(i.getId().getName(),String.valueOf(moneyLeft), i.getCurrentBalance()/i.getBudgetCap(), i.getId().getColor(),getComplementColor(i.getId().getColor())));
-
         }
 
     }
