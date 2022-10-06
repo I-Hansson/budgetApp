@@ -1,13 +1,6 @@
 package org.chalmers.model;
 
-import javafx.scene.paint.Color;
-import org.chalmers.model.database.BudgetPostsDB;
 import org.chalmers.model.database.UsersDB;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class ModelFacade {
 
@@ -25,7 +18,7 @@ public class ModelFacade {
         return db.getStandardBalance();
     }
 
-    public List<BudgetPost> getBudgetPosts() {
+    /*public List<BudgetPost> getBudgetPosts() {
         Map<String, String> response = db.getBudgetPosts();
         List<BudgetPost> result = new ArrayList<>();
         List<BudgetPostsDB> BpDb = new ArrayList<>();
@@ -39,14 +32,14 @@ public class ModelFacade {
         }
 
         return result;
-    }
+    }*/
 
-    public void addBudgetPost(String name) {
+    /*public void addBudgetPost(String name) {
         // not workings rn
         db.openSetters();
         db.addBudgetPost(name);
         db.closeSetter();
-    }
+    }*/
 
     public void setUserName(String name) {
         db.openSetters();
