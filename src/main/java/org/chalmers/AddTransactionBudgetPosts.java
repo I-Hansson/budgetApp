@@ -14,7 +14,7 @@ public class AddTransactionBudgetPosts extends AnchorPane {
     @FXML RadioButton budgetPost;
 
     AddTransactionBudgetPostsController controller = new AddTransactionBudgetPostsController();
-    ToggleGroup toggleGroup = new ToggleGroup();
+    static ToggleGroup toggleGroup = new ToggleGroup();
 
 
     public AddTransactionBudgetPosts(String name) {

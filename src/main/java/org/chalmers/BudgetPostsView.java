@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
@@ -28,10 +29,10 @@ public class BudgetPostsView implements Initializable {
     @FXML AnchorPane addBudgetPostGreyBackground;
     @FXML AnchorPane newBudgetPostPane;
 
-    @FXML TextField budgetPostName;
-    @FXML TextField budgetMax;
+    @FXML TextArea budgetPostName;
+    @FXML TextArea budgetMax;
     @FXML ChoiceBox budgetPostColor;
-    @FXML TextField budgetPostDescription;
+    @FXML TextArea budgetPostDescription;
 
 
     @FXML Text overviewTitelPanel;
@@ -84,13 +85,6 @@ public class BudgetPostsView implements Initializable {
 
 
 
-
-
-
-
-
-
-
     @FXML
     public void SwitchToOverview(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
 
@@ -122,9 +116,6 @@ public class BudgetPostsView implements Initializable {
         stage.show();
 
     }
-
-
-
 
 
 
