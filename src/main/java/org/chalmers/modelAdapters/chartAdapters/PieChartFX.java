@@ -6,10 +6,16 @@ import javafx.collections.ObservableList;
 import javafx.collections.ObservableListBase;
 import javafx.collections.transformation.SortedList;
 import javafx.scene.chart.PieChart;
+import org.chalmers.model.Transaction;
 import org.chalmers.model.charts.ChartTypePie;
 
+import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
+/**
+ * @author williamfrisk
+ */
 public class PieChartFX {
 
     private final ChartTypePie modelChart;
@@ -28,5 +34,9 @@ public class PieChartFX {
         }
 
         return dataObservableList;
+    }
+
+    public void update(Collection<Transaction> transactions) {
+        this.modelChart.update(transactions);
     }
 }

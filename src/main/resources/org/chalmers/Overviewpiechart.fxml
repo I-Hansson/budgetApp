@@ -2,10 +2,11 @@
 
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
 
-
-<fx:root prefHeight="280.0" prefWidth="300.0" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="280.0" prefWidth="300.0" stylesheets="@CSS/pieChart.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <PieChart fx:id="piechart" stylesheets="@CSS/charts.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <PieChart fx:id="piechart" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Circle fill="#ede9e5" layoutX="150.0" layoutY="140.0" radius="60.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
    </children>
 </fx:root>

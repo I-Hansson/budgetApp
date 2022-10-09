@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LineChartMonth implements ILineChartExtent {
+    public LineChartMonth() {}
+
     @Override
     public int getDateAsInt(Transaction transaction) {
         return transaction.getDayOfMonth();

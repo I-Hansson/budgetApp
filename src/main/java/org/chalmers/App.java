@@ -13,7 +13,7 @@ public class App extends Application{
 
     public void start (Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load((getClass().getResource("LogInPage.fxml")));
-        primaryStage.setTitle("LogInView");
+        primaryStage.setTitle("SAFE BOAT");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
         primaryStage.setResizable(false);
