@@ -10,6 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+
+/**
+ * Written by Oscar Cronvall
+ *
+ */
 public class TransactionsDB {
     private DatabaseConnector connector;
     private FileWriter file;
@@ -51,10 +56,11 @@ public class TransactionsDB {
      */
     public List<Transaction> getTransactionsListMonth(Integer year, Integer month){
         List<Transaction> result = new ArrayList<>();
-        String dateFormat = year.toString()+month.toString();
         for(Transaction trans: transactionsList){
-            Integer readYear = trans.getDateString().toCharArray()[0]+trans.getDateString().toCharArray()[1];
-            Integer readMonth = trans.getDateString().toCharArray()[2]+trans.getDateString().toCharArray()[3];
+            Integer readYear = Integer.parseInt(trans.getDateString().substring(0,2));
+            Integer readMonth = Integer.parseInt(trans.getDateString().substring(2,4));
+            System.out.print("Month: "+ readMonth);
+            System.out.println(" Year: "+ readYear);
             if(year.equals(readYear) && month.equals(readMonth))
                 result.add(trans);
         }
@@ -89,10 +95,12 @@ public class TransactionsDB {
         closeSetter();
     }
 
+    //TODO make an addTransaction method that takes one arguement of the type Transaction
+
     /**
      * Call this method so that you can edit the database.
      */
-    public void openSetters(){
+    private void openSetters(){
         try{
             file = new FileWriter(connector.getDbPath());
             oldDB = getTransactionsJSONObj();
@@ -105,7 +113,7 @@ public class TransactionsDB {
      * Call this method to write and close new edits to the database.
      * To edit again call on the openSetters() method
      */
-    public void closeSetter(){
+    private void closeSetter(){
         try{
             file.write(oldDB.toJSONString());
             file.flush();

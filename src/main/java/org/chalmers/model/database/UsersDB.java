@@ -20,7 +20,7 @@ public class UsersDB {
     private static int nextID = 3;
 
     public UsersDB(int uid){
-        connector = new DatabaseConnector("src/main/database/users/" + uid +".json", UsersDB.class);
+        connector = new DatabaseConnector("src/main/database/users/" + uid +".json");
         file = null;
         oldDB = null;
         transactionsDB = new TransactionsDB(uid);
