@@ -9,14 +9,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.chalmers.Controllers.BudgetPostController;
-import org.chalmers.Controllers.LogInController;
 
 import java.io.IOException;
 import java.net.URL;
@@ -111,6 +108,19 @@ public class BudgetPostsView implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+
+    }
+
+
+
+    @FXML
+    public void SwitchToDetailedBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("BudgetPostDetailed.fxml"));
+        stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
 
     }
 

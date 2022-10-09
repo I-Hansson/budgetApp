@@ -16,7 +16,6 @@ public class AddTransactionController{
 
 
    public void newTransaction(double amount, String name, String description, LocalDate date, String budgetpost){
-   //     ModelFacade.getInstance()
    }
 
 
