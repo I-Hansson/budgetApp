@@ -119,14 +119,11 @@ public class AddTransactionView implements Initializable {
 
     @FXML
     public void doneAddTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
-        addTransactionController.newTransaction(Double.parseDouble(transacionAmount.getText()), transactionName.getText(), transactionDescription.getText(), datePicker.getValue(),AddTransactionBudgetPosts.getGroupValue() );
+        addTransactionController.newTransaction(Double.parseDouble(transacionAmount.getText()), transactionName.getText(), transactionDescription.getText(), datePicker.getValue(),AddTransactionBudgetPosts.getGroupValue());
         doneShadowPane.toFront();
         transactionDonePane.toFront();
     }
-
-
-
-    }
+}
 
 
 
