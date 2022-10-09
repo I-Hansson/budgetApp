@@ -1,6 +1,7 @@
 package org.chalmers.model.charts;
 
 import org.chalmers.model.BudgetPost;
+import org.chalmers.model.ITransactionAddedObserver;
 import org.chalmers.model.Transaction;
 
 
@@ -13,7 +14,7 @@ import java.util.Map;
  *
  * @author williamfrisk
  */
-public class ChartTypePie implements IChart<String, Integer> {
+public class ChartTypePie implements IChart<String, Integer>, ITransactionAddedObserver {
 
     private final Map<String, Integer> data;
 
