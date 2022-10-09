@@ -1,7 +1,8 @@
 package org.chalmers.Controllers;
 
-import javafx.scene.layout.AnchorPane;
-import org.chalmers.model.BudgetPost;
+
+import java.time.LocalDate;
+
 
 public class AddTransactionController{
 
@@ -11,10 +12,12 @@ public class AddTransactionController{
 
     public AddTransactionController () {
 
-
     }
 
 
+   public void newTransaction(double amount, String name, String description, LocalDate date, String budgetpost){
+   //     ModelFacade.getInstance()
+   }
 
 
 

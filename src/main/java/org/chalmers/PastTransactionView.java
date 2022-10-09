@@ -31,7 +31,7 @@ public class PastTransactionView implements Initializable {
     @FXML FlowPane pastTransactionFlowPane;
 
 
-    PastTransactionController PastTransactionController = new PastTransactionController();
+    private PastTransactionController PastTransactionController = new PastTransactionController();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
         pastTransactionFlowPane.getChildren().clear();

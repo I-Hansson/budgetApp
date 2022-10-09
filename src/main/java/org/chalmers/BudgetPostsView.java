@@ -7,13 +7,19 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
 import org.chalmers.Controllers.BudgetPostItemController;
 import org.chalmers.Controllers.OverviewController;
 import org.chalmers.model.ModelFacade;
+
 
 import java.io.IOException;
 import java.net.URL;
@@ -21,7 +27,16 @@ import java.util.ResourceBundle;
 
 public class BudgetPostsView implements Initializable {
 
-    @FXML FlowPane AddTransactionFlowPane;
+   private BudgetPostController controller = new BudgetPostController();
+
+    @FXML AnchorPane addBudgetPostGreyBackground;
+    @FXML AnchorPane newBudgetPostPane;
+
+    @FXML TextArea budgetPostName;
+    @FXML TextArea budgetMax;
+    @FXML ChoiceBox budgetPostColor;
+    @FXML TextArea budgetPostDescription;
+
 
     @FXML Text overviewTitelPanel;
     @FXML Text budgetPostsTitelPanel;
@@ -30,6 +45,8 @@ public class BudgetPostsView implements Initializable {
 
     @FXML GridPane budgetPostsViewGridPane;
     @FXML Text currentBudgetMonth;
+
+
 
     private Stage stage;
     private Scene scene;
@@ -62,6 +79,25 @@ public class BudgetPostsView implements Initializable {
         System.out.println("next");
         overviewController.clickedPrevMonth();
         update();
+    }
+
+    @FXML
+    public void goToAddBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        addBudgetPostGreyBackground.toFront();
+        newBudgetPostPane.toFront();
+    }
+
+    @FXML
+    public void addBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        controller.createBudgetPost(budgetPostName.getText(),budgetMax.getText(), String.valueOf(budgetPostColor.getValue()), budgetPostDescription.getText());
+        addBudgetPostGreyBackground.toBack();
+        newBudgetPostPane.toBack();
+    }
+
+    @FXML
+    public void closeWindow(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
+        addBudgetPostGreyBackground.toBack();
+        newBudgetPostPane.toBack();
     }
 
 
@@ -97,9 +133,6 @@ public class BudgetPostsView implements Initializable {
         stage.show();
 
     }
-
-
-
 
 
 

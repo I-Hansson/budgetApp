@@ -58,7 +58,7 @@ public class ModelFacade {
         return BudgetPostFactory.createBudgetPost("nej");
     }
 
-    public void addBudgetPost(String name) {
+    public void addBudgetPost(String name) { //TODO
         // not workings rn
         db.openSetters();
         db.addBudgetPost(name);
