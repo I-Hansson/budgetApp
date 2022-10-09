@@ -24,9 +24,9 @@ public class User {
         this.budgets.add(new Budget(2023,1));
         this.budgets.add(new Budget(2023,2));
         this.budgets.add(new Budget(2023,3));
-        budgets.get(1).getBudgetPosts().get(0).setCurrentBalance(1000);
 
         this.currentBudget = budgets.get(0);
+
 
     }
 
