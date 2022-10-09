@@ -2,6 +2,14 @@ package org.chalmers.model;
 
 import java.util.*;
 
+/**
+ * @author Isac Hansson ,
+ * Budget depends on BudgetPost, Transaction, ITransactionAddedObserver, BudgetPostFactory, ITransactionAddedObserver
+ */
+
+
+
+
 public class Budget {
 
     private double startBalance;
@@ -17,6 +25,13 @@ public class Budget {
 
     private final Collection<ITransactionAddedObserver> observers = new ArrayList<>();
 
+    /**
+     * Contructor of  the budget,
+     * Instantiate four default budgetPosts through a BudgetPostFactory
+     * Instantiate the date for the budget, i.e what month is this budget active.
+     * @param year What year is this active.
+     * @param month What month is this active.
+     */
     public Budget(int year, int month){
         this.calender = new GregorianCalendar(year,month,1);
         this.year = calender.get(Calendar.YEAR);
@@ -28,6 +43,11 @@ public class Budget {
         this.budgetPosts.add(BudgetPostFactory.createBudgetPost("Kläder",800,"31, 120, 189"));
 
     }
+
+    /**
+     * Called to get a String representation of the month this buget is active in.
+     * @return The string that is a month based on the number (0-11) that represents that month. 
+     */
     public String getMonth(){
             String[] month =
                     {"Decemeber","January", "February", "Mars", "April", "May", "june", "July", "august", "September", "October", "November"};
