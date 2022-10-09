@@ -13,6 +13,7 @@ import org.chalmers.Controllers.OverviewPieChartController;
 import org.chalmers.model.BudgetPost;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -79,15 +80,20 @@ public class OverviewPieChart extends AnchorPane {
         int i = 0;
 
         for (Label caption : captions) {
-            percent += (piechart.getData().get(i).getPieValue() / pieChartTotal) / 2;
+            if(i  < piechart.getData().size()){
+                percent += (piechart.getData().get(i).getPieValue() / pieChartTotal) / 2;
+                caption.setTranslateX(Math.cos(Math.toRadians(percent * 360)) * 90);
+                caption.setTranslateY(Math.sin(Math.toRadians(percent * 360)) * 90);
+                caption.setMouseTransparent(true);
+                nameSliceCaption(piechart.getData().get(i).getPieValue() / pieChartTotal, caption);
 
-            caption.setTranslateX(Math.cos(Math.toRadians(percent * 360)) * 90);
-            caption.setTranslateY(Math.sin(Math.toRadians(percent * 360)) * 90);
-            caption.setMouseTransparent(true);
-            nameSliceCaption(piechart.getData().get(i).getPieValue() / pieChartTotal, caption);
+                percent += (piechart.getData().get(i).getPieValue() / pieChartTotal) / 2;
 
-            percent += (piechart.getData().get(i).getPieValue() / pieChartTotal) / 2;
+            }else{
+                caption.setVisible(false);
+            }
             i++;
+
         }
 
     }
@@ -138,16 +144,21 @@ public class OverviewPieChart extends AnchorPane {
     }
 
     /**
+     * @author I-Hansson , @author Willefrisk
      * Used for applying correct colors to the pie chart.
      */
     private void applyColors() {
         List<BudgetPost> bps = controller.getBudgetPosts();
 
-        int i = 0;
-        for (PieChart.Data data : piechart.getData()) {
-            data.getNode().setStyle("-fx-pie-color: rgb(" + bps.get(i).getId().getColor() + ");");
-            i++;
+        HashMap<String,String> map =  new HashMap<>();
+        for(BudgetPost bp :bps){
+            map.put(bp.getId().getName(),bp.getId().getColor());
         }
+        for (PieChart.Data data : piechart.getData()) {
+                data.getNode().setStyle("-fx-pie-color: rgb(" +map.get(data.getName())  + ");");
+
+        }
+
     }
 }
 

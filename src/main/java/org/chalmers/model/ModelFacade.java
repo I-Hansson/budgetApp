@@ -1,7 +1,8 @@
 package org.chalmers.model;
 
 
-import org.chalmers.model.database.BudgetPostsDB;
+
+import javafx.collections.ObservableList;
 import org.chalmers.model.database.UsersDB;
 
 import java.util.*;
@@ -51,7 +52,7 @@ public class ModelFacade {
     }*/
 
 
-
+    /*
     //VARNING!! Fungerar inte!!
     public BudgetPost getBudgetPost(String name) { //TODO
         for (BudgetPost bp : getBudgetPosts()) {
@@ -111,6 +112,7 @@ public class ModelFacade {
 
 
     }
+
 
 
 }
