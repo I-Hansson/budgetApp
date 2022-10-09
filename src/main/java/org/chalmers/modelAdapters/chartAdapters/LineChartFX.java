@@ -6,6 +6,9 @@ import org.chalmers.model.charts.ChartTypeLine;
 
 import java.util.Map;
 
+/**
+ * @author williamfrisk
+ */
 public class LineChartFX {
 
     private final ChartTypeLine modelChart;

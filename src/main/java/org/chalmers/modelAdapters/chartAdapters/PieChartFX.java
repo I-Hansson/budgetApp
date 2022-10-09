@@ -13,6 +13,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author williamfrisk
+ */
 public class PieChartFX {
 
     private final ChartTypePie modelChart;
