@@ -6,7 +6,8 @@ import org.chalmers.model.charts.lineChartExtents.ILineChartExtent;
 import java.util.*;
 
 /**
- * This class gives functionality for displaying line charts
+ * This class gives functionality for displaying line charts.
+ * Depends on ILineChartExtent
  *
  * @author williamfrisk
  */
