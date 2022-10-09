@@ -52,8 +52,6 @@ public class OverviewView implements Initializable {
     BudgetPostPanelController  budgetCardController = new BudgetPostPanelController(overviewController);
 
 
-    private BudgetPostPanelController  budgetCardController = new BudgetPostPanelController();
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
