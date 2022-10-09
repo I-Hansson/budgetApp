@@ -3,8 +3,8 @@ package org.chalmers.model.database;
 import org.chalmers.model.Transaction;
 import org.json.simple.JSONObject;
 
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.nio.channels.FileChannel;
 import java.util.List;
 
 /**
@@ -17,12 +17,39 @@ public class UsersDB {
     private FileWriter file;
     private JSONObject oldDB;
     private TransactionsDB transactionsDB;
+    private static int nextID = 3;
 
     public UsersDB(int uid){
-        connector = new DatabaseConnector("src/main/database/users/" + uid +".json");
+        connector = new DatabaseConnector("src/main/database/users/" + uid +".json", UsersDB.class);
         file = null;
         oldDB = null;
         transactionsDB = new TransactionsDB(uid);
+    }
+
+    public static void createUserDoc(String name, String pwd, Double balance, Double standardBalance){
+        try{
+            FileWriter incomingFile = new FileWriter("./src/main/database/users/incoming.json");
+            JSONObject jsonObject = new JSONObject();
+            try{
+                jsonObject.put("name", name);
+                jsonObject.put("password", pwd);
+                jsonObject.put("currentBalance", balance);
+                jsonObject.put("startBalance", standardBalance);
+                jsonObject.put("id", nextID);
+            } finally {
+                incomingFile.write(jsonObject.toJSONString());
+                incomingFile.flush();
+                incomingFile.close();
+            }
+            File srcFile = new File("./src/main/database/users/incoming.json");
+            File destFile = new File("./src/main/database/users/" + nextID + ".json");
+            FileChannel src = new FileInputStream(srcFile).getChannel();
+            FileChannel dest = new FileOutputStream(destFile).getChannel();
+            dest.transferFrom(src, 0, src.size());
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+        nextID++;
     }
 
     /**
