@@ -18,7 +18,7 @@ public class OverviewPieChartController {
 
 
     //TODO här ska vi koppla till backenden
-    Budget budget = new Budget();
+    Budget budget = new Budget(22,10);
 
     public OverviewPieChartController(){
         modelChart = new PieChartFX(ChartFactory.createPieChart());
