@@ -4,11 +4,17 @@ package org.chalmers.Controllers;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.chalmers.model.BudgetPostID;
+import org.chalmers.model.ModelFacade;
+import org.chalmers.model.Transaction;
 import org.chalmers.model.User;
 
-public class OverviewController{
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
-    User user = new User();
+public class OverviewController{
+    ModelFacade facade = ModelFacade.getInstance();
     public OverviewController(){
 
 
@@ -25,15 +31,25 @@ public class OverviewController{
 
     }
 
-    public User getUser() {
-        return user;
-    }
+
 
     public void clickedNextMonth(){
-        user.nextCurrentBudget();
+        facade.getUser().nextCurrentBudget();
     }
     public void clickedPrevMonth(){
-        user.previousCurrentBudget();
+        facade.getUser().previousCurrentBudget();
+    }
+
+    public Collection<Transaction> getLatestTransactions() { //TODO ska hämta data från backend
+        List<Transaction> latestTransactions = new ArrayList<>();
+        List<Transaction> userList = facade.getUser().getCurrentBudget().getRecentTransactions();
+        for (int i = 1; i <= 5; i++) {
+            if (userList.size()-i >= 0)
+                latestTransactions.add(userList.get(userList.size()-i));
+            else
+                break;
+        }
+        return latestTransactions;
     }
 
 

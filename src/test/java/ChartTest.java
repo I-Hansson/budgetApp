@@ -54,7 +54,7 @@ public class ChartTest {
 
         assertEquals(correctMap, pieChart.getDataMap());
     }
-/*
+
     @Test
     public void chartTypeLineReturnsCorrectData() {
         IChart<Integer, Integer> lineChart = ChartFactory.createWeekLineChart();
@@ -70,6 +70,6 @@ public class ChartTest {
 
         assertEquals(correctMap, lineChart.getDataMap());
     }
-    */
+
 
 }

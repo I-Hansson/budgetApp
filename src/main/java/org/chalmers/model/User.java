@@ -1,6 +1,7 @@
 package org.chalmers.model;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 
@@ -13,6 +14,7 @@ public class User {
     private List<Budget> budgets = new ArrayList<>();
     private Budget currentBudget;
 
+
     //List of investments
 
     public User(){
@@ -24,12 +26,11 @@ public class User {
         this.budgets.add(new Budget(2023,1));
         this.budgets.add(new Budget(2023,2));
         this.budgets.add(new Budget(2023,3));
-        budgets.get(1).getBudgetPosts().get(0).setCurrentBalance(1000);
 
         this.currentBudget = budgets.get(0);
 
-    }
 
+    }
     //Getters
 
 
@@ -70,5 +71,4 @@ public class User {
         id = 4;
         instantiatd = true;
     }
-
 }

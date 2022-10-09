@@ -28,7 +28,7 @@
 }
 
 .panelTitel{
-    -fx-font-family: 'Inter';
+    -fx-font-family: 'Roboto Light';
     -fx-font-style: normal;
     -fx-font-weight: 800;
     -fx-font-size: 20px;
@@ -94,7 +94,7 @@
 
 .normalStrongText {
     -fx-font-size: 35px;
-    -fx-font-family: 'Inter';
+    -fx-font-family: 'Roboto Thin';
     -fx-fill: #131210;
 }
 

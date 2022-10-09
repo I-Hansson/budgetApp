@@ -34,7 +34,7 @@ public class PastTransactionView implements Initializable {
     private PastTransactionController PastTransactionController = new PastTransactionController();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
-
+        pastTransactionFlowPane.getChildren().clear();
         for(PastTransactionItem i : PastTransactionController.getPastTransactionItemList()){
             this.pastTransactionFlowPane.getChildren().add(i);
         }

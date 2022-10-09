@@ -4,17 +4,21 @@ import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart;
 import org.chalmers.model.*;
 import org.chalmers.model.charts.ChartFactory;
+import org.chalmers.model.charts.ChartTypePie;
 import org.chalmers.modelAdapters.chartAdapters.PieChartFX;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Random;
 
 public class OverviewPieChartController {
 
-    ModelFacade model = ModelFacade.getInstance();
+    ModelFacade facade = ModelFacade.getInstance();
     PieChartFX modelChart;
     Collection<Transaction> transactions = new ArrayList<>();
+
+    Random random = new Random();
 
 
     //TODO här ska vi koppla till backenden
@@ -22,12 +26,8 @@ public class OverviewPieChartController {
 
     public OverviewPieChartController(){
         modelChart = new PieChartFX(ChartFactory.createPieChart());
-        for (BudgetPost bp : budget.getBudgetPosts()) {
-            for (int i = 0; i < 10; i++) {
-                transactions.add(new Transaction("test", i * 100, bp.getId(), ""));
-            }
-        }
-        modelChart.update(transactions);
+
+        modelChart.update(facade.getCurrentBudgetTransactions());
     }
 
     public ObservableList<PieChart.Data> getData(){
@@ -35,6 +35,6 @@ public class OverviewPieChartController {
     }
 
     public List<BudgetPost> getBudgetPosts() {
-        return budget.getBudgetPosts();
+        return facade.budgetPostsfromUser();
     }
 }
