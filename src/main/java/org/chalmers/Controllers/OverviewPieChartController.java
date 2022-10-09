@@ -9,12 +9,15 @@ import org.chalmers.modelAdapters.chartAdapters.PieChartFX;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Random;
 
 public class OverviewPieChartController {
 
     ModelFacade model = ModelFacade.getInstance();
     PieChartFX modelChart;
     Collection<Transaction> transactions = new ArrayList<>();
+
+    Random random = new Random();
 
 
     //TODO här ska vi koppla till backenden
@@ -24,7 +27,7 @@ public class OverviewPieChartController {
         modelChart = new PieChartFX(ChartFactory.createPieChart());
         for (BudgetPost bp : budget.getBudgetPosts()) {
             for (int i = 0; i < 10; i++) {
-                transactions.add(new Transaction("test", i * 100, bp.getId(), ""));
+                transactions.add(new Transaction("test", random.nextInt(100), bp.getId(), ""));
             }
         }
         modelChart.update(transactions);
