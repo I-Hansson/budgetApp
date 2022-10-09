@@ -4,7 +4,9 @@ package org.chalmers.Controllers;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.chalmers.model.BudgetPostID;
 import org.chalmers.model.ModelFacade;
+import org.chalmers.model.Transaction;
 import org.chalmers.model.User;
 
 import java.util.ArrayList;
@@ -39,12 +41,8 @@ public class OverviewController{
     }
 
     public Collection<Transaction> getLatestTransactions() { //TODO ska hämta data från backend
-        user.getCurrentBudget().addTransaction(new Transaction("test", 100,
-                new BudgetPostID("test", "0, 0, 0", "lol"), " "));
-
         List<Transaction> latestTransactions = new ArrayList<>();
-        List<Transaction> userList = user.getCurrentBudget().getRecentTransactions();
-
+        List<Transaction> userList = facade.getUser().getCurrentBudget().getRecentTransactions();
         for (int i = 1; i <= 5; i++) {
             if (userList.size()-i >= 0)
                 latestTransactions.add(userList.get(userList.size()-i));
