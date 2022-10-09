@@ -1,6 +1,7 @@
 package org.chalmers.model.database;
 
 import org.chalmers.model.Transaction;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import java.io.*;
@@ -46,10 +47,34 @@ public class UsersDB {
             FileChannel src = new FileInputStream(srcFile).getChannel();
             FileChannel dest = new FileOutputStream(destFile).getChannel();
             dest.transferFrom(src, 0, src.size());
+            createUserTransactionDoc();
         } catch (IOException e){
             e.printStackTrace();
         }
         nextID++;
+    }
+
+
+    private static void createUserTransactionDoc(){
+        try{
+            File newFile = new File("./src/main/database/transactions/" + nextID + ".json");
+            if(newFile.createNewFile())
+                System.out.println("Transaction document created");
+            else
+                System.out.println("Document of that id already exists");
+
+            JSONObject jsonObject = new JSONObject();
+            JSONArray transactions = new JSONArray();
+            jsonObject.put("transactions", transactions);
+
+            FileWriter writer = new FileWriter("./src/main/database/transactions/" + nextID + ".json");
+            writer.write(jsonObject.toJSONString());
+            writer.flush();
+            writer.close();
+
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     /**
