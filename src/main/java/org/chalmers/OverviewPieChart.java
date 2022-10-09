@@ -5,8 +5,10 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.chart.PieChart;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import org.chalmers.Controllers.OverviewPieChartController;
 import org.chalmers.model.BudgetPost;
@@ -44,7 +46,22 @@ public class OverviewPieChart extends AnchorPane {
         piechart.setLegendVisible(false);
         piechart.setLabelsVisible(false);
 
-        applyMouseOverAnimation();
+        //applyMouseOverAnimation();
+
+        final Label caption = new Label("");
+        caption.setTextFill(Color.DARKORANGE);
+        caption.setStyle("-fx-font: 24 arial;");
+
+        for (final PieChart.Data data : piechart.getData()) {
+            data.getNode().addEventHandler(MouseEvent.MOUSE_PRESSED,
+                    new EventHandler<MouseEvent>() {
+                        @Override public void handle(MouseEvent e) {
+                            caption.setTranslateX(e.getSceneX());
+                            caption.setTranslateY(e.getSceneY());
+                            caption.setText(String.valueOf(data.getPieValue()) + "%");
+                        }
+                    });
+        }
     }
 
 
@@ -87,6 +104,8 @@ public class OverviewPieChart extends AnchorPane {
                         }
                     });
         }
+
+
     }
 
     /**

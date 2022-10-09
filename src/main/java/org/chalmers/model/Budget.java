@@ -65,8 +65,8 @@ public class Budget {
     public void updateBalance(double change){
         currentBalance += change;
     }
-    public void addTransaction(String name, double amount, BudgetPostID budgetPost, String description){
-        this.recentTransactions.add(new Transaction(name, amount,budgetPost,description));
+    public void addTransaction(Transaction transaction){
+        this.recentTransactions.add(transaction);
     }
     /**
      * Add a NEW budget-post to the users budget planner.

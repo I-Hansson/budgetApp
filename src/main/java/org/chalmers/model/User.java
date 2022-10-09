@@ -29,7 +29,6 @@ public class User {
         this.currentBudget = budgets.get(0);
 
     }
-
     //Getters
 
 
