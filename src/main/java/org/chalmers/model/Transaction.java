@@ -49,10 +49,10 @@ public class Transaction {
     }
     public String getDayOfWeeks(){
         String[] days =
-                {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
+                {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",};
         int day = this.getDateOfTransaction().get(Calendar.DAY_OF_WEEK);
         System.out.println(day);
-        return  days[day];
+        return  days[day-1];
     }
     public String getDateString(){
         return dateString;

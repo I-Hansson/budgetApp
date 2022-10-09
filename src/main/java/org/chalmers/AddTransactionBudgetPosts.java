@@ -40,8 +40,8 @@ public class AddTransactionBudgetPosts extends AnchorPane {
     ///TODO May not be static.
 
     public static String getGroupValue(){
-        selectedButton = toggleGroup.getSelectedToggle();
-        return selectedButton.toString();
+        RadioButton selectedButton = (RadioButton) toggleGroup.getSelectedToggle();
+        return selectedButton.getText();
     }
 
 

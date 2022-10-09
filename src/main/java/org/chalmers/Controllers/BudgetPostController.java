@@ -7,6 +7,8 @@ public class BudgetPostController {
 
     }
 
-    public void createBudgetPost(String name, String maxAmount, String color, String description){}
+    public void createBudgetPost(String name, String maxAmount, String color, String description){
+        System.out.println("hej");
+    }
 
 }
