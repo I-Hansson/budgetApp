@@ -1,17 +1,21 @@
 package org.chalmers.model;
 
-import javafx.scene.paint.Color;
 import org.chalmers.model.database.BudgetPostsDB;
 import org.chalmers.model.database.UsersDB;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ModelFacade {
 
-    UsersDB db = new UsersDB(1);
+    private UsersDB db = new UsersDB(1);
+    private static ModelFacade instance = new ModelFacade();
+
+
+    private ModelFacade() {}
+
+    public static ModelFacade getInstance() {
+        return instance;
+    }
 
     public String getCurrentUserName() {
         return db.getUserName();
@@ -39,6 +43,16 @@ public class ModelFacade {
         }
 
         return result;
+    }
+
+    //VARNING!! Fungerar inte!!
+    public BudgetPost getBudgetPost(String name) { //TODO
+        for (BudgetPost bp : getBudgetPosts()) {
+            if (bp.getId().getName().equals(name)) {
+                return bp;
+            }
+        }
+        return BudgetPostFactory.createBudgetPost("nej");
     }
 
     public void addBudgetPost(String name) {

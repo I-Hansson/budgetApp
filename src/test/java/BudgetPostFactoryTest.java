@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class BudgetPostFactoryTest {
-/**
+
     @Test
     public void createBudgetPostNameReturnsCorrectInstance() {
         BudgetPost bp = BudgetPostFactory.createBudgetPost("test");

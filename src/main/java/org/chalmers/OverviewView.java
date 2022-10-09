@@ -111,7 +111,7 @@ public class OverviewView implements Initializable {
         currentBudgetMonth.setText(overviewController.getUser().getCurrentBudget().getMonth());
         this.PiechartFlowPane.getChildren().clear();
         this.budgetPostsGridPane.getChildren().clear();
-        this.PiechartFlowPane.getChildren().add(new Overviewpiechart());
+        this.PiechartFlowPane.getChildren().add(new OverviewPieChart());
         //System.out.println(budgetCardController.getBudgetPosts().get(0).getId().getName());
         budgetCardController.createBudgetPostCards();
         for (int i = 0; i < 4; i++){
