@@ -8,10 +8,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import org.chalmers.Controllers.AddTransactionBudgetPostsController;
 import org.chalmers.Controllers.AddTransactionController;
@@ -36,9 +38,18 @@ public class AddTransactionView implements Initializable {
 
 
 
+    @FXML TextArea transactionName;
+    @FXML TextArea transactionDescription;
+    @FXML TextArea transacionAmount;
+    @FXML DatePicker datePicker;
+
+
     @FXML ImageView XnewBudgetPost;
     @FXML AnchorPane newBudgetPostPane;
     @FXML FlowPane BudgetPostsTexFlowPane;
+    @FXML AnchorPane doneShadowPane;
+    @FXML AnchorPane transactionDonePane;
+    @FXML Button donePaneButton;
 
 
 
@@ -100,9 +111,19 @@ public class AddTransactionView implements Initializable {
 
     }
 
-
+    public void closeDonePane(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
+        doneShadowPane.toBack();
+        transactionDonePane.toBack();
 
     }
+
+    @FXML
+    public void doneAddTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
+        addTransactionController.newTransaction(Double.parseDouble(transacionAmount.getText()), transactionName.getText(), transactionDescription.getText(), datePicker.getValue(),AddTransactionBudgetPosts.getGroupValue());
+        doneShadowPane.toFront();
+        transactionDonePane.toFront();
+    }
+}
 
 
 

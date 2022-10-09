@@ -1,80 +1,80 @@
 import org.chalmers.model.database.UsersDB;
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.*;
 
-import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+
+/**
+ * Written by Oscar Cronvall
+ *
+ */
+@TestMethodOrder(OrderAnnotation.class)
 public class UserDBTest {
 
     UsersDB db = new UsersDB(0);
 
-    private void resetDB(){
-        File source = new File("./src/main/database/users/template.json");
-        File dest = new File("./src/main/database/users/0.json");
+    @Before
+    public void init(){
         try{
-            Files.copy(source.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            File srcFile = new File("./src/main/database/users/template.json");
+            File destFile = new File("./src/main/database/users/0.json");
+            FileChannel src = new FileInputStream(srcFile).getChannel();
+            FileChannel dest = new FileOutputStream(destFile).getChannel();
+            dest.transferFrom(src, 0, src.size());
         } catch (IOException e){
             e.printStackTrace();
         }
     }
 
     @Test
-    public void assertNewName(){
-        resetDB();
-        String newName = "Gilfoyle";
+    @Order(1)
+    public void assertGetUserName(){
+        String expectedName = "oscar";
+        System.out.println(1);
+        assertEquals(expectedName, db.getUserName());
+    }
+
+    @Test
+    @Order(2)
+    public void B_assertGetBalance(){
+        Double expectedBalance = 1000.0;
+        System.out.println(2);
+        assertEquals(expectedBalance, db.getBalance());
+    }
+
+    @Test
+    @Order(3)
+    public void C_assertGetUid(){
+        String expectedID = "0";
+        System.out.println(3);
+        assertEquals(expectedID, db.getUid());
+    }
+
+    @Test
+    @Order(4)
+    public void D_getStandardBalance(){
+        Double exptectedBal = 10000.0;
+        System.out.println(4);
+        assertEquals(exptectedBal, db.getStandardBalance());
+    }
+
+    @Test
+    @Order(5)
+    public void E_assertSetUserName(){
+        String newName = "ghandi";
+        System.out.println(5);
         db.openSetters();
         db.setUserName(newName);
         db.closeSetter();
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
-        assertEquals(newName,db.getUserName());
+        assertEquals(newName, db.getUserName());
     }
 
-    @Test
-    public void assertNewBalance(){
-        resetDB();
-        Double newBalance = 10420.0;
-        db.openSetters();
-        db.setBalance(newBalance);
-        db.closeSetter();
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
-        assertEquals(newBalance,db.getBalance());
-    }
-
-    @Test
-    public void assertNewStandardBalance(){
-        resetDB();
-        Double newBalanceStandard = 10469.0;
-        db.openSetters();
-        db.setNewStandardBalance(newBalanceStandard);
-        db.closeSetter();
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
-        assertEquals(newBalanceStandard,db.getStandardBalance());
-    }
-
-    @Test
-    public void assertNoDuplicateBudgetPosts(){
-        resetDB();
-
-        int expected = db.getBudgetPosts().size();
-
-        db.openSetters();
-        db.addBudgetPost("mat");
-        db.addBudgetPost("matvaror");
-        db.closeSetter();
-        assertEquals(expected, db.getBudgetPosts().size());
-    }
 }

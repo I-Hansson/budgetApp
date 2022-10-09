@@ -3,6 +3,7 @@ package org.chalmers;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import org.chalmers.Controllers.AddTransactionBudgetPostsController;
@@ -10,6 +11,8 @@ import org.chalmers.Controllers.AddTransactionBudgetPostsController;
 import java.io.IOException;
 
 public class AddTransactionBudgetPosts extends AnchorPane {
+
+    static Toggle selectedButton;
 
     @FXML RadioButton budgetPost;
 
@@ -32,6 +35,13 @@ public class AddTransactionBudgetPosts extends AnchorPane {
         budgetPost.setText(name);
         budgetPost.setToggleGroup(toggleGroup);
 
+    }
+
+    ///TODO May not be static.
+
+    public static String getGroupValue(){
+        RadioButton selectedButton = (RadioButton) toggleGroup.getSelectedToggle();
+        return selectedButton.getText();
     }
 
 

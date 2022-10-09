@@ -1,7 +1,5 @@
 package org.chalmers.model;
 
-import javafx.scene.paint.Color;
-
 import java.util.*;
 
 public class Budget {
@@ -68,6 +66,7 @@ public class Budget {
     public void updateBalance(double change){
         currentBalance += change;
     }
+
     public void addTransaction(Transaction transaction){
         this.recentTransactions.add(transaction);
         notifyObservers();

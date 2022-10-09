@@ -1,24 +1,80 @@
 package org.chalmers.model.database;
 
+import org.chalmers.model.Transaction;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import java.io.*;
+import java.nio.channels.FileChannel;
+import java.util.List;
 
+/**
+ * Written by Oscar Cronvall
+ * Intended to make a pathway between our java abstractions and the database.
+ * TODO skriv utförligare
+ */
 public class UsersDB {
     private DatabaseConnector connector;
     private FileWriter file;
     private JSONObject oldDB;
-    private JSONArray budgetPosts;
+    private TransactionsDB transactionsDB;
+    private static int nextID = 3;
 
     public UsersDB(int uid){
         connector = new DatabaseConnector("src/main/database/users/" + uid +".json");
         file = null;
         oldDB = null;
-        budgetPosts = null;
+        transactionsDB = new TransactionsDB(uid);
+    }
+
+    public static void createUserDoc(String name, String pwd, Double balance, Double standardBalance){
+        try{
+            FileWriter incomingFile = new FileWriter("./src/main/database/users/incoming.json");
+            JSONObject jsonObject = new JSONObject();
+            try{
+                jsonObject.put("name", name);
+                jsonObject.put("password", pwd);
+                jsonObject.put("currentBalance", balance);
+                jsonObject.put("startBalance", standardBalance);
+                jsonObject.put("id", nextID);
+            } finally {
+                incomingFile.write(jsonObject.toJSONString());
+                incomingFile.flush();
+                incomingFile.close();
+            }
+            File srcFile = new File("./src/main/database/users/incoming.json");
+            File destFile = new File("./src/main/database/users/" + nextID + ".json");
+            FileChannel src = new FileInputStream(srcFile).getChannel();
+            FileChannel dest = new FileOutputStream(destFile).getChannel();
+            dest.transferFrom(src, 0, src.size());
+            createUserTransactionDoc();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+        nextID++;
+    }
+
+
+    private static void createUserTransactionDoc(){
+        try{
+            File newFile = new File("./src/main/database/transactions/" + nextID + ".json");
+            if(newFile.createNewFile())
+                System.out.println("Transaction document created");
+            else
+                System.out.println("Document of that id already exists");
+
+            JSONObject jsonObject = new JSONObject();
+            JSONArray transactions = new JSONArray();
+            jsonObject.put("transactions", transactions);
+
+            FileWriter writer = new FileWriter("./src/main/database/transactions/" + nextID + ".json");
+            writer.write(jsonObject.toJSONString());
+            writer.flush();
+            writer.close();
+
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -30,19 +86,22 @@ public class UsersDB {
     }
 
     /**
-     *
      * @return Returns the name of the user in this document
      */
     public String getUserName(){
-        //TODO get username
         String userName = getUser().get("name").toString();
         return userName;
     }
+
+    public Boolean matchesPassword(String writtenPassword){
+        String pwd = getUser().get("password").toString();
+        return writtenPassword.equals(pwd);
+    }
+
     /**
      * @return Returns the current balance of the user in this document
      */
     public Double getBalance(){
-        //TODO get balance
         Double userBalance = Double.parseDouble(getUser().get("currentBalance").toString());
         return userBalance;
     }
@@ -53,34 +112,6 @@ public class UsersDB {
     public Double getStandardBalance(){
         Double userStartBalance = Double.parseDouble(getUser().get("startBalance").toString());
         return userStartBalance;
-    }
-    /**
-     * @return Returns all budget posts in form of Map<name, budgetPostDocID>
-     */
-    public Map<String, String> getBudgetPosts(){
-        Map<String, String> result = new HashMap<>();
-
-        JSONArray posts = (JSONArray) getUser().get("budgetPosts");
-        for(int i = 0; i < posts.size(); i++){
-            JSONObject curr = (JSONObject) posts.get(i);
-            result.put(
-                    curr.get("name").toString(),
-                    curr.get("id").toString()
-            );
-        }
-        return result;
-    }
-
-    /**
-     * @param postName the name of the budgetPost wanted
-     * @return the document ID of the budget post with the name given in param
-     */
-    public String getBudgetPostID(String postName){
-        Map<String, String> budgetPosts = getBudgetPosts();
-        if(budgetPosts.containsKey(postName)){
-            return budgetPosts.get(postName);
-        }
-        return null;
     }
 
     /**
@@ -115,24 +146,14 @@ public class UsersDB {
         oldDB.put("startBalance", newStandardBalance);
     }
 
-    /**
-     * Adds a new budgetPost to the db
-     * @param name the name of the new budget post
-     * TODO add safety so that two budgetPosts can't have the same name
-     */
-    public void addBudgetPost(String name){
-        budgetPosts = (JSONArray) oldDB.get("budgetPosts");
-
-        if(!budgetPostExists(name)){
-            JSONObject newPost = new JSONObject();
-            newPost.put("name", name);
-            int counter = budgetPosts.size() + 1;
-            newPost.put("id", "000" + getUid() + counter);
-            budgetPosts.add(newPost);
-            oldDB.put("budgetPosts", budgetPosts);
-        }else{
-            System.out.println("ALERT: a budget post with that name already exists (" + name + ")");
-        }
+    public void addTransaction(String name, String description, Double amount, String date, String budgetPostName){
+        transactionsDB.addTransaction(name,description,amount,date,budgetPostName);
+    }
+    public List<Transaction> getTransactionsDate(int year, int month){
+        return transactionsDB.getTransactionsListMonth(year,month);
+    }
+    public List<Transaction> getAllTransactions(){
+        return transactionsDB.getAllTransactions();
     }
 
     /**
@@ -142,7 +163,6 @@ public class UsersDB {
         try{
             file = new FileWriter(connector.getDbPath());
             oldDB = getUser();
-            budgetPosts = (JSONArray) oldDB.get("budgetPosts");
         } catch (IOException e){
             e.printStackTrace();
         }
@@ -160,15 +180,5 @@ public class UsersDB {
         } catch (IOException e){
             e.printStackTrace();
         }
-    }
-
-
-    private boolean budgetPostExists(String postName){
-        for(Object obj: budgetPosts){
-            JSONObject object = (JSONObject) obj;
-            if(object.get("name").equals(postName))
-                return true;
-        }
-        return false;
     }
 }
