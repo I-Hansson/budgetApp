@@ -59,9 +59,6 @@ public class BudgetPostsView implements Initializable {
             this.budgetPostsViewGridPane.add(new BudgetPostsItem(), i, 0);
 
         }
-
-
-
     }
 
     @FXML
