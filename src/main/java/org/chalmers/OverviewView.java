@@ -127,6 +127,7 @@ public class OverviewView implements Initializable {
             budgetPostsGridPane.add(budgetCardController.getBudgetPostCards().get(i),i,0);
         }
 
+        latestTransactionsListView.getItems().clear();
         for (Transaction transaction : overviewController.getLatestTransactions()) {
             Label tempLabel = new Label("-" + transaction.getAmount() + "kr " + transaction.getName());
             latestTransactionsListView.getItems().add(tempLabel);
