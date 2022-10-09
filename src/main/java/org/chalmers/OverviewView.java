@@ -69,6 +69,7 @@ public class OverviewView implements Initializable {
     public void SwitchToBudgetPosts(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
 
         root = FXMLLoader.load(getClass().getResource("BudgetPostsView.fxml"));
+        System.out.println("2");
         stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

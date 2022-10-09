@@ -97,6 +97,7 @@ public class ModelFacade {
         for(BudgetPost bp : user.getCurrentBudget().getBudgetPosts()){
             if (bp.getId().getName() == budgetPostID){
                 Transaction t = new Transaction(name,amount,bp.getId(),description);
+
                 user.getCurrentBudget().addTransaction(t);
                 bp.addTransaction(t);
                 bp.updatecurrentBalance();

@@ -16,6 +16,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import org.chalmers.Controllers.BudgetPostController;
 import org.chalmers.Controllers.BudgetPostItemController;
 import org.chalmers.Controllers.OverviewController;
 import org.chalmers.model.ModelFacade;
@@ -27,7 +28,7 @@ import java.util.ResourceBundle;
 
 public class BudgetPostsView implements Initializable {
 
-   private BudgetPostController controller = new BudgetPostController();
+
 
     @FXML AnchorPane addBudgetPostGreyBackground;
     @FXML AnchorPane newBudgetPostPane;
@@ -51,6 +52,7 @@ public class BudgetPostsView implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    private BudgetPostController controller = new BudgetPostController();
     OverviewController overviewController = new OverviewController();
     ModelFacade facade = ModelFacade.getInstance();
     BudgetPostItemController itemController = new BudgetPostItemController();

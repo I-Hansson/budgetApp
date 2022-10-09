@@ -3,10 +3,10 @@ package org.chalmers.Controllers;
 
 import javafx.scene.paint.Color;
 import org.chalmers.OverviewBudgetPost;
-import org.chalmers.model.Budget;
+
 import org.chalmers.model.BudgetPost;
 import org.chalmers.model.ModelFacade;
-import org.chalmers.model.User;
+
 
 import java.util.ArrayList;
 import java.util.List;
