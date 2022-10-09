@@ -14,6 +14,13 @@ import org.chalmers.model.BudgetPost;
 import java.io.IOException;
 import java.util.List;
 
+
+/**
+ * A view class for the pie chart on the main page
+ *
+ * @author williamfrisk
+ * @author I-Hansson
+ */
 public class OverviewPieChart extends AnchorPane {
     @FXML private PieChart piechart;
 
@@ -37,6 +44,14 @@ public class OverviewPieChart extends AnchorPane {
         piechart.setLegendVisible(false);
         piechart.setLabelsVisible(false);
 
+        applyMouseOverAnimation();
+    }
+
+
+    /**
+     * Applies mouse over animation to the pieChart
+     */
+    private void applyMouseOverAnimation() {
         // Lägger till animation i piecharten
         for (final PieChart.Data data : piechart.getData()) {
             data.getNode().addEventHandler(MouseEvent.MOUSE_ENTERED_TARGET,
@@ -72,7 +87,6 @@ public class OverviewPieChart extends AnchorPane {
                         }
                     });
         }
-
     }
 
     /**
