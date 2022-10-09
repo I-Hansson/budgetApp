@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LineChartWeek implements ILineChartExtent {
+    public LineChartWeek() {}
+
     @Override
     public int getDateAsInt(Transaction transaction) {
         return transaction.getDayOfWeek();

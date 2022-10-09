@@ -11,7 +11,7 @@ import java.util.List;
 
 public class PastTransactionController {
 
-    Budget budget = new Budget();
+    Budget budget = new Budget(2022,10);
     private List<PastTransactionItem>  pastTransactionItemList = new ArrayList<PastTransactionItem>();
     public PastTransactionController(){
 

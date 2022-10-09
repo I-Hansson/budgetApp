@@ -11,7 +11,7 @@ public class AddTransactionBudgetPostsController {
     private List<BudgetPost> posts = new ArrayList<BudgetPost>( );
 
 
-    Budget budget = new Budget();
+    Budget budget = new Budget(2022,10);
     public AddTransactionBudgetPostsController(){
     }
 
