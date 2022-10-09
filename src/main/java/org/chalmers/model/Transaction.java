@@ -11,6 +11,7 @@ public class Transaction {
     private BudgetPostID budgetPostID;
     private String description;
     private String name;
+    private String dateString;
 
     public Transaction(String name, double amount, BudgetPostID budgetPostID, String description){
         this.dateOfTransaction = new GregorianCalendar();
@@ -18,6 +19,14 @@ public class Transaction {
         this.amount = amount;
         this.budgetPostID = budgetPostID;
         this.description = description;
+    }
+
+    public Transaction(String name, double amount, String description, String date){
+        this.dateOfTransaction = new GregorianCalendar();
+        this.name = name;
+        this.amount = amount;
+        this.description = description;
+        this.dateString = date;
     }
 
     //Getters
@@ -35,7 +44,6 @@ public class Transaction {
         return name;
     }
     public String getTransactionDate(){
-
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
         return sdf.format(this.dateOfTransaction.getTime());
     }
@@ -45,6 +53,9 @@ public class Transaction {
         int day = this.getDateOfTransaction().get(Calendar.DAY_OF_WEEK);
         System.out.println(day);
         return  days[day-1];
+    }
+    public String getDateString(){
+        return dateString;
     }
 
     public Calendar getDateOfTransaction() {
