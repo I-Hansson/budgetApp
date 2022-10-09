@@ -56,7 +56,7 @@ public class OverviewPieChart extends AnchorPane {
         piechart.setLegendVisible(false);
         piechart.setLabelsVisible(false);
 
-        piechart.setStartAngle(-90);
+        piechart.setStartAngle(0);
 
         applyMouseOverAnimation();
 
@@ -73,6 +73,7 @@ public class OverviewPieChart extends AnchorPane {
     }
 
     private void setupSliceCaptions() {
+        caption4.setVisible(false); //TODO ta bort när övrigt är implementerat
         Label[] captions = {caption, caption1, caption2, caption3};
         double percent = 0;
         int i = 0;
@@ -82,6 +83,7 @@ public class OverviewPieChart extends AnchorPane {
 
             caption.setTranslateX(Math.cos(Math.toRadians(percent * 360)) * 90);
             caption.setTranslateY(Math.sin(Math.toRadians(percent * 360)) * 90);
+            caption.setMouseTransparent(true);
             nameSliceCaption(piechart.getData().get(i).getPieValue() / pieChartTotal, caption);
 
             percent += (piechart.getData().get(i).getPieValue() / pieChartTotal) / 2;
