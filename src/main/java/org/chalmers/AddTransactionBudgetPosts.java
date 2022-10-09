@@ -34,5 +34,9 @@ public class AddTransactionBudgetPosts extends AnchorPane {
 
     }
 
+    public static String getGroupValue(){
+        return toggleGroup.getSelectedToggle().getUserData().toString();
+    }
+
 
 }
