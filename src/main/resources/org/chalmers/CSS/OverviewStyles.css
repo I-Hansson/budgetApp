@@ -1,0 +1,7 @@
+.latestTransactions {
+    -fx-background-color: white;
+}
+
+.list-cell:odd {
+    -fx-background-color: white;
+}

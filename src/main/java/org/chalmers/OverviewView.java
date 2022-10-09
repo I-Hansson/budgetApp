@@ -7,6 +7,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 
@@ -21,7 +23,9 @@ import javafx.scene.control.Button;
 import org.chalmers.Controllers.BudgetPostPanelController;
 import javafx.stage.Stage;
 import org.chalmers.Controllers.OverviewController;
+
 import org.chalmers.model.ModelFacade;
+
 
 
 public class OverviewView implements Initializable {
@@ -40,6 +44,11 @@ public class OverviewView implements Initializable {
 
     @FXML GridPane budgetPostsGridPane;
     @FXML Button newTransactionButton;
+
+    @FXML
+    ListView<Label> latestTransactionsListView;
+
+
     // controllers
     OverviewController overviewController = new OverviewController();
     BudgetPostPanelController  budgetCardController = new BudgetPostPanelController();
@@ -107,6 +116,12 @@ public class OverviewView implements Initializable {
         budgetCardController.createBudgetPostCards();
         for (int i = 0; i < 4; i++){
             budgetPostsGridPane.add(budgetCardController.getBudgetPostCards().get(i),i,0);
+        }
+
+        latestTransactionsListView.getItems().clear();
+        for (Transaction transaction : overviewController.getLatestTransactions()) {
+            Label tempLabel = new Label("-" + transaction.getAmount() + "kr " + transaction.getName());
+            latestTransactionsListView.getItems().add(tempLabel);
         }
     }
 }

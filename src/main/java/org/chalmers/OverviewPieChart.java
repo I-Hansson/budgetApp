@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.chart.PieChart;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
@@ -24,6 +25,15 @@ import java.util.List;
 public class OverviewPieChart extends AnchorPane {
     @FXML private PieChart piechart;
 
+    @FXML private Label caption;
+    @FXML private Label caption1;
+    @FXML private Label caption2;
+    @FXML private Label caption3;
+    @FXML private Label caption4; //TODO implementera så att denna representerar övrigt
+
+    private final double pieChartTotal;
+
+
     OverviewPieChartController controller = new OverviewPieChartController();
 
     public OverviewPieChart(){
@@ -39,12 +49,52 @@ public class OverviewPieChart extends AnchorPane {
         }
 
         piechart.getData().addAll(controller.getData());
+        this.pieChartTotal = calculateTotal();
+
         applyColors();
 
         piechart.setLegendVisible(false);
         piechart.setLabelsVisible(false);
 
+        piechart.setStartAngle(0);
+
         applyMouseOverAnimation();
+
+        setupSliceCaptions();
+    }
+
+
+    private double calculateTotal() {
+        double total = 0;
+        for (PieChart.Data data : piechart.getData()) {
+            total += data.getPieValue();
+        }
+        return total;
+    }
+
+    private void setupSliceCaptions() {
+        caption4.setVisible(false); //TODO ta bort när övrigt är implementerat
+        Label[] captions = {caption, caption1, caption2, caption3};
+        double percent = 0;
+        int i = 0;
+
+        for (Label caption : captions) {
+            percent += (piechart.getData().get(i).getPieValue() / pieChartTotal) / 2;
+
+            caption.setTranslateX(Math.cos(Math.toRadians(percent * 360)) * 90);
+            caption.setTranslateY(Math.sin(Math.toRadians(percent * 360)) * 90);
+            caption.setMouseTransparent(true);
+            nameSliceCaption(piechart.getData().get(i).getPieValue() / pieChartTotal, caption);
+
+            percent += (piechart.getData().get(i).getPieValue() / pieChartTotal) / 2;
+            i++;
+        }
+
+    }
+
+    private void nameSliceCaption(double percent, Label caption) {
+        caption.setText(String.valueOf(Math.round(percent * 100)) + "%");
+        caption.setStyle("-fx-text-fill: white; -fx-font-family: 'Roboto'");
     }
 
 
@@ -69,9 +119,7 @@ public class OverviewPieChart extends AnchorPane {
                             scaleTransition.play();
                         }
                     });
-        }
 
-        for (final PieChart.Data data : piechart.getData()) {
             data.getNode().addEventHandler(MouseEvent.MOUSE_EXITED_TARGET,
                     new EventHandler<MouseEvent>() {
                         @Override public void handle(MouseEvent e) {

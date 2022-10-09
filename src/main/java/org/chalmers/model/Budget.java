@@ -14,6 +14,9 @@ public class Budget {
     private int year;
     private int month;
     private Calendar calender;
+
+    private final Collection<ITransactionAddedObserver> observers = new ArrayList<>();
+
     public Budget(int year, int month){
         this.calender = new GregorianCalendar(year,month,1);
         this.year = calender.get(Calendar.YEAR);
@@ -63,9 +66,16 @@ public class Budget {
     public void updateBalance(double change){
         currentBalance += change;
     }
-    public void addTransaction(Transaction t){
-        this.recentTransactions.add(t);
+
+    public void addTransaction(Transaction transaction){
+        this.recentTransactions.add(transaction);
+        notifyObservers();
     }
+
+    public void addObserver(ITransactionAddedObserver observer) {
+        observers.add(observer);
+    }
+
     /**
      * Add a NEW budget-post to the users budget planner.
      * @param name the name of the new post.
@@ -79,4 +89,10 @@ public class Budget {
             System.out.println("Post " + name + " already exists");
         }
     }*/
+
+    private void notifyObservers(){
+        for (ITransactionAddedObserver o : observers) {
+            o.update(getRecentTransactions());
+        }
+    }
 }

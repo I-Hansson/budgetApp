@@ -1,8 +1,6 @@
 package org.chalmers.model;
 
-import javafx.scene.paint.Color;
 /**
- *
  * This class instantiates new BudgetPost instances and allows for
  * a simpler interface than the BudgetPost constructor.
  */

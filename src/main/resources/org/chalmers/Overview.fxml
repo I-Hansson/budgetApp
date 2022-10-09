@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -8,9 +11,11 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1280.0" stylesheets="@CSS/Font.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.chalmers.OverviewView">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1280.0" stylesheets="@CSS/Font.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.chalmers.OverviewView">
    <FlowPane fx:id="AddTransactionFlowPane" prefHeight="858.0" prefWidth="1278.0" />
       <ImageView fitHeight="849.0" fitWidth="1276.0" layoutX="2.0" layoutY="-3.0">
             <Image url="@images/background.jpg" />
@@ -50,8 +55,23 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
       </GridPane>
-      <FlowPane fx:id="PiechartFlowPane" layoutX="67.0" layoutY="84.0" prefHeight="262.0" prefWidth="322.0" />
-      <AnchorPane id="borderOverviewText" layoutX="553.0" layoutY="100.0" prefHeight="262.0" prefWidth="532.0">
+      <AnchorPane layoutX="327.0" layoutY="99.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@CSS/OverviewStyles.css">
+         <children>
+            <Rectangle arcHeight="35.0" arcWidth="35.0" fill="WHITE" height="267.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="246.0" />
+            <Rectangle arcHeight="35.0" arcWidth="35.0" fill="#789dbf" height="52.0" layoutX="23.0" layoutY="6.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
+            <Line endX="147.0" layoutX="99.0" layoutY="66.0" startX="-99.0" />
+            <Label layoutX="34.0" layoutY="17.0" style="-fx-text-fill: white;" styleClass="panelTitel" text="Latest Transactions" />
+            <ListView fx:id="latestTransactionsListView" layoutY="75.0" mouseTransparent="true" prefHeight="178.0" prefWidth="246.0">
+               <styleClass>
+                  <String fx:value="latestTransactions" />
+                  <String fx:value="normalStrongTextSmall" />
+               </styleClass>
+            </ListView>
+            <Line endX="-50.5" endY="-59.0" layoutX="50.0" layoutY="125.0" startX="-142.0" startY="-14.0" />
+         </children>
+      </AnchorPane>
+      <FlowPane fx:id="PiechartFlowPane" layoutX="33.0" layoutY="87.0" prefHeight="262.0" prefWidth="322.0" />
+      <AnchorPane id="borderOverviewText" layoutX="611.0" layoutY="99.0" prefHeight="267.0" prefWidth="522.0">
          <children>
             <Text layoutX="42.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="overviewText" text="Hej Pawel! Har du haft en bra dag? Du ligger i nuläget tvärback på alla dina budget poster för du hänger alldeles för mycket med Zett och Davoda utanför Park Lane " wrappingWidth="497.6000000000002" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
          </children>

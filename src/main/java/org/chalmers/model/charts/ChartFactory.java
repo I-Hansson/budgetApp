@@ -15,7 +15,7 @@ public class ChartFactory {
     public static ChartTypePie createPieChart() {
         return new ChartTypePie();
     }
-/*
+
     public static ChartTypeLine createWeekLineChart() {
         ILineChartExtent temp = new LineChartWeek();
         return new ChartTypeLine(temp);
@@ -29,5 +29,5 @@ public class ChartFactory {
         return new ChartTypeLine(new LineChartYear());
     }
 
- */
+
 }
