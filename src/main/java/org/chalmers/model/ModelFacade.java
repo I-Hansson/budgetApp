@@ -1,5 +1,6 @@
 package org.chalmers.model;
 
+
 import org.chalmers.model.database.BudgetPostsDB;
 import org.chalmers.model.database.UsersDB;
 
@@ -29,7 +30,7 @@ public class ModelFacade {
         return db.getStandardBalance();
     }
 
-    public List<BudgetPost> getBudgetPosts() {
+    /*public List<BudgetPost> getBudgetPosts() {
         Map<String, String> response = db.getBudgetPosts();
         List<BudgetPost> result = new ArrayList<>();
         List<BudgetPostsDB> BpDb = new ArrayList<>();
@@ -43,7 +44,8 @@ public class ModelFacade {
         }
 
         return result;
-    }
+    }*/
+
 
     //VARNING!! Fungerar inte!!
     public BudgetPost getBudgetPost(String name) { //TODO
@@ -60,7 +62,7 @@ public class ModelFacade {
         db.openSetters();
         db.addBudgetPost(name);
         db.closeSetter();
-    }
+    }*/
 
     public void setUserName(String name) {
         db.openSetters();
