@@ -11,6 +11,9 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.chalmers.Controllers.BudgetPostItemController;
+import org.chalmers.Controllers.OverviewController;
+import org.chalmers.model.ModelFacade;
 
 import java.io.IOException;
 import java.net.URL;
@@ -26,25 +29,39 @@ public class BudgetPostsView implements Initializable {
     @FXML Button newTransactionButton;
 
     @FXML GridPane budgetPostsViewGridPane;
-
+    @FXML Text currentBudgetMonth;
 
     private Stage stage;
     private Scene scene;
     private Parent root;
-
-
+    OverviewController overviewController = new OverviewController();
+    ModelFacade facade = ModelFacade.getInstance();
+    BudgetPostItemController itemController = new BudgetPostItemController();
 
 
     @Override
     public void initialize (URL url, ResourceBundle resourceBundle) {
-
+    update();
+    }
+    public void update(){
+        currentBudgetMonth.setText(facade.getUser().getCurrentBudget().getMonth());
+        this.budgetPostsViewGridPane.getChildren().clear();
+        itemController.createBudgetItems();
         for(int i = 0;i<4; i++) {
-            this.budgetPostsViewGridPane.add(new BudgetPostsItem(), i, 0);
-
+            this.budgetPostsViewGridPane.add(itemController.getItem().get(i), i, 0);
         }
+    }
 
-
-
+    @FXML
+    public void nextMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        overviewController.clickedNextMonth();
+        update();
+    }
+    @FXML
+    public void prevMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        System.out.println("next");
+        overviewController.clickedPrevMonth();
+        update();
     }
 
 

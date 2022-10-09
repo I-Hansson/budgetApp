@@ -77,8 +77,9 @@ public class BudgetPost {
 
     public Collection<Transaction> getTransactions() {
         List<Transaction> transactionsCopy = new ArrayList<>();
-        Collections.copy(transactionsCopy, transactions);
-        return transactionsCopy;
+
+       // Collections.copy(transactionsCopy, transactions);
+        return transactions;
     }
 
     /**
@@ -97,6 +98,14 @@ public class BudgetPost {
 
     public void setCurrentBalance(int x){
         this.currentBalance = x;
+    }
+    public void updatecurrentBalance(){
+        double temp = 0;
+        for (  Transaction t: this.transactions){
+            temp += t.getAmount();
+        }
+        this.currentBalance = temp;
+
     }
 
 }

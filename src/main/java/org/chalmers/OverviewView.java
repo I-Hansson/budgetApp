@@ -14,29 +14,22 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
-
 import java.util.ResourceBundle;
-
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 
 import org.chalmers.Controllers.BudgetPostPanelController;
 import javafx.stage.Stage;
 import org.chalmers.Controllers.OverviewController;
-import org.chalmers.model.User;
+import org.chalmers.model.ModelFacade;
 
 
 public class OverviewView implements Initializable {
-
     private Stage stage;
     private Scene scene;
     private Parent root;
 
-
-
     @FXML FlowPane AddTransactionFlowPane;
-
     @FXML Text overviewTitelPanel;
     @FXML Text budgetPostsTitelPanel;
     @FXML Text pastTransactionsTitelPanel;
@@ -49,11 +42,13 @@ public class OverviewView implements Initializable {
     @FXML Button newTransactionButton;
     // controllers
     OverviewController overviewController = new OverviewController();
-    BudgetPostPanelController  budgetCardController = new BudgetPostPanelController(overviewController);
-
+    BudgetPostPanelController  budgetCardController = new BudgetPostPanelController();
+    ModelFacade facade = ModelFacade.getInstance();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        facade.addTransaction("Uber",100,"Transport","JKPG to GBG");
+       facade.addTransaction("ICA",100,"Matvaror","milk, sugar");
+       facade.addTransaction("H&M",100,"Kläder","T-shirt");
         update();
 
     }
@@ -92,30 +87,24 @@ public class OverviewView implements Initializable {
 
     }
 
-
     @FXML
     public void nextMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         overviewController.clickedNextMonth();
-
         update();
     }
-
     @FXML
     public void prevMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         overviewController.clickedPrevMonth();
-
         update();
     }
     public void update(){
 
-        currentBudgetMonth.setText(overviewController.getUser().getCurrentBudget().getMonth());
+        currentBudgetMonth.setText(facade.getUser().getCurrentBudget().getMonth());
         this.PiechartFlowPane.getChildren().clear();
         this.budgetPostsGridPane.getChildren().clear();
         this.PiechartFlowPane.getChildren().add(new OverviewPieChart());
-        //System.out.println(budgetCardController.getBudgetPosts().get(0).getId().getName());
         budgetCardController.createBudgetPostCards();
         for (int i = 0; i < 4; i++){
-
             budgetPostsGridPane.add(budgetCardController.getBudgetPostCards().get(i),i,0);
         }
     }
