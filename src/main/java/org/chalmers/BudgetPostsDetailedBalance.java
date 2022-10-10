@@ -21,6 +21,8 @@ public class BudgetPostsDetailedBalance extends AnchorPane {
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("BudgetPostsDetailedBalance.fxml"));
         fxmlLoader.setRoot(this);
+        fxmlLoader.setController(this);
+
 
 
         try {
@@ -28,6 +30,9 @@ public class BudgetPostsDetailedBalance extends AnchorPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+
+        budgetPostAmount.setText("5344" + " kr");
+        budgetPostColorBakground.setStyle("-fx-background-color: rgb(0,255,0 );");
 
     }
 }

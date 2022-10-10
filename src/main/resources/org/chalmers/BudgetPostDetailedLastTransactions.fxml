@@ -3,7 +3,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<fx:root prefHeight="46.0" prefWidth="177.0" styleClass="focusWhiteWithRadius" stylesheets="@CSS/Font.css" type="AnchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="46.0" prefWidth="177.0" styleClass="focusWhiteWithRadius" stylesheets="@CSS/Font.css" type="AnchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" >
    <children>
       <AnchorPane prefHeight="46.0" prefWidth="186.0">
          <Label fx:id="budgetPostDetailedLastTransaction" layoutX="14.0" layoutY="8.0" prefHeight="40.0" prefWidth="159.0" styleClass="textFontNormal" text="PastTransaction" />

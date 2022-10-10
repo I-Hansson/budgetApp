@@ -17,6 +17,7 @@ public class BudgetPostsDetailedLastTransactions extends AnchorPane {
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("BudgetPostDetailedLastTransactions.fxml"));
         fxmlLoader.setRoot(this);
+        fxmlLoader.setController(this);
 
 
         try {
@@ -24,6 +25,8 @@ public class BudgetPostsDetailedLastTransactions extends AnchorPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+
+        budgetPostDetailedLastTransaction.setText("-342 kr Lounges");
 
     }
 
