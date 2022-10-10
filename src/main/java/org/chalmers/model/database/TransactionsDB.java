@@ -69,6 +69,7 @@ public class TransactionsDB {
 
     public List<Transaction> getAllTransactions(){
         List<Transaction> copy = new ArrayList<>();
+        System.out.println();
         copy.addAll(transactionsList);
         return copy;
     }

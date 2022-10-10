@@ -108,15 +108,16 @@ public class OverviewView implements Initializable {
         update();
     }
     public void update(){
-
+        facade.connectDB();
         currentBudgetMonth.setText(facade.getUser().getCurrentBudget().getMonth());
         this.PiechartFlowPane.getChildren().clear();
         this.budgetPostsGridPane.getChildren().clear();
         this.PiechartFlowPane.getChildren().add(new OverviewPieChart());
         budgetCardController.createBudgetPostCards();
-        for (int i = 0; i < 4; i++){
+        /*
+        for (int i = 0; i < ; i++){
             budgetPostsGridPane.add(budgetCardController.getBudgetPostCards().get(i),i,0);
-        }
+        }*/
 
         latestTransactionsListView.getItems().clear();
         for (Transaction transaction : overviewController.getLatestTransactions()) {

@@ -3,6 +3,9 @@ package org.chalmers.model;
 
 
 import javafx.collections.ObservableList;
+import org.chalmers.BudgetPostsDetailedLastTransactions;
+import org.chalmers.model.database.Database;
+import org.chalmers.model.database.TransactionsDB;
 import org.chalmers.model.database.UsersDB;
 
 import java.util.*;
@@ -112,7 +115,32 @@ public class ModelFacade {
 
 
     }
+    public void connectDB() {
+        Database.createUserDoc("Isac", "qwertyfuck", 1000.0, 10.0);
+        List<Transaction> monthTrans = new ArrayList<>();
+        HashMap<String, List<Transaction>> map = new HashMap<>();
+        TransactionsDB uDB = new TransactionsDB(1);
+        Transaction t = uDB.getAllTransactions().get(0);
+        int fmonth = Integer.parseInt(t.getDateString().substring(2, 4));
+        while (true) {
+            monthTrans.clear();
+            for (Transaction tr : uDB.getTransactionsListMonth(22, fmonth)) {
+                if (fmonth == Integer.parseInt(tr.getDateString().substring(2, 4))) {
+                    monthTrans.add(tr);
+                    System.out.println(monthTrans);
+                    System.out.println(tr.getName());
+                }
 
+                map.put(String.valueOf(fmonth),new ArrayList<>(monthTrans));
 
+            }
 
+            fmonth++;
+            if (fmonth > 12) {
+                break;
+            }
+        }
+        System.out.println(map);
+        System.out.println(map.get("9"));
+    }
 }

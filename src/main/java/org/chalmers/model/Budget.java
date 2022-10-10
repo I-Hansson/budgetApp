@@ -37,11 +37,12 @@ public class Budget {
         this.year = calender.get(Calendar.YEAR);
         this.month = calender.get(Calendar.MONTH);
 
-        this.budgetPosts.add(BudgetPostFactory.createBudgetPost("Matvaror",5000,"5, 51, 92"));
+      /*
+       this.budgetPosts.add(BudgetPostFactory.createBudgetPost("Matvaror",5000,"5, 51, 92"));
         this.budgetPosts.add(BudgetPostFactory.createBudgetPost("Transport",1000,"15, 87, 79"));
         this.budgetPosts.add(BudgetPostFactory.createBudgetPost("Resturang",800,"166, 212, 227"));
         this.budgetPosts.add(BudgetPostFactory.createBudgetPost("Kläder",800,"31, 120, 189"));
-
+       */
     }
 
     /**
