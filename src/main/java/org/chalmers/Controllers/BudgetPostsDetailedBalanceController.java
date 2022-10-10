@@ -8,4 +8,12 @@ public class BudgetPostsDetailedBalanceController {
 
 
     }
+
+    public String getRemainigBalance(){
+        return ("4500 kr");
+    }
+
+    public String getBudgetPostColor(){
+        return ("0,255,0");
+    }
 }

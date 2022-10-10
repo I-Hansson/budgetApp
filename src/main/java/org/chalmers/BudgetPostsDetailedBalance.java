@@ -7,10 +7,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
+import org.chalmers.Controllers.BudgetPostsDetailedBalanceController;
 
 import java.io.IOException;
 
 public class BudgetPostsDetailedBalance extends AnchorPane {
+
+
+    BudgetPostsDetailedBalanceController budgetPostsDetailedBalanceController = new BudgetPostsDetailedBalanceController();
 
 
     @FXML Text budgetPostAmount;
@@ -31,8 +35,8 @@ public class BudgetPostsDetailedBalance extends AnchorPane {
             throw new RuntimeException(exception);
         }
 
-        budgetPostAmount.setText("5344" + " kr");
-        budgetPostColorBakground.setStyle("-fx-background-color: rgb(0,255,0 );");
+        budgetPostAmount.setText(budgetPostsDetailedBalanceController.getRemainigBalance());
+        budgetPostColorBakground.setStyle("-fx-background-color: rgb("+ budgetPostsDetailedBalanceController.getBudgetPostColor()+" );");
 
     }
 }
