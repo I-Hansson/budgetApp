@@ -100,7 +100,7 @@ public class OverviewPieChart extends AnchorPane {
 
     private void nameSliceCaption(double percent, Label caption) {
         caption.setText(String.valueOf(Math.round(percent * 100)) + "%");
-        caption.setStyle("-fx-text-fill: white; -fx-font-family: 'Roboto'");
+        caption.setStyle("-fx-text-fill: white; -fx-font-family: 'Roboto'; -fx-font-size: 16px; -fx-font-weight: bold");
     }
 
 

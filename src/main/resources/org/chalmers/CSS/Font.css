@@ -55,15 +55,23 @@
     -fx-background-radius: 6px;
 }
 
+.panelButtonSettings:hover {
+    -fx-background-color: rgb(30,119,189);
+    -fx-text-fill: white;
+}
+
 .panelNormalText{
     -fx-font-family: 'Inter';
-    f-x-font-style: normal;
+    -fx-font-style: normal;
     -fx-font-weight: 500;
     -fx-font-size: 16px;
     -fx-line-height: 16px;
-
-    -fx-background-color: #131210;
 }
+
+.panelNormalText:hover {
+    -fx-fill: rgb(30,119,189);
+}
+
 .overviewTitel {
     -fx-font-family: 'Roboto';
     -fx-font-style: normal;

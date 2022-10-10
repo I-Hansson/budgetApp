@@ -3,8 +3,10 @@ package org.chalmers;
 import javafx.animation.ParallelTransition;
 import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.paint.Color;
@@ -59,5 +61,42 @@ public class OverviewBudgetPost extends AnchorPane{
         ParallelTransition pt = new ParallelTransition(increasingPaneBudgetPost, scaleTransition, translate);
         pt.play();
 
+
+        addOnMouseEntered();
+        addOnMouseExited();
+    }
+
+    private void addOnMouseEntered() {
+        budgetPostCard.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                ScaleTransition scaleTransition = new ScaleTransition();
+                scaleTransition.setDuration(Duration.millis(100));
+                scaleTransition.setCycleCount(1);
+                scaleTransition.setFromY(1);
+                scaleTransition.setFromX(1);
+                scaleTransition.setToY(1.1);
+                scaleTransition.setToX(1.1);
+                scaleTransition.setNode(budgetPostCard);
+                scaleTransition.play();
+            }
+        });
+    }
+
+    private void addOnMouseExited() {
+        budgetPostCard.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                ScaleTransition scaleTransition = new ScaleTransition();
+                scaleTransition.setDuration(Duration.millis(100));
+                scaleTransition.setCycleCount(1);
+                scaleTransition.setFromY(1.1);
+                scaleTransition.setFromX(1.1);
+                scaleTransition.setToY(1);
+                scaleTransition.setToX(1);
+                scaleTransition.setNode(budgetPostCard);
+                scaleTransition.play();
+            }
+        });
     }
 }
