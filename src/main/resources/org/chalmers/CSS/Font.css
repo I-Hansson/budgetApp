@@ -161,4 +161,9 @@
 
 }
 
+.buttonBlue {
+    -fx-fill:  rgb(30,119,189);
+    -fx-background-radius:  10;
+}
+
 
