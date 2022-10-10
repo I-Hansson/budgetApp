@@ -5,10 +5,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import org.chalmers.Controllers.BudgetPostsDetailedLastTransactionsController;
 
 import java.io.IOException;
 
 public class BudgetPostsDetailedLastTransactions extends AnchorPane {
+
+    BudgetPostsDetailedLastTransactionsController budgetPostsDetailedLastTransactionsController = new BudgetPostsDetailedLastTransactionsController();
+
 
 
     @FXML Label budgetPostDetailedLastTransaction;
@@ -17,6 +21,7 @@ public class BudgetPostsDetailedLastTransactions extends AnchorPane {
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("BudgetPostDetailedLastTransactions.fxml"));
         fxmlLoader.setRoot(this);
+        fxmlLoader.setController(this);
 
 
         try {
@@ -24,6 +29,8 @@ public class BudgetPostsDetailedLastTransactions extends AnchorPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+
+        budgetPostDetailedLastTransaction.setText(budgetPostsDetailedLastTransactionsController.getTransaction());
 
     }
 
