@@ -18,9 +18,11 @@ public class AddTransactionController{
 
 
    public void newTransaction(double amount, String name, String description, LocalDate date, String budgetpost){
+
        System.out.println(budgetpost);
     facade.addTransaction(name, amount,budgetpost,description);
        System.out.println(facade.getCurrentBudgetTransactions());
+
    }
 
 
