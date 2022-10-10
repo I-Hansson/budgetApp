@@ -1,7 +1,13 @@
 {
-  "id": "0",
+  "id": "1",
   "name": "oscar",
   "password": "Krokodil123",
   "currentBalance": 1000,
-  "startBalance": 10000
+  "startBalance": 10000,
+  "budgetPosts": [
+    {"name":  "mat", "cap":  100, "color": "100,50,50"},
+    {"name":  "mat", "cap":  100, "color": "100,50,50"},
+    {"name":  "mat", "cap":  100, "color": "100,50,50"},
+    {"name":  "mat", "cap":  100, "color": "100,50,50"}
+  ]
 }

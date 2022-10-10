@@ -1,11 +1,11 @@
 package org.chalmers.model.database;
 
 import org.chalmers.model.Transaction;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import java.io.*;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * Written by Oscar Cronvall
@@ -22,10 +22,9 @@ public class UsersDB {
     public UsersDB(int uid){
         connector = new DatabaseConnector("src/main/database/users/" + uid +".json");
         file = null;
-        oldDB = null;
+        oldDB = getUser();
         transactionsDB = new TransactionsDB(uid);
     }
-
 
     /**
      * Only intended to be used in the UsersDB class, reads and returns the read document in full.
@@ -43,6 +42,10 @@ public class UsersDB {
         return userName;
     }
 
+    /**
+     * @param writtenPassword given password by client input
+     * @return if password matches with the one in the database
+     */
     public Boolean matchesPassword(String writtenPassword){
         String pwd = getUser().get("password").toString();
         return writtenPassword.equals(pwd);
@@ -104,6 +107,24 @@ public class UsersDB {
     }
     public List<Transaction> getAllTransactions(){
         return transactionsDB.getAllTransactions();
+    }
+
+    /**
+     * @return A HashMap containing name<String>, cap<Double>, color<String>
+     */
+    public List<Map<String, Object>> budgetPosts(){
+        List<Map<String, Object>> result = new ArrayList<>();
+        JSONArray postsDB = (JSONArray) oldDB.get("budgetPosts");
+
+        for(Object obj: postsDB){
+            JSONObject jsonObject = (JSONObject) obj;
+            Map<String, Object> bp = new HashMap();
+            bp.put("name", jsonObject.get("name").toString());
+            bp.put("cap", Double.parseDouble(jsonObject.get("cap").toString()));
+            bp.put("color", jsonObject.get("color").toString());
+            result.add(bp);
+        }
+        return result;
     }
 
     /**
