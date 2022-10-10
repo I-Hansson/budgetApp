@@ -30,7 +30,7 @@
                 <Text layoutX="714.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="normalStrongTextSmall" text="Date" wrappingWidth="91.00254821777338" />
                 <Text layoutX="893.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="normalStrongTextSmall" text="Budget Post" wrappingWidth="109.00263977050804" />
             </AnchorPane>
-            <FlowPane fx:id="pastTransactionFlowPane" layoutX="53.0" layoutY="158.0" prefHeight="476.0" prefWidth="1047.0" />
+            <FlowPane fx:id="pastTransactionFlowPane" layoutX="53.0" layoutY="158.0" prefHeight="455.0" prefWidth="1047.0" />
         </AnchorPane>
     </AnchorPane>
 </AnchorPane>
