@@ -7,6 +7,7 @@ import org.json.simple.JSONObject;
 import java.io.*;
 import java.nio.channels.FileChannel;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Written by Oscar Cronvall
@@ -18,7 +19,7 @@ public class UsersDB {
     private FileWriter file;
     private JSONObject oldDB;
     private TransactionsDB transactionsDB;
-    private static int nextID = 3;
+    private static int nextID = Objects.requireNonNull(new File("./src/main/database/users").list()).length - 2;
 
     public UsersDB(int uid){
         connector = new DatabaseConnector("src/main/database/users/" + uid +".json");
