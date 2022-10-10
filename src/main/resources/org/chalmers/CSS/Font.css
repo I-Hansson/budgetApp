@@ -60,6 +60,13 @@
     -fx-text-fill: white;
 }
 
+.signInButton {
+    -fx-background-color: rgb(30,119,189);
+    -fx-background-radius: 6px;
+    -fx-text-fill: white;
+}
+
+
 .panelNormalText{
     -fx-font-family: 'Inter';
     -fx-font-style: normal;
