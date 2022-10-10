@@ -12,6 +12,11 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Controller class for the pie chart on the overview page
+ *
+ * @author williamfrisk
+ */
 public class OverviewPieChartController {
 
     ModelFacade facade = ModelFacade.getInstance();
