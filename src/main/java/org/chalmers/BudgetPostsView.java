@@ -6,11 +6,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -33,11 +32,12 @@ public class BudgetPostsView implements Initializable {
     @FXML AnchorPane addBudgetPostGreyBackground;
     @FXML AnchorPane newBudgetPostPane;
 
-    @FXML TextArea budgetPostName;
-    @FXML TextArea budgetMax;
-    @FXML ChoiceBox budgetPostColor;
+    @FXML TextField budgetPostName;
+    @FXML TextField budgetMax;
+    @FXML ColorPicker budgetPostColor;
     @FXML TextArea budgetPostDescription;
 
+    @FXML Label errorLabel;
 
     @FXML Text overviewTitelPanel;
     @FXML Text budgetPostsTitelPanel;
@@ -49,13 +49,15 @@ public class BudgetPostsView implements Initializable {
 
 
 
+
     private Stage stage;
     private Scene scene;
     private Parent root;
-    private BudgetPostController controller = new BudgetPostController();
-    OverviewController overviewController = new OverviewController();
-    ModelFacade facade = ModelFacade.getInstance();
-    BudgetPostItemController itemController = new BudgetPostItemController();
+
+    private BudgetPostController budgetcontroller = new BudgetPostController();
+    private OverviewController overviewController = new OverviewController();
+    private ModelFacade facade = ModelFacade.getInstance();
+    private BudgetPostItemController itemController = new BudgetPostItemController();
 
 
     @Override
@@ -89,19 +91,26 @@ public class BudgetPostsView implements Initializable {
     public void goToAddBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         addBudgetPostGreyBackground.toFront();
         newBudgetPostPane.toFront();
+        clearInputInfo();
     }
 
     @FXML
     public void addBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-        controller.createBudgetPost(budgetPostName.getText(),budgetMax.getText(), String.valueOf(budgetPostColor.getValue()), budgetPostDescription.getText());
-        addBudgetPostGreyBackground.toBack();
-        newBudgetPostPane.toBack();
+
+        if (checkInformation()){
+            budgetcontroller.createBudgetPost(budgetPostName.getText(),budgetMax.getText(), String.valueOf(budgetPostColor.getValue()), budgetPostDescription.getText());
+            rightInputFeedback();
+        }else{
+            wrongInformation();
+        }
+
     }
 
     @FXML
     public void closeWindow(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
         addBudgetPostGreyBackground.toBack();
         newBudgetPostPane.toBack();
+        clearInputInfo();
     }
 
 
@@ -114,6 +123,7 @@ public class BudgetPostsView implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        clearInputInfo();
 
     }
 
@@ -127,6 +137,7 @@ public class BudgetPostsView implements Initializable {
         stage.show();
 
 
+
     }
     @FXML
     public void SwitchToAddTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
@@ -135,6 +146,7 @@ public class BudgetPostsView implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        clearInputInfo();
 
     }
 
@@ -147,7 +159,52 @@ public class BudgetPostsView implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        clearInputInfo();
 
+
+    }
+
+
+    private boolean checkInformation() {
+
+
+        if (budgetPostDescription.getText().isEmpty()){
+            return false;
+        }
+        if (budgetPostName.getText().isEmpty()){
+            return false;
+        }
+        if (budgetMax.getText().isEmpty()){
+            return false;
+        }
+
+        for (int i = 0; i < budgetMax.getText().length(); i++) {
+            if (Character.isLetter(budgetMax.getText().charAt(i))) {
+                return false;
+            }}
+
+        for (int i = 0; i < budgetPostName.getText().length(); i++) {
+            if (Character.isDigit(budgetPostName.getText().charAt(i))) {
+                return false ;
+            }
+        }
+        return true;
+    }
+
+    private void wrongInformation(){
+        errorLabel.setTextFill(Paint.valueOf("FF0000"));
+        errorLabel.setText("The information is incorretctly filled out!");
+    }
+    private  void rightInputFeedback(){
+        errorLabel.setText("The budget post have been added!");
+        errorLabel.setTextFill(Paint.valueOf( "1E77BD" ));
+    }
+
+    private void clearInputInfo(){
+        errorLabel.setText("");
+        budgetPostName.setText("");
+        budgetMax.setText("");
+        budgetPostDescription.setText("");
 
     }
 
