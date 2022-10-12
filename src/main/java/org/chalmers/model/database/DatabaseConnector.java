@@ -15,6 +15,9 @@ public class DatabaseConnector {
     JSONParser parser = new JSONParser();
 
     /**
+     * Written by: Oscar Cronvall
+     * Used in: Database, UsersDB & TransactionsDB
+     * Uses: simple.JSONObject, simple.JSONArray
      * Use when communicating with the JSON files (the database).
      * @param JSONUri the URI for the specified JSON file.
      */

@@ -13,7 +13,8 @@ import java.util.Locale;
 
 /**
  * Written by Oscar Cronvall
- *
+ * Used in: TODO where?
+ * Uses: DatabaseConnector, Transaction, simple.JSONObject, simple.JSONArray
  */
 public class TransactionsDB {
     private DatabaseConnector connector;

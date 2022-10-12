@@ -9,6 +9,8 @@ import java.util.Objects;
 
 /**
  * Written by Oscar Cronvall
+ * Used by: TODO where?
+ * Uses: none of our own classes buy uses the simple.JSONObject & simple.JSONArray
  */
 public class Database {
 
@@ -65,5 +67,13 @@ public class Database {
 
     public static Integer lastUserCreatedID(){
         return Math.max(nextID-1,1);
+    }
+
+    public int hashString(String str){
+        int hash = 67;
+        for(int i = 0; i < str.length(); i++){
+            hash = hash*31+str.charAt(i);
+        }
+        return hash;
     }
 }

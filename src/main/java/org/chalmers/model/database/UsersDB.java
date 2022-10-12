@@ -10,7 +10,8 @@ import java.util.*;
 /**
  * Written by Oscar Cronvall
  * Intended to make a pathway between our java abstractions and the database.
- * TODO skriv utförligare
+ * Used by: TODO where?
+ * Uses: Transaction, TransactionDB & DatabaseConnector, simple.JSONObject, simple.JSONArray
  */
 public class UsersDB {
     private DatabaseConnector connector;
