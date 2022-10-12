@@ -135,9 +135,7 @@ public class BudgetPostsView implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-
-
-
+        clearInputInfo();
     }
     @FXML
     public void SwitchToAddTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
@@ -147,7 +145,6 @@ public class BudgetPostsView implements Initializable {
         stage.setScene(scene);
         stage.show();
         clearInputInfo();
-
     }
 
 
