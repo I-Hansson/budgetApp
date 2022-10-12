@@ -8,6 +8,9 @@ import org.chalmers.model.database.Database;
 import org.chalmers.model.database.TransactionsDB;
 import org.chalmers.model.database.UsersDB;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.*;
 
 public class ModelFacade {
@@ -117,31 +120,77 @@ public class ModelFacade {
 
     }
     public void connectDB() {
-        Database.createUserDoc("Isac", "qwertyfuck", 1000.0, 10.0);
+        HashMap<String, List<Transaction>> map = loadIntTransactions();
+        TransactionsDB uDB = new TransactionsDB(1);
+        Transaction f = uDB.getAllTransactions().get(0);
+        int fmonth = Integer.parseInt(f.getDateString().substring(2, 4));
+        int fyear = Integer.parseInt((f.getDateString().substring(0, 2)));
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = new Date();
+        int lYear = Integer.parseInt(dateFormat.format(date).substring(2,4));
+        int lMonth = Integer.parseInt(dateFormat.format(date).substring(5,7));
+
+        while (true) {
+            Budget b = new Budget(fyear, fmonth);
+            if (lYear == fyear && fmonth > lMonth ) {
+                break;
+            }
+            if (map.containsKey(String.valueOf(fyear) + String.valueOf(fmonth))){
+                    b.getRecentTransactions().addAll(map.get(String.valueOf(fyear) + String.valueOf(fmonth)));
+            }
+            user.getBudgets().add(b);
+            fmonth++;
+            if (fmonth > 12) {
+                fmonth = 1;
+                fyear++;
+            }
+
+
+        }
+
+        user.setCurrentBudget(user.getBudgets().get((user.getBudgets().size()-1)));
+        for (Budget b : user.getBudgets()){
+            System.out.println("Månad: "+ b.getMonth());
+            System.out.println("år: " + b.getYear());
+            System.out.println("___________________");
+
+        }
+
+
+        }
+
+
+    public HashMap<String, List<Transaction>> loadIntTransactions() {
         List<Transaction> monthTrans = new ArrayList<>();
         HashMap<String, List<Transaction>> map = new HashMap<>();
         TransactionsDB uDB = new TransactionsDB(1);
-        Transaction t = uDB.getAllTransactions().get(0);
-        int fmonth = Integer.parseInt(t.getDateString().substring(2, 4));
+        Transaction f = uDB.getAllTransactions().get(0);
+        Transaction l = uDB.getAllTransactions().get(Math.max(uDB.getAllTransactions().size() - 1, 0));
+        int fmonth = Integer.parseInt(f.getDateString().substring(2, 4));
+        int fyear = Integer.parseInt((f.getDateString().substring(0, 2)));
+        int lYear = Integer.parseInt((l.getDateString().substring(0, 2)));
+
         while (true) {
             monthTrans.clear();
-            for (Transaction tr : uDB.getTransactionsListMonth(22, fmonth)) {
+            for (Transaction tr : uDB.getTransactionsListMonth(fyear, fmonth)) {
                 if (fmonth == Integer.parseInt(tr.getDateString().substring(2, 4))) {
                     monthTrans.add(tr);
-                    System.out.println(monthTrans);
-                    System.out.println(tr.getName());
                 }
 
-                map.put(String.valueOf(fmonth),new ArrayList<>(monthTrans));
+                map.put(String.valueOf(fyear) + String.valueOf(fmonth), new ArrayList<>(monthTrans));
+
 
             }
-
             fmonth++;
             if (fmonth > 12) {
+                fmonth = 1;
+                fyear++;
+            }
+            if (lYear < fyear) {
                 break;
             }
         }
-        System.out.println(map);
-        System.out.println(map.get("9"));
+        return map;
     }
 }
+

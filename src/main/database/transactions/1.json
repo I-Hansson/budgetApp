@@ -1,6 +1,13 @@
 {
   "transactions": [
     {
+      "name": "maxi",
+      "date": "2105061247",
+      "budgetPostName": "matvaror",
+      "amount": 125.59,
+      "description": "Snus & Nocco"
+    },
+    {
       "name": "ica",
       "date": "2209061247",
       "budgetPostName": "matvaror",

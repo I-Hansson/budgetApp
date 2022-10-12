@@ -25,6 +25,10 @@ public class Budget {
 
     private final Collection<ITransactionAddedObserver> observers = new ArrayList<>();
 
+    public void setRecentTransactions(List<Transaction> recentTransactions) {
+        this.recentTransactions = recentTransactions;
+    }
+
     /**
      * Contructor of  the budget,
      * Instantiate four default budgetPosts through a BudgetPostFactory
@@ -37,18 +41,23 @@ public class Budget {
         this.year = calender.get(Calendar.YEAR);
         this.month = calender.get(Calendar.MONTH);
 
-      /*
+
        this.budgetPosts.add(BudgetPostFactory.createBudgetPost("Matvaror",5000,"5, 51, 92"));
         this.budgetPosts.add(BudgetPostFactory.createBudgetPost("Transport",1000,"15, 87, 79"));
         this.budgetPosts.add(BudgetPostFactory.createBudgetPost("Resturang",800,"166, 212, 227"));
         this.budgetPosts.add(BudgetPostFactory.createBudgetPost("Kläder",800,"31, 120, 189"));
-       */
+
+    }
+
+    public int getYear() {
+        return year;
     }
 
     /**
      * Called to get a String representation of the month this buget is active in.
      * @return The string that is a month based on the number (0-11) that represents that month. 
      */
+
     public String getMonth(){
             String[] month =
                     {"Decemeber","January", "February", "Mars", "April", "May", "june", "July", "august", "September", "October", "November"};

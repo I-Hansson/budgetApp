@@ -17,22 +17,24 @@ public class User {
 
     //List of investments
 
+    public List<Budget> getBudgets() {
+        return budgets;
+    }
+
     public User(){
         if(!instantiatd) Instantiate();
 
-        this.budgets.add(new Budget(2022,10));
-        this.budgets.add(new Budget(2022,11));
-        this.budgets.add(new Budget(2022,12));
-        this.budgets.add(new Budget(2023,1));
-        this.budgets.add(new Budget(2023,2));
-        this.budgets.add(new Budget(2023,3));
 
-        this.currentBudget = budgets.get(0);
 
+        this.currentBudget = new Budget(2011,2);
 
     }
     //Getters
 
+
+    public void setCurrentBudget(Budget currentBudget) {
+        this.currentBudget = currentBudget;
+    }
 
     public Budget getCurrentBudget() {
         return currentBudget;
