@@ -5,7 +5,7 @@
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="89.0" prefWidth="154.0" stylesheets="@CSS/Font.css" type="AnchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="89.0" prefWidth="154.0" styleClass="focusGreyWithRadius" stylesheets="@CSS/Font.css">
+      <AnchorPane fx:id="budgetPostColorBakground" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="89.0" prefWidth="154.0" styleClass="focusGreyWithRadius" stylesheets="@CSS/Font.css">
          <children>
             <Text fx:id="budgetPostAmount" layoutX="18.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textNormalWhite" text="345" textAlignment="CENTER" wrappingWidth="108.5367431640625" />
          </children>

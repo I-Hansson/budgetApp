@@ -1,1 +1,7 @@
-{"password":"test123","currentBalance":100.0,"name":"Kalle","id":3,"startBalance":120.0}
+{"password":"test123","currentBalance":100.0,"name":"Kalle","id":3,"startBalance":120.0,
+  "budgetPosts": [
+    {"name":  "mat", "cap":  1500, "color": "100,50,50"},
+    {"name":  "tobak", "cap":  1000, "color": "100,50,150"},
+    {"name":  "alkohol", "cap":  2500, "color": "100,150,50"},
+    {"name":  "bostad", "cap":  5000, "color": "100,0,50"}
+  ]}
