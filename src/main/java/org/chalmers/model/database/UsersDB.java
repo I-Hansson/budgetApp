@@ -119,6 +119,7 @@ public class UsersDB {
         for(Object obj: postsDB){
             JSONObject jsonObject = (JSONObject) obj;
             Map<String, Object> bp = new HashMap();
+            bp.put("dateOfCreation", jsonObject.get("dateOfCreation").toString());
             bp.put("name", jsonObject.get("name").toString());
             bp.put("cap", Double.parseDouble(jsonObject.get("cap").toString()));
             bp.put("color", jsonObject.get("color").toString());

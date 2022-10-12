@@ -18,7 +18,7 @@ public class BudgetPost {
     private List<IBudgetPostsObserver> observers = new ArrayList<IBudgetPostsObserver>();
     private List<Transaction> transactions = new ArrayList<>();
 
-    BudgetPost(double budgetCap, String name, String color,String id){
+    BudgetPost(double budgetCap, String name, String color){
         this.id = new BudgetPostID(name, color, "0000001");
         //TODO TEMP
         this.budgetCap = budgetCap;

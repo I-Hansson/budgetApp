@@ -120,74 +120,106 @@ public class ModelFacade {
 
     }
     public void connectDB() {
-        HashMap<String, List<Transaction>> map = loadIntTransactions();
-        TransactionsDB uDB = new TransactionsDB(1);
-        Transaction f = uDB.getAllTransactions().get(0);
-        int fmonth = Integer.parseInt(f.getDateString().substring(2, 4));
-        int fyear = Integer.parseInt((f.getDateString().substring(0, 2)));
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        Date date = new Date();
-        int lYear = Integer.parseInt(dateFormat.format(date).substring(2,4));
-        int lMonth = Integer.parseInt(dateFormat.format(date).substring(5,7));
+        fillBudget();
+        UsersDB userDB = new UsersDB(1);
 
-        while (true) {
-            Budget b = new Budget(fyear, fmonth);
-            if (lYear == fyear && fmonth > lMonth ) {
-                break;
-            }
-            if (map.containsKey(String.valueOf(fyear) + String.valueOf(fmonth))){
-                    b.getRecentTransactions().addAll(map.get(String.valueOf(fyear) + String.valueOf(fmonth)));
-            }
-            user.getBudgets().add(b);
-            fmonth++;
-            if (fmonth > 12) {
-                fmonth = 1;
-                fyear++;
-            }
+         for(Budget budget:   user.getBudgets()){
+             int budgetDate = Integer.parseInt(budget.getYear() +budget.getMonthNumber());
+             for(Map<String,Object> bp : userDB.budgetPosts()){
+                 int bpDate = Integer.parseInt((String) bp.get("dateOfCreation"));
+                 if (bpDate<= budgetDate){
+                     BudgetPost budgetPost = new BudgetPost(
+                             Double.parseDouble(bp.get("cap").toString()),
+                       bp.get("name").toString(),
+                       bp.get("color").toString());
+                     budget.getBudgetPosts().add(budgetPost);
+                 }
+             }
+             }
+        /**
+         *
+         */
+        for (Budget budget: user.getBudgets()){
+             for(Transaction t : budget.getRecentTransactions()){
+                 for(BudgetPost bp: budget.getBudgetPosts()){
+                     if(t.getBudgetPostName().equals(bp.getId().getName())){
+                         t.setBpID(bp.getId());
+                     }
+                 }
+             }
+         }
+        System.out.println(user.getCurrentBudget().getBudgetPosts().get(0).getId().getName());
 
-
-        }
-
-        user.setCurrentBudget(user.getBudgets().get((user.getBudgets().size()-1)));
-        for (Budget b : user.getBudgets()){
-            System.out.println("Månad: "+ b.getMonth());
+        for (Budget b : user.getBudgets()) {
+            System.out.println("Månad: " + b.getMonth());
             System.out.println("år: " + b.getYear());
+            System.out.println("Budgetposts" + b.getBudgetPosts());
             System.out.println("___________________");
-
         }
 
+
+        }
+        private void fillBudget(){
+            HashMap<String, List<Transaction>> map = loadIntTransactions();
+            TransactionsDB transactionDB = new TransactionsDB(1);
+            Transaction f = transactionDB.getAllTransactions().get(0);
+            String fmonth = f.getDateString().substring(2, 4);
+            String fyear =(f.getDateString().substring(0, 2));
+
+            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+            Date date = new Date();
+            String lYear =dateFormat.format(date).substring(2,4);
+            String lMonth = dateFormat.format(date).substring(5,7);
+
+            do {
+                Budget budget;
+                if(fmonth.equals("12")){ // för att oracle är dumma
+                    budget = new Budget(Integer.parseInt(fyear),0);
+                }else{
+                    budget = new Budget(Integer.parseInt(fyear),Integer.parseInt(fmonth));
+                }
+
+                if ( map.containsKey(fyear + fmonth)){
+                    budget.getRecentTransactions().addAll(map.get(fyear + fmonth));
+                }
+                user.getBudgets().add(budget);
+                String nextMonth = nextMonth(fyear + fmonth);
+                fyear = nextMonth.substring(0,2);
+                fmonth = nextMonth.substring(2,4);
+            } while (Integer.parseInt(fyear + fmonth)< Integer.parseInt(lYear + lMonth)+1);
+
+            user.setCurrentBudget(user.getBudgets().get((user.getBudgets().size()-1)));
+
+
+        }
+        private String nextMonth(String date){
+            int year = Integer.parseInt(date.substring(0,2));
+            int month=  Integer.parseInt(date.substring(2,4));
+            month++;
+            if (month > 12) {
+                month = 1;
+                year++;
+            }
+            if(month < 10){
+                return String.valueOf(year) + "0"+String.valueOf(month);
+            }
+            return String.valueOf(year) + String.valueOf(month);
 
         }
 
 
     public HashMap<String, List<Transaction>> loadIntTransactions() {
-        List<Transaction> monthTrans = new ArrayList<>();
+
         HashMap<String, List<Transaction>> map = new HashMap<>();
         TransactionsDB uDB = new TransactionsDB(1);
-        Transaction f = uDB.getAllTransactions().get(0);
-        Transaction l = uDB.getAllTransactions().get(Math.max(uDB.getAllTransactions().size() - 1, 0));
-        int fmonth = Integer.parseInt(f.getDateString().substring(2, 4));
-        int fyear = Integer.parseInt((f.getDateString().substring(0, 2)));
-        int lYear = Integer.parseInt((l.getDateString().substring(0, 2)));
-
-        while (true) {
-            monthTrans.clear();
-            for (Transaction tr : uDB.getTransactionsListMonth(fyear, fmonth)) {
-                if (fmonth == Integer.parseInt(tr.getDateString().substring(2, 4))) {
-                    monthTrans.add(tr);
-                }
-
-                map.put(String.valueOf(fyear) + String.valueOf(fmonth), new ArrayList<>(monthTrans));
-
-
-            }
-            fmonth++;
-            if (fmonth > 12) {
-                fmonth = 1;
-                fyear++;
-            }
-            if (lYear < fyear) {
-                break;
+        for(Transaction transaction: uDB.getAllTransactions()){
+            String transactionKey = transaction.getDateString().substring(0,4);
+            if(map.containsKey(transactionKey)){
+                map.get(transactionKey).add(transaction);
+            }else{
+                List<Transaction> temp = new ArrayList<>();
+                temp.add(transaction);
+                map.put(transactionKey,temp);
             }
         }
         return map;

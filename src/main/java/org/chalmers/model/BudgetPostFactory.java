@@ -7,17 +7,17 @@ package org.chalmers.model;
 public class BudgetPostFactory {
 
     public static BudgetPost createBudgetPost(String name) {
-        BudgetPost bp = new BudgetPost(0,name,  "5, 51, 92" ,"0");
+        BudgetPost bp = new BudgetPost(0,name,  "5, 51, 92" );
         return bp;
     }
 
     public static BudgetPost createBudgetPost(String name, double budgetCap) {
-        BudgetPost bp = new BudgetPost(budgetCap,name,  "5, 51, 92","0");
+        BudgetPost bp = new BudgetPost(budgetCap,name,  "5, 51, 92");
         return bp;
     }
 
     public static BudgetPost createBudgetPost(String name, double budgetCap, String color) {
-        BudgetPost bp = new BudgetPost(budgetCap, name,  color,"0");
+        BudgetPost bp = new BudgetPost(budgetCap, name,  color);
         return bp;
     }
 }

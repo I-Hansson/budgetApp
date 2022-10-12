@@ -105,7 +105,7 @@ public class OverviewView implements Initializable {
         update();
     }
     public void update(){
-        facade.connectDB();
+
         currentBudgetMonth.setText(facade.getUser().getCurrentBudget().getMonth() + " " + facade.getUser().getCurrentBudget().getYear());
         this.PiechartFlowPane.getChildren().clear();
         this.budgetPostsGridPane.getChildren().clear();
