@@ -113,19 +113,58 @@ public class UsersDB {
     /**
      * @return A HashMap containing name<String>, cap<Double>, color<String>
      */
-    public List<Map<String, Object>> budgetPosts(){
+    public List<Map<String, Object>> getBudgetPosts(){
         List<Map<String, Object>> result = new ArrayList<>();
         JSONArray postsDB = (JSONArray) oldDB.get("budgetPosts");
 
         for(Object obj: postsDB){
             JSONObject jsonObject = (JSONObject) obj;
             Map<String, Object> bp = new HashMap();
+            bp.put("date",jsonObject.get("date").toString());
             bp.put("name", jsonObject.get("name").toString());
             bp.put("cap", Double.parseDouble(jsonObject.get("cap").toString()));
             bp.put("color", jsonObject.get("color").toString());
             result.add(bp);
         }
         return result;
+    }
+
+    /**
+     * Add a budget post to this user
+     * @param name The name of the budget post
+     * @param cap The transaction cap of this budget post
+     * @param color The color for the budget post
+     * @param date The date in the format year+month E.g. "2210" == October 2022
+     */
+    public void addBudgetPost(String name, Double cap, String color, String date){
+        JSONArray postsDB = (JSONArray) oldDB.get("budgetPosts");
+        JSONObject newBudgetPost = new JSONObject();
+        openSetters();
+        newBudgetPost.put("date", date);
+        newBudgetPost.put("name",name);
+        newBudgetPost.put("cap",cap);
+        newBudgetPost.put("color", color);
+        postsDB.add(newBudgetPost);
+        closeSetter();
+    }
+
+    /**
+     * Removes a certain budgetPost from the JSONArray of budgetPosts
+     * @param name the name of the budget post to be removed
+     * @param date the date of the budget post to remove
+     */
+    public void removeBudgetPost(String name, String date){
+        openSetters();
+        JSONArray postsDB = (JSONArray) oldDB.get("budgetPosts");
+        for(Object postObj: postsDB){
+            JSONObject post = (JSONObject) postObj;
+            boolean namesMatch = post.get("name").toString().equals(name);
+            boolean dateMatch = post.get("date").toString().equals(date);
+            if(namesMatch && dateMatch){
+                postsDB.remove(postObj);
+                closeSetter();
+            }
+        }
     }
 
     /**
