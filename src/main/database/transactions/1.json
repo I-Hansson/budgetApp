@@ -3,30 +3,30 @@
     {
       "name": "maxi",
       "date": "2105061247",
-      "budgetPostName": "matvaror",
+      "budgetPostName": "Matvaror",
       "amount": 125.59,
       "description": "Snus & Nocco"
     },
     {
       "name": "ica",
       "date": "2209061247",
-      "budgetPostName": "matvaror",
+      "budgetPostName": "Matvaror",
       "amount": 125.59,
       "description": "Snus & Nocco"
     },
     {
       "name": "coop",
       "date": "2210021453",
-      "budgetPostName": "matvaror",
+      "budgetPostName": "Matvaror",
       "amount": 49.0,
       "description": "Virke"
     },
     {
-      "name": "Excet",
+      "name": "Uber",
       "date": "2210012354",
-      "budgetPostName": "alkohol",
-      "amount": 120.0,
-      "description": "Grogg"
+      "budgetPostName": "Transport",
+      "amount": 199.0,
+      "description": "resa hem"
     }
   ]
 }

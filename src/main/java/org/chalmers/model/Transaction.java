@@ -31,6 +31,7 @@ public class Transaction {
         this.BudgetPostName = budgetPostName;
     }
     public void setBpID(BudgetPostID budgetPostID){
+        System.out.println(this.getDateOfTransaction());
         this.budgetPostID = budgetPostID;
     }
     //Getters

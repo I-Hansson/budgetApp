@@ -112,7 +112,7 @@ public class OverviewView implements Initializable {
         this.PiechartFlowPane.getChildren().add(new OverviewPieChart());
         budgetCardController.createBudgetPostCards();
 
-        for (int i = 0; i < 4; i++){
+        for (int i = 0; i <budgetCardController.getBudgetPostCards().size(); i++){
             budgetPostsGridPane.add(budgetCardController.getBudgetPostCards().get(i),i,0);
         }
 

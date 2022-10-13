@@ -112,7 +112,7 @@ public class ModelFacade {
 
                 user.getCurrentBudget().addTransaction(t);
                 bp.addTransaction(t);
-                bp.updatecurrentBalance();
+
 
             }
         }
@@ -139,15 +139,20 @@ public class ModelFacade {
         /**
          *
          */
+
         for (Budget budget: user.getBudgets()){
              for(Transaction t : budget.getRecentTransactions()){
                  for(BudgetPost bp: budget.getBudgetPosts()){
+                     System.out.println(t.getBudgetPostName());
                      if(t.getBudgetPostName().equals(bp.getId().getName())){
                          t.setBpID(bp.getId());
+                         bp.addTransaction(t);
                      }
                  }
              }
          }
+
+
         System.out.println(user.getCurrentBudget().getBudgetPosts().get(0).getId().getName());
 
         for (Budget b : user.getBudgets()) {
