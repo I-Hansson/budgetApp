@@ -5,9 +5,9 @@
   "currentBalance": 1000,
   "startBalance": 10000,
   "budgetPosts": [
-    {"name":  "mat", "cap":  100, "color": "100,50,50"},
-    {"name":  "mat", "cap":  100, "color": "100,50,50"},
-    {"name":  "mat", "cap":  100, "color": "100,50,50"},
-    {"name":  "mat", "cap":  100, "color": "100,50,50"}
+    {"dateOfCreation": "2105","name":  "Matvaror", "cap":  5000, "color": "5,51,92"},
+    {"dateOfCreation": "2210","name":  "Transport", "cap":  1000, "color": "15,87,79"},
+    {"dateOfCreation": "2207","name":  "Snus", "cap": 800, "color": "166,212,227"},
+    {"dateOfCreation": "2112","name":  "Kläder", "cap":  800, "color": "31,120,189"}
   ]
 }
