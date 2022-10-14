@@ -62,8 +62,9 @@ public class BudgetPostsView implements Initializable {
 
     @Override
     public void initialize (URL url, ResourceBundle resourceBundle) {
-    update();
+        update();
     }
+
     public void update(){
         currentBudgetMonth.setText(facade.getUser().getCurrentBudget().getMonth());
         this.budgetPostsViewGridPane.getChildren().clear();
@@ -204,6 +205,8 @@ public class BudgetPostsView implements Initializable {
         budgetPostDescription.setText("");
 
     }
+
+
 
 
 

@@ -1,19 +1,22 @@
 package org.chalmers.Controllers;
 
 
+import org.chalmers.model.BudgetPost;
 
 public class BudgetPostsDetailedBalanceController {
 
-    public BudgetPostsDetailedBalanceController(){
+    BudgetPostdetailedViewController budgetPostdetailedViewController = new BudgetPostdetailedViewController();
+
+    public BudgetPostsDetailedBalanceController(){}
 
 
-    }
+    private BudgetPost budgetPost = budgetPostdetailedViewController.getCurrentBudgetPost();
 
-    public String getRemainigBalance(){
-        return ("4500 kr");
+    public String getRemainingBalance(){
+        return String.valueOf((budgetPost.getCurrentBalance()));
     }
 
     public String getBudgetPostColor(){
-        return ("0,255,0");
+        return (budgetPost.getId().getColor());
     }
 }

@@ -9,12 +9,16 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
+import org.chalmers.Controllers.BudgetPostdetailedViewController;
+import org.chalmers.model.Transaction;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class BudgetPostdetailedView implements Initializable {
+
+    BudgetPostdetailedViewController budgetPostdetailedViewController = new BudgetPostdetailedViewController();
 
     private Stage stage;
     private Scene scene;
@@ -35,9 +39,13 @@ public class BudgetPostdetailedView implements Initializable {
         this.paneColorAmount.getChildren().clear();
         this.paneColorAmount.getChildren().add(new BudgetPostsDetailedBalance());
         this.paneLastTransacions.getChildren().clear();
-        this.paneLastTransacions.getChildren().add(new BudgetPostsDetailedLastTransactions());
 
-    }
+                // TODO Beror på modellen :/, vet ej hur jag ska komma runt det (Av typen "Transaction")
+
+            for(Transaction Tr : budgetPostdetailedViewController.getCurrentBudgetPost().getTransactions()){
+                this.paneLastTransacions.getChildren().add(new BudgetPostsDetailedLastTransactions(Tr.getName(),Tr.getTransactionDate(),Tr.getDateOfTransaction(),Tr.getAmount()));
+                }
+            }
 
 
 

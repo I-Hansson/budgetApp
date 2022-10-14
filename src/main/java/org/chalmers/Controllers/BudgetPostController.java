@@ -1,6 +1,7 @@
 package org.chalmers.Controllers;
 
 import org.chalmers.model.ModelFacade;
+import org.chalmers.model.SelectedBudgetPost;
 
 public class BudgetPostController {
 
@@ -10,6 +11,7 @@ public class BudgetPostController {
     public BudgetPostController(){
 
     }
+
 
     public void createBudgetPost(String name, String maxAmount, String color, String description){
     }

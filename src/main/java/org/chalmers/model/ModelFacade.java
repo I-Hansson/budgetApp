@@ -4,6 +4,7 @@ package org.chalmers.model;
 
 import javafx.collections.ObservableList;
 import org.chalmers.BudgetPostsDetailedLastTransactions;
+import org.chalmers.BudgetPostsView;
 import org.chalmers.model.database.Database;
 import org.chalmers.model.database.TransactionsDB;
 import org.chalmers.model.database.UsersDB;
@@ -15,6 +16,9 @@ import java.util.*;
 
 public class ModelFacade {
 
+    // TODO Får jag göra så här ?
+    private SelectedBudgetPost selectedBudgetPost = new SelectedBudgetPost(null);
+
     private UsersDB db = new UsersDB(1);
     private static ModelFacade instance = new ModelFacade();
 
@@ -24,6 +28,9 @@ public class ModelFacade {
     public static ModelFacade getInstance() {
         return instance;
     }
+
+    // TODO Får jag göra så här ?
+    public SelectedBudgetPost getSelectedBudget(){return selectedBudgetPost;}
 
     public String getCurrentUserName() {
         return db.getUserName();
@@ -36,6 +43,7 @@ public class ModelFacade {
     public Double getStandardBalance() {
         return db.getStandardBalance();
     }
+
 
 
 
