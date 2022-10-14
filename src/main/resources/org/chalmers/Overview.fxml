@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1280.0" stylesheets="@CSS/Font.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.chalmers.OverviewView">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1280.0" stylesheets="@CSS/Font.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.chalmers.OverviewView">
    <FlowPane fx:id="AddTransactionFlowPane" prefHeight="858.0" prefWidth="1278.0" />
       <ImageView fitHeight="849.0" fitWidth="1276.0" layoutX="2.0" layoutY="-3.0">
             <Image url="@images/background.jpg" />
@@ -36,7 +36,7 @@
             <Text layoutX="54.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="overviewTitel" text="Overall Spent" wrappingWidth="234.9367218017578" />
             <Text layoutX="54.0" layoutY="398.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="overviewTitel" text="Budget Posts" wrappingWidth="234.9367218017578" />
             <AnchorPane id="borderOverviewMonths" layoutX="346.0" layoutY="14.0" prefHeight="52.0" prefWidth="497.0">
-                  <Text fx:id="currentBudgetMonth" layoutX="170.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textNormalWhite" text="September" textAlignment="CENTER" wrappingWidth="169.336669921875" />
+                  <Text fx:id="currentBudgetMonth" layoutX="111.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textNormalWhite" text="September 22" textAlignment="CENTER" wrappingWidth="276.0" />
          <ImageView fx:id="rightArrow" fitHeight="47.0" fitWidth="91.0" layoutX="436.0" layoutY="2.0" onMouseClicked="#nextMonth" pickOnBounds="true" preserveRatio="true" styleClass="panelButtonSettings">
             <image>
                <Image url="@images/right.png" />
