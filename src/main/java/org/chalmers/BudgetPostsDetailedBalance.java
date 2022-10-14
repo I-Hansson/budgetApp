@@ -27,15 +27,13 @@ public class BudgetPostsDetailedBalance extends AnchorPane {
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
-
-
         try {
             fxmlLoader.load();
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
 
-        budgetPostAmount.setText(budgetPostsDetailedBalanceController.getRemainigBalance());
+        budgetPostAmount.setText(budgetPostsDetailedBalanceController.getRemainingBalance() + " Kr");
         budgetPostColorBakground.setStyle("-fx-background-color: rgb("+ budgetPostsDetailedBalanceController.getBudgetPostColor()+" );");
 
     }
