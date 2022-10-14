@@ -44,13 +44,15 @@ public class User {
         int index = budgets.indexOf(this.currentBudget);
         if(index + 1 >= budgets.size()){
             index = -1;
-
         }
-
         this.currentBudget = budgets.get(index+1);
     }
     public void previousCurrentBudget(){
         int index = budgets.indexOf(this.currentBudget);
+        System.out.println(index);
+        if (index <= 0){
+            index = budgets.size();
+        }
         this.currentBudget = budgets.get(index-1);
     }
 
