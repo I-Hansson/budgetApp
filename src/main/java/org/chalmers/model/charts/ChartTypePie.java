@@ -26,6 +26,7 @@ public class ChartTypePie implements IChart<String, Integer>, ITransactionAddedO
 
     @Override
     public void update(Collection<Transaction> transactions) {
+        data.clear();
         for(Transaction transaction : transactions){
 
             if(transaction.getAmount() != 0){

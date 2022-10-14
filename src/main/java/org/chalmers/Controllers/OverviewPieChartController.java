@@ -1,5 +1,6 @@
 package org.chalmers.Controllers;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart;
 import org.chalmers.model.*;
@@ -36,7 +37,12 @@ public class OverviewPieChartController {
     }
 
     public ObservableList<PieChart.Data> getData(){
-        return modelChart.getObservableList();
+        ObservableList<PieChart.Data> result = modelChart.getObservableList();
+        if (result.size() == 0) {
+            result = FXCollections.observableArrayList();
+            result.add(new PieChart.Data("1", 1));
+        }
+        return result;
     }
 
     public List<BudgetPost> getBudgetPosts() {
