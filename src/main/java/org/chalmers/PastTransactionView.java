@@ -8,9 +8,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.chalmers.Controllers.OverviewController;
 import org.chalmers.Controllers.PastTransactionController;
+import org.chalmers.model.ModelFacade;
 
 import java.io.IOException;
 import java.net.URL;
@@ -30,14 +33,33 @@ public class PastTransactionView implements Initializable {
     @FXML Button newTransactionButton;
     @FXML FlowPane pastTransactionFlowPane;
 
-
+    @FXML Text currentBudgetMonth;
+    ModelFacade facade = ModelFacade.getInstance();
+    private OverviewController overviewController = new OverviewController();
     private PastTransactionController PastTransactionController = new PastTransactionController();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
+
+    update();
+    }
+    public void update(){
         pastTransactionFlowPane.getChildren().clear();
+        this.pastTransactionFlowPane.getChildren().clear();
+        currentBudgetMonth.setText(facade.getUser().getCurrentBudget().getMonth()+ " " + facade.getUser().getCurrentBudget().getYear());
+        PastTransactionController.updateItem();
         for(PastTransactionItem i : PastTransactionController.getPastTransactionItemList()){
             this.pastTransactionFlowPane.getChildren().add(i);
         }
+    }
+    @FXML
+    public void nextMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        overviewController.clickedNextMonth();
+        update();
+    }
+    @FXML
+    public void prevMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        overviewController.clickedPrevMonth();
+        update();
 
     }
 

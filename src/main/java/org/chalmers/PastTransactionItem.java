@@ -24,6 +24,7 @@ public class PastTransactionItem extends AnchorPane {
     @FXML BorderPane colorBoardTransaction;
 
 
+
     public PastTransactionItem(Transaction transaction){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PastTransactionItem.fxml"));
         fxmlLoader.setRoot(this);
