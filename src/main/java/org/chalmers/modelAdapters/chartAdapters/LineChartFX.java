@@ -1,19 +1,18 @@
 package org.chalmers.modelAdapters.chartAdapters;
 
 import javafx.scene.chart.XYChart;
-import org.chalmers.model.charts.ChartFactory;
 import org.chalmers.model.charts.ChartTypeLine;
 
-import java.util.Map;
-
 /**
+ * An adapter class that makes ChartTypeLine useable with JavaFX.
+ * Depends on ChartTypeLine and JavaFX.
+ *
  * @author williamfrisk
  */
 public class LineChartFX {
 
     private final ChartTypeLine modelChart;
     private final XYChart.Series<Integer, Integer> series;
-
 
     public LineChartFX(ChartTypeLine chart) {
         this.modelChart = chart;
