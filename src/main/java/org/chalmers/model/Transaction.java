@@ -12,6 +12,7 @@ public class Transaction {
     private String description;
     private String name;
     private String dateString;
+    private  String BudgetPostName;
 
     public Transaction(String name, double amount, BudgetPostID budgetPostID, String description){
         this.dateOfTransaction = new GregorianCalendar();
@@ -21,17 +22,26 @@ public class Transaction {
         this.description = description;
     }
 
-    public Transaction(String name, double amount, String description, String date){
+    public Transaction(String name, double amount, String description, String date,String budgetPostName){
         this.dateOfTransaction = new GregorianCalendar();
         this.name = name;
         this.amount = amount;
         this.description = description;
         this.dateString = date;
+        this.BudgetPostName = budgetPostName;
     }
-
+    public void setBpID(BudgetPostID budgetPostID){
+        System.out.println(this.getDateOfTransaction());
+        this.budgetPostID = budgetPostID;
+    }
     //Getters
+
     public String getBudgetPostName(){
-        return this.budgetPostID.getName();
+        try{
+            return this.budgetPostID.getName();
+        }catch(NullPointerException e){
+            return this.BudgetPostName;
+        }
     }
     public String getBudgetPostColor(){
         return this.budgetPostID.getColor();

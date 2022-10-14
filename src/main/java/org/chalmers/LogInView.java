@@ -14,6 +14,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.chalmers.Controllers.LogInController;
+import org.chalmers.model.ModelFacade;
 
 import java.io.IOException;
 
@@ -58,6 +59,9 @@ public class LogInView {
 
     @FXML
     public void SwitchToOverviewPage(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+
+        ModelFacade facade = ModelFacade.getInstance(); //todo fix
+        facade.connectDB();
         root = FXMLLoader.load(getClass().getResource("Overview.fxml"));
         stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);

@@ -5,8 +5,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import java.io.*;
-import java.nio.channels.FileChannel;
-import java.util.List;
+import java.util.*;
 
 /**
  * Written by Oscar Cronvall
@@ -18,63 +17,13 @@ public class UsersDB {
     private FileWriter file;
     private JSONObject oldDB;
     private TransactionsDB transactionsDB;
-    private static int nextID = 3;
+    private static int nextID = Objects.requireNonNull(new File("./src/main/database/users").list()).length - 2;
 
     public UsersDB(int uid){
         connector = new DatabaseConnector("src/main/database/users/" + uid +".json");
         file = null;
-        oldDB = null;
+        oldDB = getUser();
         transactionsDB = new TransactionsDB(uid);
-    }
-
-    public static void createUserDoc(String name, String pwd, Double balance, Double standardBalance){
-        try{
-            FileWriter incomingFile = new FileWriter("./src/main/database/users/incoming.json");
-            JSONObject jsonObject = new JSONObject();
-            try{
-                jsonObject.put("name", name);
-                jsonObject.put("password", pwd);
-                jsonObject.put("currentBalance", balance);
-                jsonObject.put("startBalance", standardBalance);
-                jsonObject.put("id", nextID);
-            } finally {
-                incomingFile.write(jsonObject.toJSONString());
-                incomingFile.flush();
-                incomingFile.close();
-            }
-            File srcFile = new File("./src/main/database/users/incoming.json");
-            File destFile = new File("./src/main/database/users/" + nextID + ".json");
-            FileChannel src = new FileInputStream(srcFile).getChannel();
-            FileChannel dest = new FileOutputStream(destFile).getChannel();
-            dest.transferFrom(src, 0, src.size());
-            createUserTransactionDoc();
-        } catch (IOException e){
-            e.printStackTrace();
-        }
-        nextID++;
-    }
-
-
-    private static void createUserTransactionDoc(){
-        try{
-            File newFile = new File("./src/main/database/transactions/" + nextID + ".json");
-            if(newFile.createNewFile())
-                System.out.println("Transaction document created");
-            else
-                System.out.println("Document of that id already exists");
-
-            JSONObject jsonObject = new JSONObject();
-            JSONArray transactions = new JSONArray();
-            jsonObject.put("transactions", transactions);
-
-            FileWriter writer = new FileWriter("./src/main/database/transactions/" + nextID + ".json");
-            writer.write(jsonObject.toJSONString());
-            writer.flush();
-            writer.close();
-
-        } catch (IOException e){
-            e.printStackTrace();
-        }
     }
 
     /**
@@ -93,6 +42,10 @@ public class UsersDB {
         return userName;
     }
 
+    /**
+     * @param writtenPassword given password by client input
+     * @return if password matches with the one in the database
+     */
     public Boolean matchesPassword(String writtenPassword){
         String pwd = getUser().get("password").toString();
         return writtenPassword.equals(pwd);
@@ -154,6 +107,25 @@ public class UsersDB {
     }
     public List<Transaction> getAllTransactions(){
         return transactionsDB.getAllTransactions();
+    }
+
+    /**
+     * @return A HashMap containing name<String>, cap<Double>, color<String>
+     */
+    public List<Map<String, Object>> budgetPosts(){
+        List<Map<String, Object>> result = new ArrayList<>();
+        JSONArray postsDB = (JSONArray) oldDB.get("budgetPosts");
+
+        for(Object obj: postsDB){
+            JSONObject jsonObject = (JSONObject) obj;
+            Map<String, Object> bp = new HashMap();
+            bp.put("dateOfCreation", jsonObject.get("dateOfCreation").toString());
+            bp.put("name", jsonObject.get("name").toString());
+            bp.put("cap", Double.parseDouble(jsonObject.get("cap").toString()));
+            bp.put("color", jsonObject.get("color").toString());
+            result.add(bp);
+        }
+        return result;
     }
 
     /**

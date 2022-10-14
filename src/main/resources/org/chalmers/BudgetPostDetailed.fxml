@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1280.0" stylesheets="@CSS/Font.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.chalmers.BudgetPostdetailedView">
+   <children>
+      <ImageView fitHeight="860.0" fitWidth="1280.0">
+         <image>
+            <Image url="@images/background.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="32.0" layoutY="132.0" prefHeight="680.0" prefWidth="1210.0" styleClass="slightOpacityWeakRectangle">
+         <children>
+            <AnchorPane layoutX="975.0" layoutY="32.0" prefHeight="597.0" prefWidth="200.0" styleClass="focusWhiteWithRadius">
+               <children>
+                  <Line endX="101.800048828125" layoutX="91.0" layoutY="120.0" startX="-83.79998779296875" />
+                  <FlowPane fx:id="paneColorAmount" alignment="CENTER" layoutX="23.0" layoutY="14.0" prefHeight="89.0" prefWidth="154.0" />
+                  <FlowPane fx:id="paneLastTransacions" alignment="TOP_CENTER" layoutX="16.0" layoutY="132.0" prefHeight="452.0" prefWidth="168.0" />
+               </children>
+            </AnchorPane>
+            <FlowPane fx:id="paneGraphHigh" layoutX="59.0" layoutY="48.0" prefHeight="254.0" prefWidth="878.0" />
+            <FlowPane fx:id="paneGraphLow" layoutX="59.0" layoutY="366.0" prefHeight="282.0" prefWidth="878.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="-1.0" layoutY="-4.0" prefHeight="96.0" prefWidth="1280.0" styleClass="borderSettings" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="-4.0">
+         <children>
+            <Text layoutX="47.0" layoutY="53.0" onMouseClicked="#SwitchToOverview" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="panelTitel" text="SAFE BOAT" wrappingWidth="121.33673095703125" AnchorPane.bottomAnchor="45.98046875" AnchorPane.leftAnchor="47.0" AnchorPane.rightAnchor="1111.6632690429688" AnchorPane.topAnchor="31.41796875" />
+            <Text fx:id="overviewTitelPanel" layoutX="477.0" layoutY="54.0" onMouseClicked="#SwitchToOverview" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="panelNormalText" text="Overview" wrappingWidth="75.73675537109398" AnchorPane.bottomAnchor="37.984375" AnchorPane.leftAnchor="477.0" AnchorPane.rightAnchor="727.263244628906" AnchorPane.topAnchor="36.734375" />
+            <Text fx:id="pastTransactionsTitelPanel" layoutX="714.0" layoutY="55.0" onMouseClicked="#SwitchToPastTransaction" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="panelNormalText" text="Past Transactions" wrappingWidth="145.33685302734398" AnchorPane.bottomAnchor="40.984375" AnchorPane.leftAnchor="714.0" AnchorPane.rightAnchor="420.663146972656" AnchorPane.topAnchor="37.734375" />
+            <Text fx:id="budgetPostsTitelPanel" layoutX="590.0" layoutY="55.0" onMouseClicked="#SwitchToBudgetPosts" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="panelNormalText" text="Budget Posts" wrappingWidth="109.00263977050804" AnchorPane.bottomAnchor="42.0" AnchorPane.leftAnchor="590.0" AnchorPane.rightAnchor="581.0" AnchorPane.topAnchor="37.0" />
+            <Button fx:id="newTransactionButton" layoutX="1103.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#SwitchToAddTransaction" prefHeight="44.0" prefWidth="154.0" styleClass="panelButtonSettings" text="New Transaction" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="1103.0" AnchorPane.rightAnchor="22.599999999999994" AnchorPane.topAnchor="25.0" />
+            <ImageView fitHeight="21.0" fitWidth="27.0" layoutX="1230.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

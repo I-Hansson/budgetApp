@@ -66,9 +66,6 @@ public class OverviewView implements Initializable {
     ModelFacade facade = ModelFacade.getInstance();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        facade.addTransaction("Uber",100,"Transport","JKPG to GBG");
-        facade.addTransaction("ICA",100,"Matvaror","milk, sugar");
-        facade.addTransaction("H&M",100,"Kläder","T-shirt");
         update();
 
         Text[] textsWithVHints = {overviewTitelPanel, budgetPostsTitelPanel, pastTransactionsTitelPanel};
@@ -187,12 +184,13 @@ public class OverviewView implements Initializable {
     }
     public void update(){
 
-        currentBudgetMonth.setText(facade.getUser().getCurrentBudget().getMonth());
+        currentBudgetMonth.setText(facade.getUser().getCurrentBudget().getMonth() + " " + facade.getUser().getCurrentBudget().getYear());
         this.PiechartFlowPane.getChildren().clear();
         this.budgetPostsGridPane.getChildren().clear();
         this.PiechartFlowPane.getChildren().add(new OverviewPieChart());
         budgetCardController.createBudgetPostCards();
-        for (int i = 0; i < 4; i++){
+
+        for (int i = 0; i <budgetCardController.getBudgetPostCards().size(); i++){
             budgetPostsGridPane.add(budgetCardController.getBudgetPostCards().get(i),i,0);
         }
 
