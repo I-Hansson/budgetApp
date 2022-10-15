@@ -117,15 +117,19 @@ public class UsersDB {
         List<Map<String, Object>> result = new ArrayList<>();
         JSONArray postsDB = (JSONArray) oldDB.get("budgetPosts");
 
-        for(Object obj: postsDB){
-            JSONObject jsonObject = (JSONObject) obj;
-            Map<String, Object> bp = new HashMap();
-            bp.put("date",jsonObject.get("date").toString());
-            bp.put("name", jsonObject.get("name").toString());
-            bp.put("cap", Double.parseDouble(jsonObject.get("cap").toString()));
-            bp.put("color", jsonObject.get("color").toString());
-            result.add(bp);
+        if(postsDB.size() > 0){
+            for(Object obj: postsDB){
+                JSONObject jsonObject = (JSONObject) obj;
+                Map<String, Object> bp = new HashMap();
+                bp.put("date",jsonObject.get("date"));
+                bp.put("name", jsonObject.get("name"));
+                bp.put("cap", Double.parseDouble(jsonObject.get("cap").toString()));
+                bp.put("color", jsonObject.get("color"));
+                result.add(bp);
+            }
         }
+        else
+            System.out.println("There are no budget posts");
         return result;
     }
 
@@ -154,15 +158,20 @@ public class UsersDB {
      * @param date the date of the budget post to remove
      */
     public void removeBudgetPost(String name, String date){
-        openSetters();
         JSONArray postsDB = (JSONArray) oldDB.get("budgetPosts");
-        for(Object postObj: postsDB){
+        ArrayList<Object> list = new ArrayList<>();
+        /*for(Object postObj: postsDB){
             JSONObject post = (JSONObject) postObj;
-            boolean namesMatch = post.get("name").toString().equals(name);
-            boolean dateMatch = post.get("date").toString().equals(date);
+            boolean namesMatch = name.equals(post.get("name"));
+            boolean dateMatch = date.equals(post.get("date"));
             if(namesMatch && dateMatch){
+                System.out.println("WORKED SUCCES");
                 postsDB.remove(postObj);
-                closeSetter();
+            }
+        }*/
+        if (postsDB != null) {
+            for (int i=0;i<postsDB.size();i++){
+                list.add(postsDB.get(i).toString());
             }
         }
     }

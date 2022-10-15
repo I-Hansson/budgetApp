@@ -76,4 +76,12 @@ public class Database {
         }
         return hash;
     }
+
+    /*public boolean signIn(Integer userName, String password){
+        try{
+            UsersDB udb = new UsersDB(userName);
+        } catch (Error e){
+            createUserDoc(userName, password,0.0,0.0);
+        }
+    }*/
 }

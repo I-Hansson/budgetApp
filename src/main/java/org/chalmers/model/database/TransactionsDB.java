@@ -60,8 +60,6 @@ public class TransactionsDB {
         for(Transaction trans: transactionsList){
             Integer readYear = Integer.parseInt(trans.getDateString().substring(0,2));
             Integer readMonth = Integer.parseInt(trans.getDateString().substring(2,4));
-            System.out.print("Month: "+ readMonth);
-            System.out.println(" Year: "+ readYear);
             if(year.equals(readYear) && month.equals(readMonth))
                 result.add(trans);
         }
