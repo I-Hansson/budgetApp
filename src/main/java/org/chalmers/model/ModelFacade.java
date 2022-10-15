@@ -44,47 +44,6 @@ public class ModelFacade {
         return db.getStandardBalance();
     }
 
-
-
-
-    /*public List<BudgetPost> getBudgetPosts() {
-        Map<String, String> response = db.getBudgetPosts();
-        List<BudgetPost> result = new ArrayList<>();
-        List<BudgetPostsDB> BpDb = new ArrayList<>();
-
-
-            for (String id : response.keySet()) {
-                BpDb.add(new BudgetPostsDB(id));
-            }
-
-            for (BudgetPostsDB bp : BpDb) {
-                result.add(BudgetPostFactory.createBudgetPost(bp.getName(), bp.getCap()));
-            }
-
-            return result;
-        }
-        return result;
-    }*/
-
-
-    /*
-    //VARNING!! Fungerar inte!!
-    public BudgetPost getBudgetPost(String name) { //TODO
-        for (BudgetPost bp : getBudgetPosts()) {
-            if (bp.getId().getName().equals(name)) {
-                return bp;
-            }
-        }
-        return BudgetPostFactory.createBudgetPost("nej");
-    }
-
-    public void addBudgetPost(String name) { //TODO
-        // not workings rn
-        db.openSetters();
-        db.addBudgetPost(name);
-        db.closeSetter();
-    }*/
-
     public void setUserName(String name) {
         db.openSetters();
         db.setUserName(name);

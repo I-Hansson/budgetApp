@@ -54,7 +54,7 @@ public class ChartAdapterTest {
         LineChartFX FXChart = new LineChartFX(lineChart);
 
         lineChart.update(List.of(testTransactionsLine));
-        XYChart.Series<Integer, Integer> result = FXChart.getXYSeries();
+        XYChart.Series<Number, Number> result = FXChart.getXYSeries();
         Calendar calendar = new GregorianCalendar();
 
         assertEquals(2800, result.getData().get(calendar.get(Calendar.DAY_OF_MONTH)-1).getYValue());

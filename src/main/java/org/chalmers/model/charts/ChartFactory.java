@@ -16,7 +16,7 @@ public class ChartFactory {
     public static ChartTypePie createPieChart() {
         return new ChartTypePie();
     }
-/*
+
     public static ChartTypeLine createWeekLineChart() {
         return new ChartTypeLine(new LineChartWeek());
     }
@@ -28,8 +28,4 @@ public class ChartFactory {
     public static ChartTypeLine createYearLineChart() {
         return new ChartTypeLine(new LineChartYear());
     }
-
- */
-
-
 }
