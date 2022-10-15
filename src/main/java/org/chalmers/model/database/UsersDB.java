@@ -155,6 +155,7 @@ public class UsersDB {
      * Removes a certain budgetPost from the JSONArray of budgetPosts
      * @param name the name of the budget post to be removed
      * @param date the date of the budget post to remove
+     * @deprecated
      */
     public void removeBudgetPost(String name, String date){
         JSONArray postsDB = (JSONArray) oldDB.get("budgetPosts");
