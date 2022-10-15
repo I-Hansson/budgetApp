@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+
+<fx:root prefHeight="111.0" prefWidth="186.0" styleClass="focusWhiteWithRadius" stylesheets="@CSS/Font.css" type="AnchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="111.0" prefWidth="186.0">
+         <Label fx:id="budgetPostDetailedLastTransaction" layoutX="6.0" layoutY="2.0" prefHeight="30.0" prefWidth="174.0" styleClass="panelTitel" text="Name" />
+         <Label fx:id="budgetPostDetailedLastTransactionDate" layoutX="6.0" layoutY="32.0" prefHeight="23.0" prefWidth="174.0" styleClass="textFontNormal" text="Date" />
+         <Label fx:id="budgetPostDetailedLastTransactionAmount" layoutX="6.0" layoutY="62.0" prefHeight="23.0" prefWidth="174.0" styleClass="textFontNormal" text="Amount" />
+         <Line endX="83.40000915527344" endY="7.62939453125E-6" layoutX="103.0" layoutY="97.0" startX="-102.9999771118164" startY="7.62939453125E-6" />
+      </AnchorPane>
+   </children>
+</fx:root>

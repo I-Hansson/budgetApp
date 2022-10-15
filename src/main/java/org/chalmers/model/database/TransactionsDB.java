@@ -42,7 +42,8 @@ public class TransactionsDB {
                     transObj.get("name").toString(),
                     Double.parseDouble(transObj.get("amount").toString()),
                     transObj.get("description").toString(),
-                    transObj.get("date").toString()
+                    transObj.get("date").toString(),
+                    transObj.get("budgetPostName").toString()
             );
             transactionsList.add(newTrans);
         }
@@ -68,6 +69,7 @@ public class TransactionsDB {
 
     public List<Transaction> getAllTransactions(){
         List<Transaction> copy = new ArrayList<>();
+        System.out.println();
         copy.addAll(transactionsList);
         return copy;
     }

@@ -117,16 +117,15 @@ public class UsersDB {
         List<Map<String, Object>> result = new ArrayList<>();
         JSONArray postsDB = (JSONArray) oldDB.get("budgetPosts");
 
-        if(postsDB.size() > 0){
-            for(Object obj: postsDB){
-                JSONObject jsonObject = (JSONObject) obj;
-                Map<String, Object> bp = new HashMap();
-                bp.put("date",jsonObject.get("date"));
-                bp.put("name", jsonObject.get("name"));
-                bp.put("cap", Double.parseDouble(jsonObject.get("cap").toString()));
-                bp.put("color", jsonObject.get("color"));
-                result.add(bp);
-            }
+
+        for(Object obj: postsDB){
+            JSONObject jsonObject = (JSONObject) obj;
+            Map<String, Object> bp = new HashMap();
+            bp.put("dateOfCreation", jsonObject.get("dateOfCreation").toString());
+            bp.put("name", jsonObject.get("name").toString());
+            bp.put("cap", Double.parseDouble(jsonObject.get("cap").toString()));
+            bp.put("color", jsonObject.get("color").toString());
+            result.add(bp);
         }
         else
             System.out.println("There are no budget posts");

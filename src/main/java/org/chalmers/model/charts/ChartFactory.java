@@ -6,7 +6,8 @@ import org.chalmers.model.charts.lineChartExtents.LineChartWeek;
 import org.chalmers.model.charts.lineChartExtents.LineChartYear;
 
 /**
- * This class is used to create instances of chart classes
+ * This class is used to create instances of chart classes.
+ * Depends on ChartTypePie and ChartTypeLine.
  *
  * @author williamfrisk
  */
@@ -15,10 +16,9 @@ public class ChartFactory {
     public static ChartTypePie createPieChart() {
         return new ChartTypePie();
     }
-
+/*
     public static ChartTypeLine createWeekLineChart() {
-        ILineChartExtent temp = new LineChartWeek();
-        return new ChartTypeLine(temp);
+        return new ChartTypeLine(new LineChartWeek());
     }
 
     public static ChartTypeLine createMonthLineChart() {
@@ -28,6 +28,8 @@ public class ChartFactory {
     public static ChartTypeLine createYearLineChart() {
         return new ChartTypeLine(new LineChartYear());
     }
+
+ */
 
 
 }

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1280.0" stylesheets="@CSS/Font.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.chalmers.PastTransactionView">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1280.0" stylesheets="@CSS/Font.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.chalmers.PastTransactionView">
    <FlowPane fx:id="AddTransactionFlowPane" layoutX="-2.0" prefHeight="868.0" prefWidth="1290.0" />
     <ImageView fitHeight="849.0" fitWidth="1276.0" layoutX="2.0" layoutY="-3.0" opacity="0.0">
         <Image url="@images/background.jpg" />
@@ -23,14 +24,33 @@
     <AnchorPane layoutX="540.0" layoutY="322.0" prefHeight="686.0" prefWidth="1190.0" styleClass="slightOpacityWeakRectangle" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="128.60000000000002">
         <AnchorPane layoutX="25.0" layoutY="21.0" prefHeight="646.0" prefWidth="1135.0" style="-fx-background-color: #FFFFFF;" styleClass="colorCard">
             <Text layoutX="37.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="panelTitel" text="Past Transactions" wrappingWidth="189.00263977050804" />
-            <AnchorPane layoutX="47.0" layoutY="80.0" prefHeight="63.0" prefWidth="1051.0" styleClass="focusGreyWithRadius">
+            <AnchorPane layoutX="52.0" layoutY="95.0" prefHeight="63.0" prefWidth="1051.0" styleClass="focusGreyWithRadius">
                 <Text layoutX="37.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="normalStrongTextSmall" text="Name" wrappingWidth="91.00254821777338" />
                 <Text layoutX="241.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="normalStrongTextSmall" text="Cost" wrappingWidth="91.00254821777338" />
                 <Text layoutX="460.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="normalStrongTextSmall" text="Description" wrappingWidth="109.00263977050804" />
                 <Text layoutX="714.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="normalStrongTextSmall" text="Date" wrappingWidth="91.00254821777338" />
                 <Text layoutX="893.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="normalStrongTextSmall" text="Budget Post" wrappingWidth="109.00263977050804" />
             </AnchorPane>
-            <FlowPane fx:id="pastTransactionFlowPane" layoutX="53.0" layoutY="158.0" prefHeight="476.0" prefWidth="1047.0" />
+         <ScrollPane hbarPolicy="NEVER" layoutX="57.0" layoutY="173.0" prefHeight="433.0" prefWidth="1041.0">
+            <content>
+               <FlowPane fx:id="pastTransactionFlowPane" prefHeight="99.0" prefWidth="1038.0" />
+            </content>
+         </ScrollPane>
+         <AnchorPane id="borderOverviewMonths" layoutX="329.0" layoutY="21.0" prefHeight="52.0" prefWidth="497.0">
+            <children>
+               <Text fx:id="currentBudgetMonth" layoutX="86.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textNormalWhite" text="September" textAlignment="CENTER" wrappingWidth="325.336669921875" />
+               <ImageView fitHeight="37.0" fitWidth="41.0" layoutX="449.0" layoutY="7.0" onMouseClicked="#nextMonth" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@images/right.png" />
+                  </image>
+               </ImageView>
+               <ImageView fitHeight="42.0" fitWidth="44.0" layoutX="14.0" layoutY="4.0" onMouseClicked="#prevMonth" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@images/left.png" />
+                  </image>
+               </ImageView>
+            </children>
+         </AnchorPane>
         </AnchorPane>
     </AnchorPane>
 </AnchorPane>

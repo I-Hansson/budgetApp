@@ -18,7 +18,7 @@ public class BudgetPost {
     private List<IBudgetPostsObserver> observers = new ArrayList<IBudgetPostsObserver>();
     private List<Transaction> transactions = new ArrayList<>();
 
-    BudgetPost(double budgetCap, String name, String color,String id){
+    BudgetPost(double budgetCap, String name, String color){
         this.id = new BudgetPostID(name, color, "0000001");
         //TODO TEMP
         this.budgetCap = budgetCap;
@@ -50,6 +50,14 @@ public class BudgetPost {
      */
     public void addTransaction(Transaction transaction) {
         transactions.add(transaction);
+        updateCurrentBalance();
+    }
+    private void updateCurrentBalance(){
+        double temp = 0;
+        for (Transaction t : this.transactions){
+            temp += t.getAmount();
+        }
+        this.currentBalance = temp;
     }
 
     /**
@@ -99,13 +107,6 @@ public class BudgetPost {
     public void setCurrentBalance(int x){
         this.currentBalance = x;
     }
-    public void updatecurrentBalance(){
-        double temp = 0;
-        for (  Transaction t: this.transactions){
-            temp += t.getAmount();
-        }
-        this.currentBalance = temp;
 
-    }
 
 }

@@ -16,7 +16,7 @@ public class PastTransactionController {
         public void updateItem(){
         pastTransactionItemList.clear();
             for(Transaction t : facede.getCurrentBudgetTransactions()) {
-
+                System.out.println(t.getName() + "     wtf");
                 pastTransactionItemList.add(new PastTransactionItem(t));
             }
     }

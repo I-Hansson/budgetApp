@@ -12,11 +12,12 @@ import javafx.stage.Stage;
 public class App extends Application{
 
     public void start (Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load((getClass().getResource("LogInPage.fxml")));
+        Parent root = FXMLLoader.load((getClass().getResource("LogInView.fxml")));
         primaryStage.setTitle("SAFE BOAT");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
         primaryStage.setResizable(false);
+
     }
 
     public static void main(String[] args) {

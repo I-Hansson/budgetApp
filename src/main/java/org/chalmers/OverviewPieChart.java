@@ -75,6 +75,17 @@ public class OverviewPieChart extends AnchorPane {
 
     private void setupSliceCaptions() {
         caption4.setVisible(false); //TODO ta bort när övrigt är implementerat
+        if(piechart.getData().get(0).getName().equals("1")){
+            caption.setText("Inga transaktioner");
+            caption.setTranslateX(-30);
+            caption1.setVisible(false);
+            caption2.setVisible(false);
+            caption3.setVisible(false);
+            caption4.setVisible(false);
+            return;
+        }
+
+
         Label[] captions = {caption, caption1, caption2, caption3};
         double percent = 0;
         int i = 0;
@@ -100,7 +111,7 @@ public class OverviewPieChart extends AnchorPane {
 
     private void nameSliceCaption(double percent, Label caption) {
         caption.setText(String.valueOf(Math.round(percent * 100)) + "%");
-        caption.setStyle("-fx-text-fill: white; -fx-font-family: 'Roboto'");
+        caption.setStyle("-fx-text-fill: white; -fx-font-family: 'Roboto'; -fx-font-size: 16px; -fx-font-weight: bold");
     }
 
 
@@ -144,10 +155,13 @@ public class OverviewPieChart extends AnchorPane {
     }
 
     /**
-     * @author I-Hansson , @author Willefrisk
      * Used for applying correct colors to the pie chart.
      */
     private void applyColors() {
+        if(piechart.getData().get(0).getName().equals("1")) {
+            piechart.getData().get(0).getNode().setStyle("-fx-pie-color: gray");
+            return;
+        }
         List<BudgetPost> bps = controller.getBudgetPosts();
 
         HashMap<String,String> map =  new HashMap<>();

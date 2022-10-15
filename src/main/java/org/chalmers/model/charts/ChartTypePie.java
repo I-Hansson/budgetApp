@@ -1,16 +1,13 @@
 package org.chalmers.model.charts;
 
-import org.chalmers.model.BudgetPost;
 import org.chalmers.model.ITransactionAddedObserver;
 import org.chalmers.model.Transaction;
-
-
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * This class gives functionality for displaying pie charts
+ * This class gives functionality for displaying pie charts.
  *
  * @author williamfrisk
  */
@@ -29,6 +26,7 @@ public class ChartTypePie implements IChart<String, Integer>, ITransactionAddedO
 
     @Override
     public void update(Collection<Transaction> transactions) {
+        data.clear();
         for(Transaction transaction : transactions){
 
             if(transaction.getAmount() != 0){

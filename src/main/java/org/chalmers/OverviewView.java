@@ -1,14 +1,19 @@
 package org.chalmers;
 
 
+import javafx.animation.ScaleTransition;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 
@@ -20,6 +25,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 
+import javafx.util.Duration;
 import org.chalmers.Controllers.BudgetPostPanelController;
 import javafx.stage.Stage;
 import org.chalmers.Controllers.OverviewController;
@@ -39,6 +45,8 @@ public class OverviewView implements Initializable {
     @FXML Text pastTransactionsTitelPanel;
     @FXML Text currentBudgetMonth;
 
+
+
     @FXML FlowPane PiechartFlowPane;
 
 
@@ -48,6 +56,9 @@ public class OverviewView implements Initializable {
     @FXML
     ListView<Label> latestTransactionsListView;
 
+    @FXML ImageView rightArrow;
+    @FXML ImageView leftArrow;
+
 
     // controllers
     OverviewController overviewController = new OverviewController();
@@ -55,11 +66,75 @@ public class OverviewView implements Initializable {
     ModelFacade facade = ModelFacade.getInstance();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        facade.addTransaction("Uber",100,"Transport","JKPG to GBG");
-       facade.addTransaction("ICA",100,"Matvaror","milk, sugar");
-       facade.addTransaction("H&M",100,"Kläder","T-shirt");
         update();
 
+        Text[] textsWithVHints = {overviewTitelPanel, budgetPostsTitelPanel, pastTransactionsTitelPanel};
+        for (Text text : textsWithVHints) {
+            labelHinting(text);
+        }
+
+        addArrowHinting();
+    }
+
+    private void addArrowHinting() {
+        ScaleTransition scaleTransition = new ScaleTransition();
+        scaleTransition.setDuration(Duration.millis(100));
+        scaleTransition.setCycleCount(1);
+        rightArrow.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                scaleTransition.setFromY(1);
+                scaleTransition.setFromX(1);
+                scaleTransition.setToY(1.2);
+                scaleTransition.setToX(1.2);
+                scaleTransition.setNode(rightArrow);
+                scaleTransition.play();
+            }
+        });
+
+        leftArrow.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                scaleTransition.setFromY(1);
+                scaleTransition.setFromX(1);
+                scaleTransition.setToY(1.2);
+                scaleTransition.setToX(1.2);
+                scaleTransition.setNode(leftArrow);
+                scaleTransition.play();
+            }
+        });
+        rightArrow.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                scaleTransition.setFromY(1.2);
+                scaleTransition.setFromX(1.2);
+                scaleTransition.setToY(1);
+                scaleTransition.setToX(1);
+                scaleTransition.setNode(rightArrow);
+                scaleTransition.play();
+            }
+        });
+        leftArrow.addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                scaleTransition.setFromY(1.2);
+                scaleTransition.setFromX(1.2);
+                scaleTransition.setToY(1);
+                scaleTransition.setToX(1);
+                scaleTransition.setNode(leftArrow);
+                scaleTransition.play();
+            }
+        });
+
+    }
+
+    @FXML
+    public void labelHinting(Text text) {
+        text.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+            }
+        });
     }
 
     @FXML
@@ -109,12 +184,13 @@ public class OverviewView implements Initializable {
     }
     public void update(){
 
-        currentBudgetMonth.setText(facade.getUser().getCurrentBudget().getMonth());
+        currentBudgetMonth.setText(facade.getUser().getCurrentBudget().getMonth() + " " + facade.getUser().getCurrentBudget().getYear());
         this.PiechartFlowPane.getChildren().clear();
         this.budgetPostsGridPane.getChildren().clear();
         this.PiechartFlowPane.getChildren().add(new OverviewPieChart());
         budgetCardController.createBudgetPostCards();
-        for (int i = 0; i < 4; i++){
+
+        for (int i = 0; i <budgetCardController.getBudgetPostCards().size(); i++){
             budgetPostsGridPane.add(budgetCardController.getBudgetPostCards().get(i),i,0);
         }
 

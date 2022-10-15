@@ -38,8 +38,8 @@ public class BudgetPostPanelController {
 
     }
     public String getComplementColor(String rgb) {
-            Color color = Color.web("rgb(" + rgb + ")");
-            Color newColor = color.brighter();
+        Color color = Color.web("rgb(" + rgb + ")");
+        Color newColor = color.brighter();
         return ""+newColor.getRed()*255+"," + newColor.getGreen()*255 +","+ newColor.getBlue()*255;
     }
 

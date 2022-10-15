@@ -1,19 +1,17 @@
 package org.chalmers.modelAdapters.chartAdapters;
 
-import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableListBase;
-import javafx.collections.transformation.SortedList;
 import javafx.scene.chart.PieChart;
 import org.chalmers.model.Transaction;
 import org.chalmers.model.charts.ChartTypePie;
 
 import java.util.Collection;
-import java.util.List;
-import java.util.Map;
 
 /**
+ * An adapter class that makes ChartTypePie useable with JavaFX.
+ * Depends on ChartTypePie and JavaFX.
+ *
  * @author williamfrisk
  */
 public class PieChartFX {

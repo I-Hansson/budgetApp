@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1280.0" stylesheets="@CSS/Font.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.chalmers.OverviewView">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1280.0" stylesheets="@CSS/Font.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.chalmers.OverviewView">
    <FlowPane fx:id="AddTransactionFlowPane" prefHeight="858.0" prefWidth="1278.0" />
       <ImageView fitHeight="849.0" fitWidth="1276.0" layoutX="2.0" layoutY="-3.0">
             <Image url="@images/background.jpg" />
@@ -25,20 +25,24 @@
             <Text fx:id="overviewTitelPanel" layoutX="477.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="panelNormalText" text="Overview" underline="true" wrappingWidth="75.73675537109398" AnchorPane.bottomAnchor="37.984375" AnchorPane.leftAnchor="477.0" AnchorPane.rightAnchor="727.263244628906" AnchorPane.topAnchor="36.734375" />
             <Text fx:id="pastTransactionsTitelPanel" layoutX="714.0" layoutY="55.0" onMouseClicked="#SwitchToPastTransaction" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="panelNormalText" text="Past Transactions" wrappingWidth="145.33685302734398" AnchorPane.bottomAnchor="40.984375" AnchorPane.leftAnchor="714.0" AnchorPane.rightAnchor="420.663146972656" AnchorPane.topAnchor="37.734375" />
             <Text fx:id="budgetPostsTitelPanel" layoutX="590.0" layoutY="54.265625" onMouseClicked="#SwitchToBudgetPosts" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="panelNormalText" text="Budget Posts" wrappingWidth="109.33679199218795" AnchorPane.bottomAnchor="48.0" AnchorPane.leftAnchor="590.0" AnchorPane.rightAnchor="581.0" AnchorPane.topAnchor="37.0" />
-            <Button fx:id="newTransactionButton" layoutX="1103.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#SwitchToAddTransaction" prefHeight="44.0" prefWidth="154.0" styleClass="panelButtonSettings" text="New Transaction" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="1103.0" AnchorPane.rightAnchor="22.599999999999994" AnchorPane.topAnchor="25.0" />
+            <Button fx:id="newTransactionButton" layoutX="1103.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#SwitchToAddTransaction" prefHeight="44.0" prefWidth="154.0" text="New Transaction" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="1103.0" AnchorPane.rightAnchor="22.599999999999994" AnchorPane.topAnchor="25.0">
+         <styleClass>
+            <String fx:value="panelButtonSettings" />
+            <String fx:value="panelNormalText" />
+         </styleClass></Button>
             <ImageView fitHeight="21.0" fitWidth="27.0" layoutX="1230.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true" />
       </AnchorPane>
       <AnchorPane id="slightOpacityWeakRectangle" layoutX="45.0" layoutY="121.0" prefHeight="694.0" prefWidth="1190.0" styleClass="slightOpacityWeakRectangle" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="118.0">
             <Text layoutX="54.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="overviewTitel" text="Overall Spent" wrappingWidth="234.9367218017578" />
             <Text layoutX="54.0" layoutY="398.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="overviewTitel" text="Budget Posts" wrappingWidth="234.9367218017578" />
             <AnchorPane id="borderOverviewMonths" layoutX="346.0" layoutY="14.0" prefHeight="52.0" prefWidth="497.0">
-                  <Text fx:id="currentBudgetMonth" layoutX="170.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textNormalWhite" text="September" textAlignment="CENTER" wrappingWidth="169.336669921875" />
-         <ImageView fitHeight="47.0" fitWidth="91.0" layoutX="436.0" layoutY="5.0" onMouseClicked="#nextMonth" pickOnBounds="true" preserveRatio="true">
+                  <Text fx:id="currentBudgetMonth" layoutX="111.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textNormalWhite" text="September 22" textAlignment="CENTER" wrappingWidth="276.0" />
+         <ImageView fx:id="rightArrow" fitHeight="47.0" fitWidth="91.0" layoutX="436.0" layoutY="2.0" onMouseClicked="#nextMonth" pickOnBounds="true" preserveRatio="true" styleClass="panelButtonSettings">
             <image>
                <Image url="@images/right.png" />
             </image>
          </ImageView>
-         <ImageView fitHeight="47.0" fitWidth="56.0" layoutX="14.0" layoutY="2.0" onMouseClicked="#prevMonth" pickOnBounds="true" preserveRatio="true">
+         <ImageView fx:id="leftArrow" fitHeight="47.0" fitWidth="56.0" layoutX="14.0" layoutY="2.0" onMouseClicked="#prevMonth" pickOnBounds="true" preserveRatio="true" styleClass="panelButtonSettings">
             <image>
                <Image url="@images/left.png" />
             </image>
@@ -71,9 +75,9 @@
          </children>
       </AnchorPane>
       <FlowPane fx:id="PiechartFlowPane" layoutX="33.0" layoutY="87.0" prefHeight="262.0" prefWidth="322.0" />
-      <AnchorPane id="borderOverviewText" layoutX="611.0" layoutY="99.0" prefHeight="267.0" prefWidth="522.0">
+      <AnchorPane id="borderOverviewText" layoutX="611.0" layoutY="210.0" prefHeight="156.0" prefWidth="538.0">
          <children>
-            <Text layoutX="42.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="overviewText" text="Hej Pawel! Har du haft en bra dag? Du ligger i nuläget tvärback på alla dina budget poster för du hänger alldeles för mycket med Zett och Davoda utanför Park Lane " wrappingWidth="497.6000000000002" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
+            <Text layoutX="42.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="overviewText" text="Hej Pawel! Du ligger inom din månadsbudget." wrappingWidth="497.6000000000002" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
          </children>
       </AnchorPane>
       </AnchorPane>
