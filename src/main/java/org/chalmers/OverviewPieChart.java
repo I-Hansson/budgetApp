@@ -11,6 +11,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import org.chalmers.Controllers.OverviewPieChartController;
 import org.chalmers.model.BudgetPost;
+import org.chalmers.model.charts.ChartFactory;
+import org.chalmers.model.charts.ChartTypePie;
+import org.chalmers.modelAdapters.chartAdapters.PieChartFX;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -34,10 +37,11 @@ public class OverviewPieChart extends AnchorPane {
 
     private final double pieChartTotal;
 
-
     OverviewPieChartController controller = new OverviewPieChartController();
 
-    public OverviewPieChart(){
+    public OverviewPieChart(){;
+        PieChartFX modelChart = new PieChartFX(ChartFactory.createPieChart());
+        modelChart.update(controller.getBudget().getRecentTransactions());
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Overviewpiechart.fxml"));
         fxmlLoader.setRoot(this);
@@ -49,7 +53,7 @@ public class OverviewPieChart extends AnchorPane {
             throw new RuntimeException(exception);
         }
 
-        piechart.getData().addAll(controller.getData());
+        piechart.getData().addAll(modelChart.getObservableList());
         this.pieChartTotal = calculateTotal();
 
         applyColors();
