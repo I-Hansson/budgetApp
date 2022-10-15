@@ -24,13 +24,8 @@ public class OverviewPieChartController {
     PieChartFX modelChart;
     Collection<Transaction> transactions = new ArrayList<>();
 
-    Random random = new Random();
 
-
-    //TODO här ska vi koppla till backenden
-    Budget budget = new Budget(22,10);
-
-    public OverviewPieChartController(){
+    public OverviewPieChartController(){ //TODO här finns för mycket funktionalitet. Bara delegera user input
         modelChart = new PieChartFX(ChartFactory.createPieChart());
 
         modelChart.update(facade.getCurrentBudgetTransactions());
