@@ -87,14 +87,14 @@ public class TransactionsDB {
         JSONObject newTrans = new JSONObject();
         newTrans.put("name", name);
         newTrans.put("date", date);
-        newTrans.put("budgetPostName", budgetPostName.toLowerCase(Locale.ROOT));
+        newTrans.put("budgetPostName", budgetPostName);
         newTrans.put("amount", amount);
         newTrans.put("description", description.toLowerCase(Locale.ROOT));
+        System.out.println(oldDB.toJSONString());
         JSONArray transactions = (JSONArray) getTransactionsJSONObj().get("transactions");
         transactions.add(newTrans);
-        openSetters();
         oldDB.put("transactions", transactions);
-        closeSetter();
+
     }
 
     //TODO make an addTransaction method that takes one arguement of the type Transaction
@@ -102,7 +102,7 @@ public class TransactionsDB {
     /**
      * Call this method so that you can edit the database.
      */
-    private void openSetters(){
+    public void openSetters(){
         try{
             file = new FileWriter(connector.getDbPath());
             oldDB = getTransactionsJSONObj();
@@ -115,7 +115,7 @@ public class TransactionsDB {
      * Call this method to write and close new edits to the database.
      * To edit again call on the openSetters() method
      */
-    private void closeSetter(){
+    public void closeSetter(){
         try{
             file.write(oldDB.toJSONString());
             file.flush();
@@ -123,5 +123,10 @@ public class TransactionsDB {
         } catch (IOException e){
             e.printStackTrace();
         }
+    }
+    public void eraseAllTransactions(){
+        transactionsList = new ArrayList<>();
+        oldDB.put("transactions", new JSONArray());
+
     }
 }

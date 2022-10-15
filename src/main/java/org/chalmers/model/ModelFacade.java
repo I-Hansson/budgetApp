@@ -9,16 +9,18 @@ import org.chalmers.model.database.Database;
 import org.chalmers.model.database.TransactionsDB;
 import org.chalmers.model.database.UsersDB;
 
+import java.security.spec.RSAOtherPrimeInfo;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 public class ModelFacade {
 
     // TODO Får jag göra så här ?
     private SelectedBudgetPost selectedBudgetPost = new SelectedBudgetPost(null);
-
+    UsersDB userDB = new UsersDB(1);
     private UsersDB db = new UsersDB(1);
     private static ModelFacade instance = new ModelFacade();
 
@@ -71,13 +73,13 @@ public class ModelFacade {
     public User getUser(){
         return user;
     }
-    public void addTransaction(String name, double amount, String budgetPostID, String description){
+    public void addTransaction(String name, double amount, String budgetPostID, String description,String date){
 
         for(BudgetPost bp : user.getCurrentBudget().getBudgetPosts()){
             if (bp.getId().getName() == budgetPostID){
-                Transaction t = new Transaction(name,amount,bp.getId(),description);
-
+                Transaction t = new Transaction(name,amount,bp.getId(),description,date);
                 user.getCurrentBudget().addTransaction(t);
+                user.getCurrentBudget().getNewTransactions().add(t);
                 bp.addTransaction(t);
 
 
@@ -88,7 +90,7 @@ public class ModelFacade {
     }
     public void connectDB() {
         fillBudget();
-        UsersDB userDB = new UsersDB(1);
+
 
          for(Budget budget:   user.getBudgets()){
              int budgetDate = Integer.parseInt(budget.getYear() +budget.getMonthNumber());
@@ -196,5 +198,16 @@ public class ModelFacade {
         }
         return map;
     }
+
+    public void saveTransactions() throws InterruptedException {
+        userDB.openSetterTransaction();
+        for(Budget b : user.getBudgets())
+        for (Transaction t: b.getNewTransactions() ){
+           userDB.addTransaction(t.getName(),t.getDescription(),t.getAmount(),t.getDateString(),t.getBudgetPostName());
+            System.out.println(t.getBudgetPostName());
+        }
+        userDB.closeSetterTransaction();
+    }
+
 }
 

@@ -14,11 +14,12 @@ public class Transaction {
     private String dateString;
     private  String BudgetPostName;
 
-    public Transaction(String name, double amount, BudgetPostID budgetPostID, String description){
+    public Transaction(String name, double amount, BudgetPostID budgetPostID, String description,String dateString){
         this.dateOfTransaction = new GregorianCalendar();
         this.name = name;
         this.amount = amount;
         this.budgetPostID = budgetPostID;
+        this.dateString = dateString;
         this.description = description;
     }
 

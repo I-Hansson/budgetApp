@@ -41,6 +41,9 @@ public class UsersDB {
         String userName = getUser().get("name").toString();
         return userName;
     }
+    public void eraseAllTransactions(){
+        transactionsDB.eraseAllTransactions();
+    }
 
     /**
      * @param writtenPassword given password by client input
@@ -152,5 +155,12 @@ public class UsersDB {
         } catch (IOException e){
             e.printStackTrace();
         }
+    }
+
+    public void openSetterTransaction(){
+        transactionsDB.openSetters();
+    }
+    public void closeSetterTransaction(){
+        transactionsDB.closeSetter();
     }
 }

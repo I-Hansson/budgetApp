@@ -18,7 +18,7 @@ public class Budget {
 
     private List<BudgetPost> budgetPosts = new ArrayList<>();
     private List<Transaction> recentTransactions = new ArrayList<>();
-
+    private List<Transaction> newTransactions = new ArrayList<>();
     private int year;
     private int month;
     private Calendar calender;
@@ -60,6 +60,11 @@ public class Budget {
         return String.valueOf(this.month);
 
     }
+
+    public List<Transaction> getNewTransactions() {
+        return newTransactions;
+    }
+
     public String getMonth(){
             String[] month =
                     {"December","January", "February", "Mars", "April", "May", "june", "July", "August", "September", "October", "November"};
