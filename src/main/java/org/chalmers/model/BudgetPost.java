@@ -5,32 +5,43 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-
+/**
+ * This class represents a budget post.
+ * Depends on Transaction, BudgetPostID, IBudgetPostsObserver
+ *
+ * @author Isac Hansson
+ */
 public class BudgetPost {
-
-
     //TODO give Icon attribute
 
     private double budgetCap; //The most you want to spend in a surtain budget-post.
     private double currentBalance;
 
     private BudgetPostID id;
-    private List<IBudgetPostsObserver> observers = new ArrayList<IBudgetPostsObserver>();
-    private List<Transaction> transactions = new ArrayList<>();
+    private final List<IBudgetPostsObserver> observers = new ArrayList<IBudgetPostsObserver>();
+    private final List<Transaction> transactions = new ArrayList<>();
 
     BudgetPost(double budgetCap, String name, String color){
         this.id = new BudgetPostID(name, color, "0000001");
-        //TODO TEMP
         this.budgetCap = budgetCap;
         this.currentBalance = 0;
         //TODO Implement icon logic here aswell.
     }
-    /**
-     * Update the name of this budget post.
-     * @param newName the new name.
-     */
+
+    BudgetPost(String name) {
+        this.id = new BudgetPostID(name, "5, 51, 92", "0000001");
+        this.budgetCap = 0;
+        this.currentBalance = 0;
+    }
+
+    BudgetPost(double budgetCap, String name) {
+        this.id = new BudgetPostID(name, "5, 51, 92", "0000001");
+        this.budgetCap = budgetCap;
+        this.currentBalance = 0;
+    }
 
 
+    //Setters
     /**
      * Edits the budget cap for this post.
      * Make sure that this change doesn't surpass the users total balance.
@@ -40,8 +51,8 @@ public class BudgetPost {
         this.budgetCap = newCap;
     }
 
-    public BudgetPostID getId() {
-        return id;
+    public void setCurrentBalance(int x){
+        this.currentBalance = x;
     }
 
     /**
@@ -52,13 +63,6 @@ public class BudgetPost {
         transactions.add(transaction);
         updateCurrentBalance();
     }
-    private void updateCurrentBalance(){
-        double temp = 0;
-        for (Transaction t : this.transactions){
-            temp += t.getAmount();
-        }
-        this.currentBalance = temp;
-    }
 
     /**
      * Adds a new IBudgetPostsObserver to the list of observers.
@@ -68,10 +72,10 @@ public class BudgetPost {
         this.observers.add(observer);
     }
 
-    /**
-     * Returns RGB values for this budget post's color.
-     * @return int[]{R, G, B}
-     */
+    //Getters
+    public BudgetPostID getId() {
+        return id;
+    }
 
     public double getBudgetCap() {
         return budgetCap;
@@ -81,19 +85,17 @@ public class BudgetPost {
         return currentBalance;
     }
 
-
-
+    /**
+     * Returns a copy of the list of transactions in the BudgetPost
+     * @return The list of transactions
+     */
     public Collection<Transaction> getTransactions() {
         List<Transaction> transactionsCopy = new ArrayList<>();
+        Collections.copy(transactionsCopy, transactions);
 
-       // Collections.copy(transactionsCopy, transactions);
-        return transactions;
+        return transactionsCopy;
     }
 
-    /**
-     * Notify all observers to this budgetpost.
-     * Also sends the list of transactions
-     */
     private void notifyObservers(){
         ArrayList<Transaction> transactionsCopy = new ArrayList<>();
         Collections.copy(transactionsCopy, transactions); // Defensive copying
@@ -103,10 +105,11 @@ public class BudgetPost {
         }
     }
 
-
-    public void setCurrentBalance(int x){
-        this.currentBalance = x;
+    private void updateCurrentBalance(){
+        double temp = 0;
+        for (Transaction t : this.transactions){
+            temp += t.getAmount();
+        }
+        this.currentBalance = temp;
     }
-
-
 }

@@ -4,7 +4,7 @@ import java.util.*;
 
 /**
  * @author Isac Hansson ,
- * @use on BudgetPost, Transaction, ITransactionAddedObserver, BudgetPostFactory, ITransactionAddedObserver
+ * Depends on BudgetPost, Transaction, ITransactionAddedObserver, BudgetPostFactory, ITransactionAddedObserver
  */
 public class Budget {
 
@@ -57,6 +57,10 @@ public class Budget {
 
     }
 
+    /**
+     * Returns a list of all transactions in this budget.
+     * @return The list of transactions
+     */
     public List<Transaction> getNewTransactions() {
         return newTransactions;
     }
@@ -102,26 +106,12 @@ public class Budget {
 
     public void addTransaction(Transaction transaction){
         this.recentTransactions.add(transaction);
-        notifyObservers();
     }
+
 
     public void addObserver(ITransactionAddedObserver observer) {
         observers.add(observer);
     }
-
-    /**
-     * Add a NEW budget-post to the users budget planner.
-     * @param name the name of the new post.
-     * @param cap the maximum amount intended for this post.
-     */
-    /*public void addBudgetPost(String name, double cap){
-        if(!budgetPosts.containsKey(name)){
-            budgetPosts.put("test", new BudgetPost(name,cap));
-        } else{
-            //TODO Alert user that post already exists
-            System.out.println("Post " + name + " already exists");
-        }
-    }*/
 
     private void notifyObservers(){
         for (ITransactionAddedObserver o : observers) {
