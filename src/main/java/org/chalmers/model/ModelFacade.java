@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 public class ModelFacade {
 
     // TODO Får jag göra så här ?
-    private SelectedBudgetPost selectedBudgetPost = new SelectedBudgetPost(null);
+    private static SelectedBudgetPost selectedBudgetPost = new SelectedBudgetPost(null);
     UsersDB userDB = new UsersDB(1);
     private UsersDB db = new UsersDB(1);
     private static ModelFacade instance = new ModelFacade();

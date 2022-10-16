@@ -46,6 +46,8 @@ public class OverviewView implements Initializable {
     @FXML Text currentBudgetMonth;
 
 
+    @FXML FlowPane overlookPane;
+
 
     @FXML FlowPane PiechartFlowPane;
 
@@ -184,10 +186,15 @@ public class OverviewView implements Initializable {
     }
     public void update(){
 
+
+        this.overlookPane.getChildren().clear();
+        this.overlookPane.getChildren().add(new OverviewOverlookView());
+
         currentBudgetMonth.setText(facade.getUser().getCurrentBudget().getMonth() + " " + facade.getUser().getCurrentBudget().getYear());
         this.PiechartFlowPane.getChildren().clear();
         this.budgetPostsGridPane.getChildren().clear();
         this.PiechartFlowPane.getChildren().add(new OverviewPieChart());
+
         budgetCardController.createBudgetPostCards();
 
         for (int i = 0; i <budgetCardController.getBudgetPostCards().size(); i++){

@@ -6,6 +6,8 @@ import javafx.animation.TranslateTransition;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
@@ -13,13 +15,23 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.transform.Translate;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.chalmers.Controllers.BudgetPostPanelController;
+import org.chalmers.Controllers.BudgetPostdetailedViewController;
 import org.chalmers.model.BudgetPost;
 
 import java.io.IOException;
 
 public class OverviewBudgetPost extends AnchorPane{
+
+
+    BudgetPostdetailedViewController budgetPostdetailedViewController = new BudgetPostdetailedViewController();
+
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
+
 
     @FXML Text budgetPostName;
     @FXML Text budgetPostTotalAmount;
@@ -63,7 +75,28 @@ public class OverviewBudgetPost extends AnchorPane{
 
 
         addOnMouseEntered();
+
+
+        budgetPostCard.setOnMouseClicked(mouseEvent -> {
+            System.out.println(this.budgetPostName.getText());
+            budgetPostdetailedViewController.setCorrspondingId(((this.budgetPostName.getText())));
+
+            try {
+                root = FXMLLoader.load(getClass().getResource("BudgetPostDetailed.fxml"));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+
+        });
+
+
         addOnMouseExited();
+
     }
 
     private void addOnMouseEntered() {

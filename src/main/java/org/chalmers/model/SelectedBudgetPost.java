@@ -14,7 +14,4 @@ public class SelectedBudgetPost {
 
     public BudgetPost getSelectedBudgetPost(){return selectdBudgetPost;}
 
-
-
-
 }
