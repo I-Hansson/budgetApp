@@ -1,4 +1,4 @@
-package org.chalmers.model.charts.lineChartExtents;
+package org.chalmers.model.charts;
 
 import org.chalmers.model.Transaction;
 

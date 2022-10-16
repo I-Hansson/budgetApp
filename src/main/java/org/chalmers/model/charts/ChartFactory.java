@@ -1,9 +1,5 @@
 package org.chalmers.model.charts;
 
-import org.chalmers.model.charts.lineChartExtents.ILineChartExtent;
-import org.chalmers.model.charts.lineChartExtents.LineChartMonth;
-import org.chalmers.model.charts.lineChartExtents.LineChartWeek;
-import org.chalmers.model.charts.lineChartExtents.LineChartYear;
 
 /**
  * This class is used to create instances of chart classes.
@@ -17,6 +13,7 @@ public class ChartFactory {
         return new ChartTypePie();
     }
 
+
     public static ChartTypeLine createWeekLineChart() {
         return new ChartTypeLine(new LineChartWeek());
     }
@@ -28,4 +25,6 @@ public class ChartFactory {
     public static ChartTypeLine createYearLineChart() {
         return new ChartTypeLine(new LineChartYear());
     }
+
+
 }
