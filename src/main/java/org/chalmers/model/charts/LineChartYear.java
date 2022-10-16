@@ -5,7 +5,7 @@ import org.chalmers.model.Transaction;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LineChartYear implements ILineChartExtent {
+class LineChartYear implements ILineChartExtent {
 
     public LineChartYear() {}
     @Override

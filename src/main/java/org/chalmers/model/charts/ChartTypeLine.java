@@ -7,7 +7,7 @@ import java.util.*;
 
 /**
  * This class gives functionality for displaying line charts.
- * Depends on ILineChartExtent
+ * Depends on ILineChartExtent & Transaction
  *
  * @author williamfrisk
  */
@@ -37,8 +37,8 @@ public class ChartTypeLine implements IChart<Integer, Integer> {
     }
 
     /**
-     * Returns a Map containing the data points and
-     * @return
+     * Returns a Map containing the data points and appurtunent date number.
+     * @return The Map with data points and dates
      */
     @Override
     public Map<Integer, Integer> getDataMap() {
