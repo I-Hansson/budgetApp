@@ -13,7 +13,7 @@ public class BudgetPostID {
     private String id;
 
 
-    public BudgetPostID(String name, String color, String id) {
+    BudgetPostID(String name, String color, String id) {
         this.name = name;
         this.color = color;
         this.id = id;

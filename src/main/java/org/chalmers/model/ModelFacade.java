@@ -1,21 +1,20 @@
 package org.chalmers.model;
 
-
-
-import javafx.collections.ObservableList;
-import org.chalmers.BudgetPostsDetailedLastTransactions;
-import org.chalmers.BudgetPostsView;
-import org.chalmers.model.database.Database;
 import org.chalmers.model.database.TransactionsDB;
 import org.chalmers.model.database.UsersDB;
-
-import java.security.spec.RSAOtherPrimeInfo;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 
+/**
+ * This class is a facade for the entire model.
+ * Its purpose is providing an interface for the client code and allow interaction with the model.
+ *
+ * Depends on everything :))))
+ *
+ * @author williamfrisk
+ * @author Isac Hansson
+ */
 public class ModelFacade {
 
     // TODO Får jag göra så här ?
