@@ -77,6 +77,14 @@ public class BudgetPost {
         return id;
     }
 
+    public String getName() {
+        return id.getName();
+    }
+
+    public String getColor() {
+        return id.getColor();
+    }
+
     public double getBudgetCap() {
         return budgetCap;
     }

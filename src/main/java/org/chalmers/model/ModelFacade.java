@@ -76,7 +76,7 @@ public class ModelFacade {
     public void addTransaction(String name, double amount, String budgetPostID, String description,String date){
 
         for(BudgetPost bp : user.getCurrentBudget().getBudgetPosts()){
-            if (bp.getId().getName() == budgetPostID){
+            if (bp.getName() == budgetPostID){
                 Transaction t = new Transaction(name,amount,bp.getId(),description,date);
                 user.getCurrentBudget().addTransaction(t);
                 user.getCurrentBudget().getNewTransactions().add(t);
@@ -113,7 +113,7 @@ public class ModelFacade {
              for(Transaction t : budget.getRecentTransactions()){
                  for(BudgetPost bp: budget.getBudgetPosts()){
                      System.out.println(t.getBudgetPostName());
-                     if(t.getBudgetPostName().equals(bp.getId().getName())){
+                     if(t.getBudgetPostName().equals(bp.getName())){
                          t.setBpID(bp.getId());
                          bp.addTransaction(t);
                      }
@@ -122,7 +122,7 @@ public class ModelFacade {
          }
 
 
-        System.out.println(user.getCurrentBudget().getBudgetPosts().get(0).getId().getName());
+        System.out.println(user.getCurrentBudget().getBudgetPosts().get(0).getName());
 
         for (Budget b : user.getBudgets()) {
             System.out.println("Månad: " + b.getMonth());

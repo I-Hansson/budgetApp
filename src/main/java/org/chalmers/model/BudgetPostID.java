@@ -1,5 +1,11 @@
 package org.chalmers.model;
 
+/**
+ * This class represents an ID for a budget post.
+ * Its purpose is to loosen dependencies between Transaction and BudgetPost
+ *
+ * @author Isac Hansson
+ */
 public class BudgetPostID {
 
     private String name;

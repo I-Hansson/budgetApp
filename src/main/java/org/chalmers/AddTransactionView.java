@@ -64,7 +64,7 @@ public class AddTransactionView implements Initializable {
 
 
         for (BudgetPost post : addTransactionBudgetPostsController.getBudgetPosts()){
-            this.BudgetPostsTexFlowPane.getChildren().add(new AddTransactionBudgetPosts(post.getId().getName()));
+            this.BudgetPostsTexFlowPane.getChildren().add(new AddTransactionBudgetPosts(post.getName()));
                 }
         }
 
