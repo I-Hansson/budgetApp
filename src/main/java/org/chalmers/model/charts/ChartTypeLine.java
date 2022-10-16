@@ -22,8 +22,8 @@ public class ChartTypeLine implements IChart<Integer, Integer> {
     }
 
     /**
-     *
-     * @param transactions
+     * Updates the data in the line chart with a given collection of transactions.
+     * @param transactions The collection of transaction which are used for the update.
      */
     @Override
     public void update(Collection<Transaction> transactions) {
@@ -36,6 +36,10 @@ public class ChartTypeLine implements IChart<Integer, Integer> {
         }
     }
 
+    /**
+     * Returns a Map containing the data points and
+     * @return
+     */
     @Override
     public Map<Integer, Integer> getDataMap() {
         return data;

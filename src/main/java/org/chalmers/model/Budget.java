@@ -4,12 +4,8 @@ import java.util.*;
 
 /**
  * @author Isac Hansson ,
- * Budget depends on BudgetPost, Transaction, ITransactionAddedObserver, BudgetPostFactory, ITransactionAddedObserver
+ * @use on BudgetPost, Transaction, ITransactionAddedObserver, BudgetPostFactory, ITransactionAddedObserver
  */
-
-
-
-
 public class Budget {
 
     private double startBalance;

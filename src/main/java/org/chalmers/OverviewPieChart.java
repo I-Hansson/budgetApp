@@ -53,7 +53,11 @@ public class OverviewPieChart extends AnchorPane {
             throw new RuntimeException(exception);
         }
 
-        piechart.getData().addAll(modelChart.getObservableList());
+        if (modelChart.getObservableList().size() == 0) {
+            piechart.getData().add(new PieChart.Data("1", 1));
+        } else {
+            piechart.getData().addAll(modelChart.getObservableList());
+        }
         this.pieChartTotal = calculateTotal();
 
         applyColors();
