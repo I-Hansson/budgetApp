@@ -4,7 +4,7 @@ package org.chalmers.model;
  * This class instantiates new BudgetPost instances and allows for
  * a simpler interface than the BudgetPost constructor.
  *
- * @deprecated
+ * @deprecated Just use BudgetPost constructor.
  */
 public class BudgetPostFactory {
 
