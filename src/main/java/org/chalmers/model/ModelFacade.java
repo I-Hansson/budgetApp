@@ -94,7 +94,7 @@ public class ModelFacade {
 
          for(Budget budget:   user.getBudgets()){
              int budgetDate = Integer.parseInt(budget.getYear() +budget.getMonthNumber());
-             for(Map<String,Object> bp : userDB.budgetPosts()){
+             for(Map<String,Object> bp : userDB.getBudgetPosts()){
                  int bpDate = Integer.parseInt((String) bp.get("dateOfCreation"));
                  if (bpDate<= budgetDate){
                      BudgetPost budgetPost = new BudgetPost(
