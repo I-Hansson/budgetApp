@@ -72,7 +72,8 @@ public class Budget {
 
     public String getMonth(){
             String[] month =
-                    {"December","January", "February", "Mars", "April", "May", "june", "July", "August", "September", "October", "November"};
+                    {"January", "February", "Mars", "April", "May", "june", "July", "August", "September",
+                            "October", "November", "December"};
             return month[this.month];
 
     }

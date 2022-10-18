@@ -46,7 +46,7 @@ public class Transaction {
         return name;
     }
     public String getTransactionDate(){
-        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
         return sdf.format(this.dateOfTransaction.getTime());
     }
     public String getDayOfWeeks(){

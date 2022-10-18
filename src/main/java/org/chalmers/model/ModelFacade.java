@@ -135,12 +135,12 @@ public class ModelFacade {
 
         System.out.println(user.getCurrentBudget().getBudgetPosts().get(0).getName());
 
-        for (Budget b : user.getBudgets()) {
+      /*  for (Budget b : user.getBudgets()) {
             System.out.println("Månad: " + b.getMonth());
             System.out.println("år: " + b.getYear());
             System.out.println("Budgetposts" + b.getBudgetPosts());
             System.out.println("___________________");
-        }
+        }*/
 
 
         }
@@ -150,17 +150,21 @@ public class ModelFacade {
             TransactionsDB transactionDB = new TransactionsDB(1);
             Transaction transaction = transactionDB.getAllTransactions().get(0);
             int fmonth = transaction.getDateOfTransaction().get(Calendar.MONTH);
-            int fyear =transaction.getDateOfTransaction().get(Calendar.YEAR);
+            int fyear = transaction.getDateOfTransaction().get(Calendar.YEAR);
+            System.out.println((fyear*100 + fmonth));
 
             Calendar today = new GregorianCalendar();
             int lYear = today.get(Calendar.YEAR);
             int lMonth = today.get(Calendar.MONTH);
-            Calendar newCalender = (Calendar) transaction.getDateOfTransaction().clone();
+            Calendar newCalender = new GregorianCalendar(
+                    transaction.getDateOfTransaction().get(Calendar.YEAR),
+                    transaction.getDateOfTransaction().get(Calendar.MONTH),
+                    transaction.getDateOfTransaction().get(Calendar.DAY_OF_MONTH)
+            );
             do {
                 Budget budget = new Budget(fyear,fmonth);
 
                 if ( map.containsKey(fyear*100 + fmonth)){
-                    System.out.println(map.get(fyear*100 + fmonth));
                     budget.getTransactions().addAll(map.get(fyear*100 + fmonth));
                 }
                 user.getBudgets().add(budget);
@@ -169,10 +173,9 @@ public class ModelFacade {
                 newCalender.add(Calendar.MONTH,1);
                 fmonth = newCalender.get(Calendar.MONTH);
                 fyear = newCalender.get(Calendar.YEAR);
-            } while (fyear*100 + fmonth < lYear*100 + lMonth+1);
+            } while (fyear*100 + fmonth <= (lYear*100 + lMonth));
 
             user.setCurrentBudget(user.getBudgets().get((user.getBudgets().size()-1)));
-
 
         }
         private String nextMonth(String date){
@@ -197,8 +200,9 @@ public class ModelFacade {
         TransactionsDB uDB = new TransactionsDB(1);
         for(Transaction transaction: uDB.getAllTransactions()){
             int year = transaction.getDateOfTransaction().get(Calendar.YEAR);
-            int month= transaction.getDateOfTransaction().get(Calendar.MONTH);
+            int month = transaction.getDateOfTransaction().get(Calendar.MONTH);
             Integer transactionKey = year *100 + month;
+            System.out.println("TKEY: " + transactionKey);
             if(map.containsKey(transactionKey)){
                 map.get(transactionKey).add(transaction);
             }else{
