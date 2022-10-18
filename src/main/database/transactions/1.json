@@ -1,1 +1,53 @@
-{"transactions":[{"date":"2105061247","amount":125.59,"budgetPostName":"Matvaror","name":"maxi","description":"Snus & Nocco"},{"date":"2209061247","amount":125.59,"budgetPostName":"Matvaror","name":"ica","description":"Snus & Nocco"},{"date":"2210021453","amount":49,"budgetPostName":"Matvaror","name":"coop","description":"Virke"},{"date":"2210012354","amount":199,"budgetPostName":"Transport","name":"Uber","description":"resa hem"},{"date":"2210","amount":1111,"budgetPostName":"Matvaror","name":"Test","description":"tst"},{"date":"2210","amount":100.0,"budgetPostName":"Test","name":"Teddy","description":"we"}]}
+{
+  "transactions": [
+    {
+      "date": "2105061247",
+      "amount": 125.59,
+      "budgetPostName": "Matvaror",
+      "name": "maxi",
+      "description": "Snus & Nocco"
+    },
+    {
+      "date": "2209061247",
+      "amount": 125.59,
+      "budgetPostName": "Matvaror",
+      "name": "ica",
+      "description": "Snus & Nocco"
+    },
+    {
+      "date": "2210021453",
+      "amount": 49,
+      "budgetPostName": "Matvaror",
+      "name": "coop",
+      "description": "Virke"
+    },
+    {
+      "date": "2210012354",
+      "amount": 199,
+      "budgetPostName": "Transport",
+      "name": "Uber",
+      "description": "resa hem"
+    },
+    {
+      "date": "221011",
+      "amount": 1111,
+      "budgetPostName": "Matvaror",
+      "name": "Test",
+      "description": "tst"
+    },
+    {
+      "date": "221011",
+      "amount": 500.0,
+      "budgetPostName": "TEST",
+      "name": "HEJ",
+      "description": "sd"
+    },
+    {
+      "date": "221010",
+      "amount": 90.0,
+      "budgetPostName": "tED",
+      "name": "TEDAS",
+      "description": "ted"
+    }
+  ]
+}

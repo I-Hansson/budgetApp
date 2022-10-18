@@ -27,12 +27,8 @@ public class App extends Application{
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent t) {
-                try {
-                    facade.saveTransactions();
-                    facade.saveBudgetPost();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                //facade.saveTransactions();
+                facade.saveBudgetPost();
                 Platform.exit();
                 System.exit(0);
             }

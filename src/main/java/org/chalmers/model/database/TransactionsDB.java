@@ -6,9 +6,7 @@ import org.json.simple.JSONObject;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 
 /**
@@ -37,12 +35,15 @@ public class TransactionsDB {
         JSONArray resp = (JSONArray) getTransactionsJSONObj().get("transactions");
         for(Object obj: resp){
             JSONObject transObj = (JSONObject) obj;
+            int year = Integer.parseInt( transObj.get("date").toString().substring(0, 2));
+            int  month = Integer.parseInt( transObj.get("date").toString().substring(2,4));
+            int day = Integer.parseInt( transObj.get("date").toString().substring(4,6));
+            Calendar temp = new GregorianCalendar( year, month, day);
             Transaction newTrans = new Transaction(
                     transObj.get("name").toString(),
                     Double.parseDouble(transObj.get("amount").toString()),
                     transObj.get("description").toString(),
-                    transObj.get("date").toString(),
-                    transObj.get("budgetPostName").toString()
+                    temp
             );
             transactionsList.add(newTrans);
         }
@@ -58,8 +59,8 @@ public class TransactionsDB {
     public List<Transaction> getTransactionsListMonth(Integer year, Integer month){
         List<Transaction> result = new ArrayList<>();
         for(Transaction trans: transactionsList){
-            Integer readYear = Integer.parseInt(trans.getDateString().substring(0,2));
-            Integer readMonth = Integer.parseInt(trans.getDateString().substring(2,4));
+            Integer readYear = trans.getDateOfTransaction().get(Calendar.YEAR);
+            Integer readMonth = trans.getDateOfTransaction().get(Calendar.MONTH);
             System.out.print("Month: "+ readMonth);
             System.out.println(" Year: "+ readYear);
             if(year.equals(readYear) && month.equals(readMonth))
