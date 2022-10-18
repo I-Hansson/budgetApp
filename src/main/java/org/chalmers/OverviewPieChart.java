@@ -176,7 +176,7 @@ public class OverviewPieChart extends AnchorPane {
             map.put(bp.getName(),bp.getColor());
         }
         for (PieChart.Data data : piechart.getData()) {
-                data.getNode().setStyle("-fx-pie-color: rgb(" +map.get(data.getName())  + ");");
+                data.getNode().setStyle("-fx-pie-color: rgb(" + map.get(data.getName())  + ");");
 
         }
 

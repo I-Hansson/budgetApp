@@ -138,13 +138,6 @@ public class ModelFacade {
 
         System.out.println(user.getCurrentBudget().getBudgetPosts().get(0).getName());
 
-      /*  for (Budget b : user.getBudgets()) {
-            System.out.println("Månad: " + b.getMonth());
-            System.out.println("år: " + b.getYear());
-            System.out.println("Budgetposts" + b.getBudgetPosts());
-            System.out.println("___________________");
-        }*/
-
 
         }
         private void fillBudget(){
