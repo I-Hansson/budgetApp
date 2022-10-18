@@ -113,9 +113,27 @@ public class UsersDB {
     }
 
     /**
+     * Add a new budgetPost to the database
+     * @param name the name of the budget post
+     * @param dateOfCreation the intended month for the budget post E.g. 1211 = 2012 November
+     * @param color the color of the budget post in form of rgb
+     * @param cap the cap of the budget post
+     */
+    public void addBudgetPost(String name, String dateOfCreation, String color, Double cap){
+        JSONArray postsDB = (JSONArray) oldDB.get("budgetPosts");
+        JSONObject newBudgetPost = new JSONObject();
+        newBudgetPost.put("dateOfCreation", dateOfCreation);
+        newBudgetPost.put("name", name);
+        newBudgetPost.put("cap",cap);
+        newBudgetPost.put("color", color);
+        postsDB.add(newBudgetPost);
+        oldDB.put("budgetPosts", postsDB);
+    }
+
+    /**
      * @return A HashMap containing name<String>, cap<Double>, color<String>
      */
-    public List<Map<String, Object>> budgetPosts(){
+    public List<Map<String, Object>> getBudgetPosts(){
         List<Map<String, Object>> result = new ArrayList<>();
         JSONArray postsDB = (JSONArray) oldDB.get("budgetPosts");
 
