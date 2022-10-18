@@ -90,7 +90,9 @@ public class ModelFacade {
     }
     public void addBudgetPost(String name, String maxAmount,  String description,String color){
         user.getCurrentBudget().addBudgetPost(new BudgetPost(Double.parseDouble(maxAmount),name,color));
+
         user.getCurrentBudget().getNewBudgetPosts().add(new BudgetPost(Double.parseDouble(maxAmount),name,color));
+
 
     }
 
@@ -235,6 +237,7 @@ public class ModelFacade {
         int day = Integer.parseInt(date.substring(4,6));
 
     }
+
 
 }
 
