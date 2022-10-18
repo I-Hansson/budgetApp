@@ -21,7 +21,7 @@ public class BudgetTest {
     public void init(){
         testBudget = new Budget(2022, 10);
         testBp = new BudgetPost(100, "test", "0, 0, 0");
-        testTransaction = new Transaction("test", 10, testBp.getId(), "", "")
+        testTransaction = new Transaction("test", 10, testBp.getId(), "", "");
     }
 
     @Test
@@ -33,7 +33,7 @@ public class BudgetTest {
     @Test
     @Order(2)
     public void getMonthReturnsCorrectString() {
-        assertEquals("10", testBudget.getMonthNumber())
+        assertEquals("10", testBudget.getMonthNumber());
         assertEquals("October", testBudget.getMonth());
     }
 

@@ -6,7 +6,7 @@ package org.chalmers.model;
  *
  * @author Isac Hansson
  */
-public class BudgetPostID {
+class BudgetPostID {
 
     private String name;
     private String color;
