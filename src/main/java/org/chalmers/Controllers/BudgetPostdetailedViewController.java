@@ -4,6 +4,8 @@ import org.chalmers.model.BudgetPost;
 import org.chalmers.model.ModelFacade;
 import org.chalmers.model.SelectedBudgetPost;
 
+import java.util.Objects;
+
 public class BudgetPostdetailedViewController {
 
     public BudgetPostdetailedViewController(){}
@@ -15,7 +17,7 @@ public class BudgetPostdetailedViewController {
 
     public void setCorrspondingId(String name) {
         for(BudgetPost bp : facade.budgetPostsfromUser()){
-            if( bp.getId().getName() == name) {
+            if(Objects.equals(bp.getName(), name)) {
                   facade.getSelectedBudget().setSelectedBudgetPost(bp);
             }
         }

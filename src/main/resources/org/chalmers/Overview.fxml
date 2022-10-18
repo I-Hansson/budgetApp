@@ -71,7 +71,7 @@
                   <String fx:value="normalStrongTextSmall" />
                </styleClass>
             </ListView>
-            <Line endX="-50.5" endY="-59.0" layoutX="50.0" layoutY="125.0" startX="-142.0" startY="-14.0" />
+            <Line endX="-50.5" endY="-59.0" layoutX="50.0" layoutY="125.0" startX="-77.5" startY="33.0" />
          </children>
       </AnchorPane>
       <FlowPane fx:id="PiechartFlowPane" layoutX="33.0" layoutY="87.0" prefHeight="262.0" prefWidth="322.0" />

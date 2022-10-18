@@ -1,21 +1,20 @@
 package org.chalmers.model;
 
-
-
-import javafx.collections.ObservableList;
-import org.chalmers.BudgetPostsDetailedLastTransactions;
-import org.chalmers.BudgetPostsView;
-import org.chalmers.model.database.Database;
 import org.chalmers.model.database.TransactionsDB;
 import org.chalmers.model.database.UsersDB;
-
-import java.security.spec.RSAOtherPrimeInfo;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 
+/**
+ * This class is a facade for the entire model.
+ * Its purpose is providing an interface for the client code and allow interaction with the model.
+ *
+ * Depends on everything :))))
+ *
+ * @author williamfrisk
+ * @author Isac Hansson
+ */
 public class ModelFacade {
 
     // TODO Får jag göra så här ?
@@ -65,7 +64,7 @@ public class ModelFacade {
     }
 
     public List<Transaction> getCurrentBudgetTransactions(){
-        return user.getCurrentBudget().getRecentTransactions();
+        return user.getCurrentBudget().getTransactions();
     }
     public List<BudgetPost> budgetPostsfromUser(){
         return user.getCurrentBudget().getBudgetPosts();
@@ -76,7 +75,7 @@ public class ModelFacade {
     public void addTransaction(String name, double amount, String budgetPostID, String description,String date){
 
         for(BudgetPost bp : user.getCurrentBudget().getBudgetPosts()){
-            if (bp.getId().getName() == budgetPostID){
+            if (bp.getName() == budgetPostID){
                 Transaction t = new Transaction(name,amount,bp.getId(),description,date);
                 user.getCurrentBudget().addTransaction(t);
                 user.getCurrentBudget().getNewTransactions().add(t);
@@ -110,10 +109,10 @@ public class ModelFacade {
          */
 
         for (Budget budget: user.getBudgets()){
-             for(Transaction t : budget.getRecentTransactions()){
+             for(Transaction t : budget.getTransactions()){
                  for(BudgetPost bp: budget.getBudgetPosts()){
                      System.out.println(t.getBudgetPostName());
-                     if(t.getBudgetPostName().equals(bp.getId().getName())){
+                     if(t.getBudgetPostName().equals(bp.getName())){
                          t.setBpID(bp.getId());
                          bp.addTransaction(t);
                      }
@@ -122,7 +121,7 @@ public class ModelFacade {
          }
 
 
-        System.out.println(user.getCurrentBudget().getBudgetPosts().get(0).getId().getName());
+        System.out.println(user.getCurrentBudget().getBudgetPosts().get(0).getName());
 
         for (Budget b : user.getBudgets()) {
             System.out.println("Månad: " + b.getMonth());
@@ -154,7 +153,7 @@ public class ModelFacade {
                 }
 
                 if ( map.containsKey(fyear + fmonth)){
-                    budget.getRecentTransactions().addAll(map.get(fyear + fmonth));
+                    budget.getTransactions().addAll(map.get(fyear + fmonth));
                 }
                 user.getBudgets().add(budget);
                 String nextMonth = nextMonth(fyear + fmonth);

@@ -1,10 +1,16 @@
 package org.chalmers.model;
 
 import java.text.SimpleDateFormat;
-import java.time.DayOfWeek;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+/**
+ * This class represents a transaction.
+ *
+ * Depends on BudgetPostID
+ *
+ * @author Isac Hansson
+ */
 public class Transaction {
     private Calendar dateOfTransaction;
     private double amount;
@@ -35,8 +41,8 @@ public class Transaction {
         System.out.println(this.getDateOfTransaction());
         this.budgetPostID = budgetPostID;
     }
-    //Getters
 
+    //Getters
     public String getBudgetPostName(){
         try{
             return this.budgetPostID.getName();

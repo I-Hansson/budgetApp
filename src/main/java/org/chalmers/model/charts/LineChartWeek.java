@@ -1,11 +1,11 @@
-package org.chalmers.model.charts.lineChartExtents;
+package org.chalmers.model.charts;
 
 import org.chalmers.model.Transaction;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class LineChartWeek implements ILineChartExtent {
+class LineChartWeek implements ILineChartExtent {
     public LineChartWeek() {}
 
     @Override
