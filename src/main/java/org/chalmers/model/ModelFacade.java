@@ -2,8 +2,7 @@ package org.chalmers.model;
 
 import org.chalmers.model.database.TransactionsDB;
 import org.chalmers.model.database.UsersDB;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+
 import java.util.*;
 
 /**
@@ -123,8 +122,9 @@ public class ModelFacade {
         for (Budget budget: user.getBudgets()){
              for(Transaction t : budget.getTransactions()){
                  for(BudgetPost bp: budget.getBudgetPosts()){
+                     DBTransaction temp = (DBTransaction) t;
                      System.out.println(t.getBudgetPostName());
-                     if(t.getBudgetPostName().equals(bp.getName())){
+                     if(temp.getBpName().equals(bp.getName())){
                          t.setBpID(bp.getId());
                          bp.addTransaction(t);
                      }
