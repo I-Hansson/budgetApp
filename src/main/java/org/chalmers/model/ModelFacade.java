@@ -3,6 +3,7 @@ package org.chalmers.model;
 import org.chalmers.model.database.TransactionsDB;
 import org.chalmers.model.database.UsersDB;
 
+import java.time.Year;
 import java.util.*;
 
 /**
@@ -76,10 +77,12 @@ public class ModelFacade {
         for(BudgetPost bp : user.getCurrentBudget().getBudgetPosts()){
             if (bp.getName() == budgetPostID){
                 Transaction t =new Transaction(name,amount,description,date);
+                t.setBpID(bp.getId());
                 user.getCurrentBudget().addTransaction(t);
 
                 user.getCurrentBudget().getNewTransactions().add(t);
                 bp.addTransaction(t);
+
 
 
             }
@@ -178,21 +181,6 @@ public class ModelFacade {
             user.setCurrentBudget(user.getBudgets().get((user.getBudgets().size()-1)));
 
         }
-        private String nextMonth(String date){
-            int year = Integer.parseInt(date.substring(0,2));
-            int month=  Integer.parseInt(date.substring(2,4));
-            month++;
-            if (month > 12) {
-                month = 1;
-                year++;
-            }
-            if(month < 10){
-                return String.valueOf(year) + "0"+String.valueOf(month);
-            }
-            return String.valueOf(year) + String.valueOf(month);
-
-        }
-
 
     public HashMap<Integer, List<Transaction>> loadIntTransactions() {
 
@@ -214,15 +202,28 @@ public class ModelFacade {
         return map;
     }
 
-    /*public void saveTransactions() throws InterruptedException {
+    public void saveTransactions() throws InterruptedException {
         userDB.openSetterTransaction();
         for(Budget b : user.getBudgets())
         for (Transaction t: b.getNewTransactions() ){
-           userDB.addTransaction(t.getName(),t.getDescription(),t.getAmount(),t.getDateString(),t.getBudgetPostName());
+
+
+            String year = String.valueOf(t.getDateOfTransaction().get(Calendar.YEAR));
+            String month = String.valueOf(t.getDateOfTransaction().get(Calendar.MONTH));
+            String day = String.valueOf(t.getDateOfTransaction().get(Calendar.DAY_OF_MONTH));
+            String temp;
+            if (Integer.parseInt(day) < 10) {
+                day = "0" + day;
+            }
+            if (Integer.parseInt(month) < 10){
+               month = "0" + month;
+            }
+                temp = year+ month+ day;
+           userDB.addTransaction(t.getName(),t.getDescription(),t.getAmount(),temp,t.getBudgetPostName());
             System.out.println(t.getBudgetPostName());
         }
         userDB.closeSetterTransaction();
-    }*/
+    }
     public void saveBudgetPost(){
         userDB.openSetters();
         for(Budget b : user.getBudgets()) {
