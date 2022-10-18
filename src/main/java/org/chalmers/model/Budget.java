@@ -13,7 +13,7 @@ public class Budget {
     private int id;
 
     private List<BudgetPost> budgetPosts = new ArrayList<>();
-    private List<Transaction> recentTransactions = new ArrayList<>();
+    private List<Transaction> transactions = new ArrayList<>();
     private List<Transaction> newTransactions = new ArrayList<>();
     private int year;
     private int month;
@@ -21,8 +21,8 @@ public class Budget {
 
     private final Collection<ITransactionAddedObserver> observers = new ArrayList<>();
 
-    public void setRecentTransactions(List<Transaction> recentTransactions) {
-        this.recentTransactions = recentTransactions;
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
     }
 
     /**
@@ -68,7 +68,7 @@ public class Budget {
     public String getMonth(){
             String[] month =
                     {"December","January", "February", "Mars", "April", "May", "june", "July", "August", "September", "October", "November"};
-            return  month[this.month];
+            return month[this.month];
 
     }
     public List<BudgetPost> getBudgetPosts() {
@@ -84,8 +84,8 @@ public class Budget {
     public int getId(){
         return id;
     }
-    public List<Transaction> getRecentTransactions(){
-        return this.recentTransactions;
+    public List<Transaction> getTransactions(){
+        return this.transactions;
     }
 
     /**
@@ -105,7 +105,7 @@ public class Budget {
     }
 
     public void addTransaction(Transaction transaction){
-        this.recentTransactions.add(transaction);
+        this.transactions.add(transaction);
     }
 
 
@@ -115,7 +115,7 @@ public class Budget {
 
     private void notifyObservers(){
         for (ITransactionAddedObserver o : observers) {
-            o.update(getRecentTransactions());
+            o.update(getTransactions());
         }
     }
 }

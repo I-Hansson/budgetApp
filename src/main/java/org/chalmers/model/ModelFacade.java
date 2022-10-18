@@ -64,7 +64,7 @@ public class ModelFacade {
     }
 
     public List<Transaction> getCurrentBudgetTransactions(){
-        return user.getCurrentBudget().getRecentTransactions();
+        return user.getCurrentBudget().getTransactions();
     }
     public List<BudgetPost> budgetPostsfromUser(){
         return user.getCurrentBudget().getBudgetPosts();
@@ -109,7 +109,7 @@ public class ModelFacade {
          */
 
         for (Budget budget: user.getBudgets()){
-             for(Transaction t : budget.getRecentTransactions()){
+             for(Transaction t : budget.getTransactions()){
                  for(BudgetPost bp: budget.getBudgetPosts()){
                      System.out.println(t.getBudgetPostName());
                      if(t.getBudgetPostName().equals(bp.getName())){
@@ -153,7 +153,7 @@ public class ModelFacade {
                 }
 
                 if ( map.containsKey(fyear + fmonth)){
-                    budget.getRecentTransactions().addAll(map.get(fyear + fmonth));
+                    budget.getTransactions().addAll(map.get(fyear + fmonth));
                 }
                 user.getBudgets().add(budget);
                 String nextMonth = nextMonth(fyear + fmonth);

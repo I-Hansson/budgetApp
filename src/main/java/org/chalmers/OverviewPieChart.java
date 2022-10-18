@@ -12,7 +12,6 @@ import javafx.util.Duration;
 import org.chalmers.Controllers.OverviewPieChartController;
 import org.chalmers.model.BudgetPost;
 import org.chalmers.model.charts.ChartFactory;
-import org.chalmers.model.charts.ChartTypePie;
 import org.chalmers.modelAdapters.chartAdapters.PieChartFX;
 
 import java.io.IOException;
@@ -41,7 +40,7 @@ public class OverviewPieChart extends AnchorPane {
 
     public OverviewPieChart(){;
         PieChartFX modelChart = new PieChartFX(ChartFactory.createPieChart());
-        modelChart.update(controller.getBudget().getRecentTransactions());
+        modelChart.update(controller.getBudget().getTransactions());
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Overviewpiechart.fxml"));
         fxmlLoader.setRoot(this);
