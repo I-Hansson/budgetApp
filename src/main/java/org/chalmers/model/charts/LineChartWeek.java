@@ -2,6 +2,7 @@ package org.chalmers.model.charts;
 
 import org.chalmers.model.Transaction;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,7 +11,8 @@ class LineChartWeek implements ILineChartExtent {
 
     @Override
     public int getDateAsInt(Transaction transaction) {
-        return transaction.getDayOfWeek();
+        return transaction.getDateOfTransaction().get(Calendar.DAY_OF_WEEK);
+
     }
 
     @Override
