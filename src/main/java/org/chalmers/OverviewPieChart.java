@@ -179,7 +179,6 @@ public class OverviewPieChart extends AnchorPane {
                 data.getNode().setStyle("-fx-pie-color: rgb(" +map.get(data.getName())  + ");");
 
         }
-
     }
 }
 

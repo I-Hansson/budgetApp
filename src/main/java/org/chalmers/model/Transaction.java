@@ -20,7 +20,7 @@ public class Transaction {
     private String dateString;
     private  String BudgetPostName;
 
-    public Transaction(String name, double amount, BudgetPostID budgetPostID, String description,String dateString){
+    Transaction(String name, double amount, BudgetPostID budgetPostID, String description,String dateString){
         this.dateOfTransaction = new GregorianCalendar();
         this.name = name;
         this.amount = amount;
@@ -64,12 +64,12 @@ public class Transaction {
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
         return sdf.format(this.dateOfTransaction.getTime());
     }
-    public String getDayOfWeeks(){
+    public String getDayOfWeekAsString(){
         String[] days =
                 {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",};
         int day = this.getDateOfTransaction().get(Calendar.DAY_OF_WEEK);
         System.out.println(day);
-        return  days[day-1];
+        return days[day-1];
     }
     public String getDateString(){
         return dateString;
@@ -84,16 +84,6 @@ public class Transaction {
 
     public String getDescription(){
         return description;
-    }
-
-    public int getDayOfWeek() {
-        return dateOfTransaction.get(Calendar.DAY_OF_WEEK);
-    }
-    public int getDayOfMonth() {
-        return dateOfTransaction.get(Calendar.DAY_OF_MONTH);
-    }
-    public int getDayOfYear() {
-        return dateOfTransaction.get(Calendar.DAY_OF_YEAR);
     }
 
     // Methods

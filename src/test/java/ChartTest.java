@@ -1,6 +1,6 @@
 import org.chalmers.model.BudgetPost;
 import org.chalmers.model.BudgetPostFactory;
-import org.chalmers.model.BudgetPostID;
+
 import org.chalmers.model.Transaction;
 import org.chalmers.model.charts.ChartFactory;
 import org.chalmers.model.charts.ChartTypePie;
