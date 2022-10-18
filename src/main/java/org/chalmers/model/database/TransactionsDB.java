@@ -35,9 +35,9 @@ public class TransactionsDB {
         JSONArray resp = (JSONArray) getTransactionsJSONObj().get("transactions");
         for(Object obj: resp){
             JSONObject transObj = (JSONObject) obj;
-            int year = Integer.parseInt( transObj.get("date").toString().substring(0, 2));
-            int  month = Integer.parseInt( transObj.get("date").toString().substring(2,4));
-            int day = Integer.parseInt( transObj.get("date").toString().substring(4,6));
+            int year = Integer.parseInt( transObj.get("date").toString().substring(0, 4));
+            int  month = Integer.parseInt( transObj.get("date").toString().substring(4,6));
+            int day = Integer.parseInt( transObj.get("date").toString().substring(6,8));
             Calendar temp = new GregorianCalendar( year, month, day);
             Transaction newTrans = new Transaction(
                     transObj.get("name").toString(),
