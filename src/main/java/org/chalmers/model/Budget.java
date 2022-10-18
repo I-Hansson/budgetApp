@@ -108,6 +108,9 @@ public class Budget {
         this.recentTransactions.add(transaction);
         notifyObservers();
     }
+    public void addBudgetPost(BudgetPost bp){
+        this.budgetPosts.add(bp);
+    }
 
     public void addObserver(ITransactionAddedObserver observer) {
         observers.add(observer);
