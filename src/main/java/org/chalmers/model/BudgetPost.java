@@ -21,23 +21,23 @@ public class BudgetPost {
     private final List<IBudgetPostsObserver> observers = new ArrayList<IBudgetPostsObserver>();
     private final List<Transaction> transactions = new ArrayList<>();
 
-    BudgetPost(double budgetCap, String name, String color){
+    public BudgetPost(double budgetCap, String name, String color){
         this.id = new BudgetPostID(name, color, "0000001");
         this.budgetCap = budgetCap;
-        this.currentBalance = 0;
+        this.currentBalance = budgetCap;
         //TODO Implement icon logic here aswell.
     }
 
-    BudgetPost(String name) {
+    public BudgetPost(String name) {
         this.id = new BudgetPostID(name, "5, 51, 92", "0000001");
         this.budgetCap = 0;
-        this.currentBalance = 0;
+        this.currentBalance = budgetCap;
     }
 
     BudgetPost(double budgetCap, String name) {
         this.id = new BudgetPostID(name, "5, 51, 92", "0000001");
         this.budgetCap = budgetCap;
-        this.currentBalance = 0;
+        this.currentBalance = budgetCap;
     }
 
 
@@ -51,7 +51,7 @@ public class BudgetPost {
         this.budgetCap = newCap;
     }
 
-    public void setCurrentBalance(int x){
+    public void setCurrentBalance(double x){
         this.currentBalance = x;
     }
 
@@ -98,8 +98,8 @@ public class BudgetPost {
      * @return The list of transactions
      */
     public Collection<Transaction> getTransactions() {
-        List<Transaction> transactionsCopy = new ArrayList<>();
-        Collections.copy(transactionsCopy, transactions);
+        List<Transaction> transactionsCopy = new ArrayList<>(transactions.size()+1);
+        transactionsCopy.addAll(transactions);
 
         return transactionsCopy;
     }
