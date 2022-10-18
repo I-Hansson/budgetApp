@@ -25,6 +25,9 @@ public class BudgetPostPanelController {
     public List<OverviewBudgetPost> getBudgetPostCards(){
         return this.budgetPostCards;
     }
+
+    // TODO too much functionality
+
     public  void createBudgetPostCards(){
         budgetPostCards.clear();
         for (BudgetPost i : facade.budgetPostsfromUser()){
