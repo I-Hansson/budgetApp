@@ -13,6 +13,7 @@ public class Budget {
     private int id;
 
     private List<BudgetPost> budgetPosts = new ArrayList<>();
+    private List<BudgetPost> newBudgetPosts = new ArrayList<>();
     private List<Transaction> transactions = new ArrayList<>();
     private List<Transaction> newTransactions = new ArrayList<>();
     private int year;
@@ -65,9 +66,14 @@ public class Budget {
         return newTransactions;
     }
 
+    public List<BudgetPost> getNewBudgetPosts(){
+        return newBudgetPosts;
+    }
+
     public String getMonth(){
             String[] month =
-                    {"December","January", "February", "Mars", "April", "May", "june", "July", "August", "September", "October", "November"};
+                    {"January", "February", "Mars", "April", "May", "june", "July", "August", "September",
+                            "October", "November", "December"};
             return month[this.month];
 
     }
@@ -106,6 +112,9 @@ public class Budget {
 
     public void addTransaction(Transaction transaction){
         this.transactions.add(transaction);
+    }
+    public void addBudgetPost(BudgetPost bp){
+        this.budgetPosts.add(bp);
     }
 
 

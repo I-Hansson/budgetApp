@@ -39,6 +39,7 @@ public class AddTransactionView implements Initializable {
     @FXML TextField addBudgetPostNameField;
     @FXML TextField addBudgetPostMaxField;
     @FXML TextArea addBudgetPostDescriptionArea;
+    @FXML ColorPicker colorPicker;
 
     @FXML Label errorLabel;
     @FXML Label budgetPostErrorLabel;
@@ -63,11 +64,14 @@ public class AddTransactionView implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
 
-        for (BudgetPost post : addTransactionBudgetPostsController.getBudgetPosts()){
-            this.BudgetPostsTexFlowPane.getChildren().add(new AddTransactionBudgetPosts(post.getName()));
-                }
+        update();
         }
-
+    public void update(){
+        this.BudgetPostsTexFlowPane.getChildren().clear();
+        for (BudgetPost post : addTransactionBudgetPostsController.getBudgetPosts()){
+            this.BudgetPostsTexFlowPane.getChildren().add(new AddTransactionBudgetPosts(post.getId().getName()));
+        }
+    }
 
     @FXML
     public void showAddBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
@@ -144,7 +148,8 @@ public class AddTransactionView implements Initializable {
     public void doneAddBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
 
         if (checkInformationAddBudgetPost()){
-            budgetPostController.createBudgetPost(addBudgetPostNameField.getText(),addBudgetPostMaxField.getText(), addBudgetPostDescriptionArea.getText(),"color");
+            budgetPostController.createBudgetPost(addBudgetPostNameField.getText(),addBudgetPostMaxField.getText(), addBudgetPostDescriptionArea.getText(),colorPicker.getValue().toString());
+            update();
             feedBackAddingBudgetPost();
         } else {wrongAddBudgetPostInformation();
         }
