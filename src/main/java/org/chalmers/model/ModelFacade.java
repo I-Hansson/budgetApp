@@ -87,6 +87,14 @@ public class ModelFacade {
 
 
     }
+    public void addBudgetPost(String name, String maxAmount,  String description,String color){
+        user.getCurrentBudget().addBudgetPost(new BudgetPost(Double.parseDouble(maxAmount),name,color));
+
+    }
+
+
+
+
     public void connectDB() {
         fillBudget();
 
@@ -206,6 +214,15 @@ public class ModelFacade {
             System.out.println(t.getBudgetPostName());
         }
         userDB.closeSetterTransaction();
+    }
+    public void saveBudgetPost(){
+        userDB.openSetterTransaction();
+        for(Budget b : user.getBudgets()) {
+            for (BudgetPost bp: b.getBudgetPosts() ){
+            }
+        }
+        userDB.closeSetterTransaction();
+
     }
 
 }
