@@ -152,25 +152,24 @@ public class ModelFacade {
             int fmonth = transaction.getDateOfTransaction().get(Calendar.MONTH);
             int fyear =transaction.getDateOfTransaction().get(Calendar.YEAR);
 
-
             Calendar today = new GregorianCalendar();
             int lYear = today.get(Calendar.YEAR);
             int lMonth = today.get(Calendar.MONTH);
             Calendar newCalender = (Calendar) transaction.getDateOfTransaction().clone();
             do {
-                    Budget budget = new Budget(fyear,fmonth);
+                Budget budget = new Budget(fyear,fmonth);
 
-
-                if ( map.containsKey(fyear*100+ fmonth)){
+                if ( map.containsKey(fyear*100 + fmonth)){
+                    System.out.println(map.get(fyear*100 + fmonth));
                     budget.getTransactions().addAll(map.get(fyear*100 + fmonth));
                 }
                 user.getBudgets().add(budget);
 
 
                 newCalender.add(Calendar.MONTH,1);
-                fmonth = transaction.getDateOfTransaction().get(Calendar.MONTH);
-                fyear = transaction.getDateOfTransaction().get(Calendar.YEAR);
-            } while (fyear*100 + fmonth< lYear*100 + lMonth+1);
+                fmonth = newCalender.get(Calendar.MONTH);
+                fyear = newCalender.get(Calendar.YEAR);
+            } while (fyear*100 + fmonth < lYear*100 + lMonth+1);
 
             user.setCurrentBudget(user.getBudgets().get((user.getBudgets().size()-1)));
 
