@@ -40,7 +40,6 @@ public class PastTransactionItem extends AnchorPane {
 
         nameTransaction.setText(transaction.getName());
         costTransaction.setText(transaction.getAmount()+ " kr");
-        //remainingBalanceTransation.setText(42149 + "kr");
         dateTransaction.setText(transaction.getTransactionDate());
         descriptionTransaction.setText(transaction.getDescription());
         dayTransaction.setText(transaction.getDayOfWeeks());

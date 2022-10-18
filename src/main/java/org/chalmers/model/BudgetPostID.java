@@ -10,13 +10,11 @@ public class BudgetPostID {
 
     private String name;
     private String color;
-    private String id;
 
 
-    BudgetPostID(String name, String color, String id) {
+    BudgetPostID(String name, String color) {
         this.name = name;
         this.color = color;
-        this.id = id;
     }
 
     public String getName() {
@@ -27,7 +25,4 @@ public class BudgetPostID {
         return color;
     }
 
-    public String getId() {
-        return id;
-    }
 }

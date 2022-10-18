@@ -78,6 +78,7 @@ public class ModelFacade {
             if (bp.getName() == budgetPostID){
                 Transaction t = new Transaction(name,amount,bp.getId(),description,date);
                 user.getCurrentBudget().addTransaction(t);
+
                 user.getCurrentBudget().getNewTransactions().add(t);
                 bp.addTransaction(t);
 
@@ -89,6 +90,7 @@ public class ModelFacade {
     }
     public void addBudgetPost(String name, String maxAmount,  String description,String color){
         user.getCurrentBudget().addBudgetPost(new BudgetPost(Double.parseDouble(maxAmount),name,color));
+        user.getCurrentBudget().getNewBudgetPosts().add(new BudgetPost(Double.parseDouble(maxAmount),name,color));
 
     }
 
@@ -216,12 +218,13 @@ public class ModelFacade {
         userDB.closeSetterTransaction();
     }
     public void saveBudgetPost(){
-        userDB.openSetterTransaction();
+        userDB.openSetters();
         for(Budget b : user.getBudgets()) {
-            for (BudgetPost bp: b.getBudgetPosts() ){
+            for (BudgetPost bp: b.getNewBudgetPosts() ){
+                userDB.addBudgetPost(bp.getName(),user.getCurrentBudget().getYear() + user.getCurrentBudget().getMonthNumber(),bp.getColor(),bp.getBudgetCap());
             }
         }
-        userDB.closeSetterTransaction();
+        userDB.closeSetter();
 
     }
 

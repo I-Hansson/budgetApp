@@ -28,7 +28,6 @@ public class Transaction {
         this.dateString = dateString;
         this.description = description;
     }
-
     public Transaction(String name, double amount, String description, String date,String budgetPostName){
         this.dateOfTransaction = new GregorianCalendar();
         this.name = name;
@@ -37,6 +36,7 @@ public class Transaction {
         this.dateString = date;
         this.BudgetPostName = budgetPostName;
     }
+
     public void setBpID(BudgetPostID budgetPostID){
         System.out.println(this.getDateOfTransaction());
         this.budgetPostID = budgetPostID;
@@ -53,9 +53,7 @@ public class Transaction {
     public String getBudgetPostColor(){
         return this.budgetPostID.getColor();
     }
-    public String getBudgetPostID(){
-        return this.budgetPostID.getId();
-    }
+
 
     public String getName() {
         return name;

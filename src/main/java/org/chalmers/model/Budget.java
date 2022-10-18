@@ -13,6 +13,7 @@ public class Budget {
     private int id;
 
     private List<BudgetPost> budgetPosts = new ArrayList<>();
+    private List<BudgetPost> newBudgetPosts = new ArrayList<>();
     private List<Transaction> transactions = new ArrayList<>();
     private List<Transaction> newTransactions = new ArrayList<>();
     private int year;
@@ -63,6 +64,10 @@ public class Budget {
      */
     public List<Transaction> getNewTransactions() {
         return newTransactions;
+    }
+
+    public List<BudgetPost> getNewBudgetPosts(){
+        return newBudgetPosts;
     }
 
     public String getMonth(){
