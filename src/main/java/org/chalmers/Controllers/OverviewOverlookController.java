@@ -1,9 +1,6 @@
 package org.chalmers.Controllers;
 
-import org.chalmers.model.BudgetPost;
 import org.chalmers.model.ModelFacade;
-import org.chalmers.model.Transaction;
-
 public class OverviewOverlookController {
 
     ModelFacade facade = ModelFacade.getInstance();

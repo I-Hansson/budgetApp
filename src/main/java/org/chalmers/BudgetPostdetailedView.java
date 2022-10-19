@@ -13,7 +13,6 @@ import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 import org.chalmers.Controllers.BudgetPostdetailedViewController;
 import org.chalmers.model.ITransaction;
-import org.chalmers.model.Transaction;
 import org.chalmers.model.charts.ChartFactory;
 import org.chalmers.modelAdapters.chartAdapters.LineChartFX;
 

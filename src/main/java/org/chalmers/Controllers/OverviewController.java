@@ -3,7 +3,6 @@ package org.chalmers.Controllers;
 
 import org.chalmers.model.ITransaction;
 import org.chalmers.model.ModelFacade;
-import org.chalmers.model.Transaction;
 
 import java.util.ArrayList;
 import java.util.Collection;

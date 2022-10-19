@@ -1,7 +1,6 @@
 package org.chalmers.model.database;
 
 import org.chalmers.model.DBTransaction;
-import org.chalmers.model.Transaction;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 

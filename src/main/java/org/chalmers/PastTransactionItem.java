@@ -6,12 +6,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 import org.chalmers.model.ITransaction;
-import org.chalmers.model.Transaction;
-
-
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 public class PastTransactionItem extends AnchorPane {
 

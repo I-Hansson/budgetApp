@@ -32,7 +32,6 @@ import org.chalmers.Controllers.OverviewController;
 
 import org.chalmers.model.ITransaction;
 import org.chalmers.model.ModelFacade;
-import org.chalmers.model.Transaction;
 
 
 public class OverviewView implements Initializable {

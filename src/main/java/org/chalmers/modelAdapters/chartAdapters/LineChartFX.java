@@ -2,7 +2,6 @@ package org.chalmers.modelAdapters.chartAdapters;
 
 import javafx.scene.chart.XYChart;
 import org.chalmers.model.ITransaction;
-import org.chalmers.model.Transaction;
 import org.chalmers.model.charts.ChartTypeLine;
 
 import java.util.Collection;

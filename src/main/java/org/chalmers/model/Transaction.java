@@ -10,7 +10,7 @@ import java.util.Calendar;
  *
  * @author Isac Hansson
  */
-public class Transaction implements ITransaction {
+class Transaction implements ITransaction {
     private Calendar dateOfTransaction;
     private double amount;
     private BudgetPostID budgetPostID;

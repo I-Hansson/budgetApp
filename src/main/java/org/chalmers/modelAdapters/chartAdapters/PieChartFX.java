@@ -4,7 +4,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart;
 import org.chalmers.model.ITransaction;
-import org.chalmers.model.Transaction;
 import org.chalmers.model.charts.ChartTypePie;
 
 import java.util.Collection;

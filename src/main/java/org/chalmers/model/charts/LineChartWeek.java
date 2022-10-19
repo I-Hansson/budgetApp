@@ -1,7 +1,6 @@
 package org.chalmers.model.charts;
 
 import org.chalmers.model.ITransaction;
-import org.chalmers.model.Transaction;
 
 import java.util.Calendar;
 import java.util.HashMap;
