@@ -10,6 +10,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import org.chalmers.model.ModelFacade;
+import org.chalmers.model.database.DatabaseSaver;
 
 /**
  * JavaFX App
@@ -27,12 +28,12 @@ public class App extends Application{
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
            public void handle(WindowEvent t) {
-             /*   try {
-                    facade.saveTransactions();
+                try {
+                    facade.saveUser();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                facade.saveBudgetPost();*/
+
                 Platform.exit();
                 System.exit(0);
             }

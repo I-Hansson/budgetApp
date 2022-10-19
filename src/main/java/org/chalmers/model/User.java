@@ -26,6 +26,10 @@ public class User {
         return budgets;
     }
 
+    public int getUserID(){
+        return this.id;
+    }
+
     public IBudget getCurrentBudget() {
         return currentBudget;
     }
