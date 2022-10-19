@@ -58,6 +58,7 @@ public class LogInView {
         if (checkInformation()){
             createUserPane.toBack();
             controller.createUser(nameCreateUserTextField.getText(), idCreateUserTextField.getText(), passwordCreateUserTextField.getText());
+            clearInputInfo();
         }
         wrongInformation();
     }
@@ -134,7 +135,14 @@ public class LogInView {
         errorLabelLogInView.setText("The information is incorretctly filled out!");
     }
 
+    private void clearInputInfo(){
+        errorLabelLogInView.setText("");
+        idCreateUserTextField.setText("");
+        passwordCreateUserTextField.setText("");
+        nameCreateUserTextField.setText("");
 
 
 
-}
+
+
+    }}
