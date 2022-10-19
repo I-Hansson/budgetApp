@@ -23,6 +23,7 @@ import org.chalmers.model.ModelFacade;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 
 public class BudgetPostsView implements Initializable {
@@ -66,7 +67,7 @@ public class BudgetPostsView implements Initializable {
     }
 
     public void update(){
-        currentBudgetMonth.setText(facade.getUser().getCurrentBudget().getMonth()+ " " + facade.getUser().getCurrentBudget().getYear());
+        currentBudgetMonth.setText(DateStringFormatter.getMonthAsString(facade.getUser().getCurrentBudget().getDate()) + " " + facade.getUser().getCurrentBudget().getDate().get(Calendar.YEAR));
         this.budgetPostsViewGridPane.getChildren().clear();
         itemController.createBudgetItems();
         for(int i = 0;i< itemController.getItem().size(); i++) {

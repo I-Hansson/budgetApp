@@ -1,6 +1,7 @@
 package org.chalmers.model;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -15,8 +16,8 @@ public class User {
     private String name;
     private int id;
     private boolean instantiatd = false;
-    private List<Budget> budgets = new ArrayList<>();
-    private Budget currentBudget;
+    private List<IBudget> budgets = new ArrayList<>();
+    private IBudget currentBudget;
 
     User(){
         if(!instantiatd) Instantiate();
@@ -24,11 +25,11 @@ public class User {
     }
 
     //Getters
-    public List<Budget> getBudgets() {
+    public List<IBudget> getBudgets() {
         return budgets;
     }
 
-    public Budget getCurrentBudget() {
+    public IBudget getCurrentBudget() {
         return currentBudget;
     }
 
@@ -41,7 +42,7 @@ public class User {
     }
 
     //Setters
-    public void setCurrentBudget(Budget currentBudget) {
+    public void setCurrentBudget(IBudget currentBudget) {
         this.currentBudget = currentBudget;
     }
 

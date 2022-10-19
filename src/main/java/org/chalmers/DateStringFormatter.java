@@ -16,4 +16,11 @@ public class DateStringFormatter {
         int day = date.get(Calendar.DAY_OF_WEEK);
         return days[day-1];
     }
+
+    public static String getMonthAsString(Calendar date) {
+        String[] month =
+                {"January", "February", "Mars", "April", "May", "june", "July", "August", "September",
+                        "October", "November", "December"};
+        return month[date.get(Calendar.MONTH)];
+    }
 }

@@ -17,6 +17,7 @@ import org.chalmers.model.ModelFacade;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 
 public class PastTransactionView implements Initializable {
@@ -45,7 +46,7 @@ public class PastTransactionView implements Initializable {
     public void update(){
         pastTransactionFlowPane.getChildren().clear();
         this.pastTransactionFlowPane.getChildren().clear();
-        currentBudgetMonth.setText(facade.getUser().getCurrentBudget().getMonth()+ " " + facade.getUser().getCurrentBudget().getYear());
+        currentBudgetMonth.setText(DateStringFormatter.getMonthAsString(facade.getCurrentBudget().getDate())+ " " + facade.getCurrentBudget().getDate().get(Calendar.YEAR));
         PastTransactionController.updateItem();
         for(PastTransactionItem i : PastTransactionController.getPastTransactionItemList()){
             this.pastTransactionFlowPane.getChildren().add(i);

@@ -15,6 +15,7 @@ import org.chalmers.model.charts.ChartFactory;
 import org.chalmers.modelAdapters.chartAdapters.PieChartFX;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
@@ -169,7 +170,7 @@ public class OverviewPieChart extends AnchorPane {
             piechart.getData().get(0).getNode().setStyle("-fx-pie-color: gray");
             return;
         }
-        List<IBudgetPost> bps = controller.getBudgetPosts();
+        Collection<IBudgetPost> bps = controller.getBudgetPosts();
 
         HashMap<String,String> map =  new HashMap<>();
         for(IBudgetPost bp :bps){
