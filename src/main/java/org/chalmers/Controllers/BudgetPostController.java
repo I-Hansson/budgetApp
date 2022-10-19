@@ -4,6 +4,12 @@ import javafx.scene.paint.Color;
 import org.chalmers.model.ModelFacade;
 import org.chalmers.model.SelectedBudgetPost;
 
+/**
+ * Controller class for the view class BudgetPostView.
+ *
+ * @author Jonathan
+ */
+
 public class BudgetPostController {
 
     private ModelFacade facade = ModelFacade.getInstance();

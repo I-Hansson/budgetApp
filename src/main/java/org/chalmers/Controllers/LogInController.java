@@ -1,5 +1,9 @@
 package org.chalmers.Controllers;
 
+/**
+ * @author Jonathan
+ */
+
 public class LogInController {
 
 

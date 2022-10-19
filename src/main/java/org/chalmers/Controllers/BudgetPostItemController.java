@@ -8,6 +8,10 @@ import org.chalmers.model.ModelFacade;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Jonathan
+ */
+
 public class BudgetPostItemController {
   List<BudgetPostsItem> item = new ArrayList<>();
   ModelFacade facade = ModelFacade.getInstance();

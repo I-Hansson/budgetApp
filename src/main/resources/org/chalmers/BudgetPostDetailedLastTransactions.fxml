@@ -4,6 +4,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 
+<!--
+@author Jonathan
+        -->
+
 <fx:root prefHeight="111.0" prefWidth="186.0" styleClass="focusWhiteWithRadius" stylesheets="@CSS/Font.css" type="AnchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane prefHeight="111.0" prefWidth="186.0">

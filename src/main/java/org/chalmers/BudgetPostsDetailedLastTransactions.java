@@ -10,6 +10,10 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+/**
+ * @author Jonathan
+ */
+
 public class BudgetPostsDetailedLastTransactions extends AnchorPane {
 
     BudgetPostsDetailedLastTransactionsController budgetPostsDetailedLastTransactionsController = new BudgetPostsDetailedLastTransactionsController();

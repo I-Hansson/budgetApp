@@ -8,6 +8,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * @author Jonathan
+ */
+
 public class OverviewController{
     ModelFacade facade = ModelFacade.getInstance();
     public OverviewController(){

@@ -11,6 +11,10 @@ import org.chalmers.model.ModelFacade;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Jonathan
+ */
+
 public class BudgetPostPanelController {
     private List<IBudgetPost> budgets = new ArrayList<>();
     private List<OverviewBudgetPost> budgetPostCards = new ArrayList<OverviewBudgetPost>();

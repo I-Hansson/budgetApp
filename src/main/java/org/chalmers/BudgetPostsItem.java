@@ -15,6 +15,10 @@ import org.chalmers.Controllers.BudgetPostdetailedViewController;
 
 import java.io.IOException;
 
+/**
+ * @author Jonathan
+ */
+
 public class BudgetPostsItem extends AnchorPane {
 
 

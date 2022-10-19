@@ -20,6 +20,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * @author Jonathan
+ */
+
 public class BudgetPostdetailedView implements Initializable {
 
     BudgetPostdetailedViewController controller = new BudgetPostdetailedViewController();
