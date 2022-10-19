@@ -5,10 +5,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
+import org.chalmers.model.ITransaction;
 import org.chalmers.model.Transaction;
 
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class PastTransactionItem extends AnchorPane {
 
@@ -24,7 +27,7 @@ public class PastTransactionItem extends AnchorPane {
 
 
 
-    public PastTransactionItem(Transaction transaction){
+    public PastTransactionItem(ITransaction transaction){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PastTransactionItem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -39,9 +42,10 @@ public class PastTransactionItem extends AnchorPane {
 
         nameTransaction.setText(transaction.getName());
         costTransaction.setText(transaction.getAmount()+ " kr");
-        dateTransaction.setText(transaction.getTransactionDate());
+
+        dateTransaction.setText(DateStringFormatter.getFormattedDate(transaction.getDate()));
         descriptionTransaction.setText(transaction.getDescription());
-        dayTransaction.setText(transaction.getDayOfWeekAsString());
+        dayTransaction.setText(DateStringFormatter.getDayOfWeekAsString(transaction.getDate()));
         budgetpostTransaction.setText(transaction.getBudgetPostName());
         colorBoardTransaction.setStyle("-fx-background-color: rgb("+ transaction.getBudgetPostColor()+" );");
     }

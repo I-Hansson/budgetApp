@@ -1,5 +1,6 @@
 package org.chalmers.model.charts;
 
+import org.chalmers.model.ITransaction;
 import org.chalmers.model.Transaction;
 
 import java.util.Calendar;
@@ -10,8 +11,8 @@ class LineChartYear implements ILineChartExtent {
 
     public LineChartYear() {}
     @Override
-    public int getDateAsInt(Transaction transaction) {
-        return transaction.getDateOfTransaction().get(Calendar.DAY_OF_YEAR);
+    public int getDateAsInt(ITransaction transaction) {
+        return transaction.getDate().get(Calendar.DAY_OF_YEAR);
     }
 
     @Override

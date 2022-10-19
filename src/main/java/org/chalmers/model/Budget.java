@@ -15,8 +15,8 @@ public class Budget {
 
     private List<BudgetPost> budgetPosts = new ArrayList<>();
     private List<BudgetPost> newBudgetPosts = new ArrayList<>();
-    private List<Transaction> transactions = new ArrayList<>();
-    private List<Transaction> newTransactions = new ArrayList<>();
+    private List<ITransaction> transactions = new ArrayList<>();
+    private List<ITransaction> newTransactions = new ArrayList<>();
     private int year;
     private int month;
     private Calendar calender;
@@ -24,7 +24,7 @@ public class Budget {
 
     private final Collection<ITransactionAddedObserver> observers = new ArrayList<>();
 
-    public void setTransactions(List<Transaction> transactions) {
+    public void setTransactions(List<ITransaction> transactions) {
         this.transactions = transactions;
     }
 
@@ -74,7 +74,7 @@ public class Budget {
      * Returns a list of all transactions in this budget.
      * @return The list of transactions
      */
-    public List<Transaction> getNewTransactions() {
+    public List<ITransaction> getNewTransactions() {
         return newTransactions;
     }
 
@@ -102,7 +102,7 @@ public class Budget {
     public int getId(){
         return id;
     }
-    public List<Transaction> getTransactions(){
+    public List<ITransaction> getTransactions(){
         return this.transactions;
     }
 
@@ -122,7 +122,7 @@ public class Budget {
         currentBalance += change;
     }
 
-    public void addTransaction(Transaction transaction){
+    public void addTransaction(ITransaction transaction){
         this.transactions.add(transaction);
     }
     public void addBudgetPost(BudgetPost bp){

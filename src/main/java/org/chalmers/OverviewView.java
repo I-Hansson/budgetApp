@@ -30,6 +30,7 @@ import org.chalmers.Controllers.BudgetPostPanelController;
 import javafx.stage.Stage;
 import org.chalmers.Controllers.OverviewController;
 
+import org.chalmers.model.ITransaction;
 import org.chalmers.model.ModelFacade;
 import org.chalmers.model.Transaction;
 
@@ -202,7 +203,7 @@ public class OverviewView implements Initializable {
         }
 
         latestTransactionsListView.getItems().clear();
-        for (Transaction transaction : overviewController.getLatestTransactions()) {
+        for (ITransaction transaction : overviewController.getLatestTransactions()) {
             Label tempLabel = new Label("-" + transaction.getAmount() + "kr " + transaction.getName());
             latestTransactionsListView.getItems().add(tempLabel);
         }

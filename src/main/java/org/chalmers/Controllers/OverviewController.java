@@ -1,6 +1,7 @@
 package org.chalmers.Controllers;
 
 
+import org.chalmers.model.ITransaction;
 import org.chalmers.model.ModelFacade;
 import org.chalmers.model.Transaction;
 
@@ -35,9 +36,9 @@ public class OverviewController{
         facade.getUser().previousCurrentBudget();
     }
 
-    public Collection<Transaction> getLatestTransactions() { //TODO ska hämta data från backend
-        List<Transaction> latestTransactions = new ArrayList<>();
-        List<Transaction> userList = facade.getUser().getCurrentBudget().getTransactions();
+    public Collection<ITransaction> getLatestTransactions() { //TODO ska hämta data från backend
+        List<ITransaction> latestTransactions = new ArrayList<>();
+        List<ITransaction> userList = facade.getUser().getCurrentBudget().getTransactions();
         for (int i = 1; i <= 5; i++) {
             if (userList.size()-i >= 0)
                 latestTransactions.add(userList.get(userList.size()-i));

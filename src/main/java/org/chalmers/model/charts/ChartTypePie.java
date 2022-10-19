@@ -1,5 +1,6 @@
 package org.chalmers.model.charts;
 
+import org.chalmers.model.ITransaction;
 import org.chalmers.model.Transaction;
 import java.util.Collection;
 import java.util.HashMap;
@@ -33,9 +34,9 @@ public class ChartTypePie implements IChart<String, Integer> {
      * @param transactions The collection of transaction which are used for the update.
      */
     @Override
-    public void update(Collection<Transaction> transactions) {
+    public void update(Collection<ITransaction> transactions) {
         data.clear();
-        for(Transaction transaction : transactions){
+        for(ITransaction transaction : transactions){
 
             if(transaction.getAmount() != 0){
                 String budgetPostName = transaction.getBudgetPostName();

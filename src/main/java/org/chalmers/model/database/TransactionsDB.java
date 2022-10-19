@@ -62,8 +62,8 @@ public class TransactionsDB {
     public List<DBTransaction> getTransactionsListMonth(Integer year, Integer month){
         List<DBTransaction> result = new ArrayList<>();
         for(DBTransaction trans: transactionsList){
-            Integer readYear = trans.getDateOfTransaction().get(Calendar.YEAR);
-            Integer readMonth = trans.getDateOfTransaction().get(Calendar.MONTH);
+            Integer readYear = trans.getDate().get(Calendar.YEAR);
+            Integer readMonth = trans.getDate().get(Calendar.MONTH);
             System.out.print("Month: "+ readMonth);
             System.out.println(" Year: "+ readYear);
             if(year.equals(readYear) && month.equals(readMonth))

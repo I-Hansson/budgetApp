@@ -2,7 +2,6 @@ package org.chalmers.model;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 /**
  * This class represents a transaction.
@@ -11,7 +10,7 @@ import java.util.GregorianCalendar;
  *
  * @author Isac Hansson
  */
-public class Transaction {
+public class Transaction implements ITransaction {
     private Calendar dateOfTransaction;
     private double amount;
     private BudgetPostID budgetPostID;
@@ -28,7 +27,7 @@ public class Transaction {
 
 
     public void setBpID(BudgetPostID budgetPostID){
-        System.out.println(this.getDateOfTransaction());
+        System.out.println(this.getDate());
         this.budgetPostID = budgetPostID;
     }
 
@@ -44,28 +43,29 @@ public class Transaction {
     public String getName() {
         return name;
     }
-    public String getTransactionDate(){
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
-        return sdf.format(this.dateOfTransaction.getTime());
-    }
+
     public String getDayOfWeekAsString(){
         String[] days =
                 {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",};
-        int day = this.getDateOfTransaction().get(Calendar.DAY_OF_WEEK);
+        int day = this.getDate().get(Calendar.DAY_OF_WEEK);
         System.out.println(day);
         return days[day-1];
     }
 
-    public Calendar getDateOfTransaction() {
+    @Override
+    public Calendar getDate() {
         return this.dateOfTransaction;
     }
+    @Override
     public double getAmount(){
         return amount;
     }
 
+    @Override
     public String getDescription(){
         return description;
     }
+
 
     // Methods
 
