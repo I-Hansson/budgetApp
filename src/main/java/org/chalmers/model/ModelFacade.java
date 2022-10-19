@@ -52,9 +52,11 @@ public class ModelFacade {
             if (bp.getName() == budgetPostID){
                 Transaction t = new Transaction(name,amount,description,date);
                 t.setBpID(bp.getId());
+
                 user.getCurrentBudget().addTransaction(t);
 
                 user.getCurrentBudget().getNewTransactions().add(t);
+
                 bp.addTransaction(t);
 
 
@@ -80,7 +82,9 @@ public class ModelFacade {
 
     public double getCurrentBalance(){
         return user.getCurrentBudget().getCurrentBalance();
-
+    }
+    public double getBudgetCap(){
+        return user.getCurrentBudget().getBudgetCap();
     }
 public void saveUser() throws InterruptedException {
     DatabaseSaver.saveUserToDatabase(user);

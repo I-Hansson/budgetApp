@@ -15,7 +15,7 @@ public class OverviewOverlookController {
     public OverviewOverlookController(){}
 
     public double getOverlookBalance(){
-        return facade.getCurrentBalance();
+        return facade.getBudgetCap() - facade.getCurrentBalance();
     }
     public String getOverlookAverage(){return "N/A";}
 
