@@ -7,13 +7,26 @@ import org.chalmers.model.User;
 
 import java.util.Calendar;
 
+/**
+* @author Isac Hansson
+* Save User, transactions and budgetposts to the database (json files)
+*/
+
+
 public class DatabaseSaver {
 
 
     private static User user;
     private static UsersDB userDB = new UsersDB(1);
-    public static void saveUserToDatabase(User tmp) throws InterruptedException {
-        user = tmp;
+
+    /**
+     * Save the user to the database
+     * @param tempUser
+     * @throws InterruptedException
+     */
+
+    public static void saveUserToDatabase(User tempUser) throws InterruptedException {
+        user = tempUser;
         userDB = new UsersDB(1);
         saveTransactions();
         saveBudgetPost();

@@ -24,7 +24,7 @@ public class ModelFacade {
 
     private static ModelFacade instance = new ModelFacade();
 
-    private User user = new User();
+    private User user;
     private ModelFacade() {}
 
     public static ModelFacade getInstance() {

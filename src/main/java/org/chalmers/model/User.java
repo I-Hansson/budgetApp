@@ -16,8 +16,8 @@ public class User {
     private List<IBudget> budgets = new ArrayList<>();
     private IBudget currentBudget;
     private int id;
-    public User(){
-        this.name = "temp"; //TODO namn ska läsas in i konstruktor?
+    public User(int id){
+        this.name = "temp";
         this.currentBudget = new Budget(2011,2);
     }
 

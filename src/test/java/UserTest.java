@@ -10,6 +10,6 @@ public class UserTest {
 
     @Order(1)
     public void init() {
-        testUser = new User();
+        testUser = new User(1);
     }
 }

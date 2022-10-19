@@ -4,15 +4,25 @@ import org.chalmers.model.*;
 
 import java.util.*;
 
+/**
+ * @author Isac Hansson
+ * Create user from transactions and budgetsposts. (UserDB)
+ */
 public class DatabaseLoader {
 
     private static UsersDB userDB = new UsersDB(1);
+    private static User user;
 
 
-    private static User user = new User();
+    /**
+     *
+     * @param userID int that decides what json files to load in from.
+     * @return the acuall user
+     */
     public static User getUserFromDatabase(int userID){
-        user = new User();
+
         userDB = new UsersDB(userID);
+        user = new User(Integer.parseInt(userDB.getUid()));
         connectDB();
 
         return user;
@@ -86,7 +96,7 @@ public class DatabaseLoader {
 
     }
 
-    public static HashMap<Integer, List<Transaction>> loadIntTransactions() {
+    private static HashMap<Integer, List<Transaction>> loadIntTransactions() {
 
         HashMap<Integer, List<Transaction>> map = new HashMap<>();
         TransactionsDB uDB = new TransactionsDB(1);
