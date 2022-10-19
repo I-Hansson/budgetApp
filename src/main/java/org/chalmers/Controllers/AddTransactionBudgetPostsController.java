@@ -1,7 +1,6 @@
 package org.chalmers.Controllers;
 
-import org.chalmers.model.Budget;
-import org.chalmers.model.BudgetPost;
+import org.chalmers.model.IBudgetPost;
 import org.chalmers.model.ModelFacade;
 
 import java.util.ArrayList;
@@ -15,7 +14,7 @@ public class AddTransactionBudgetPostsController {
 
     }
 
-    public List<BudgetPost> getBudgetPosts (){return facade.budgetPostsfromUser();}
+    public List<IBudgetPost> getBudgetPosts (){return facade.budgetPostsfromUser();}
 
 
 

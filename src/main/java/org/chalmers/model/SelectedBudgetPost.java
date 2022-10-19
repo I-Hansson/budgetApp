@@ -4,14 +4,14 @@ package org.chalmers.model;
 
 public class SelectedBudgetPost {
 
-    private  BudgetPost selectdBudgetPost;
+    private IBudgetPost selectdBudgetPost;
 
-    public SelectedBudgetPost(BudgetPost selcetedBudgetPost){
-        this.selectdBudgetPost = selcetedBudgetPost;
+    public SelectedBudgetPost(IBudgetPost selectedBudgetPost){
+        this.selectdBudgetPost = selectedBudgetPost;
     }
 
-    public void setSelectedBudgetPost(BudgetPost newSelectedBudgetPost){this.selectdBudgetPost = newSelectedBudgetPost;}
+    public void setSelectedBudgetPost(IBudgetPost newSelectedBudgetPost){this.selectdBudgetPost = newSelectedBudgetPost;}
 
-    public BudgetPost getSelectedBudgetPost(){return selectdBudgetPost;}
+    public IBudgetPost getSelectedBudgetPost(){return selectdBudgetPost;}
 
 }

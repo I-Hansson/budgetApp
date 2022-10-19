@@ -13,8 +13,8 @@ public class Budget {
     private double cap;
     private int id;
 
-    private List<BudgetPost> budgetPosts = new ArrayList<>();
-    private List<BudgetPost> newBudgetPosts = new ArrayList<>();
+    private List<IBudgetPost> budgetPosts = new ArrayList<>();
+    private List<IBudgetPost> newBudgetPosts = new ArrayList<>();
     private List<ITransaction> transactions = new ArrayList<>();
     private List<ITransaction> newTransactions = new ArrayList<>();
     private int year;
@@ -43,7 +43,7 @@ public class Budget {
     }
     private double calculateCap(){
         double temp = 0;
-        for(BudgetPost bp : this.budgetPosts){
+        for(IBudgetPost bp : this.budgetPosts){
             temp += bp.getBudgetCap();
 
         }
@@ -78,7 +78,7 @@ public class Budget {
         return newTransactions;
     }
 
-    public List<BudgetPost> getNewBudgetPosts(){
+    public List<IBudgetPost> getNewBudgetPosts(){
         return newBudgetPosts;
     }
 
@@ -89,7 +89,7 @@ public class Budget {
             return month[this.month];
 
     }
-    public List<BudgetPost> getBudgetPosts() {
+    public List<IBudgetPost> getBudgetPosts() {
         return this.budgetPosts;
     }
 
@@ -125,7 +125,7 @@ public class Budget {
     public void addTransaction(ITransaction transaction){
         this.transactions.add(transaction);
     }
-    public void addBudgetPost(BudgetPost bp){
+    public void addBudgetPost(IBudgetPost bp){
         this.budgetPosts.add(bp);
     }
 

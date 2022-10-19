@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 import org.chalmers.Controllers.AddTransactionBudgetPostsController;
 import org.chalmers.Controllers.AddTransactionController;
 import org.chalmers.Controllers.BudgetPostController;
-import org.chalmers.model.BudgetPost;
+import org.chalmers.model.IBudgetPost;
 
 import java.io.IOException;
 import java.net.URL;
@@ -68,7 +68,7 @@ public class AddTransactionView implements Initializable {
         }
     public void update(){
         this.BudgetPostsTexFlowPane.getChildren().clear();
-        for (BudgetPost post : addTransactionBudgetPostsController.getBudgetPosts()){
+        for (IBudgetPost post : addTransactionBudgetPostsController.getBudgetPosts()){
             this.BudgetPostsTexFlowPane.getChildren().add(new AddTransactionBudgetPosts(post.getName()));
         }
     }

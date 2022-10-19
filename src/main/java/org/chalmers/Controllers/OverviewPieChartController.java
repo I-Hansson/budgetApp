@@ -19,7 +19,7 @@ public class OverviewPieChartController {
         return facade.getUser().getCurrentBudget();
     }
 
-    public List<BudgetPost> getBudgetPosts() {
+    public List<IBudgetPost> getBudgetPosts() {
         return facade.budgetPostsfromUser();
     }
 }

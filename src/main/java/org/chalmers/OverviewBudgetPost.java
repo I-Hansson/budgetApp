@@ -10,16 +10,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.transform.Translate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import org.chalmers.Controllers.BudgetPostPanelController;
+
 import org.chalmers.Controllers.BudgetPostdetailedViewController;
-import org.chalmers.model.BudgetPost;
 
 import java.io.IOException;
 

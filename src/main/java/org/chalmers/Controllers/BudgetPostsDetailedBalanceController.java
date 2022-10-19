@@ -1,7 +1,7 @@
 package org.chalmers.Controllers;
 
 
-import org.chalmers.model.BudgetPost;
+import org.chalmers.model.IBudgetPost;
 
 public class BudgetPostsDetailedBalanceController {
 
@@ -10,7 +10,7 @@ public class BudgetPostsDetailedBalanceController {
     public BudgetPostsDetailedBalanceController(){}
 
 
-    private BudgetPost budgetPost = budgetPostdetailedViewController.getCurrentBudgetPost();
+    private IBudgetPost budgetPost = budgetPostdetailedViewController.getCurrentBudgetPost();
 
     public String getRemainingBalance(){
         return String.valueOf((budgetPost.getCurrentBalance()));

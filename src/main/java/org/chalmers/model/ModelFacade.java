@@ -65,7 +65,7 @@ public class ModelFacade {
     public List<ITransaction> getCurrentBudgetTransactions(){
         return user.getCurrentBudget().getTransactions();
     }
-    public List<BudgetPost> budgetPostsfromUser(){
+    public List<IBudgetPost> budgetPostsfromUser(){
         return user.getCurrentBudget().getBudgetPosts();
     }
     public User getUser(){
@@ -73,7 +73,7 @@ public class ModelFacade {
     }
     public void addTransaction(String name, double amount, String budgetPostID, String description,Calendar date){
 
-        for(BudgetPost bp : user.getCurrentBudget().getBudgetPosts()){
+        for(IBudgetPost bp : user.getCurrentBudget().getBudgetPosts()){
             if (bp.getName() == budgetPostID){
                 Transaction t = new Transaction(name,amount,description,date);
                 t.setBpID(bp.getId());
@@ -109,7 +109,7 @@ public class ModelFacade {
              for(Map<String,Object> bp : userDB.getBudgetPosts()){
                  int bpDate = Integer.parseInt((String) bp.get("dateOfCreation"));
                  if (bpDate<= budgetDate){
-                     BudgetPost budgetPost = new BudgetPost(
+                     IBudgetPost budgetPost = new BudgetPost(
                              Double.parseDouble(bp.get("cap").toString()),
                        bp.get("name").toString(),
                        bp.get("color").toString());
@@ -123,7 +123,7 @@ public class ModelFacade {
 
         for (Budget budget: user.getBudgets()){
              for(ITransaction t : budget.getTransactions()){
-                 for(BudgetPost bp: budget.getBudgetPosts()){
+                 for(IBudgetPost bp: budget.getBudgetPosts()){
                      DBTransaction temp = (DBTransaction) t;
                      System.out.println(t.getBudgetPostName());
                      if(temp.getBpName().equals(bp.getName())){
@@ -219,7 +219,7 @@ public class ModelFacade {
     public void saveBudgetPost(){
         userDB.openSetters();
         for(Budget b : user.getBudgets()) {
-            for (BudgetPost bp: b.getNewBudgetPosts() ){
+            for (IBudgetPost bp: b.getNewBudgetPosts() ){
                 userDB.addBudgetPost(bp.getName(),user.getCurrentBudget().getYear() + user.getCurrentBudget().getMonthNumber(),bp.getColor(),bp.getBudgetCap());
             }
         }
