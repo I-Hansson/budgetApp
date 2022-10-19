@@ -3,6 +3,8 @@ package org.chalmers.Controllers;
 
 import org.chalmers.model.IBudgetPost;
 /**
+ * Controller class for the view class BudgetPostDetailedBalance.
+ *
  * @author Jonathan
  */
 

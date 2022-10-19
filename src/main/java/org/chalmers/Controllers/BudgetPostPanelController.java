@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Controller class for the view class BudgetPostPanelView.
+ *
  * @author Jonathan
  */
 

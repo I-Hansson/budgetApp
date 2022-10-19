@@ -1,6 +1,8 @@
 package org.chalmers.Controllers;
 
 /**
+ * Controller class for the view class LogInView.
+ *
  * @author Jonathan
  */
 
