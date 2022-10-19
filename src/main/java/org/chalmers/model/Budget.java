@@ -6,7 +6,7 @@ import java.util.*;
  * @author Isac Hansson ,
  * Depends on BudgetPost, Transaction, ITransactionAddedObserver, BudgetPostFactory, ITransactionAddedObserver
  */
-public class Budget implements IBudget{
+class Budget implements IBudget{
 
     private double startBalance;
     private double currentBalance;
