@@ -2,7 +2,9 @@ package org.chalmers.model;
 
 public interface ITransaction extends IHasDate{
 
-    int getAmount();
+    double getAmount();
     String getName();
     String getDescription();
+    String getBudgetPostName();
+    String getBudgetPostColor();
 }

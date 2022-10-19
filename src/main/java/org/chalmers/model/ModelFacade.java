@@ -3,7 +3,6 @@ package org.chalmers.model;
 import org.chalmers.model.database.TransactionsDB;
 import org.chalmers.model.database.UsersDB;
 
-import java.time.Year;
 import java.util.*;
 
 /**
@@ -41,6 +40,10 @@ public class ModelFacade {
         return db.getBalance();
     }
 
+    public IBudget getCurrentBudget() {
+        return user.getCurrentBudget();
+    }
+
     public Double getStandardBalance() {
         return db.getStandardBalance();
     }
@@ -63,10 +66,10 @@ public class ModelFacade {
         db.closeSetter();
     }
 
-    public List<Transaction> getCurrentBudgetTransactions(){
+    public Collection<ITransaction> getCurrentBudgetTransactions(){
         return user.getCurrentBudget().getTransactions();
     }
-    public List<BudgetPost> budgetPostsfromUser(){
+    public Collection<IBudgetPost> budgetPostsfromUser(){
         return user.getCurrentBudget().getBudgetPosts();
     }
     public User getUser(){
@@ -74,9 +77,9 @@ public class ModelFacade {
     }
     public void addTransaction(String name, double amount, String budgetPostID, String description,Calendar date){
 
-        for(BudgetPost bp : user.getCurrentBudget().getBudgetPosts()){
+        for(IBudgetPost bp : user.getCurrentBudget().getBudgetPosts()){
             if (bp.getName() == budgetPostID){
-                Transaction t =new Transaction(name,amount,description,date);
+                Transaction t = new Transaction(name,amount,description,date);
                 t.setBpID(bp.getId());
                 user.getCurrentBudget().addTransaction(t);
 
@@ -105,12 +108,12 @@ public class ModelFacade {
         fillBudget();
 
 
-         for(Budget budget:   user.getBudgets()){
-             int budgetDate = Integer.parseInt(budget.getYear() +budget.getMonthNumber());
+         for(IBudget budget:   user.getBudgets()){
+             int budgetDate = budget.getDate().get(Calendar.YEAR) * 100 + budget.getDate().get(Calendar.MONTH);
              for(Map<String,Object> bp : userDB.getBudgetPosts()){
                  int bpDate = Integer.parseInt((String) bp.get("dateOfCreation"));
                  if (bpDate<= budgetDate){
-                     BudgetPost budgetPost = new BudgetPost(
+                     IBudgetPost budgetPost = new BudgetPost(
                              Double.parseDouble(bp.get("cap").toString()),
                        bp.get("name").toString(),
                        bp.get("color").toString());
@@ -122,66 +125,61 @@ public class ModelFacade {
          *
          */
 
-        for (Budget budget: user.getBudgets()){
-             for(Transaction t : budget.getTransactions()){
-                 for(BudgetPost bp: budget.getBudgetPosts()){
+        for (IBudget budget: user.getBudgets()){
+             for(ITransaction t : budget.getTransactions()){
+                 for(IBudgetPost bp: budget.getBudgetPosts()){
                      DBTransaction temp = (DBTransaction) t;
                      System.out.println(t.getBudgetPostName());
                      if(temp.getBpName().equals(bp.getName())){
-                         t.setBpID(bp.getId());
+                         temp.setBpID(bp.getId());
                          bp.addTransaction(t);
                      }
                  }
              }
          }
-
-
-        System.out.println(user.getCurrentBudget().getBudgetPosts().get(0).getName());
-
-
         }
-        private void fillBudget(){
-            HashMap<Integer, List<Transaction>> map = loadIntTransactions();
-            System.out.println(map);
-            TransactionsDB transactionDB = new TransactionsDB(1);
-            Transaction transaction = transactionDB.getAllTransactions().get(0);
-            int fmonth = transaction.getDateOfTransaction().get(Calendar.MONTH);
-            int fyear = transaction.getDateOfTransaction().get(Calendar.YEAR);
-            System.out.println((fyear*100 + fmonth));
+    private void fillBudget(){
+        HashMap<Integer, List<Transaction>> map = loadIntTransactions();
+        System.out.println(map);
+        TransactionsDB transactionDB = new TransactionsDB(1);
+        Transaction transaction = transactionDB.getAllTransactions().get(0);
+        int fmonth = transaction.getDate().get(Calendar.MONTH);
+        int fyear = transaction.getDate().get(Calendar.YEAR);
+        System.out.println((fyear*100 + fmonth));
 
-            Calendar today = new GregorianCalendar();
-            int lYear = today.get(Calendar.YEAR);
-            int lMonth = today.get(Calendar.MONTH);
-            Calendar newCalender = new GregorianCalendar(
-                    transaction.getDateOfTransaction().get(Calendar.YEAR),
-                    transaction.getDateOfTransaction().get(Calendar.MONTH),
-                    transaction.getDateOfTransaction().get(Calendar.DAY_OF_MONTH)
-            );
-            do {
-                Budget budget = new Budget(fyear,fmonth);
+        Calendar today = new GregorianCalendar();
+        int lYear = today.get(Calendar.YEAR);
+        int lMonth = today.get(Calendar.MONTH);
+        Calendar newCalender = new GregorianCalendar(
+                transaction.getDate().get(Calendar.YEAR),
+                transaction.getDate().get(Calendar.MONTH),
+                transaction.getDate().get(Calendar.DAY_OF_MONTH)
+        );
+        do {
+            Budget budget = new Budget(fyear,fmonth);
 
-                if ( map.containsKey(fyear*100 + fmonth)){
-                    budget.getTransactions().addAll(map.get(fyear*100 + fmonth));
-                }
-                user.getBudgets().add(budget);
+            if ( map.containsKey(fyear*100 + fmonth)){
+                budget.getTransactions().addAll(map.get(fyear*100 + fmonth));
+            }
+            user.getBudgets().add(budget);
 
 
-                newCalender.add(Calendar.MONTH,1);
-                fmonth = newCalender.get(Calendar.MONTH);
-                fyear = newCalender.get(Calendar.YEAR);
-            } while (fyear*100 + fmonth <= (lYear*100 + lMonth));
+            newCalender.add(Calendar.MONTH,1);
+            fmonth = newCalender.get(Calendar.MONTH);
+            fyear = newCalender.get(Calendar.YEAR);
+        } while (fyear*100 + fmonth <= (lYear*100 + lMonth));
 
-            user.setCurrentBudget(user.getBudgets().get((user.getBudgets().size()-1)));
+        user.setCurrentBudget(user.getBudgets().get((user.getBudgets().size()-1)));
 
-        }
+    }
 
     public HashMap<Integer, List<Transaction>> loadIntTransactions() {
 
         HashMap<Integer, List<Transaction>> map = new HashMap<>();
         TransactionsDB uDB = new TransactionsDB(1);
         for(Transaction transaction: uDB.getAllTransactions()){
-            int year = transaction.getDateOfTransaction().get(Calendar.YEAR);
-            int month = transaction.getDateOfTransaction().get(Calendar.MONTH);
+            int year = transaction.getDate().get(Calendar.YEAR);
+            int month = transaction.getDate().get(Calendar.MONTH);
             Integer transactionKey = year *100 + month;
             System.out.println("TKEY: " + transactionKey);
             if(map.containsKey(transactionKey)){
@@ -197,13 +195,13 @@ public class ModelFacade {
 
     public void saveTransactions() throws InterruptedException {
         userDB.openSetterTransaction();
-        for(Budget b : user.getBudgets())
-        for (Transaction t: b.getNewTransactions() ){
+        for(IBudget b : user.getBudgets())
+        for (ITransaction t: b.getNewTransactions() ){
 
 
-            String year = String.valueOf(t.getDateOfTransaction().get(Calendar.YEAR));
-            String month = String.valueOf(t.getDateOfTransaction().get(Calendar.MONTH));
-            String day = String.valueOf(t.getDateOfTransaction().get(Calendar.DAY_OF_MONTH));
+            String year = String.valueOf(t.getDate().get(Calendar.YEAR));
+            String month = String.valueOf(t.getDate().get(Calendar.MONTH));
+            String day = String.valueOf(t.getDate().get(Calendar.DAY_OF_MONTH));
             String temp;
             if (Integer.parseInt(day) < 10) {
                 day = "0" + day;
@@ -219,9 +217,9 @@ public class ModelFacade {
     }
     public void saveBudgetPost(){
         userDB.openSetters();
-        for(Budget b : user.getBudgets()) {
-            for (BudgetPost bp: b.getNewBudgetPosts() ){
-                userDB.addBudgetPost(bp.getName(),user.getCurrentBudget().getYear() + user.getCurrentBudget().getMonthNumber(),bp.getColor(),bp.getBudgetCap());
+        for(IBudget b : user.getBudgets()) {
+            for (IBudgetPost bp: b.getNewBudgetPosts() ){
+                userDB.addBudgetPost(bp.getName(),String.valueOf(user.getCurrentBudget().getDate().get(Calendar.YEAR)) + String.valueOf(user.getCurrentBudget().getDate().get(Calendar.MONTH)),bp.getColor(),bp.getBudgetCap());
             }
         }
         userDB.closeSetter();

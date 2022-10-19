@@ -1,6 +1,6 @@
 package org.chalmers.model.charts;
 
-import org.chalmers.model.Transaction;
+import org.chalmers.model.ITransaction;
 
 
 import java.util.*;
@@ -26,8 +26,8 @@ public class ChartTypeLine implements IChart<Integer, Integer> {
      * @param transactions The collection of transaction which are used for the update.
      */
     @Override
-    public void update(Collection<Transaction> transactions) {
-        for(Transaction transaction : transactions){
+    public void update(Collection<ITransaction> transactions) {
+        for(ITransaction transaction : transactions){
             if( transaction.getAmount() != 0){
                 int date = extent.getDateAsInt(transaction);
                 int temp = data.get(date) + (int) transaction.getAmount();

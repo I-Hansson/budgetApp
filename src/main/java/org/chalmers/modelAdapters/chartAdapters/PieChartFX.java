@@ -3,7 +3,7 @@ package org.chalmers.modelAdapters.chartAdapters;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart;
-import org.chalmers.model.Transaction;
+import org.chalmers.model.ITransaction;
 import org.chalmers.model.charts.ChartTypePie;
 
 import java.util.Collection;
@@ -34,7 +34,7 @@ public class PieChartFX {
         return dataObservableList;
     }
 
-    public void update(Collection<Transaction> transactions) {
+    public void update(Collection<ITransaction> transactions) {
         this.modelChart.update(transactions);
     }
 }

@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author Isac Hansson
  */
-public class BudgetPost {
+public class BudgetPost implements IBudgetPost{
     //TODO give Icon attribute
 
     private double budgetCap; //The most you want to spend in a surtain budget-post.
@@ -19,7 +19,7 @@ public class BudgetPost {
 
     private BudgetPostID id;
     private final List<IBudgetPostsObserver> observers = new ArrayList<IBudgetPostsObserver>();
-    private final List<Transaction> transactions = new ArrayList<>();
+    private final List<ITransaction> transactions = new ArrayList<>();
 
     public BudgetPost(double budgetCap, String name, String color){
         this.id = new BudgetPostID(name, color);
@@ -59,7 +59,7 @@ public class BudgetPost {
      * Add a transaction to the list of past transactions.
      * @param transaction Transaction to be added.
      */
-    public void addTransaction(Transaction transaction) {
+    public void addTransaction(ITransaction transaction) {
         transactions.add(transaction);
         updateCurrentBalance();
     }
@@ -97,15 +97,15 @@ public class BudgetPost {
      * Returns a copy of the list of transactions in the BudgetPost
      * @return The list of transactions
      */
-    public Collection<Transaction> getTransactions() {
-        List<Transaction> transactionsCopy = new ArrayList<>(transactions.size()+1);
+    public Collection<ITransaction> getTransactions() {
+        List<ITransaction> transactionsCopy = new ArrayList<>(transactions.size()+1);
         transactionsCopy.addAll(transactions);
 
         return transactionsCopy;
     }
 
     private void notifyObservers(){
-        ArrayList<Transaction> transactionsCopy = new ArrayList<>();
+        ArrayList<ITransaction> transactionsCopy = new ArrayList<>();
         Collections.copy(transactionsCopy, transactions); // Defensive copying
 
         for(IBudgetPostsObserver observer: observers){
@@ -115,7 +115,7 @@ public class BudgetPost {
 
     private void updateCurrentBalance(){
         double temp = 0;
-        for (Transaction t : this.transactions){
+        for (ITransaction t : this.transactions){
             temp += t.getAmount();
         }
         this.currentBalance = temp;

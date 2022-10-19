@@ -12,5 +12,5 @@ public interface IBudgetPostsObserver {
      * Updates the observer with a collection of transactions.
      * @param transactions The collection of transactions.
      */
-    void update(Collection<Transaction> transactions);
+    void update(Collection<ITransaction> transactions);
 }

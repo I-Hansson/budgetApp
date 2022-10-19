@@ -6,5 +6,5 @@ import java.util.Collection;
  * Interchangeable with IBudgetPostsObserver
  */
 public interface ITransactionAddedObserver {
-    void update(Collection<Transaction> transactions);
+    void update(Collection<ITransaction> transactions);
 }

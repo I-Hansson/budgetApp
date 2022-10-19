@@ -1,7 +1,7 @@
 package org.chalmers.model.database;
 
-import org.chalmers.model.Transaction;
 import org.chalmers.model.DBTransaction;
+import org.chalmers.model.ITransaction;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -40,15 +40,15 @@ public class TransactionsDB {
             int year = Integer.parseInt( transObj.get("date").toString().substring(0, 4));
             int  month = Integer.parseInt( transObj.get("date").toString().substring(4,6));
             int day = Integer.parseInt( transObj.get("date").toString().substring(6,8));
-            Calendar temp = new GregorianCalendar( year, month, day);
-            Transaction newTrans = new Transaction(
+            Calendar date = new GregorianCalendar( year, month, day);
+            DBTransaction newTrans = new DBTransaction(
                     transObj.get("name").toString(),
                     Double.parseDouble(transObj.get("amount").toString()),
                     transObj.get("description").toString(),
-                    temp
+                    date,
+                    transObj.get("budgetPostName").toString()
             );
-            DBTransaction adapter = new DBTransaction(newTrans, transObj.get("budgetPostName").toString());
-            transactionsList.add(adapter);
+            transactionsList.add(newTrans);
         }
     }
 
@@ -62,8 +62,8 @@ public class TransactionsDB {
     public List<DBTransaction> getTransactionsListMonth(Integer year, Integer month){
         List<DBTransaction> result = new ArrayList<>();
         for(DBTransaction trans: transactionsList){
-            Integer readYear = trans.getDateOfTransaction().get(Calendar.YEAR);
-            Integer readMonth = trans.getDateOfTransaction().get(Calendar.MONTH);
+            Integer readYear = trans.getDate().get(Calendar.YEAR);
+            Integer readMonth = trans.getDate().get(Calendar.MONTH);
             System.out.print("Month: "+ readMonth);
             System.out.println(" Year: "+ readYear);
             if(year.equals(readYear) && month.equals(readMonth))

@@ -9,6 +9,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.GregorianCalendar;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -21,7 +22,7 @@ public class BudgetPostTest {
     @Before
     public void init(){
         testBp = new BudgetPost(100, "test", "0, 0, 0");
-        testTransaction = new Transaction("test", 10, testBp.getId(), "", "");
+        testTransaction = new Transaction("test", 10, "", new GregorianCalendar());
     }
 
     @Test
