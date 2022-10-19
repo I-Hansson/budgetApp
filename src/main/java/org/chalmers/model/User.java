@@ -6,21 +6,18 @@ import java.util.List;
 
 /**
  * This class represents a user
- *
  * Depends on Budget
  *
  * @author Isac Hansson
+ * @author williamfrisk
  */
 public class User {
-
     private String name;
-    private int id;
-    private boolean instantiatd = false;
     private List<IBudget> budgets = new ArrayList<>();
     private IBudget currentBudget;
 
     public User(){
-        if(!instantiatd) Instantiate();
+        this.name = "temp"; //TODO namn ska läsas in i konstruktor?
         this.currentBudget = new Budget(2011,2);
     }
 
@@ -35,10 +32,6 @@ public class User {
 
     public String getName(){
         return name;
-    }
-
-    public int getId(){
-        return id;
     }
 
     //Setters
@@ -70,15 +63,5 @@ public class User {
             index = budgets.size();
         }
         this.currentBudget = budgets.get(index-1);
-    }
-
-
-    /**
-     * Gives us (the developers) a sample values to work with in development.
-     */
-    public void Instantiate(){
-        name = "Oscar";
-        id = 4;
-        instantiatd = true;
     }
 }
