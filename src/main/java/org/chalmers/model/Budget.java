@@ -37,48 +37,82 @@ public class Budget implements IBudget{
         this.budgetCap = calculateCap();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setBudgetCap(double newCap) {
         budgetCap = newCap;
     }
 
+    /**
+     * {@inheritDoc}
+     * @return {@inheritDoc}
+     */
     @Override
     public double getBudgetCap() {
         return budgetCap;
     }
 
+    /**
+     * {@inheritDoc}
+     * @return {@inheritDoc}
+     */
     @Override
     public Calendar getDate() {
         return calendar;
     }
 
     /**
-     * Returns a list of all transactions in this budget.
-     * @return The list of transactions
+     * Returns a list of all ITransactions in this budget which were added during the last session.
+     * @return The list of ITransactions.
      */
+    @Override
     public List<ITransaction> getNewTransactions() {
         return newTransactions;
     }
 
+    /**
+     * Returns a list of all IBudgetPost in this budget which were added during the last session.
+     * @return The list of IBudgetPost.
+     */
+    @Override
     public List<IBudgetPost> getNewBudgetPosts(){
         return newBudgetPosts;
     }
+
+    /**
+     * {@inheritDoc}
+     * @return {@inheritDoc}
+     */
+    @Override
     public Collection<IBudgetPost> getBudgetPosts() {
         return this.budgetPosts;
     }
 
     /**
-     * Update the current balance.
-     * @param newBalance the new balance.
+     * {@inheritDoc}
+     * @param newBalance {@inheritDoc}
      */
     @Override
     public void setCurrentBalance(double newBalance) {
         currentBalance = newBalance;
     }
 
+    /**
+     * {@inheritDoc}
+     * @return {@inheritDoc}
+     */
+    @Override
     public double getCurrentBalance() {
         return currentBalance;
     }
+
+    /**
+     * {@inheritDoc}
+     * @return {@inheritDoc}
+     */
+    @Override
     public Collection<ITransaction> getTransactions(){
         return this.transactions;
     }
@@ -92,13 +126,18 @@ public class Budget implements IBudget{
     }
 
     /**
-     * Update the current balance.
-     * @param change the amount that changes, if expense use negative values.
+     * {@inheritDoc}
      */
-
+    @Override
     public void addTransaction(ITransaction transaction){
         this.transactions.add(transaction);
     }
+
+    /**
+     * {@inheritDoc}
+     * @return {@inheritDoc}
+     */
+    @Override
     public void addBudgetPost(IBudgetPost bp){
         this.budgetPosts.add(bp);
     }

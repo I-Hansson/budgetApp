@@ -32,35 +32,56 @@ public class Transaction implements ITransaction {
     }
 
     //Getters
+    /**
+     * {@inheritDoc}
+     * @return {@inheritDoc}
+     */
+    @Override
     public String getBudgetPostName(){
             return this.budgetPostID.getName();
     }
+
+    /**
+     * {@inheritDoc}
+     * @return {@inheritDoc}
+     */
+    @Override
     public String getBudgetPostColor(){
         return this.budgetPostID.getColor();
     }
 
 
+    /**
+     * {@inheritDoc}
+     * @return {@inheritDoc}
+     */
+    @Override
     public String getName() {
         return name;
     }
 
-    public String getDayOfWeekAsString(){
-        String[] days =
-                {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",};
-        int day = this.getDate().get(Calendar.DAY_OF_WEEK);
-        System.out.println(day);
-        return days[day-1];
-    }
-
+    /**
+     * {@inheritDoc}
+     * @return {@inheritDoc}
+     */
     @Override
     public Calendar getDate() {
         return this.dateOfTransaction;
     }
+
+    /**
+     * {@inheritDoc}
+     * @return {@inheritDoc}
+     */
     @Override
     public double getAmount(){
         return amount;
     }
 
+    /**
+     * {@inheritDoc}
+     * @return {@inheritDoc}
+     */
     @Override
     public String getDescription(){
         return description;

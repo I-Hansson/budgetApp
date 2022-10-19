@@ -43,22 +43,25 @@ public class BudgetPost implements IBudgetPost{
 
     //Setters
     /**
-     * Edits the budget cap for this post.
-     * Make sure that this change doesn't surpass the users total balance.
-     * @param newCap The new cap for this post.
+     * {@inheritDoc}
      */
+    @Override
     public void setBudgetCap(double newCap){
         this.budgetCap = newCap;
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public void setCurrentBalance(double x){
         this.currentBalance = x;
     }
 
     /**
-     * Add a transaction to the list of past transactions.
-     * @param transaction Transaction to be added.
+     * {@inheritDoc}
      */
+    @Override
     public void addTransaction(ITransaction transaction) {
         transactions.add(transaction);
         updateCurrentBalance();
@@ -73,30 +76,56 @@ public class BudgetPost implements IBudgetPost{
     }
 
     //Getters
+    /**
+     * {@inheritDoc}
+     * @return {@inheritDoc}
+     */
+    @Override
     public BudgetPostID getId() {
         return id;
     }
 
+    /**
+     * {@inheritDoc}
+     * @return {@inheritDoc}
+     */
+    @Override
     public String getName() {
         return id.getName();
     }
 
+    /**
+     * {@inheritDoc}
+     * @return {@inheritDoc}
+     */
+    @Override
     public String getColor() {
         return id.getColor();
     }
 
+    /**
+     * {@inheritDoc}
+     * @return {@inheritDoc}
+     */
+    @Override
     public double getBudgetCap() {
         return budgetCap;
     }
 
+    /**
+     * {@inheritDoc}
+     * @return {@inheritDoc}
+     */
+    @Override
     public double getCurrentBalance() {
         return currentBalance;
     }
 
     /**
      * Returns a copy of the list of transactions in the BudgetPost
-     * @return The list of transactions
+     * @return {@inheritDoc}
      */
+    @Override
     public Collection<ITransaction> getTransactions() {
         List<ITransaction> transactionsCopy = new ArrayList<>(transactions.size()+1);
         transactionsCopy.addAll(transactions);
