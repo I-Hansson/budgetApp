@@ -1,16 +1,3 @@
-import org.chalmers.model.BudgetPost;
-import org.chalmers.model.BudgetPostFactory;
-
-import org.chalmers.model.Transaction;
-import org.chalmers.model.charts.ChartFactory;
-import org.chalmers.model.charts.ChartTypePie;
-import org.chalmers.model.charts.IChart;
-import org.junit.Test;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 

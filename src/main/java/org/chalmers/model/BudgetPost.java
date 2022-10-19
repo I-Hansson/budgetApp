@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author Isac Hansson
  */
-class BudgetPost implements IBudgetPost{
+public class BudgetPost implements IBudgetPost{
     //TODO give Icon attribute
 
     private double budgetCap; //The most you want to spend in a surtain budget-post.

@@ -19,7 +19,7 @@ public class User {
     private List<IBudget> budgets = new ArrayList<>();
     private IBudget currentBudget;
 
-    User(){
+    public User(){
         if(!instantiatd) Instantiate();
         this.currentBudget = new Budget(2011,2);
     }

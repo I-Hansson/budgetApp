@@ -1,22 +1,3 @@
-import javafx.collections.ObservableList;
-
-import javafx.scene.chart.PieChart;
-import javafx.scene.chart.XYChart;
-import org.chalmers.model.Budget;
-import org.chalmers.model.BudgetPost;
-import org.chalmers.model.BudgetPostFactory;
-import org.chalmers.model.Transaction;
-import org.chalmers.model.charts.ChartFactory;
-import org.chalmers.model.charts.ChartTypeLine;
-import org.chalmers.model.charts.ChartTypePie;
-import org.chalmers.model.charts.IChart;
-import org.chalmers.modelAdapters.chartAdapters.LineChartFX;
-import org.chalmers.modelAdapters.chartAdapters.PieChartFX;
-import org.junit.Test;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ChartAdapterTest {
