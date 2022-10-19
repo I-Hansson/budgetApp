@@ -15,7 +15,7 @@ public class User {
     private String name;
     private List<IBudget> budgets = new ArrayList<>();
     private IBudget currentBudget;
-
+    private int id;
     public User(){
         this.name = "temp"; //TODO namn ska läsas in i konstruktor?
         this.currentBudget = new Budget(2011,2);

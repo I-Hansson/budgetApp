@@ -26,13 +26,13 @@ public class App extends Application{
         System.out.println(Color.MAGENTA);
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
-            public void handle(WindowEvent t) {
-                try {
+           public void handle(WindowEvent t) {
+             /*   try {
                     facade.saveTransactions();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                facade.saveBudgetPost();
+                facade.saveBudgetPost();*/
                 Platform.exit();
                 System.exit(0);
             }
