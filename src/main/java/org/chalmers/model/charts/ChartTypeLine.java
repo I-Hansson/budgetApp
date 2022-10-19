@@ -1,13 +1,13 @@
 package org.chalmers.model.charts;
 
 import org.chalmers.model.Transaction;
-import org.chalmers.model.charts.lineChartExtents.ILineChartExtent;
+
 
 import java.util.*;
 
 /**
  * This class gives functionality for displaying line charts.
- * Depends on ILineChartExtent
+ * Depends on ILineChartExtent & Transaction
  *
  * @author williamfrisk
  */
@@ -22,8 +22,8 @@ public class ChartTypeLine implements IChart<Integer, Integer> {
     }
 
     /**
-     *
-     * @param transactions
+     * Updates the data in the line chart with a given collection of transactions.
+     * @param transactions The collection of transaction which are used for the update.
      */
     @Override
     public void update(Collection<Transaction> transactions) {
@@ -36,6 +36,10 @@ public class ChartTypeLine implements IChart<Integer, Integer> {
         }
     }
 
+    /**
+     * Returns a Map containing the data points and appurtunent date number.
+     * @return The Map with data points and dates
+     */
     @Override
     public Map<Integer, Integer> getDataMap() {
         return data;

@@ -1,5 +1,6 @@
 package org.chalmers.model.database;
 
+import org.chalmers.model.DBTransaction;
 import org.chalmers.model.Transaction;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -105,10 +106,10 @@ public class UsersDB {
     public void addTransaction(String name, String description, Double amount, String date, String budgetPostName){
         transactionsDB.addTransaction(name,description,amount,date,budgetPostName);
     }
-    public List<Transaction> getTransactionsDate(int year, int month){
+    public List<DBTransaction> getTransactionsDate(int year, int month){
         return transactionsDB.getTransactionsListMonth(year,month);
     }
-    public List<Transaction> getAllTransactions(){
+    public List<DBTransaction> getAllTransactions(){
         return transactionsDB.getAllTransactions();
     }
 

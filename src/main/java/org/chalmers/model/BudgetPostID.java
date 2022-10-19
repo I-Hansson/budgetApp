@@ -1,16 +1,20 @@
 package org.chalmers.model;
 
-public class BudgetPostID {
+/**
+ * This class represents an ID for a budget post.
+ * Its purpose is to loosen dependencies between Transaction and BudgetPost
+ *
+ * @author Isac Hansson
+ */
+class BudgetPostID {
 
     private String name;
     private String color;
-    private String id;
 
 
-    public BudgetPostID(String name, String color, String id) {
+    BudgetPostID(String name, String color) {
         this.name = name;
         this.color = color;
-        this.id = id;
     }
 
     public String getName() {
@@ -21,7 +25,4 @@ public class BudgetPostID {
         return color;
     }
 
-    public String getId() {
-        return id;
-    }
 }

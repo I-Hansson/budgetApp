@@ -99,7 +99,7 @@ public class BudgetPostsView implements Initializable {
     public void addBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
 
         if (checkInformation()){
-            budgetcontroller.createBudgetPost(budgetPostName.getText(),budgetMax.getText(), String.valueOf(budgetPostColor.getValue()), budgetPostDescription.getText());
+            budgetcontroller.createBudgetPost(budgetPostName.getText(),budgetMax.getText(), budgetPostDescription.getText(), String.valueOf(budgetPostColor.getValue()));
             rightInputFeedback();
         }else{
             wrongInformation();

@@ -1,22 +1,23 @@
-package org.chalmers.model.charts.lineChartExtents;
+package org.chalmers.model.charts;
 
 import org.chalmers.model.Transaction;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LineChartYear implements ILineChartExtent {
+class LineChartMonth implements ILineChartExtent {
+    public LineChartMonth() {}
 
-    public LineChartYear() {}
     @Override
     public int getDateAsInt(Transaction transaction) {
-        return transaction.getDayOfYear();
+        return transaction.getDateOfTransaction().get(Calendar.DAY_OF_MONTH);
     }
 
     @Override
     public Map<Integer, Integer> createEmptyDateMap() {
         Map<Integer, Integer> emptyDateMap = new HashMap<>();
-        for (int i = 1; i <= 365; i++){
+        for (int i = 1; i <= 31; i++){ // TODO alla månader har inte 31 dagar...
             emptyDateMap.put(i, 0);
         }
         return emptyDateMap;

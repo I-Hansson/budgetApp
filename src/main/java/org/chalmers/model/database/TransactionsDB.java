@@ -1,14 +1,13 @@
 package org.chalmers.model.database;
 
 import org.chalmers.model.Transaction;
+import org.chalmers.model.DBTransaction;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 
 /**
@@ -19,7 +18,7 @@ public class TransactionsDB {
     private DatabaseConnector connector;
     private FileWriter file;
     private JSONObject oldDB;
-    private List<Transaction> transactionsList;
+    private List<DBTransaction> transactionsList;
 
     public TransactionsDB(int uid){
         connector = new DatabaseConnector("./src/main/database/transactions/"+uid+".json");
@@ -36,15 +35,20 @@ public class TransactionsDB {
         transactionsList = new ArrayList<>();
         JSONArray resp = (JSONArray) getTransactionsJSONObj().get("transactions");
         for(Object obj: resp){
+
             JSONObject transObj = (JSONObject) obj;
+            int year = Integer.parseInt( transObj.get("date").toString().substring(0, 4));
+            int  month = Integer.parseInt( transObj.get("date").toString().substring(4,6));
+            int day = Integer.parseInt( transObj.get("date").toString().substring(6,8));
+            Calendar temp = new GregorianCalendar( year, month, day);
             Transaction newTrans = new Transaction(
                     transObj.get("name").toString(),
                     Double.parseDouble(transObj.get("amount").toString()),
                     transObj.get("description").toString(),
-                    transObj.get("date").toString(),
-                    transObj.get("budgetPostName").toString()
+                    temp
             );
-            transactionsList.add(newTrans);
+            DBTransaction adapter = new DBTransaction(newTrans, transObj.get("budgetPostName").toString());
+            transactionsList.add(adapter);
         }
     }
 
@@ -55,11 +59,11 @@ public class TransactionsDB {
      * @param month the month of the time frame
      * @return a list of all transactions listed for the specified time frame
      */
-    public List<Transaction> getTransactionsListMonth(Integer year, Integer month){
-        List<Transaction> result = new ArrayList<>();
-        for(Transaction trans: transactionsList){
-            Integer readYear = Integer.parseInt(trans.getDateString().substring(0,2));
-            Integer readMonth = Integer.parseInt(trans.getDateString().substring(2,4));
+    public List<DBTransaction> getTransactionsListMonth(Integer year, Integer month){
+        List<DBTransaction> result = new ArrayList<>();
+        for(DBTransaction trans: transactionsList){
+            Integer readYear = trans.getDateOfTransaction().get(Calendar.YEAR);
+            Integer readMonth = trans.getDateOfTransaction().get(Calendar.MONTH);
             System.out.print("Month: "+ readMonth);
             System.out.println(" Year: "+ readYear);
             if(year.equals(readYear) && month.equals(readMonth))
@@ -68,8 +72,8 @@ public class TransactionsDB {
         return result;
     }
 
-    public List<Transaction> getAllTransactions(){
-        List<Transaction> copy = new ArrayList<>();
+    public List<DBTransaction> getAllTransactions(){
+        List<DBTransaction> copy = new ArrayList<>();
         System.out.println();
         copy.addAll(transactionsList);
         return copy;

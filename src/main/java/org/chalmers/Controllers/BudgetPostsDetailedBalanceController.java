@@ -17,6 +17,6 @@ public class BudgetPostsDetailedBalanceController {
     }
 
     public String getBudgetPostColor(){
-        return (budgetPost.getId().getColor());
+        return (budgetPost.getColor());
     }
 }

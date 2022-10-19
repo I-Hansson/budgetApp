@@ -9,7 +9,6 @@ import org.chalmers.model.Transaction;
 
 
 import java.io.IOException;
-import java.util.Calendar;
 
 public class PastTransactionItem extends AnchorPane {
 
@@ -40,10 +39,9 @@ public class PastTransactionItem extends AnchorPane {
 
         nameTransaction.setText(transaction.getName());
         costTransaction.setText(transaction.getAmount()+ " kr");
-        //remainingBalanceTransation.setText(42149 + "kr");
         dateTransaction.setText(transaction.getTransactionDate());
         descriptionTransaction.setText(transaction.getDescription());
-        dayTransaction.setText(transaction.getDayOfWeeks());
+        dayTransaction.setText(transaction.getDayOfWeekAsString());
         budgetpostTransaction.setText(transaction.getBudgetPostName());
         colorBoardTransaction.setStyle("-fx-background-color: rgb("+ transaction.getBudgetPostColor()+" );");
     }

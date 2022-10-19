@@ -25,6 +25,9 @@ public class BudgetPostPanelController {
     public List<OverviewBudgetPost> getBudgetPostCards(){
         return this.budgetPostCards;
     }
+
+    // TODO too much functionality
+
     public  void createBudgetPostCards(){
         budgetPostCards.clear();
         for (BudgetPost i : facade.budgetPostsfromUser()){
@@ -33,7 +36,7 @@ public class BudgetPostPanelController {
             if (i.getBudgetCap()-i.getCurrentBalance() > 0){
                 moneyLeft = i.getBudgetCap()-i.getCurrentBalance();
             }
-            budgetPostCards.add(new OverviewBudgetPost(i.getId().getName(),String.valueOf(moneyLeft), i.getCurrentBalance()/i.getBudgetCap(), i.getId().getColor(),getComplementColor(i.getId().getColor())));
+            budgetPostCards.add(new OverviewBudgetPost(i.getName(),String.valueOf(moneyLeft), i.getCurrentBalance()/i.getBudgetCap(), i.getColor(),getComplementColor(i.getColor())));
         }
 
     }

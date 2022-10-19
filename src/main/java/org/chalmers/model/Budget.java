@@ -4,12 +4,8 @@ import java.util.*;
 
 /**
  * @author Isac Hansson ,
- * Budget depends on BudgetPost, Transaction, ITransactionAddedObserver, BudgetPostFactory, ITransactionAddedObserver
+ * Depends on BudgetPost, Transaction, ITransactionAddedObserver, BudgetPostFactory, ITransactionAddedObserver
  */
-
-
-
-
 public class Budget {
 
     private double startBalance;
@@ -18,7 +14,8 @@ public class Budget {
     private int id;
 
     private List<BudgetPost> budgetPosts = new ArrayList<>();
-    private List<Transaction> recentTransactions = new ArrayList<>();
+    private List<BudgetPost> newBudgetPosts = new ArrayList<>();
+    private List<Transaction> transactions = new ArrayList<>();
     private List<Transaction> newTransactions = new ArrayList<>();
     private int year;
     private int month;
@@ -27,8 +24,8 @@ public class Budget {
 
     private final Collection<ITransactionAddedObserver> observers = new ArrayList<>();
 
-    public void setRecentTransactions(List<Transaction> recentTransactions) {
-        this.recentTransactions = recentTransactions;
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
     }
 
     /**
@@ -73,14 +70,23 @@ public class Budget {
 
     }
 
+    /**
+     * Returns a list of all transactions in this budget.
+     * @return The list of transactions
+     */
     public List<Transaction> getNewTransactions() {
         return newTransactions;
     }
 
+    public List<BudgetPost> getNewBudgetPosts(){
+        return newBudgetPosts;
+    }
+
     public String getMonth(){
             String[] month =
-                    {"December","January", "February", "Mars", "April", "May", "june", "July", "August", "September", "October", "November"};
-            return  month[this.month];
+                    {"January", "February", "Mars", "April", "May", "june", "July", "August", "September",
+                            "October", "November", "December"};
+            return month[this.month];
 
     }
     public List<BudgetPost> getBudgetPosts() {
@@ -96,8 +102,8 @@ public class Budget {
     public int getId(){
         return id;
     }
-    public List<Transaction> getRecentTransactions(){
-        return this.recentTransactions;
+    public List<Transaction> getTransactions(){
+        return this.transactions;
     }
 
     /**
@@ -117,31 +123,20 @@ public class Budget {
     }
 
     public void addTransaction(Transaction transaction){
-        this.recentTransactions.add(transaction);
-        notifyObservers();
+        this.transactions.add(transaction);
     }
+    public void addBudgetPost(BudgetPost bp){
+        this.budgetPosts.add(bp);
+    }
+
 
     public void addObserver(ITransactionAddedObserver observer) {
         observers.add(observer);
     }
 
-    /**
-     * Add a NEW budget-post to the users budget planner.
-     * @param name the name of the new post.
-     * @param cap the maximum amount intended for this post.
-     */
-    /*public void addBudgetPost(String name, double cap){
-        if(!budgetPosts.containsKey(name)){
-            budgetPosts.put("test", new BudgetPost(name,cap));
-        } else{
-            //TODO Alert user that post already exists
-            System.out.println("Post " + name + " already exists");
-        }
-    }*/
-
     private void notifyObservers(){
         for (ITransactionAddedObserver o : observers) {
-            o.update(getRecentTransactions());
+            o.update(getTransactions());
         }
     }
 }
