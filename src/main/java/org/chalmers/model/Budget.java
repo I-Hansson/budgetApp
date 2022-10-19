@@ -14,6 +14,7 @@ public class Budget {
 
     private double startBalance;
     private double currentBalance;
+    private double cap;
     private int id;
 
     private List<BudgetPost> budgetPosts = new ArrayList<>();
@@ -22,6 +23,7 @@ public class Budget {
     private int year;
     private int month;
     private Calendar calender;
+
 
     private final Collection<ITransactionAddedObserver> observers = new ArrayList<>();
 
@@ -40,6 +42,16 @@ public class Budget {
         this.calender = new GregorianCalendar(year,month,1);
         this.year = calender.get(Calendar.YEAR);
         this.month = calender.get(Calendar.MONTH);
+        this.cap = calculateCap();
+    }
+    private double calculateCap(){
+        double temp = 0;
+        for(BudgetPost bp : this.budgetPosts){
+            temp += bp.getBudgetCap();
+
+        }
+        return temp;
+
     }
 
     public String getYear() {
