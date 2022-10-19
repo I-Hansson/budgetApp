@@ -1,6 +1,13 @@
 package org.chalmers.Controllers;
 
 import org.chalmers.model.ModelFacade;
+
+/**
+ * Controller class for the view class OverlookView.
+ *
+ * @author Jonathan
+ */
+
 public class OverviewOverlookController {
 
     ModelFacade facade = ModelFacade.getInstance();

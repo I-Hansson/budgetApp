@@ -10,6 +10,10 @@ import org.chalmers.Controllers.AddTransactionBudgetPostsController;
 
 import java.io.IOException;
 
+/**
+ * @author Jonathan
+ */
+
 public class AddTransactionBudgetPosts extends AnchorPane {
 
     static Toggle selectedButton;

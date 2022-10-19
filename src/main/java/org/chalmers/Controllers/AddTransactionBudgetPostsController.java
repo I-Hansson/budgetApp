@@ -3,9 +3,16 @@ package org.chalmers.Controllers;
 import org.chalmers.model.IBudgetPost;
 import org.chalmers.model.ModelFacade;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
+
+
+/**
+ * Controller class for the view class AddTransactionBudgetPostView.
+ *
+ * @author Jonathan
+ *
+ *
+ */
 
 public class AddTransactionBudgetPostsController {
 

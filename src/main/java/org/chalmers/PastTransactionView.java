@@ -20,6 +20,10 @@ import java.net.URL;
 import java.util.Calendar;
 import java.util.ResourceBundle;
 
+/**
+ * @author Jonathan
+ */
+
 public class PastTransactionView implements Initializable {
 
     private Stage stage;

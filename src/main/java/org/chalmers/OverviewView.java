@@ -34,6 +34,10 @@ import org.chalmers.Controllers.OverviewController;
 import org.chalmers.model.ITransaction;
 import org.chalmers.model.ModelFacade;
 
+/**
+ * @author Jonathan
+ */
+
 
 public class OverviewView implements Initializable {
     private Stage stage;

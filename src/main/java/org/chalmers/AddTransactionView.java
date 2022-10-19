@@ -22,7 +22,9 @@ import org.chalmers.model.IBudgetPost;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
+/**
+ * @author Jonathan
+ */
 public class AddTransactionView implements Initializable {
 
    private AddTransactionController addTransactionController = new AddTransactionController();

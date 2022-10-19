@@ -8,6 +8,10 @@ import org.chalmers.Controllers.OverviewOverlookController;
 
 import java.io.IOException;
 
+/**
+ * @author Jonathan
+ */
+
 public class OverviewOverlookView extends AnchorPane {
 
     OverviewOverlookController overviewOverlookController = new OverviewOverlookController();

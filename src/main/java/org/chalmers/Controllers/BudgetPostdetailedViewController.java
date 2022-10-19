@@ -6,6 +6,13 @@ import org.chalmers.model.SelectedBudgetPost;
 
 import java.util.Objects;
 
+/**
+ * Controller class for the view class BudgetPostDetailedView.
+ *
+ * @author Jonathan
+ */
+
+
 public class BudgetPostdetailedViewController {
 
     public BudgetPostdetailedViewController(){}

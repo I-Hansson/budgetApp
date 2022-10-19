@@ -8,6 +8,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * Controller class for the view class OverviewView.
+ *
+ * @author Jonathan
+ */
+
 public class OverviewController{
     ModelFacade facade = ModelFacade.getInstance();
     public OverviewController(){

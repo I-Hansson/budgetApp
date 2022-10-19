@@ -5,6 +5,12 @@ import org.chalmers.model.ModelFacade;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Controller class for the view class PastTransactionView
+ *
+ * @author Jonathan
+ */
+
 public class PastTransactionController {
 
     ModelFacade facede = ModelFacade.getInstance();

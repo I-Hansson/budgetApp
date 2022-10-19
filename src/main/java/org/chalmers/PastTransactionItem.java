@@ -8,6 +8,10 @@ import javafx.scene.text.Text;
 import org.chalmers.model.ITransaction;
 import java.io.IOException;
 
+/**
+ * @author Jonathan
+ */
+
 public class PastTransactionItem extends AnchorPane {
 
 

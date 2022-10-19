@@ -18,6 +18,9 @@ import javafx.util.Duration;
 import org.chalmers.Controllers.BudgetPostdetailedViewController;
 
 import java.io.IOException;
+/**
+ * @author Jonathan
+ */
 
 public class OverviewBudgetPost extends AnchorPane{
 
@@ -74,7 +77,6 @@ public class OverviewBudgetPost extends AnchorPane{
 
 
         budgetPostCard.setOnMouseClicked(mouseEvent -> {
-            System.out.println(this.budgetPostName.getText());
             budgetPostdetailedViewController.setCorrspondingId(((this.budgetPostName.getText())));
 
             try {

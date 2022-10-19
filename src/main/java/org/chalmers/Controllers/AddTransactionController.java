@@ -8,6 +8,12 @@ import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+/**
+ * Controller class for the view class AddTransactionView.
+ *
+ * @author Jonathan
+ */
+
 
 public class AddTransactionController{
 
