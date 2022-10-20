@@ -64,8 +64,6 @@ public class AddTransactionView implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-
         update();
         }
     public void update(){

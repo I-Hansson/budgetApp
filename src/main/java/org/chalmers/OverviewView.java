@@ -17,6 +17,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -31,6 +32,7 @@ import org.chalmers.Controllers.BudgetPostPanelController;
 import javafx.stage.Stage;
 import org.chalmers.Controllers.OverviewController;
 
+import org.chalmers.model.IBudgetPost;
 import org.chalmers.model.ITransaction;
 import org.chalmers.model.ModelFacade;
 
@@ -69,7 +71,6 @@ public class OverviewView implements Initializable {
 
     // controllers
     OverviewController overviewController = new OverviewController();
-    BudgetPostPanelController  budgetCardController = new BudgetPostPanelController();
     ModelFacade facade = ModelFacade.getInstance();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -189,6 +190,8 @@ public class OverviewView implements Initializable {
         overviewController.clickedPrevMonth();
         update();
     }
+
+
     public void update(){
 
 
@@ -200,10 +203,10 @@ public class OverviewView implements Initializable {
         this.budgetPostsGridPane.getChildren().clear();
         this.PiechartFlowPane.getChildren().add(new OverviewPieChart());
 
-        budgetCardController.createBudgetPostCards();
+        createBudgetPostCards();
 
-        for (int i = 0; i <budgetCardController.getBudgetPostCards().size(); i++){
-            budgetPostsGridPane.add(budgetCardController.getBudgetPostCards().get(i),i,0);
+        for (int i = 0; i <overviewController.getBudgetPostCards().size(); i++){
+            budgetPostsGridPane.add(overviewController.getBudgetPostCards().get(i),i,0);
         }
 
         latestTransactionsListView.getItems().clear();
@@ -212,6 +215,23 @@ public class OverviewView implements Initializable {
             latestTransactionsListView.getItems().add(tempLabel);
         }
     }
+
+
+    public void createBudgetPostCards(){
+        overviewController.getBudgetPostCards();
+        for (IBudgetPost i : overviewController.getBudgetPostsfromUser()){
+            overviewController.getBudgetPostCards().add(new OverviewBudgetPost(i.getName(), i.getCurrentBalance(), i.getCurrentBalance()/i.getBudgetCap(), i.getColor(),getComplementColor(i.getColor())));
+        }
+
+    }
+
+    public String getComplementColor(String rgb) {
+        Color color = Color.web("rgb(" + rgb + ")");
+        Color newColor = color.brighter();
+        return ""+newColor.getRed()*255+"," + newColor.getGreen()*255 +","+ newColor.getBlue()*255;
+    }
+
+
 }
 
 
