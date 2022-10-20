@@ -24,20 +24,20 @@ public class BudgetPost implements IBudgetPost{
     public BudgetPost(double budgetCap, String name, String color){
         this.id = new BudgetPostID(name, color);
         this.budgetCap = budgetCap;
-        this.currentBalance = budgetCap;
+        this.currentBalance = 0;
         //TODO Implement icon logic here aswell.
     }
 
     public BudgetPost(String name) {
         this.id = new BudgetPostID(name, "5, 51, 92");
         this.budgetCap = 0;
-        this.currentBalance = budgetCap;
+        this.currentBalance = 0;
     }
 
     BudgetPost(double budgetCap, String name) {
         this.id = new BudgetPostID(name, "5, 51, 92");
         this.budgetCap = budgetCap;
-        this.currentBalance = budgetCap;
+        this.currentBalance = 0;
     }
 
 
