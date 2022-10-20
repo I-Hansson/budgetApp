@@ -1,10 +1,11 @@
 package org.chalmers.Controllers;
+import org.chalmers.model.IBudgetPost;
 
-import org.chalmers.model.BudgetPost;
-import org.chalmers.model.Transaction;
-
-import java.util.Collection;
-import java.util.List;
+/**
+ * Controller class for the view class DetailedLastTransactions.
+ *
+ * @author Jonathan
+ */
 
 public class BudgetPostsDetailedLastTransactionsController {
 
@@ -12,7 +13,7 @@ public class BudgetPostsDetailedLastTransactionsController {
 
     public BudgetPostsDetailedLastTransactionsController(){}
 
-    private BudgetPost budgetPost = budgetPostdetailedViewController.getCurrentBudgetPost();
+    private IBudgetPost budgetPost = budgetPostdetailedViewController.getCurrentBudgetPost();
 
 
 }

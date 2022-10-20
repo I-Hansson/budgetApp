@@ -5,59 +5,66 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-
-public class BudgetPost {
-
-
+/**
+ * This class represents a budget post.
+ * Depends on Transaction, BudgetPostID, IBudgetPostsObserver
+ *
+ * @author Isac Hansson
+ */
+public class BudgetPost implements IBudgetPost{
     //TODO give Icon attribute
 
     private double budgetCap; //The most you want to spend in a surtain budget-post.
     private double currentBalance;
 
     private BudgetPostID id;
-    private List<IBudgetPostsObserver> observers = new ArrayList<IBudgetPostsObserver>();
-    private List<Transaction> transactions = new ArrayList<>();
+    private final List<IBudgetPostsObserver> observers = new ArrayList<IBudgetPostsObserver>();
+    private final List<ITransaction> transactions = new ArrayList<>();
 
-    BudgetPost(double budgetCap, String name, String color){
-        this.id = new BudgetPostID(name, color, "0000001");
-        //TODO TEMP
+    public BudgetPost(double budgetCap, String name, String color){
+        this.id = new BudgetPostID(name, color);
         this.budgetCap = budgetCap;
-        this.currentBalance = 0;
+        this.currentBalance = budgetCap;
         //TODO Implement icon logic here aswell.
     }
-    /**
-     * Update the name of this budget post.
-     * @param newName the new name.
-     */
+
+    public BudgetPost(String name) {
+        this.id = new BudgetPostID(name, "5, 51, 92");
+        this.budgetCap = 0;
+        this.currentBalance = budgetCap;
+    }
+
+    BudgetPost(double budgetCap, String name) {
+        this.id = new BudgetPostID(name, "5, 51, 92");
+        this.budgetCap = budgetCap;
+        this.currentBalance = budgetCap;
+    }
 
 
+    //Setters
     /**
-     * Edits the budget cap for this post.
-     * Make sure that this change doesn't surpass the users total balance.
-     * @param newCap The new cap for this post.
+     * {@inheritDoc}
      */
+    @Override
     public void setBudgetCap(double newCap){
         this.budgetCap = newCap;
     }
 
-    public BudgetPostID getId() {
-        return id;
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setCurrentBalance(double x){
+        this.currentBalance = x;
     }
 
     /**
-     * Add a transaction to the list of past transactions.
-     * @param transaction Transaction to be added.
+     * {@inheritDoc}
      */
-    public void addTransaction(Transaction transaction) {
+    @Override
+    public void addTransaction(ITransaction transaction) {
         transactions.add(transaction);
         updateCurrentBalance();
-    }
-    private void updateCurrentBalance(){
-        double temp = 0;
-        for (Transaction t : this.transactions){
-            temp += t.getAmount();
-        }
-        this.currentBalance = temp;
     }
 
     /**
@@ -68,34 +75,66 @@ public class BudgetPost {
         this.observers.add(observer);
     }
 
+    //Getters
     /**
-     * Returns RGB values for this budget post's color.
-     * @return int[]{R, G, B}
+     * {@inheritDoc}
+     * @return {@inheritDoc}
      */
+    @Override
+    public BudgetPostID getId() {
+        return id;
+    }
 
+    /**
+     * {@inheritDoc}
+     * @return {@inheritDoc}
+     */
+    @Override
+    public String getName() {
+        return id.getName();
+    }
+
+    /**
+     * {@inheritDoc}
+     * @return {@inheritDoc}
+     */
+    @Override
+    public String getColor() {
+        return id.getColor();
+    }
+
+    /**
+     * {@inheritDoc}
+     * @return {@inheritDoc}
+     */
+    @Override
     public double getBudgetCap() {
         return budgetCap;
     }
 
+    /**
+     * {@inheritDoc}
+     * @return {@inheritDoc}
+     */
+    @Override
     public double getCurrentBalance() {
         return currentBalance;
     }
 
+    /**
+     * Returns a copy of the list of transactions in the BudgetPost
+     * @return {@inheritDoc}
+     */
+    @Override
+    public Collection<ITransaction> getTransactions() {
+        List<ITransaction> transactionsCopy = new ArrayList<>(transactions.size()+1);
+        transactionsCopy.addAll(transactions);
 
-
-    public Collection<Transaction> getTransactions() {
-        List<Transaction> transactionsCopy = new ArrayList<>();
-
-       // Collections.copy(transactionsCopy, transactions);
-        return transactions;
+        return transactionsCopy;
     }
 
-    /**
-     * Notify all observers to this budgetpost.
-     * Also sends the list of transactions
-     */
     private void notifyObservers(){
-        ArrayList<Transaction> transactionsCopy = new ArrayList<>();
+        ArrayList<ITransaction> transactionsCopy = new ArrayList<>();
         Collections.copy(transactionsCopy, transactions); // Defensive copying
 
         for(IBudgetPostsObserver observer: observers){
@@ -103,10 +142,9 @@ public class BudgetPost {
         }
     }
 
-
-    public void setCurrentBalance(int x){
-        this.currentBalance = x;
+    private void updateCurrentBalance(){
+        for (ITransaction t : this.transactions){
+            this.currentBalance -= t.getAmount();
+        }
     }
-
-
 }

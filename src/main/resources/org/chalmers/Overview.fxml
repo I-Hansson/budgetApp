@@ -15,7 +15,11 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1280.0" stylesheets="@CSS/Font.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.chalmers.OverviewView">
+<!--
+@author Jonathan
+        -->
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1280.0" stylesheets="@CSS/Font.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.chalmers.OverviewView">
    <FlowPane fx:id="AddTransactionFlowPane" prefHeight="858.0" prefWidth="1278.0" />
       <ImageView fitHeight="849.0" fitWidth="1276.0" layoutX="2.0" layoutY="-3.0">
             <Image url="@images/background.jpg" />
@@ -71,13 +75,13 @@
                   <String fx:value="normalStrongTextSmall" />
                </styleClass>
             </ListView>
-            <Line endX="-50.5" endY="-59.0" layoutX="50.0" layoutY="125.0" startX="-142.0" startY="-14.0" />
+            <Line endX="-50.5" endY="-59.0" layoutX="50.0" layoutY="125.0" startX="-77.5" startY="33.0" />
          </children>
       </AnchorPane>
       <FlowPane fx:id="PiechartFlowPane" layoutX="33.0" layoutY="87.0" prefHeight="262.0" prefWidth="322.0" />
       <AnchorPane id="borderOverviewText" layoutX="611.0" layoutY="210.0" prefHeight="156.0" prefWidth="538.0">
          <children>
-            <Text layoutX="42.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="overviewText" text="Hej Pawel! Du ligger inom din månadsbudget." wrappingWidth="497.6000000000002" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
+            <Text layoutX="42.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="overviewText" text="Hej User! Du ligger inom din månadsbudget." wrappingWidth="497.6000000000002" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
          </children>
       </AnchorPane>
       <FlowPane id="borderOverviewText" fx:id="overlookPane" layoutX="611.0" layoutY="99.0" prefHeight="92.0" prefWidth="538.0" />

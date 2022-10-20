@@ -11,6 +11,10 @@ import org.chalmers.Controllers.BudgetPostsDetailedBalanceController;
 
 import java.io.IOException;
 
+/**
+ * @author Jonathan
+ */
+
 public class BudgetPostsDetailedBalance extends AnchorPane {
 
 

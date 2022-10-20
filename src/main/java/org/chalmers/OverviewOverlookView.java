@@ -8,6 +8,10 @@ import org.chalmers.Controllers.OverviewOverlookController;
 
 import java.io.IOException;
 
+/**
+ * @author Jonathan
+ */
+
 public class OverviewOverlookView extends AnchorPane {
 
     OverviewOverlookController overviewOverlookController = new OverviewOverlookController();
@@ -31,8 +35,8 @@ public class OverviewOverlookView extends AnchorPane {
         }
 
 
-        remainingBalance.setText(String.valueOf(overviewOverlookController.getOverlookBalance()));
-        averageDailySpent.setText(overviewOverlookController.getOverlookAverage());
+        remainingBalance.setText(String.valueOf(overviewOverlookController.getOverlookBalance()) + " kr");
+        averageDailySpent.setText(String.valueOf(overviewOverlookController.getOverlookAverage()) + " kr");
 
 
 

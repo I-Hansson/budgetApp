@@ -21,6 +21,7 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -30,8 +31,12 @@ import org.chalmers.Controllers.BudgetPostPanelController;
 import javafx.stage.Stage;
 import org.chalmers.Controllers.OverviewController;
 
+import org.chalmers.model.ITransaction;
 import org.chalmers.model.ModelFacade;
-import org.chalmers.model.Transaction;
+
+/**
+ * @author Jonathan
+ */
 
 
 public class OverviewView implements Initializable {
@@ -190,7 +195,7 @@ public class OverviewView implements Initializable {
         this.overlookPane.getChildren().clear();
         this.overlookPane.getChildren().add(new OverviewOverlookView());
 
-        currentBudgetMonth.setText(facade.getUser().getCurrentBudget().getMonth() + " " + facade.getUser().getCurrentBudget().getYear());
+        currentBudgetMonth.setText(DateStringFormatter.getMonthAsString(facade.getUser().getCurrentBudget().getDate()) + " " + facade.getUser().getCurrentBudget().getDate().get(Calendar.YEAR));
         this.PiechartFlowPane.getChildren().clear();
         this.budgetPostsGridPane.getChildren().clear();
         this.PiechartFlowPane.getChildren().add(new OverviewPieChart());
@@ -202,7 +207,7 @@ public class OverviewView implements Initializable {
         }
 
         latestTransactionsListView.getItems().clear();
-        for (Transaction transaction : overviewController.getLatestTransactions()) {
+        for (ITransaction transaction : overviewController.getLatestTransactions()) {
             Label tempLabel = new Label("-" + transaction.getAmount() + "kr " + transaction.getName());
             latestTransactionsListView.getItems().add(tempLabel);
         }

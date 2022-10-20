@@ -4,36 +4,40 @@ package org.chalmers.Controllers;
 import javafx.scene.paint.Color;
 import org.chalmers.OverviewBudgetPost;
 
-import org.chalmers.model.BudgetPost;
+import org.chalmers.model.IBudgetPost;
 import org.chalmers.model.ModelFacade;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Controller class for the view class BudgetPostPanelView.
+ *
+ * @author Jonathan
+ */
+
 public class BudgetPostPanelController {
-    private List<BudgetPost> budgets = new ArrayList<BudgetPost>( );
+    private List<IBudgetPost> budgets = new ArrayList<>();
     private List<OverviewBudgetPost> budgetPostCards = new ArrayList<OverviewBudgetPost>();
     ModelFacade facade = ModelFacade.getInstance();
     public BudgetPostPanelController (){
 
         createBudgetPostCards();
     }
-    public List<BudgetPost> getBudgetPosts(){
+    public List<IBudgetPost> getBudgetPosts(){
         return this.budgets;
     }
     public List<OverviewBudgetPost> getBudgetPostCards(){
         return this.budgetPostCards;
     }
-    public  void createBudgetPostCards(){
+
+    // TODO too much functionality
+
+    public void createBudgetPostCards(){
         budgetPostCards.clear();
-        for (BudgetPost i : facade.budgetPostsfromUser()){
-            i.getCurrentBalance();
-            double moneyLeft = 0;
-            if (i.getBudgetCap()-i.getCurrentBalance() > 0){
-                moneyLeft = i.getBudgetCap()-i.getCurrentBalance();
-            }
-            budgetPostCards.add(new OverviewBudgetPost(i.getId().getName(),String.valueOf(moneyLeft), i.getCurrentBalance()/i.getBudgetCap(), i.getId().getColor(),getComplementColor(i.getId().getColor())));
+        for (IBudgetPost i : facade.budgetPostsfromUser()){
+            budgetPostCards.add(new OverviewBudgetPost(i.getName(), i.getCurrentBalance(), i.getCurrentBalance()/i.getBudgetCap(), i.getColor(),getComplementColor(i.getColor())));
         }
 
     }

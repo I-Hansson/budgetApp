@@ -7,16 +7,23 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.chalmers.Controllers.LogInController;
 import org.chalmers.model.ModelFacade;
+import org.chalmers.model.database.DatabaseLoader;
 
 import java.io.IOException;
+
+/**
+ * @author Jonathan
+ */
 
 public class LogInView {
 
@@ -29,6 +36,8 @@ public class LogInView {
     TextField idCreateUserTextField;
     @FXML
     TextField passwordCreateUserTextField;
+    @FXML
+    Label errorLabelLogInView;
 
     @FXML
     Button signInButton;
@@ -47,8 +56,12 @@ public class LogInView {
 
     @FXML
     public void createAccount(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-        createUserPane.toBack();
-        controller.createUser(nameCreateUserTextField.getText(), idCreateUserTextField.getText(), passwordCreateUserTextField.getText());
+        if (checkInformation()){
+            createUserPane.toBack();
+            controller.createUser(nameCreateUserTextField.getText(), idCreateUserTextField.getText(), passwordCreateUserTextField.getText());
+            clearInputInfo();
+        }
+        wrongInformation();
     }
 
     @FXML
@@ -61,7 +74,7 @@ public class LogInView {
     public void SwitchToOverviewPage(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
 
         ModelFacade facade = ModelFacade.getInstance(); //todo fix
-        facade.connectDB();
+        facade.setUser(DatabaseLoader.getUserFromDatabase(1));
         root = FXMLLoader.load(getClass().getResource("Overview.fxml"));
         stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -94,4 +107,43 @@ public class LogInView {
         scaleTransition.setNode(signInButton);
         scaleTransition.play();
     }
-}
+
+
+
+
+    private boolean checkInformation() {
+        
+        if (nameCreateUserTextField.getText().isEmpty()){
+            return false;
+        }
+
+        if (idCreateUserTextField.getText().isEmpty()){
+            return false;
+        }
+        if (passwordCreateUserTextField.getText().isEmpty()){
+            return false;
+        }
+
+        for (int i = 0; i < nameCreateUserTextField.getText().length(); i++) {
+            if (Character.isDigit(nameCreateUserTextField.getText().charAt(i))) {
+                return false;
+            }}
+        return true;
+    }
+
+    private void wrongInformation(){
+        errorLabelLogInView.setTextFill(Paint.valueOf("FF0000"));
+        errorLabelLogInView.setText("The information is incorretctly filled out!");
+    }
+
+    private void clearInputInfo(){
+        errorLabelLogInView.setText("");
+        idCreateUserTextField.setText("");
+        passwordCreateUserTextField.setText("");
+        nameCreateUserTextField.setText("");
+
+
+
+
+
+    }}

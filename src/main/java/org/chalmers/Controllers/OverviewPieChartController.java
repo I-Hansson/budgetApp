@@ -1,6 +1,8 @@
 package org.chalmers.Controllers;
 
 import org.chalmers.model.*;
+
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -15,11 +17,11 @@ public class OverviewPieChartController {
     public OverviewPieChartController(){}
 
     //TODO Får det finnas sånna här metoder i en controller?
-    public Budget getBudget() {
+    public IBudget getBudget() {
         return facade.getUser().getCurrentBudget();
     }
 
-    public List<BudgetPost> getBudgetPosts() {
+    public Collection<IBudgetPost> getBudgetPosts() {
         return facade.budgetPostsfromUser();
     }
 }

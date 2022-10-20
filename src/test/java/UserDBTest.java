@@ -65,16 +65,4 @@ public class UserDBTest {
         System.out.println(4);
         assertEquals(exptectedBal, db.getStandardBalance());
     }
-
-    @Test
-    @Order(5)
-    public void E_assertSetUserName(){
-        String newName = "ghandi";
-        System.out.println(5);
-        db.openSetters();
-        db.setUserName(newName);
-        db.closeSetter();
-        assertEquals(newName, db.getUserName());
-    }
-
 }

@@ -1,9 +1,15 @@
 package org.chalmers.Controllers;
 import org.chalmers.PastTransactionItem;
+import org.chalmers.model.ITransaction;
 import org.chalmers.model.ModelFacade;
-import org.chalmers.model.Transaction;
 import java.util.ArrayList;
 import java.util.List;
+
+/**
+ * Controller class for the view class PastTransactionView
+ *
+ * @author Jonathan
+ */
 
 public class PastTransactionController {
 
@@ -15,8 +21,7 @@ public class PastTransactionController {
         }
         public void updateItem(){
         pastTransactionItemList.clear();
-            for(Transaction t : facede.getCurrentBudgetTransactions()) {
-                System.out.println(t.getName() + "     wtf");
+            for(ITransaction t : facede.getCurrentBudgetTransactions()) {
                 pastTransactionItemList.add(new PastTransactionItem(t));
             }
     }

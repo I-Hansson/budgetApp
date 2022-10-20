@@ -10,12 +10,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import org.chalmers.Controllers.OverviewPieChartController;
-import org.chalmers.model.BudgetPost;
+import org.chalmers.model.IBudgetPost;
 import org.chalmers.model.charts.ChartFactory;
-import org.chalmers.model.charts.ChartTypePie;
 import org.chalmers.modelAdapters.chartAdapters.PieChartFX;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
@@ -41,7 +41,7 @@ public class OverviewPieChart extends AnchorPane {
 
     public OverviewPieChart(){;
         PieChartFX modelChart = new PieChartFX(ChartFactory.createPieChart());
-        modelChart.update(controller.getBudget().getRecentTransactions());
+        modelChart.update(controller.getBudget().getTransactions());
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Overviewpiechart.fxml"));
         fxmlLoader.setRoot(this);
@@ -53,7 +53,11 @@ public class OverviewPieChart extends AnchorPane {
             throw new RuntimeException(exception);
         }
 
-        piechart.getData().addAll(modelChart.getObservableList());
+        if (modelChart.getObservableList().size() == 0) {
+            piechart.getData().add(new PieChart.Data("1", 1));
+        } else {
+            piechart.getData().addAll(modelChart.getObservableList());
+        }
         this.pieChartTotal = calculateTotal();
 
         applyColors();
@@ -166,17 +170,16 @@ public class OverviewPieChart extends AnchorPane {
             piechart.getData().get(0).getNode().setStyle("-fx-pie-color: gray");
             return;
         }
-        List<BudgetPost> bps = controller.getBudgetPosts();
+        Collection<IBudgetPost> bps = controller.getBudgetPosts();
 
         HashMap<String,String> map =  new HashMap<>();
-        for(BudgetPost bp :bps){
-            map.put(bp.getId().getName(),bp.getId().getColor());
+        for(IBudgetPost bp :bps){
+            map.put(bp.getName(),bp.getColor());
         }
         for (PieChart.Data data : piechart.getData()) {
-                data.getNode().setStyle("-fx-pie-color: rgb(" +map.get(data.getName())  + ");");
+                data.getNode().setStyle("-fx-pie-color: rgb(" + map.get(data.getName())  + ");");
 
         }
-
     }
 }
 

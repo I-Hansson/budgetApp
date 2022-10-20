@@ -12,13 +12,17 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 import org.chalmers.Controllers.BudgetPostdetailedViewController;
-import org.chalmers.model.Transaction;
+import org.chalmers.model.ITransaction;
 import org.chalmers.model.charts.ChartFactory;
 import org.chalmers.modelAdapters.chartAdapters.LineChartFX;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+/**
+ * @author Jonathan
+ */
 
 public class BudgetPostdetailedView implements Initializable {
 
@@ -48,8 +52,8 @@ public class BudgetPostdetailedView implements Initializable {
 
                 // TODO Beror på modellen :/, vet ej hur jag ska komma runt det (Av typen "Transaction")
 
-        for(Transaction Tr : controller.getCurrentBudgetPost().getTransactions()){
-            this.paneLastTransacions.getChildren().add(new BudgetPostsDetailedLastTransactions(Tr.getName(),Tr.getTransactionDate(),Tr.getDateOfTransaction(),Tr.getAmount()));
+        for(ITransaction Tr : controller.getCurrentBudgetPost().getTransactions()){
+            this.paneLastTransacions.getChildren().add(new BudgetPostsDetailedLastTransactions(Tr.getName(), Tr.getDate(), Tr.getAmount()));
         }
     }
 

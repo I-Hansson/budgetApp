@@ -10,18 +10,17 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.transform.Translate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import org.chalmers.Controllers.BudgetPostPanelController;
+
 import org.chalmers.Controllers.BudgetPostdetailedViewController;
-import org.chalmers.model.BudgetPost;
 
 import java.io.IOException;
+/**
+ * @author Jonathan
+ */
 
 public class OverviewBudgetPost extends AnchorPane{
 
@@ -40,7 +39,7 @@ public class OverviewBudgetPost extends AnchorPane{
     @FXML AnchorPane AnchorPaneBudgetPostCard;
 
 
-    public OverviewBudgetPost(String name, String moneyLeft, double procent, String color, String complementColor){
+    public OverviewBudgetPost(String name, double moneyLeft, double procent, String color, String complementColor){
 
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("OverviewBudgetPost.fxml"));
@@ -60,14 +59,15 @@ public class OverviewBudgetPost extends AnchorPane{
 
         increasingPaneBudgetPost.setPrefHeight(250);
 
+        System.out.println(procent);
         TranslateTransition translate = new TranslateTransition();
         translate.setDuration(Duration.millis(1000));
-        translate.setByY(250*(procent/2));
+        translate.setByY(250*((1-procent)/2));
         translate.setCycleCount(1);
         ScaleTransition scaleTransition = new ScaleTransition();
         scaleTransition.setNode(increasingPaneBudgetPost);
         scaleTransition.setDuration(Duration.millis(1000));
-        scaleTransition.setByY(-procent);
+        scaleTransition.setByY(-(1-procent));
         scaleTransition.setCycleCount(1);
 
         ParallelTransition pt = new ParallelTransition(increasingPaneBudgetPost, scaleTransition, translate);
@@ -78,7 +78,6 @@ public class OverviewBudgetPost extends AnchorPane{
 
 
         budgetPostCard.setOnMouseClicked(mouseEvent -> {
-            System.out.println(this.budgetPostName.getText());
             budgetPostdetailedViewController.setCorrspondingId(((this.budgetPostName.getText())));
 
             try {

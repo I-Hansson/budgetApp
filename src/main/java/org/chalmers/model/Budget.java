@@ -4,29 +4,25 @@ import java.util.*;
 
 /**
  * @author Isac Hansson ,
- * Budget depends on BudgetPost, Transaction, ITransactionAddedObserver, BudgetPostFactory, ITransactionAddedObserver
+ * Depends on BudgetPost, Transaction, ITransactionAddedObserver, BudgetPostFactory, ITransactionAddedObserver
  */
-
-
-
-
-public class Budget {
+public class Budget implements IBudget{
 
     private double startBalance;
     private double currentBalance;
-    private int id;
+    private double budgetCap;
 
-    private List<BudgetPost> budgetPosts = new ArrayList<>();
-    private List<Transaction> recentTransactions = new ArrayList<>();
-    private List<Transaction> newTransactions = new ArrayList<>();
-    private int year;
-    private int month;
-    private Calendar calender;
+    private List<IBudgetPost> budgetPosts = new ArrayList<>();
+    private List<IBudgetPost> newBudgetPosts = new ArrayList<>();
+    private List<ITransaction> transactions = new ArrayList<>();
+    private List<ITransaction> newTransactions = new ArrayList<>();
+    private final Calendar calendar;
+
 
     private final Collection<ITransactionAddedObserver> observers = new ArrayList<>();
 
-    public void setRecentTransactions(List<Transaction> recentTransactions) {
-        this.recentTransactions = recentTransactions;
+    public void setTransactions(List<ITransaction> transactions) {
+        this.transactions = transactions;
     }
 
     /**
@@ -36,56 +32,91 @@ public class Budget {
      * @param year What year is this active.
      * @param month What month is this active.
      */
-    public Budget(int year, int month){
-        this.calender = new GregorianCalendar(year,month,1);
-        this.year = calender.get(Calendar.YEAR);
-        this.month = calender.get(Calendar.MONTH);
-    }
-
-    public String getYear() {
-        return String.valueOf(this.year);
+    public Budget(int year, int month) {
+        this.calendar = new GregorianCalendar(year, month, 1);
+        calculateCap();
     }
 
     /**
-     * Called to get a String representation of the month this buget is active in.
-     * @return The string that is a month based on the number (0-11) that represents that month. 
+     * {@inheritDoc}
      */
-    public String getMonthNumber(){
-        if(this.month ==0){
-            return "12";
-        }
-        if (this.month< 10){
-            return "0"+String.valueOf(this.month);
-        }
-        return String.valueOf(this.month);
-
+    @Override
+    public void setBudgetCap(double newCap) {
+        budgetCap = newCap;
     }
 
-    public List<Transaction> getNewTransactions() {
+    /**
+     * {@inheritDoc}
+     * @return {@inheritDoc}
+     */
+    @Override
+    public double getBudgetCap() {
+        calculateCap();
+        return budgetCap;
+    }
+
+    /**
+     * {@inheritDoc}
+     * @return {@inheritDoc}
+     */
+    @Override
+    public Calendar getDate() {
+        return calendar;
+    }
+
+    /**
+     * Returns a list of all ITransactions in this budget which were added during the last session.
+     * @return The list of ITransactions.
+     */
+    @Override
+    public List<ITransaction> getNewTransactions() {
         return newTransactions;
     }
 
-    public String getMonth(){
-            String[] month =
-                    {"December","January", "February", "Mars", "April", "May", "june", "July", "August", "September", "October", "November"};
-            return  month[this.month];
-
+    /**
+     * Returns a list of all IBudgetPost in this budget which were added during the last session.
+     * @return The list of IBudgetPost.
+     */
+    @Override
+    public List<IBudgetPost> getNewBudgetPosts(){
+        return newBudgetPosts;
     }
-    public List<BudgetPost> getBudgetPosts() {
+
+    /**
+     * {@inheritDoc}
+     * @return {@inheritDoc}
+     */
+    @Override
+    public Collection<IBudgetPost> getBudgetPosts() {
         return this.budgetPosts;
     }
 
+    /**
+     * {@inheritDoc}
+     * @param newBalance {@inheritDoc}
+     */
+    @Override
+    public void setCurrentBalance(double newBalance) {
+        currentBalance = newBalance;
+    }
+
+    /**
+     * {@inheritDoc}
+     * @return {@inheritDoc}
+     */
+    @Override
     public double getCurrentBalance() {
+        updateCurrentBalance();
         return currentBalance;
     }
-    public double getStartBalance(){
-        return currentBalance;
-    }
-    public int getId(){
-        return id;
-    }
-    public List<Transaction> getRecentTransactions(){
-        return this.recentTransactions;
+
+    /**
+     * {@inheritDoc}
+     * @return {@inheritDoc}
+     */
+    @Override
+    public Collection<ITransaction> getTransactions(){
+        return this.transactions;
     }
 
     /**
@@ -97,39 +128,50 @@ public class Budget {
     }
 
     /**
-     * Update the current balance.
-     * @param change the amount that changes, if expense use negative values.
+     * {@inheritDoc}
      */
-    public void updateBalance(double change){
-        currentBalance += change;
+    @Override
+    public void addTransaction(ITransaction transaction){
+        this.transactions.add(transaction);
     }
 
-    public void addTransaction(Transaction transaction){
-        this.recentTransactions.add(transaction);
-        notifyObservers();
+    /**
+     * {@inheritDoc}
+     * @return {@inheritDoc}
+     */
+    @Override
+    public void addBudgetPost(IBudgetPost bp){
+        this.budgetPosts.add(bp);
     }
+
 
     public void addObserver(ITransactionAddedObserver observer) {
         observers.add(observer);
     }
 
-    /**
-     * Add a NEW budget-post to the users budget planner.
-     * @param name the name of the new post.
-     * @param cap the maximum amount intended for this post.
-     */
-    /*public void addBudgetPost(String name, double cap){
-        if(!budgetPosts.containsKey(name)){
-            budgetPosts.put("test", new BudgetPost(name,cap));
-        } else{
-            //TODO Alert user that post already exists
-            System.out.println("Post " + name + " already exists");
-        }
-    }*/
-
     private void notifyObservers(){
         for (ITransactionAddedObserver o : observers) {
-            o.update(getRecentTransactions());
+            o.update(getTransactions());
         }
+    }
+
+    private void calculateCap(){
+        double temp = 0;
+        for(IBudgetPost bp : this.budgetPosts){
+            temp += bp.getBudgetCap();
+
+        }
+        this.setBudgetCap(temp);
+
+    }
+
+    public void updateCurrentBalance(){
+        double temp = 0;
+        for(ITransaction t : this.transactions){
+            temp += t.getAmount();
+        }
+        this.currentBalance = temp;
+
+
     }
 }

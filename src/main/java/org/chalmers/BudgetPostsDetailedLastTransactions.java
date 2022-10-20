@@ -7,7 +7,12 @@ import javafx.scene.layout.AnchorPane;
 import org.chalmers.Controllers.BudgetPostsDetailedLastTransactionsController;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+
+/**
+ * @author Jonathan
+ */
 
 public class BudgetPostsDetailedLastTransactions extends AnchorPane {
 
@@ -19,7 +24,7 @@ public class BudgetPostsDetailedLastTransactions extends AnchorPane {
     @FXML Label budgetPostDetailedLastTransactionDate;
     @FXML Label budgetPostDetailedLastTransactionAmount;
 
-    public BudgetPostsDetailedLastTransactions(String transactionName, String date, Calendar dateCreated, double amount){
+    public BudgetPostsDetailedLastTransactions(String transactionName,Calendar date, double amount){
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("BudgetPostDetailedLastTransactions.fxml"));
         fxmlLoader.setRoot(this);
@@ -34,7 +39,7 @@ public class BudgetPostsDetailedLastTransactions extends AnchorPane {
 
 
         budgetPostDetailedLastTransaction.setText("Name: "+ transactionName);
-        budgetPostDetailedLastTransactionDate.setText("Date: " + date);
+        budgetPostDetailedLastTransactionDate.setText("Date: " + DateStringFormatter.getFormattedDate(date));
         budgetPostDetailedLastTransactionAmount.setText("Cost: " + amount + " kr");
     }
 

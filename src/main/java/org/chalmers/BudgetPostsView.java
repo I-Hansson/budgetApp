@@ -23,7 +23,12 @@ import org.chalmers.model.ModelFacade;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Calendar;
 import java.util.ResourceBundle;
+
+/**
+ * @author Jonathan
+ */
 
 public class BudgetPostsView implements Initializable {
 
@@ -66,10 +71,10 @@ public class BudgetPostsView implements Initializable {
     }
 
     public void update(){
-        currentBudgetMonth.setText(facade.getUser().getCurrentBudget().getMonth()+ " " + facade.getUser().getCurrentBudget().getYear());
+        currentBudgetMonth.setText(DateStringFormatter.getMonthAsString(facade.getUser().getCurrentBudget().getDate()) + " " + facade.getUser().getCurrentBudget().getDate().get(Calendar.YEAR));
         this.budgetPostsViewGridPane.getChildren().clear();
         itemController.createBudgetItems();
-        for(int i = 0;i< itemController.getItem().size(); i++) {
+        for(int i = 0;i<4; i++) {
             this.budgetPostsViewGridPane.add(itemController.getItem().get(i), i, 0);
         }
 
@@ -99,7 +104,7 @@ public class BudgetPostsView implements Initializable {
     public void addBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
 
         if (checkInformation()){
-            budgetcontroller.createBudgetPost(budgetPostName.getText(),budgetMax.getText(), String.valueOf(budgetPostColor.getValue()), budgetPostDescription.getText());
+            budgetcontroller.createBudgetPost(budgetPostName.getText(),budgetMax.getText(), budgetPostDescription.getText(), String.valueOf(budgetPostColor.getValue()));
             rightInputFeedback();
         }else{
             wrongInformation();
