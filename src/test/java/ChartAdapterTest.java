@@ -1,7 +1,8 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+
+/*public class ChartAdapterTest {
 public class ChartAdapterTest {
-    /*
     BudgetPostID bp = new BudgetPostID("TEST","COLOR","ID");
     private final Transaction[] testTransactionsLine = {
             new Transaction("Test0" ,100, bp, "test"),
@@ -52,5 +53,6 @@ public class ChartAdapterTest {
         assertEquals(1200, result.get(1).getPieValue());
 
     }
+}*/
     */
 }

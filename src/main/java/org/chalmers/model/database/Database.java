@@ -1,5 +1,6 @@
 package org.chalmers.model.database;
 
+import org.chalmers.model.User;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -14,7 +15,15 @@ public class Database {
 
     private static int nextID = Objects.requireNonNull(new File("./src/main/database/users").list()).length - 2;
 
-    public static void createUserDoc(String name, String pwd, Double balance, Double standardBalance){
+
+    /**
+     * Creates a document for a NEW user in the database. Should only be called upon when CREATING
+     * a new user.
+     * @param name the name of the new user
+     * @param pwd the password for the new user
+     * @param balance the start balance for the new user
+     */
+    public static void createUserDoc(String name, String pwd, Double balance){
         try{
             FileWriter incomingFile = new FileWriter("./src/main/database/users/incoming.json");
             JSONObject jsonObject = new JSONObject();
@@ -22,7 +31,7 @@ public class Database {
                 jsonObject.put("name", name);
                 jsonObject.put("password", pwd);
                 jsonObject.put("currentBalance", balance);
-                jsonObject.put("startBalance", standardBalance);
+                jsonObject.put("startBalance", balance);
                 jsonObject.put("id", nextID);
             } finally {
                 incomingFile.write(jsonObject.toJSONString());
@@ -65,5 +74,29 @@ public class Database {
 
     public static Integer lastUserCreatedID(){
         return Math.max(nextID-1,1);
+    }
+
+    /**
+     * @return the UsersDB for the signed in user.
+     * @param email the email of the new signed in.
+     * @param pwd the password
+     */
+    public static UsersDB signIntoDB(String email, String pwd){
+        for(int i = 1; i < nextID; i++){
+            File f = new File("./src/main/database/users/" + i + ".json");
+            if(f.exists()){
+                UsersDB udb = new UsersDB(i);
+                if(udb.getEmail().equals(email)){
+                    if(udb.matchesPassword(pwd))
+                        return udb;
+                    else{
+                        System.out.println("Password doesn't match");
+                        return null;
+                    }
+                }
+            }
+        }
+        System.out.println("No user with that email was found");
+        return null;
     }
 }
