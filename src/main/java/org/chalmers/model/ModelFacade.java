@@ -10,9 +10,7 @@ import java.util.*;
 /**
  * This class is a facade for the entire model.
  * Its purpose is providing an interface for the client code and allow interaction with the model.
- *
  * Depends on everything :))))
- *
  * @author williamfrisk
  * @author Isac Hansson
  * @author Jonathan
@@ -53,7 +51,7 @@ public class ModelFacade {
                 Transaction t = new Transaction(name,amount,description,date);
                 t.setBpID(bp.getId());
 
-                user.getCurrentBudget().addTransaction(t);
+                user.getSpecificbudget(t.getDate().get(Calendar.YEAR),t.getDate().get(Calendar.MONTH)).getTransactions().add(t);
 
                 user.getCurrentBudget().getNewTransactions().add(t);
 

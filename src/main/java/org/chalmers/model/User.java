@@ -1,6 +1,7 @@
 package org.chalmers.model;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
 
@@ -22,6 +23,16 @@ public class User {
     }
 
     //Getters
+    public Budget getSpecificbudget(int year, int month) {
+        for (IBudget budget : budgets) {
+            if (budget.getDate().get(Calendar.YEAR) == year && budget.getDate().get(Calendar.MONTH) == month) {
+                return (Budget) budget;
+            }
+        }
+        return null;
+    }
+
+
     public List<IBudget> getBudgets() {
         return budgets;
     }
