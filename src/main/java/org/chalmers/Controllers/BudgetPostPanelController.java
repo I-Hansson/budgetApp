@@ -37,14 +37,7 @@ public class BudgetPostPanelController {
     public void createBudgetPostCards(){
         budgetPostCards.clear();
         for (IBudgetPost i : facade.budgetPostsfromUser()){
-            double moneyLeft = 0;
-            if (i.getBudgetCap()-i.getCurrentBalance() >= 0){
-                moneyLeft = i.getBudgetCap()-i.getCurrentBalance();
-                System.out.println(i.getBudgetCap() + "cap");
-                System.out.println(i.getCurrentBalance() + "balance");
-                System.out.println(moneyLeft + "moneyleft");
-            }
-            budgetPostCards.add(new OverviewBudgetPost(i.getName(), String.valueOf(moneyLeft), i.getCurrentBalance()/i.getBudgetCap(), i.getColor(),getComplementColor(i.getColor())));
+            budgetPostCards.add(new OverviewBudgetPost(i.getName(), i.getCurrentBalance(), i.getCurrentBalance()/i.getBudgetCap(), i.getColor(),getComplementColor(i.getColor())));
         }
 
     }

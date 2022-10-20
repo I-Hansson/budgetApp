@@ -24,20 +24,20 @@ public class BudgetPost implements IBudgetPost{
     public BudgetPost(double budgetCap, String name, String color){
         this.id = new BudgetPostID(name, color);
         this.budgetCap = budgetCap;
-        this.currentBalance = 0;
+        this.currentBalance = budgetCap;
         //TODO Implement icon logic here aswell.
     }
 
     public BudgetPost(String name) {
         this.id = new BudgetPostID(name, "5, 51, 92");
         this.budgetCap = 0;
-        this.currentBalance = 0;
+        this.currentBalance = budgetCap;
     }
 
     BudgetPost(double budgetCap, String name) {
         this.id = new BudgetPostID(name, "5, 51, 92");
         this.budgetCap = budgetCap;
-        this.currentBalance = 0;
+        this.currentBalance = budgetCap;
     }
 
 
@@ -143,10 +143,8 @@ public class BudgetPost implements IBudgetPost{
     }
 
     private void updateCurrentBalance(){
-        double temp = 0;
         for (ITransaction t : this.transactions){
-            temp += t.getAmount();
+            this.currentBalance -= t.getAmount();
         }
-        this.currentBalance = temp;
     }
 }
