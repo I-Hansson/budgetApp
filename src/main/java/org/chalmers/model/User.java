@@ -15,15 +15,19 @@ public class User {
     private String name;
     private List<IBudget> budgets = new ArrayList<>();
     private IBudget currentBudget;
-
-    public User(){
-        this.name = "temp"; //TODO namn ska läsas in i konstruktor?
+    private int id;
+    public User(int id){
+        this.name = "temp";
         this.currentBudget = new Budget(2011,2);
     }
 
     //Getters
     public List<IBudget> getBudgets() {
         return budgets;
+    }
+
+    public int getUserID(){
+        return this.id;
     }
 
     public IBudget getCurrentBudget() {

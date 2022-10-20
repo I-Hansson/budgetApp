@@ -34,7 +34,7 @@ public class Budget implements IBudget{
      */
     public Budget(int year, int month) {
         this.calendar = new GregorianCalendar(year, month, 1);
-        this.budgetCap = calculateCap();
+        calculateCap();
     }
 
     /**
@@ -51,6 +51,7 @@ public class Budget implements IBudget{
      */
     @Override
     public double getBudgetCap() {
+        calculateCap();
         return budgetCap;
     }
 
@@ -105,6 +106,7 @@ public class Budget implements IBudget{
      */
     @Override
     public double getCurrentBalance() {
+        updateCurrentBalance();
         return currentBalance;
     }
 
@@ -153,13 +155,23 @@ public class Budget implements IBudget{
         }
     }
 
-    private double calculateCap(){
+    private void calculateCap(){
         double temp = 0;
         for(IBudgetPost bp : this.budgetPosts){
             temp += bp.getBudgetCap();
 
         }
-        return temp;
+        this.setBudgetCap(temp);
+
+    }
+
+    public void updateCurrentBalance(){
+        double temp = 0;
+        for(ITransaction t : this.transactions){
+            temp += t.getAmount();
+        }
+        this.currentBalance = temp;
+
 
     }
 }
