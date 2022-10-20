@@ -7,7 +7,7 @@ import javafx.scene.layout.AnchorPane;
 import org.chalmers.Controllers.BudgetPostsDetailedLastTransactionsController;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
+
 import java.util.Calendar;
 
 /**

@@ -6,9 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.chalmers.Controllers.BudgetPostdetailedViewController;
@@ -29,7 +27,6 @@ public class BudgetPostsItem extends AnchorPane {
     private Scene scene;
     private Parent root;
 
-    String budgetPostName = "";
 
     @FXML
     AnchorPane paneBudgetPost;
