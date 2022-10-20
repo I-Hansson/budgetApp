@@ -143,10 +143,8 @@ public class BudgetPost implements IBudgetPost{
     }
 
     private void updateCurrentBalance(){
-        double temp = 0;
         for (ITransaction t : this.transactions){
-            temp += t.getAmount();
+            this.currentBalance -= t.getAmount();
         }
-        this.currentBalance = temp;
     }
 }

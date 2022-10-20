@@ -1,6 +1,5 @@
 package org.chalmers.model.database;
 
-import org.chalmers.model.DBTransaction;
 import org.chalmers.model.ITransaction;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -59,8 +58,8 @@ public class TransactionsDB {
      * @param month the month of the time frame
      * @return a list of all transactions listed for the specified time frame
      */
-    public List<DBTransaction> getTransactionsListMonth(Integer year, Integer month){
-        List<DBTransaction> result = new ArrayList<>();
+    public List<ITransaction> getTransactionsListMonth(Integer year, Integer month){
+        List<ITransaction> result = new ArrayList<>();
         for(DBTransaction trans: transactionsList){
             Integer readYear = trans.getDate().get(Calendar.YEAR);
             Integer readMonth = trans.getDate().get(Calendar.MONTH);
@@ -72,8 +71,8 @@ public class TransactionsDB {
         return result;
     }
 
-    public List<DBTransaction> getAllTransactions(){
-        List<DBTransaction> copy = new ArrayList<>();
+    public List<ITransaction> getAllTransactions(){
+        List<ITransaction> copy = new ArrayList<>();
         System.out.println();
         copy.addAll(transactionsList);
         return copy;

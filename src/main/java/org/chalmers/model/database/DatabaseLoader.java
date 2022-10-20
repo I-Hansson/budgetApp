@@ -53,7 +53,7 @@ public class DatabaseLoader {
                 for(IBudgetPost bp: budget.getBudgetPosts()){
                     DBTransaction temp = (DBTransaction) t;
                     System.out.println(t.getBudgetPostName());
-                    if(temp.getBpName().equals(bp.getName())){
+                    if(temp.getBudgetPostName().equals(bp.getName())){
                         temp.setBpID(bp.getId());
                         bp.addTransaction(t);
                     }
@@ -62,10 +62,10 @@ public class DatabaseLoader {
         }
     }
     private static void fillBudget(){
-        HashMap<Integer, List<Transaction>> map = loadIntTransactions();
+        HashMap<Integer, List<ITransaction>> map = loadIntTransactions();
         System.out.println(map);
         TransactionsDB transactionDB = new TransactionsDB(1);
-        Transaction transaction = transactionDB.getAllTransactions().get(0);
+        ITransaction transaction = transactionDB.getAllTransactions().get(0);
         int fmonth = transaction.getDate().get(Calendar.MONTH);
         int fyear = transaction.getDate().get(Calendar.YEAR);
         System.out.println((fyear*100 + fmonth));
@@ -96,11 +96,11 @@ public class DatabaseLoader {
 
     }
 
-    private static HashMap<Integer, List<Transaction>> loadIntTransactions() {
+    private static HashMap<Integer, List<ITransaction>> loadIntTransactions() {
 
-        HashMap<Integer, List<Transaction>> map = new HashMap<>();
+        HashMap<Integer, List<ITransaction>> map = new HashMap<>();
         TransactionsDB uDB = new TransactionsDB(1);
-        for(Transaction transaction: uDB.getAllTransactions()){
+        for(ITransaction transaction: uDB.getAllTransactions()){
             int year = transaction.getDate().get(Calendar.YEAR);
             int month = transaction.getDate().get(Calendar.MONTH);
             Integer transactionKey = year *100 + month;
@@ -108,7 +108,7 @@ public class DatabaseLoader {
             if(map.containsKey(transactionKey)){
                 map.get(transactionKey).add(transaction);
             }else{
-                List<Transaction> temp = new ArrayList<>();
+                List<ITransaction> temp = new ArrayList<>();
                 temp.add(transaction);
                 map.put(transactionKey,temp);
             }

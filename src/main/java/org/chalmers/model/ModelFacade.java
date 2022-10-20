@@ -86,9 +86,9 @@ public class ModelFacade {
     public double getBudgetCap(){
         return user.getCurrentBudget().getBudgetCap();
     }
-public void saveUser() throws InterruptedException {
-    DatabaseSaver.saveUserToDatabase(user);
-}
+    public void saveUser() throws InterruptedException {
+        DatabaseSaver.saveUserToDatabase(user);
+    }
 
 
 }
