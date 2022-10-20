@@ -6,40 +6,31 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import org.chalmers.model.ModelFacade;
-import org.chalmers.model.database.DatabaseSaver;
-
-import java.util.Objects;
+import org.chalmers.model.database.Database;
 
 /**
  * JavaFX App
  */
 public class App extends Application{
-    ModelFacade facade = ModelFacade.getInstance();
+    ModelFacade facade =ModelFacade.getInstance();
     public void start (Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load((getClass().getResource("LogInView.fxml")));
         primaryStage.setTitle("SAFE BOAT");
-        Image icon = new Image("file:src/main/resources/org/chalmers/images/logo.jpg");
-        primaryStage.getIcons().add(icon);
-
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
         primaryStage.setResizable(false);
-        System.out.println(Color.MAGENTA.darker());
-        System.out.println(Color.MAGENTA);
+
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
-           public void handle(WindowEvent t) {
+            public void handle(WindowEvent t) {
                 try {
-                    facade.saveUser();
+                    facade.saveTransactions();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-
                 Platform.exit();
                 System.exit(0);
             }
@@ -49,6 +40,13 @@ public class App extends Application{
 
 
     public static void main(String[] args) {
+        System.out.println(Database.signIntoDB("oscar.cronvall@outlook.com", "Krokodil123").getEmail());
+        System.out.println(Database.signIntoDB("oscar.cronvall@outlook.com", "Krokodil123").matchesPassword("Krokodil123"));
+
+        System.out.println(Database.signIntoDB("svante@cool.com", "swag").getEmail());
+        System.out.println(Database.signIntoDB("svante@cool.com", "swag").matchesPassword("swag"));
+
+        System.out.println(Database.signIntoDB("casi@chalmers.it", "litenkuk123"));
         launch(args);
     }
 

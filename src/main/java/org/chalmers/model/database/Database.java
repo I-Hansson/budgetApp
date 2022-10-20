@@ -78,17 +78,25 @@ public class Database {
 
     /**
      * @return the UsersDB for the signed in user.
-     * @param uid the userID of the new signed in.
+     * @param email the email of the new signed in.
+     * @param pwd the password
      */
-    public UsersDB signIntoDB(String uid, String pwd){
-        Integer uidInt = Integer.parseInt(uid);
-        File f = new File("./src/main/database/users/" + uid + ".json");
-        if(f.exists()){
-            UsersDB udb = new UsersDB(uidInt);
-            if(udb.matchesPassword(pwd))
-                return udb;
-            System.out.println("Password is incorrect");
+    public static UsersDB signIntoDB(String email, String pwd){
+        for(int i = 1; i < nextID; i++){
+            File f = new File("./src/main/database/users/" + i + ".json");
+            if(f.exists()){
+                UsersDB udb = new UsersDB(i);
+                if(udb.getEmail().equals(email)){
+                    if(udb.matchesPassword(pwd))
+                        return udb;
+                    else{
+                        System.out.println("Password doesn't match");
+                        return null;
+                    }
+                }
+            }
         }
+        System.out.println("No user with that email was found");
         return null;
     }
 }

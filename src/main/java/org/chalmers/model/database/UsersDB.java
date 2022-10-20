@@ -42,6 +42,11 @@ public class UsersDB {
         return userName;
     }
 
+    public String getEmail(){
+        String email = getUser().get("email").toString();
+        return  email;
+    }
+
     /**
      * @param writtenPassword given password by client input
      * @return if password matches with the one in the database
