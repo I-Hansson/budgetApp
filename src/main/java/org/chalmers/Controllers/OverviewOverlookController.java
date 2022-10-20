@@ -21,6 +21,8 @@ public class OverviewOverlookController {
     public double getOverlookBalance(){
         return facade.getBudgetCap() - facade.getCurrentBalance();
     }
-    public double getOverlookAverage(){return facade.getCurrentBalance() / today.get(Calendar.DAY_OF_MONTH);}
+    public double getOverlookAverage(){
+        return Math.round(100* (facade.getCurrentBalance() / today.get(Calendar.DAY_OF_MONTH))) / 100.0;
+    }
 
 }
