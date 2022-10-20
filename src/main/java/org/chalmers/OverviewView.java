@@ -216,7 +216,7 @@ public class OverviewView implements Initializable {
 
 
     public void createBudgetPostCards(){
-        overviewController.getBudgetPostCards();
+        overviewController.getBudgetPostCards().clear();
         for (IBudgetPost i : overviewController.getBudgetPostsfromUser()){
             overviewController.getBudgetPostCards().add(new OverviewBudgetPost(i.getName(), i.getCurrentBalance(), i.getCurrentBalance()/i.getBudgetCap(), i.getColor(),getComplementColor(i.getColor())));
         }
