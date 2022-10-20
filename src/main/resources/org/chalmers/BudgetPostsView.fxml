@@ -79,7 +79,7 @@
             </GridPane>
             <AnchorPane id="borderOverviewMonths" layoutX="346.0" layoutY="73.0" prefHeight="52.0" prefWidth="497.0">
                <children>
-                  <Text fx:id="currentBudgetMonth" layoutX="111.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textNormalWhite" text="September" textAlignment="CENTER" wrappingWidth="275.2000000000003" />
+                  <Text fx:id="currentBudgetMonth" layoutX="111.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textNormalBlack" text="September" textAlignment="CENTER" wrappingWidth="275.2000000000003" />
                   <ImageView fitHeight="37.0" fitWidth="41.0" layoutX="449.0" layoutY="7.0" onMouseClicked="#nextMonth" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@images/right.png" />

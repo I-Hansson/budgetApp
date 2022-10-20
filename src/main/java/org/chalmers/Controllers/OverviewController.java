@@ -1,6 +1,8 @@
 package org.chalmers.Controllers;
 
 
+import org.chalmers.OverviewBudgetPost;
+import org.chalmers.model.IBudgetPost;
 import org.chalmers.model.ITransaction;
 import org.chalmers.model.ModelFacade;
 
@@ -15,7 +17,25 @@ import java.util.List;
  */
 
 public class OverviewController{
+
+    private List<IBudgetPost> budgets = new ArrayList<>();
+    private List<OverviewBudgetPost> budgetPostCards = new ArrayList<OverviewBudgetPost>();
     ModelFacade facade = ModelFacade.getInstance();
+
+
+    public List<IBudgetPost> getBudgetPosts(){
+        return this.budgets;
+    }
+    public List<OverviewBudgetPost> getBudgetPostCards(){
+        return this.budgetPostCards;
+    }
+
+
+    public Collection<IBudgetPost> getBudgetPostsfromUser(){
+        return facade.budgetPostsfromUser();
+    }
+
+
     public OverviewController(){
 
 

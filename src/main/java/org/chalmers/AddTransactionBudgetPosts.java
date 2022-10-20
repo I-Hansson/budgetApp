@@ -6,7 +6,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
-import org.chalmers.Controllers.AddTransactionBudgetPostsController;
+
 
 import java.io.IOException;
 
@@ -20,7 +20,6 @@ public class AddTransactionBudgetPosts extends AnchorPane {
 
     @FXML RadioButton budgetPost;
 
-    AddTransactionBudgetPostsController controller = new AddTransactionBudgetPostsController();
     static ToggleGroup toggleGroup = new ToggleGroup();
 
 
