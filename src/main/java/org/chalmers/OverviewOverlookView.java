@@ -36,7 +36,7 @@ public class OverviewOverlookView extends AnchorPane {
 
 
         remainingBalance.setText(String.valueOf(overviewOverlookController.getOverlookBalance()));
-        averageDailySpent.setText(overviewOverlookController.getOverlookAverage());
+        averageDailySpent.setText(String.valueOf(overviewOverlookController.getOverlookAverage()));
 
 
 
