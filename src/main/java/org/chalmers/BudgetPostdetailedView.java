@@ -55,6 +55,9 @@ public class BudgetPostdetailedView implements Initializable {
         for(ITransaction Tr : controller.getCurrentBudgetPost().getTransactions()){
             this.paneLastTransacions.getChildren().add(new BudgetPostsDetailedLastTransactions(Tr.getName(), Tr.getDate(), Tr.getAmount()));
         }
+
+        this.paneGraphLow.getChildren().clear();
+        this.paneGraphLow.getChildren().add( new BudgetPostDetailedOverLook());
     }
 
     //TODO Ska detta vara en egen klass och isåfall hur?
