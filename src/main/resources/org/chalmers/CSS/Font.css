@@ -27,6 +27,14 @@
     -fx-fill:  #FAF9F8;
 }
 
+.textNormalBlack {
+    -fx-font-style: normal;
+    -fx-font-weight: 700;
+    -fx-font-size: 28px;
+    -fx-fill: #000000
+;
+}
+
 .panelTitel{
     -fx-font-family: 'Roboto Light';
     -fx-font-style: normal;

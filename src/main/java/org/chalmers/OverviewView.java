@@ -28,7 +28,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 
 import javafx.util.Duration;
-import org.chalmers.Controllers.BudgetPostPanelController;
 import javafx.stage.Stage;
 import org.chalmers.Controllers.OverviewController;
 
