@@ -33,7 +33,7 @@ public class App extends Application{
         System.out.println(Color.MAGENTA);
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
-           public void handle(WindowEvent t) {
+            public void handle(WindowEvent t) {
                 try {
                     facade.saveUser();
                 } catch (InterruptedException e) {

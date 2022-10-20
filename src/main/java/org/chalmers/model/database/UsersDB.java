@@ -41,8 +41,10 @@ public class UsersDB {
         String userName = getUser().get("name").toString();
         return userName;
     }
-    public void eraseAllTransactions(){
-        transactionsDB.eraseAllTransactions();
+
+    public String getEmail(){
+        String email = getUser().get("email").toString();
+        return  email;
     }
 
     /**

@@ -1,4 +1,4 @@
-{"password":"test123","currentBalance":100.0,"name":"Kalle","id":3,"startBalance":120.0,
+{"password":"swag","currentBalance":100.0,"name":"Kalle","id":3,"startBalance":120.0,"email": "svante@cool.com",
   "budgetPosts": [
     {"name":  "mat", "cap":  1500, "color": "100,50,50"},
     {"name":  "tobak", "cap":  1000, "color": "100,50,150"},

@@ -1,7 +1,8 @@
 {
   "id": "0",
-  "name": "oscar",
-  "password": "Krokodil123",
+  "name": "Isac",
+  "email": "casi@chalmers.it",
+  "password": "Storkuk123",
   "currentBalance": 1000,
   "startBalance": 10000,
   "budgetPosts": [
