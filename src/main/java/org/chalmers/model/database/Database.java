@@ -81,22 +81,22 @@ public class Database {
      * @param email the email of the new signed in.
      * @param pwd the password
      */
-    public static UsersDB signIntoDB(String email, String pwd){
+    public static Integer signIntoDB(String email, String pwd){
         for(int i = 1; i < nextID; i++){
             File f = new File("./src/main/database/users/" + i + ".json");
             if(f.exists()){
                 UsersDB udb = new UsersDB(i);
                 if(udb.getEmail().equals(email)){
                     if(udb.matchesPassword(pwd))
-                        return udb;
+                        return i;
                     else{
                         System.out.println("Password doesn't match");
-                        return null;
+                        return 404;
                     }
                 }
             }
         }
         System.out.println("No user with that email was found");
-        return null;
+        return 403;
     }
 }
