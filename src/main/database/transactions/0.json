@@ -1,3 +1,25 @@
-
-{"transactions":[{"date":"2208061247","amount":125.59,"budgetPostName":"matvaror","name":"icaqwerty","description":"Snus & Nocco"},{"date":"2209021453","amount":49.0,"budgetPostName":"matvaror","name":"coop","description":"Virke"},{"date":"2209012354","amount":120.0,"budgetPostName":"alkohol","name":"Excet","description":"Grogg"},{"date":"20220922","amount":100.0,"budgetPostName":"mat","name":"h","description":"1"},{"date":"20220922","amount":100.0,"budgetPostName":"tobak","name":"b","description":" b"},{"date":"20220921","amount":100.0,"budgetPostName":"Matvaror","name":"test","description":"hej"},{"date":"20220921","amount":199.0,"budgetPostName":"Matvaror","name":"asd","description":"asd"},{"date":"20220920","amount":1000.0,"budgetPostName":"Matvaror","name":"nytransaktiopn","description":"asd"},{"date":"20220921","amount":1000.0,"budgetPostName":"Transport","name":"asd","description":"asd"},{"date":"20220920","amount":1.0,"budgetPostName":"Matvaror","name":"asd","description":"asd"},{"date":"20220921","amount":11.0,"budgetPostName":"Matvaror","name":"asd","description":"asd"},{"date":"20220921","amount":100.0,"budgetPostName":"Matvaror","name":"asdasd","description":"asd"}]}
-
+{
+  "transactions": [
+    {
+      "name": "ica",
+      "date": "2208061247",
+      "budgetPostName": "matvaror",
+      "description": "Snus & Nocco",
+      "amount": 125.59
+    },
+    {
+      "name": "coop",
+      "date": "2209021453",
+      "budgetPostName": "matvaror",
+      "amount": 49.0,
+      "description": "Virke"
+    },
+    {
+      "name": "Excet",
+      "date": "2209012354",
+      "budgetPostName": "alkohol",
+      "amount": 120.0,
+      "description": "Grogg"
+    }
+  ]
+}

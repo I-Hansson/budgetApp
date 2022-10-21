@@ -43,7 +43,7 @@ public class BudgetPost implements IBudgetPost{
     /**
      * {@inheritDoc}
      */
-    @Override
+
     public void setBudgetCap(double newCap){
         this.budgetCap = newCap;
     }
@@ -51,7 +51,7 @@ public class BudgetPost implements IBudgetPost{
     /**
      * {@inheritDoc}
      */
-    @Override
+
     public void setCurrentBalance(double x){
         this.currentBalance = x;
     }

@@ -6,11 +6,6 @@ package org.chalmers.model;
  * @author williamfrisk
  */
 public interface IHasBalance {
-    /**
-     * Sets the balance to the given balance.
-     * @param newBalance The new balance.
-     */
-    void setCurrentBalance(double newBalance);
 
     /**
      * @return The balance.
