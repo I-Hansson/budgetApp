@@ -23,7 +23,7 @@ public class Budget extends SaveableBudget implements IBudget{
     /**
      * Contructor of  the budget,
      * Instantiate four default budgetPosts through a BudgetPostFactory
-     * Instantiate the date for the budget, i.e what month is this budget active.
+     * Instantiate the date for the budget, i.e. what month is this budget active.
      * @param year What year is this active.
      * @param month What month is this active.
      */
@@ -116,7 +116,7 @@ public class Budget extends SaveableBudget implements IBudget{
     @Override
     public void addTransaction(ITransaction transaction){
         if (transactions.contains(transaction))
-            newTransactions.add(transaction);
+            addNewTransaction(transaction);
         this.transactions.add(transaction);
     }
 
@@ -127,7 +127,7 @@ public class Budget extends SaveableBudget implements IBudget{
     @Override
     public void addBudgetPost(IBudgetPost bp){
         if (budgetPosts.contains(bp))
-            newBudgetPosts.add(bp);
+            addNewBudgetPost(bp);
         this.budgetPosts.add(bp);
     }
 

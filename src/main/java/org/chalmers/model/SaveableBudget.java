@@ -12,8 +12,8 @@ import java.util.Collection;
  */
 public abstract class SaveableBudget implements IBudget{
 
-    protected Collection<IBudgetPost> newBudgetPosts = new ArrayList<>();
-    protected Collection<ITransaction> newTransactions = new ArrayList<>();
+    private Collection<IBudgetPost> newBudgetPosts = new ArrayList<>();
+    private Collection<ITransaction> newTransactions = new ArrayList<>();
 
     /**
      * Returns all new budget post added by the user during the last session.
@@ -29,5 +29,21 @@ public abstract class SaveableBudget implements IBudget{
      */
     public Collection<ITransaction> getNewTransactions(){
         return newTransactions;
+    }
+
+    /**
+     * Adds a ITransaction to the collection of new transactions.
+     * @param transaction The transaction to be added.
+     */
+    protected void addNewTransaction(ITransaction transaction) {
+        newTransactions.add(transaction);
+    }
+
+    /**
+     * Adds a IBudgetPost to the collection of new budget posts.
+     * @param budgetPost The budget post to be added.
+     */
+    protected void addNewBudgetPost(IBudgetPost budgetPost) {
+        newBudgetPosts.add(budgetPost);
     }
 }
