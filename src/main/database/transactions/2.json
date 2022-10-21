@@ -6,6 +6,13 @@
       "budgetPostName": "Matvaror",
       "name": "maxi",
       "description": "Snus & Nocco"
+    },
+    {
+      "date": "20220921",
+      "amount": 1000,
+      "budgetPostName": "Matvaror",
+      "name": "sada",
+      "description": "ad"
     }
   ]
 }

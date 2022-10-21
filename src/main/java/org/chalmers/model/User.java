@@ -19,6 +19,7 @@ public class User {
     private int id;
     public User(int id){
         this.name = "temp";
+        this.id = id;
         this.currentBudget = new Budget(2011,2);
     }
 
