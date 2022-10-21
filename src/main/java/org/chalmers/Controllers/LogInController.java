@@ -20,7 +20,7 @@ public class LogInController {
     public void createUser(String name, String id,String password){
 
     }
-    public Boolean signInUser(String username, String password){
+    public void signInUser(String username, String password){
 
          int  id = Database.signIntoDB(username,password);
          if (id == 404){
@@ -30,9 +30,11 @@ public class LogInController {
          }else{
              System.out.println("User: " + id);
              facade.setUser(DatabaseLoader.getUserFromDatabase(id));
-             return true;
          }
-            return false;
+    }
+
+    public boolean userIsSignedIn() {
+        return facade.getUser() != null;
     }
 
 }

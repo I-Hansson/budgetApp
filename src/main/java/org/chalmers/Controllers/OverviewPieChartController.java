@@ -15,9 +15,8 @@ public class OverviewPieChartController {
 
     public OverviewPieChartController(){}
 
-    //TODO Får det finnas sånna här metoder i en controller?
     public IBudget getBudget() {
-        return facade.getUser().getCurrentBudget();
+        return facade.getCurrentBudget();
     }
 
     public Collection<IBudgetPost> getBudgetPosts() {

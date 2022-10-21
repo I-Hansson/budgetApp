@@ -66,10 +66,10 @@ public class OverviewView implements Initializable {
     @FXML ImageView rightArrow;
     @FXML ImageView leftArrow;
 
-
     // controllers
-    OverviewController overviewController = new OverviewController();
+    OverviewController controller = new OverviewController();
     ModelFacade facade = ModelFacade.getInstance();
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         update();
@@ -180,12 +180,12 @@ public class OverviewView implements Initializable {
 
     @FXML
     public void nextMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-        overviewController.clickedNextMonth();
+        controller.clickedNextMonth();
         update();
     }
     @FXML
     public void prevMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-        overviewController.clickedPrevMonth();
+        controller.clickedPrevMonth();
         update();
     }
 
@@ -196,7 +196,8 @@ public class OverviewView implements Initializable {
         this.overlookPane.getChildren().clear();
         this.overlookPane.getChildren().add(new OverviewOverlookView());
 
-        currentBudgetMonth.setText(DateStringFormatter.getMonthAsString(facade.getUser().getCurrentBudget().getDate()) + " " + facade.getUser().getCurrentBudget().getDate().get(Calendar.YEAR));
+        currentBudgetMonth.setText(DateStringFormatter.getMonthAsString(facade.getCurrentBudgetCalendar()) + " "
+                + facade.getCurrentBudgetCalendar().get(Calendar.YEAR));
         this.PiechartFlowPane.getChildren().clear();
         this.budgetPostsGridPane.getChildren().clear();
         this.PiechartFlowPane.getChildren().add(new OverviewPieChart());
@@ -204,11 +205,11 @@ public class OverviewView implements Initializable {
         createBudgetPostCards();
 
         for (int i = 0; i < 4; i++){
-            budgetPostsGridPane.add(overviewController.getBudgetPostCards().get(i),i,0);
+            budgetPostsGridPane.add(controller.getBudgetPostCards().get(i), i,0);
         }
 
         latestTransactionsListView.getItems().clear();
-        for (ITransaction transaction : overviewController.getLatestTransactions()) {
+        for (ITransaction transaction : controller.getLatestTransactions()) {
             Label tempLabel = new Label("-" + transaction.getAmount() + "kr " + transaction.getName());
             latestTransactionsListView.getItems().add(tempLabel);
         }
@@ -216,9 +217,14 @@ public class OverviewView implements Initializable {
 
 
     public void createBudgetPostCards(){
-        overviewController.getBudgetPostCards().clear();
-        for (IBudgetPost i : overviewController.getBudgetPostsfromUser()){
-            overviewController.getBudgetPostCards().add(new OverviewBudgetPost(i.getName(), i.getCurrentBalance(), i.getCurrentBalance()/i.getBudgetCap(), i.getColor(),getComplementColor(i.getColor())));
+        controller.getBudgetPostCards().clear();
+        for (IBudgetPost i : controller.getBudgetPostsfromUser()){
+            controller.getBudgetPostCards().add(new OverviewBudgetPost(
+                            i.getName(),
+                            i.getCurrentBalance(),
+                            i.getCurrentBalance()/i.getBudgetCap(),
+                            i.getColor(),getComplementColor(i.getColor())
+                    ));
         }
 
     }

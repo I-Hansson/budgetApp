@@ -16,9 +16,6 @@ public class Budget extends SaveableBudget implements IBudget{
     private List<ITransaction> transactions = new ArrayList<>();
     private final Calendar calendar;
 
-
-    private final Collection<ITransactionAddedObserver> observers = new ArrayList<>();
-
     public void setTransactions(List<ITransaction> transactions) {
         this.transactions = transactions;
     }
@@ -132,17 +129,6 @@ public class Budget extends SaveableBudget implements IBudget{
         if (budgetPosts.contains(bp))
             newBudgetPosts.add(bp);
         this.budgetPosts.add(bp);
-    }
-
-
-    public void addObserver(ITransactionAddedObserver observer) {
-        observers.add(observer);
-    }
-
-    private void notifyObservers(){
-        for (ITransactionAddedObserver o : observers) {
-            o.update(getTransactions());
-        }
     }
 
     private void calculateCap(){

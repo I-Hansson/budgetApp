@@ -11,7 +11,7 @@ import java.util.*;
  *
  * @author williamfrisk
  */
-public class ChartTypeLine implements IChart<Integer, Integer> {
+public class ChartTypeLine{
 
     private final ILineChartExtent extent;
     private final Map<Integer, Integer> data;
@@ -25,7 +25,6 @@ public class ChartTypeLine implements IChart<Integer, Integer> {
      * Updates the data in the line chart with a given collection of transactions.
      * @param transactions The collection of transaction which are used for the update.
      */
-    @Override
     public void update(Collection<ITransaction> transactions) {
         for(ITransaction transaction : transactions){
             if( transaction.getAmount() != 0){
@@ -40,7 +39,6 @@ public class ChartTypeLine implements IChart<Integer, Integer> {
      * Returns a Map containing the data points and appurtunent date number.
      * @return The Map with data points and dates
      */
-    @Override
     public Map<Integer, Integer> getDataMap() {
         return data;
     }

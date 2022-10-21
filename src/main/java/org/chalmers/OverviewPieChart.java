@@ -72,7 +72,6 @@ public class OverviewPieChart extends AnchorPane {
         setupSliceCaptions();
     }
 
-
     private double calculateTotal() {
         double total = 0;
         for (PieChart.Data data : piechart.getData()) {
@@ -92,7 +91,6 @@ public class OverviewPieChart extends AnchorPane {
             caption4.setVisible(false);
             return;
         }
-
 
         Label[] captions = {caption, caption1, caption2, caption3};
         double percent = 0;
@@ -121,7 +119,6 @@ public class OverviewPieChart extends AnchorPane {
         caption.setText(String.valueOf(Math.round(percent * 100)) + "%");
         caption.setStyle("-fx-text-fill: white; -fx-font-family: 'Roboto'; -fx-font-size: 16px; -fx-font-weight: bold");
     }
-
 
     /**
      * Applies mouse over animation to the pieChart

@@ -16,9 +16,7 @@ public class BudgetPost implements IBudgetPost{
 
     private double budgetCap; //The most you want to spend in a surtain budget-post.
     private double currentBalance;
-
     private BudgetPostID id;
-    private final List<IBudgetPostsObserver> observers = new ArrayList<IBudgetPostsObserver>();
     private final List<ITransaction> transactions = new ArrayList<>();
 
     public BudgetPost(double budgetCap, String name, String color){
@@ -65,14 +63,6 @@ public class BudgetPost implements IBudgetPost{
     public void addTransaction(ITransaction transaction) {
         transactions.add(transaction);
         updateCurrentBalance();
-    }
-
-    /**
-     * Adds a new IBudgetPostsObserver to the list of observers.
-     * @param observer The observer to be added.
-     */
-    public void addObserver(IBudgetPostsObserver observer) {
-        this.observers.add(observer);
     }
 
     //Getters
@@ -131,15 +121,6 @@ public class BudgetPost implements IBudgetPost{
         transactionsCopy.addAll(transactions);
 
         return transactionsCopy;
-    }
-
-    private void notifyObservers(){
-        ArrayList<ITransaction> transactionsCopy = new ArrayList<>();
-        Collections.copy(transactionsCopy, transactions); // Defensive copying
-
-        for(IBudgetPostsObserver observer: observers){
-            observer.update(transactionsCopy);
-        }
     }
 
     private void updateCurrentBalance(){

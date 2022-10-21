@@ -39,8 +39,8 @@ public class PastTransactionView implements Initializable {
 
     @FXML Text currentBudgetMonth;
     ModelFacade facade = ModelFacade.getInstance();
-    private OverviewController overviewController = new OverviewController();
-    private PastTransactionController PastTransactionController = new PastTransactionController();
+    private final OverviewController overviewController = new OverviewController();
+    private final PastTransactionController pastTransactionController = new PastTransactionController();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
 
@@ -48,10 +48,14 @@ public class PastTransactionView implements Initializable {
     }
     public void update(){
         pastTransactionFlowPane.getChildren().clear();
-        this.pastTransactionFlowPane.getChildren().clear();
-        currentBudgetMonth.setText(DateStringFormatter.getMonthAsString(facade.getCurrentBudget().getDate())+ " " + facade.getCurrentBudget().getDate().get(Calendar.YEAR));
-        PastTransactionController.updateItem();
-        for(PastTransactionItem i : PastTransactionController.getPastTransactionItemList()){
+        pastTransactionFlowPane.getChildren().clear();
+
+        currentBudgetMonth.setText(DateStringFormatter.getMonthAsString(facade.getCurrentBudgetCalendar())+ " "
+                + facade.getCurrentBudgetCalendar().get(Calendar.YEAR));
+
+        pastTransactionController.updateItem();
+
+        for(PastTransactionItem i : pastTransactionController.getPastTransactionItemList()){
             this.pastTransactionFlowPane.getChildren().add(i);
         }
     }
@@ -99,8 +103,4 @@ public class PastTransactionView implements Initializable {
         stage.show();
 
     }
-
-
-
-
 }

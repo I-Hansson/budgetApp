@@ -58,9 +58,13 @@ public class LogInView {
 
     @FXML
     public void createAccount(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-        if (checkInformation()){
+        if (checkInformation()) {
             createUserPane.toBack();
-            controller.createUser(nameCreateUserTextField.getText(), idCreateUserTextField.getText(), passwordCreateUserTextField.getText());
+            controller.createUser(
+                    nameCreateUserTextField.getText(),
+                    idCreateUserTextField.getText(),
+                    passwordCreateUserTextField.getText()
+            );
             clearInputInfo();
         }
         wrongInformation();
@@ -74,16 +78,15 @@ public class LogInView {
 
     @FXML
     public void SwitchToOverviewPage(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-        if (controller.signInUser(userName.getText(),userPassword.getText())){
+        controller.signInUser(userName.getText(), userPassword.getText());
+
+        if (controller.userIsSignedIn()){
             root = FXMLLoader.load(getClass().getResource("Overview.fxml"));
             stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
         }
-
-
-
     }
 
     @FXML
@@ -131,13 +134,14 @@ public class LogInView {
         for (int i = 0; i < nameCreateUserTextField.getText().length(); i++) {
             if (Character.isDigit(nameCreateUserTextField.getText().charAt(i))) {
                 return false;
-            }}
+            }
+        }
         return true;
     }
 
     private void wrongInformation(){
         errorLabelLogInView.setTextFill(Paint.valueOf("FF0000"));
-        errorLabelLogInView.setText("The information is incorretctly filled out!");
+        errorLabelLogInView.setText("The information is incorrectly filled out!");
     }
 
     private void clearInputInfo(){
@@ -145,9 +149,5 @@ public class LogInView {
         idCreateUserTextField.setText("");
         passwordCreateUserTextField.setText("");
         nameCreateUserTextField.setText("");
-
-
-
-
-
-    }}
+    }
+}

@@ -16,16 +16,13 @@ public class OverviewOverlookView extends AnchorPane {
 
     OverviewOverlookController overviewOverlookController = new OverviewOverlookController();
 
-     @FXML Label remainingBalance;
-     @FXML Label averageDailySpent;
+    @FXML Label remainingBalance;
+    @FXML Label averageDailySpent;
 
     public OverviewOverlookView() {
-
-
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("OverviewOverlook.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
-
 
         try {
             fxmlLoader.load();
@@ -34,11 +31,7 @@ public class OverviewOverlookView extends AnchorPane {
             throw new RuntimeException(exception);
         }
 
-
         remainingBalance.setText(String.valueOf(overviewOverlookController.getOverlookBalance()) + " kr");
         averageDailySpent.setText(String.valueOf(overviewOverlookController.getOverlookAverage()) + " kr");
-
-
-
     }
 }
