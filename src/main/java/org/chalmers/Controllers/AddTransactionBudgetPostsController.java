@@ -22,7 +22,7 @@ public class AddTransactionBudgetPostsController {
 
     }
 
-    public Collection<IBudgetPost> getBudgetPosts (){return facade.budgetPostsfromUser();}
+    public Collection<IBudgetPost> getBudgetPosts (){return facade.getBudgetPosts();}
 
 
 

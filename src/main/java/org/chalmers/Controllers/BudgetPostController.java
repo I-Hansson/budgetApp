@@ -27,7 +27,7 @@ public class BudgetPostController {
         StringBuilder rgb = new StringBuilder();
         rgb.append(r + "," + g + "," + b);
 
-        facade.addBudgetPost(name,maxAmount,description,rgb.toString());
+        facade.addBudgetPost(name, Double.parseDouble(maxAmount), rgb.toString());
     }
 
 }

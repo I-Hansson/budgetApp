@@ -26,7 +26,7 @@ public class BudgetPostItemController {
     }
     public void createBudgetItems(){
         item.clear();
-        for (IBudgetPost bp: facade.budgetPostsfromUser()){
+        for (IBudgetPost bp: facade.getBudgetPosts()){
             item.add(new BudgetPostsItem(bp.getName(),"descrition", bp.getBudgetCap(),bp.getTransactions().size(),bp.getColor()));
         }
     }

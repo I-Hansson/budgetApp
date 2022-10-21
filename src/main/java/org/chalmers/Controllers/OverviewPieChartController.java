@@ -3,7 +3,6 @@ package org.chalmers.Controllers;
 import org.chalmers.model.*;
 
 import java.util.Collection;
-import java.util.List;
 
 /**
  * Controller class for the pie chart on the overview page
@@ -22,6 +21,6 @@ public class OverviewPieChartController {
     }
 
     public Collection<IBudgetPost> getBudgetPosts() {
-        return facade.budgetPostsfromUser();
+        return facade.getBudgetPosts();
     }
 }

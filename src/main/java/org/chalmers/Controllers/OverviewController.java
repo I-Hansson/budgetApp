@@ -32,7 +32,7 @@ public class OverviewController{
 
 
     public Collection<IBudgetPost> getBudgetPostsfromUser(){
-        return facade.budgetPostsfromUser();
+        return facade.getBudgetPosts();
     }
 
 
