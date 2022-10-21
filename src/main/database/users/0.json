@@ -1,1 +1,15 @@
-{"password":"Krokodil123","currentBalance":1000,"name":"oscar","budgetPosts":[{"cap":1500,"color":"100,50,50","name":"mat"},{"cap":1000,"color":"100,50,150","name":"tobak"},{"cap":2500,"color":"100,150,50","name":"alkohol"},{"cap":5000,"color":"100,0,50","name":"bostad"}],"id":"0","email":"oscar.cronvall@outlook.com","startBalance":10000}
+{
+  "id": "0",
+  "email": "test@test.com",
+  "name": "Kalle",
+  "password": "Krokodil123",
+  "currentBalance": 1000,
+  "startBalance": 10000,
+  "budgetPosts": [
+    {"dateOfCreation": "2210","name":  "mat", "cap":  1500, "color": "100,50,50"},
+    {"dateOfCreation": "2210","name":  "tobak", "cap":  1000, "color": "100,50,150"},
+    {"dateOfCreation": "2210","name":  "alkohol", "cap":  2500, "color": "100,150,50"},
+    {"dateOfCreation": "2210","name":  "bostad", "cap":  5000, "color": "100,0,50"}
+  ]
+}
+

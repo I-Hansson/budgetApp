@@ -131,6 +131,14 @@ public class Budget extends SaveableBudget implements IBudget{
         this.budgetPosts.add(bp);
     }
 
+    private void updateCurrentBalance(){
+        double temp = 0;
+        for(ITransaction t : this.transactions){
+            temp += t.getAmount();
+        }
+        this.currentBalance = temp;
+    }
+
     private void calculateCap(){
         double temp = 0;
         for(IBudgetPost bp : this.budgetPosts){
@@ -138,16 +146,6 @@ public class Budget extends SaveableBudget implements IBudget{
 
         }
         this.setBudgetCap(temp);
-
-    }
-
-    public void updateCurrentBalance(){
-        double temp = 0;
-        for(ITransaction t : this.transactions){
-            temp += t.getAmount();
-        }
-        this.currentBalance = temp;
-
 
     }
 }

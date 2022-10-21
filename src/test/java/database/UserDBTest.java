@@ -1,3 +1,5 @@
+package database;
+
 import org.chalmers.model.database.UsersDB;
 import org.junit.Before;
 import org.junit.Test;
@@ -37,7 +39,7 @@ public class UserDBTest {
     @Test
     @Order(1)
     public void assertGetUserName(){
-        String expectedName = "oscar";
+        String expectedName = "Kalle";
         System.out.println(1);
         assertEquals(expectedName, db.getUserName());
     }

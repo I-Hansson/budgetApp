@@ -25,7 +25,7 @@ public abstract class SaveableBudget implements IBudget{
 
     /**
      * Returns all new transactions added by the user during the last session.
-     * @return
+     * @return The new transactions.
      */
     public Collection<ITransaction> getNewTransactions(){
         return newTransactions;
