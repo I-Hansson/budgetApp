@@ -20,9 +20,11 @@ public class DatabaseLoader {
      * @return the acuall user
      */
     public static User getUserFromDatabase(int userID){
+
         userDB = new UsersDB(userID);
         user = new User(Integer.parseInt(userDB.getUid()));
         connectDB();
+
         return user;
     }
 

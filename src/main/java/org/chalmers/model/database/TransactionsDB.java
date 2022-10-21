@@ -20,6 +20,7 @@ public class TransactionsDB {
     private List<DBTransaction> transactionsList;
 
     public TransactionsDB(int uid){
+
         connector = new DatabaseConnector("./src/main/database/transactions/"+uid+".json");
         file = null;
         oldDB = null;

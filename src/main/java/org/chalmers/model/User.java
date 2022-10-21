@@ -19,6 +19,7 @@ public class User {
     private int id;
     public User(int id){
         this.name = "temp";
+        this.id = id;
         this.currentBudget = new Budget(2011,2);
     }
 
@@ -75,9 +76,11 @@ public class User {
     public void nextCurrentBudget(){
         int index = budgets.indexOf(this.currentBudget);
         if(index + 1 >= budgets.size()){
-            index = -1;
+
+        }else {
+            this.currentBudget = budgets.get(index+1);
         }
-        this.currentBudget = budgets.get(index+1);
+
     }
 
     /**

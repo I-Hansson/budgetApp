@@ -27,6 +27,7 @@ public class DatabaseSaver {
             user = tempUser;
 
             userDB = new UsersDB(user.getUserID());
+
             saveTransactions();
             saveBudgetPost();
         }else{
@@ -54,7 +55,7 @@ public class DatabaseSaver {
                 }
                 temp = year+ month+ day;
                 userDB.addTransaction(t.getName(),t.getDescription(),t.getAmount(),temp,t.getBudgetPostName());
-                System.out.println(t.getBudgetPostName());
+
             }
         userDB.closeSetterTransaction();
     }

@@ -12,7 +12,7 @@
 @author Jonathan
         -->
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1280.0" stylesheets="@CSS/Font.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.chalmers.PastTransactionView">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1280.0" stylesheets="@CSS/Font.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.chalmers.PastTransactionView">
    <FlowPane fx:id="AddTransactionFlowPane" layoutX="-2.0" prefHeight="868.0" prefWidth="1290.0" />
     <ImageView fitHeight="849.0" fitWidth="1276.0" layoutX="2.0" layoutY="-3.0" opacity="0.0">
         <Image url="@images/background.jpg" />
@@ -43,7 +43,7 @@
          <AnchorPane id="borderOverviewMonths" layoutX="329.0" layoutY="21.0" prefHeight="52.0" prefWidth="497.0">
             <children>
                <Text fx:id="currentBudgetMonth" layoutX="86.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textNormalBlack" text="September" textAlignment="CENTER" wrappingWidth="325.336669921875" />
-               <ImageView fitHeight="37.0" fitWidth="41.0" layoutX="449.0" layoutY="7.0" onMouseClicked="#nextMonth" pickOnBounds="true" preserveRatio="true">
+               <ImageView fx:id="rightArrow" fitHeight="37.0" fitWidth="41.0" layoutX="449.0" layoutY="7.0" onMouseClicked="#nextMonth" pickOnBounds="true" preserveRatio="true">
                   <image>
                      <Image url="@images/right.png" />
                   </image>
