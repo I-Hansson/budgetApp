@@ -1,7 +1,9 @@
 {
+  "id": "1",
   "password": "test1",
   "currentBalance": 1000,
   "name": "oscar",
+  "email": "test1@test.com",
   "budgetPosts": [
     {"dateOfCreation": "2210","name":  "mat", "cap":  1500, "color": "100,50,50"},
     {"dateOfCreation": "2210","name":  "tobak", "cap":  1000, "color": "100,50,150"},
@@ -9,4 +11,3 @@
     {"dateOfCreation": "2210","name":  "bostad", "cap":  5000, "color": "100,0,50"}
   ]
 }
-
