@@ -18,33 +18,7 @@ import java.util.List;
  */
 
 public class BudgetPostPanelController {
-    private List<IBudgetPost> budgets = new ArrayList<>();
-    private List<OverviewBudgetPost> budgetPostCards = new ArrayList<OverviewBudgetPost>();
-    ModelFacade facade = ModelFacade.getInstance();
+
     public BudgetPostPanelController (){
 
-        createBudgetPostCards();
-    }
-    public List<IBudgetPost> getBudgetPosts(){
-        return this.budgets;
-    }
-    public List<OverviewBudgetPost> getBudgetPostCards(){
-        return this.budgetPostCards;
-    }
-
-    // TODO too much functionality
-
-    public void createBudgetPostCards(){
-        budgetPostCards.clear();
-        for (IBudgetPost i : facade.budgetPostsfromUser()){
-            budgetPostCards.add(new OverviewBudgetPost(i.getName(), i.getCurrentBalance(), i.getCurrentBalance()/i.getBudgetCap(), i.getColor(),getComplementColor(i.getColor())));
-        }
-
-    }
-    public String getComplementColor(String rgb) {
-        Color color = Color.web("rgb(" + rgb + ")");
-        Color newColor = color.brighter();
-        return ""+newColor.getRed()*255+"," + newColor.getGreen()*255 +","+ newColor.getBlue()*255;
-    }
-
-}
+}}

@@ -17,7 +17,7 @@ import org.chalmers.modelAdapters.chartAdapters.PieChartFX;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
+
 
 
 /**

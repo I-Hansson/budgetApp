@@ -3,38 +3,10 @@
   "currentBalance": 1000,
   "name": "oscar",
   "budgetPosts": [
-    {
-      "cap": 5000,
-      "color": "5,51,92",
-      "name": "Matvaror",
-      "dateOfCreation": "2105"
-    },
-    {
-      "cap": 1000,
-      "color": "15,87,79",
-      "name": "Transport",
-      "dateOfCreation": "2210"
-    },
-    {
-      "cap": 800,
-      "color": "166,212,227",
-      "name": "Snus",
-      "dateOfCreation": "2207"
-    },
-    {
-      "cap": 800,
-      "color": "31,120,189",
-      "name": "Kläder",
-      "dateOfCreation": "2112"
-    },
-    {
-      "cap": 1000,
-      "color": "153,51,0",
-      "name": "Test",
-      "dateOfCreation": "2210"
-    }
-  ],
-  "id": "1",
-  "email": "test1",
-  "startBalance": 10000
+    {"dateOfCreation": "2210","name":  "mat", "cap":  1500, "color": "100,50,50"},
+    {"dateOfCreation": "2210","name":  "tobak", "cap":  1000, "color": "100,50,150"},
+    {"dateOfCreation": "2210","name":  "alkohol", "cap":  2500, "color": "100,150,50"},
+    {"dateOfCreation": "2210","name":  "bostad", "cap":  5000, "color": "100,0,50"}
+  ]
 }
+

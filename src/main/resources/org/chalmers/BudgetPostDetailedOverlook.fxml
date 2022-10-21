@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="282.0" prefWidth="878.0" styleClass="focusWhiteWithRadius" stylesheets="@CSS/Font.css" type="AnchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="detailedSpent" alignment="CENTER" layoutX="674.0" layoutY="53.0" prefHeight="55.0" prefWidth="171.0" styleClass="overviewText" text="800 kr" />
+      <Line endX="-101.20001220703125" endY="115.5999755859375" layoutX="738.0" layoutY="149.0" startX="-101.20001220703125" startY="-131.60000610351562" />
+      <Line endX="486.89996337890625" endY="1.52587890625E-5" layoutX="115.0" layoutY="141.0" startX="-100.0" />
+      <Line endX="-99.20001220703125" endY="-7.0" layoutX="757.0" layoutY="148.0" startX="106.39996337890625" startY="-7.0" />
+      <Label fx:id="detailedAverage" alignment="CENTER" layoutX="686.0" layoutY="183.0" prefHeight="55.0" prefWidth="149.0" styleClass="overviewText" text="800 kr" />
+      <Label layoutX="42.0" layoutY="45.0" prefHeight="55.0" prefWidth="531.0" styleClass="panelTitel" text="Spent in this budget post:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="42.0" layoutY="176.0" prefHeight="55.0" prefWidth="558.0" styleClass="panelTitel" text="Average spend in this budget post:" textAlignment="CENTER" />
+   </children>
+</fx:root>
