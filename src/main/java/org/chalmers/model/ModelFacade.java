@@ -47,6 +47,14 @@ public class ModelFacade {
     }
 
     /**
+     * Returns the currently selected budgets calendar object.
+     * @return The calendar object.
+     */
+    public Calendar getCurrentBudgetCalendar() {
+        return user.getCurrentBudget().getDate();
+    }
+
+    /**
      * Returns the collection of ITransaction belonging to the currently selected budget.
      * @return The collection of ITransaction.
      */

@@ -13,8 +13,8 @@ import java.util.GregorianCalendar;
 
 public class OverviewOverlookController {
 
-    private ModelFacade facade = ModelFacade.getInstance();
-    private Calendar today = new GregorianCalendar();
+    private final ModelFacade facade = ModelFacade.getInstance();
+    private final Calendar today = new GregorianCalendar();
 
     public OverviewOverlookController(){}
 

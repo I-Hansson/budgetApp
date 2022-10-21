@@ -38,7 +38,9 @@ public class BudgetPostsDetailedBalance extends AnchorPane {
         }
 
         budgetPostAmount.setText(budgetPostsDetailedBalanceController.getRemainingBalance() + " Kr");
-        budgetPostColorBakground.setStyle("-fx-background-color: rgb("+ budgetPostsDetailedBalanceController.getBudgetPostColor()+" );");
+        budgetPostColorBakground.setStyle(
+                "-fx-background-color: rgb(" + budgetPostsDetailedBalanceController.getBudgetPostColor() + " );"
+        );
 
     }
 }

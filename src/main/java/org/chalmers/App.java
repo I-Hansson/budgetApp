@@ -29,8 +29,6 @@ public class App extends Application{
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
         primaryStage.setResizable(false);
-        System.out.println(Color.MAGENTA.darker());
-        System.out.println(Color.MAGENTA);
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent t) {

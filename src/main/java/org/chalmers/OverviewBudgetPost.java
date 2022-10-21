@@ -24,13 +24,11 @@ import java.io.IOException;
 
 public class OverviewBudgetPost extends AnchorPane{
 
-
     BudgetPostdetailedViewController budgetPostdetailedViewController = new BudgetPostdetailedViewController();
 
     private Stage stage;
     private Scene scene;
     private Parent root;
-
 
     @FXML Text budgetPostName;
     @FXML Text budgetPostTotalAmount;

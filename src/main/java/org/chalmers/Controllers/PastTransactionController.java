@@ -13,17 +13,17 @@ import java.util.List;
 
 public class PastTransactionController {
 
-    ModelFacade facede = ModelFacade.getInstance();
-    private List<PastTransactionItem>  pastTransactionItemList = new ArrayList<PastTransactionItem>();
+    ModelFacade facade = ModelFacade.getInstance();
+    private List<PastTransactionItem>  pastTransactionItemList = new ArrayList<>();
     public PastTransactionController(){
         updateItem();
 
-        }
-        public void updateItem(){
+    }
+    public void updateItem(){
         pastTransactionItemList.clear();
-            for(ITransaction t : facede.getCurrentBudgetTransactions()) {
-                pastTransactionItemList.add(new PastTransactionItem(t));
-            }
+        for(ITransaction t : facade.getCurrentBudgetTransactions()) {
+            pastTransactionItemList.add(new PastTransactionItem(t));
+        }
     }
     public List<PastTransactionItem> getPastTransactionItemList() {
         return this.pastTransactionItemList;
