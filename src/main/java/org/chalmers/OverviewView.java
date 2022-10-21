@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
@@ -19,6 +20,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Calendar;
@@ -66,13 +70,24 @@ public class OverviewView implements Initializable {
     @FXML ImageView rightArrow;
     @FXML ImageView leftArrow;
 
+    Image arrowRightGrey;
+    Image arrowRightBlack;
+
 
     // controllers
     OverviewController overviewController = new OverviewController();
     ModelFacade facade = ModelFacade.getInstance();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        update();
+        try {
+            arrowRightGrey = new Image(new FileInputStream("src/main/resources/org/chalmers/images/right_grey.png"));
+             arrowRightBlack = new Image(new FileInputStream("src/main/resources/org/chalmers/images/right.png"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+            update();
+
 
         Text[] textsWithVHints = {overviewTitelPanel, budgetPostsTitelPanel, pastTransactionsTitelPanel};
         for (Text text : textsWithVHints) {
@@ -80,6 +95,12 @@ public class OverviewView implements Initializable {
         }
 
         addArrowHinting();
+    }
+    private void setRightArrowGrey()  {
+        rightArrow.setImage(arrowRightGrey);
+    }
+    private void setRightArrowBlack(){
+        rightArrow.setImage(arrowRightBlack);
     }
 
     private void addArrowHinting() {
@@ -190,12 +211,17 @@ public class OverviewView implements Initializable {
     }
 
 
-    public void update(){
+    public void update() {
 
 
         this.overlookPane.getChildren().clear();
         this.overlookPane.getChildren().add(new OverviewOverlookView());
-
+        if(facade.getCurrentBudget() == facade.getUser().getBudgets().get(facade.getUser().getBudgets().size() -1))
+        {
+            setRightArrowGrey();
+        }else{
+            setRightArrowBlack();
+        }
         currentBudgetMonth.setText(DateStringFormatter.getMonthAsString(facade.getUser().getCurrentBudget().getDate()) + " " + facade.getUser().getCurrentBudget().getDate().get(Calendar.YEAR));
         this.PiechartFlowPane.getChildren().clear();
         this.budgetPostsGridPane.getChildren().clear();

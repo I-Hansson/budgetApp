@@ -1,10 +1,7 @@
 {
-  "id": "2",
-  "name": "Isac",
-  "email": "test2",
   "password": "test2",
   "currentBalance": 1000,
-  "startBalance": 10000,
+  "name": "Isac",
   "budgetPosts": [
     {
       "cap": 5000,
@@ -30,5 +27,8 @@
       "name": "Test",
       "dateOfCreation": "2210"
     }
-  ]
+  ],
+  "id": "2",
+  "email": "test2",
+  "startBalance": 10000
 }

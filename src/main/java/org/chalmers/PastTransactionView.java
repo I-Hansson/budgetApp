@@ -7,6 +7,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -14,6 +16,8 @@ import org.chalmers.Controllers.OverviewController;
 import org.chalmers.Controllers.PastTransactionController;
 import org.chalmers.model.ModelFacade;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Calendar;
@@ -38,23 +42,52 @@ public class PastTransactionView implements Initializable {
     @FXML FlowPane pastTransactionFlowPane;
 
     @FXML Text currentBudgetMonth;
+    @FXML
+    ImageView rightArrow;
+
+    Image arrowRightGrey;
+    Image arrowRightBlack;
+
+
+
     ModelFacade facade = ModelFacade.getInstance();
     private OverviewController overviewController = new OverviewController();
     private PastTransactionController PastTransactionController = new PastTransactionController();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
+        try {
+            arrowRightGrey = new Image(new FileInputStream("src/main/resources/org/chalmers/images/right_grey.png"));
+            arrowRightBlack = new Image(new FileInputStream("src/main/resources/org/chalmers/images/right.png"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
     update();
     }
     public void update(){
         pastTransactionFlowPane.getChildren().clear();
         this.pastTransactionFlowPane.getChildren().clear();
+        if(facade.getCurrentBudget() == facade.getUser().getBudgets().get(facade.getUser().getBudgets().size() -1))
+        {
+            setRightArrowGrey();
+        }else{
+            setRightArrowBlack();
+        }
+
         currentBudgetMonth.setText(DateStringFormatter.getMonthAsString(facade.getCurrentBudget().getDate())+ " " + facade.getCurrentBudget().getDate().get(Calendar.YEAR));
         PastTransactionController.updateItem();
         for(PastTransactionItem i : PastTransactionController.getPastTransactionItemList()){
             this.pastTransactionFlowPane.getChildren().add(i);
         }
     }
+
+    private void setRightArrowGrey()  {
+        rightArrow.setImage(arrowRightGrey);
+    }
+    private void setRightArrowBlack(){
+        rightArrow.setImage(arrowRightBlack);
+    }
+
     @FXML
     public void nextMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         overviewController.clickedNextMonth();

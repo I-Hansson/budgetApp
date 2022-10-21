@@ -7,6 +7,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Paint;
@@ -21,6 +23,8 @@ import org.chalmers.Controllers.OverviewController;
 import org.chalmers.model.ModelFacade;
 
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Calendar;
@@ -52,7 +56,7 @@ public class BudgetPostsView implements Initializable {
     @FXML GridPane budgetPostsViewGridPane;
     @FXML Text currentBudgetMonth;
 
-
+    @FXML ImageView rightArrow;
 
 
     private Stage stage;
@@ -64,13 +68,29 @@ public class BudgetPostsView implements Initializable {
     private ModelFacade facade = ModelFacade.getInstance();
     private BudgetPostItemController itemController = new BudgetPostItemController();
 
-
+    Image arrowRightGrey;
+    Image arrowRightBlack;
     @Override
     public void initialize (URL url, ResourceBundle resourceBundle) {
+        try {
+            arrowRightGrey = new Image(new FileInputStream("src/main/resources/org/chalmers/images/right_grey.png"));
+            arrowRightBlack = new Image(new FileInputStream("src/main/resources/org/chalmers/images/right.png"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
         update();
     }
 
     public void update(){
+
+        if(facade.getCurrentBudget() == facade.getUser().getBudgets().get(facade.getUser().getBudgets().size() -1))
+        {
+            setRightArrowGrey();
+        }else{
+            setRightArrowBlack();
+        }
+
         currentBudgetMonth.setText(DateStringFormatter.getMonthAsString(facade.getUser().getCurrentBudget().getDate()) + " " + facade.getUser().getCurrentBudget().getDate().get(Calendar.YEAR));
         this.budgetPostsViewGridPane.getChildren().clear();
         itemController.createBudgetItems();
@@ -78,6 +98,12 @@ public class BudgetPostsView implements Initializable {
             this.budgetPostsViewGridPane.add(itemController.getItem().get(i), i, 0);
         }
 
+    }
+    private void setRightArrowGrey()  {
+        rightArrow.setImage(arrowRightGrey);
+    }
+    private void setRightArrowBlack(){
+        rightArrow.setImage(arrowRightBlack);
     }
 
     @FXML
