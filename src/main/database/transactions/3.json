@@ -1,1 +1,18 @@
-{"transactions":[{"date":"2210102200","amount":100.0,"budgetPostName":"postname","name":"test","description":"lmao"}]}
+{
+  "transactions": [
+    {
+      "date": "202201102200",
+      "amount": 100,
+      "budgetPostName": "Transport",
+      "name": "test",
+      "description": "lmao"
+    },
+    {
+      "date": "202202102200",
+      "amount": 100,
+      "budgetPostName": "Transport",
+      "name": "test",
+      "description": "lmao"
+    }
+  ]
+}

@@ -74,7 +74,7 @@ public class BudgetPostsView implements Initializable {
         currentBudgetMonth.setText(DateStringFormatter.getMonthAsString(facade.getUser().getCurrentBudget().getDate()) + " " + facade.getUser().getCurrentBudget().getDate().get(Calendar.YEAR));
         this.budgetPostsViewGridPane.getChildren().clear();
         itemController.createBudgetItems();
-        for(int i = 0;i<4; i++) {
+        for(int i = 0;i<itemController.getItem().size(); i++) {
             this.budgetPostsViewGridPane.add(itemController.getItem().get(i), i, 0);
         }
 

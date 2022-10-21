@@ -28,7 +28,10 @@ public class LogInView {
 
     private LogInController controller = new LogInController();
 
-
+    @FXML
+    TextField userName;
+    @FXML
+    TextField userPassword;
     @FXML
     TextField nameCreateUserTextField;
     @FXML
@@ -71,14 +74,16 @@ public class LogInView {
 
     @FXML
     public void SwitchToOverviewPage(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        if (controller.signInUser(userName.getText(),userPassword.getText())){
+            root = FXMLLoader.load(getClass().getResource("Overview.fxml"));
+            stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
 
-        ModelFacade facade = ModelFacade.getInstance(); //todo fix
-        facade.setUser(DatabaseLoader.getUserFromDatabase(1));
-        root = FXMLLoader.load(getClass().getResource("Overview.fxml"));
-        stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+
+
     }
 
     @FXML

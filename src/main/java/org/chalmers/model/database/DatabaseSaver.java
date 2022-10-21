@@ -17,7 +17,7 @@ public class DatabaseSaver {
 
 
     private static User user;
-    private static UsersDB userDB = new UsersDB(1);
+    private static UsersDB userDB ;
 
     /**
      * Save the user to the database
@@ -26,11 +26,17 @@ public class DatabaseSaver {
      */
 
     public static void saveUserToDatabase(User tempUser) throws InterruptedException {
-        user = tempUser;
-        userDB = new UsersDB(1);
-        saveTransactions();
-        saveBudgetPost();
-    }
+        if (tempUser != null){
+            user = tempUser;
+
+            userDB = new UsersDB(user.getUserID());
+            saveTransactions();
+            saveBudgetPost();
+        }else{
+            System.out.println("no user");
+        }
+        }
+
 
 
     private static void saveTransactions() throws InterruptedException {

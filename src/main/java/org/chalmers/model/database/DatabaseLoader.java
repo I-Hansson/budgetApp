@@ -10,7 +10,7 @@ import java.util.*;
  */
 public class DatabaseLoader {
 
-    private static UsersDB userDB = new UsersDB(1);
+    private static UsersDB userDB ;
     private static User user;
 
 
@@ -20,11 +20,9 @@ public class DatabaseLoader {
      * @return the acuall user
      */
     public static User getUserFromDatabase(int userID){
-
         userDB = new UsersDB(userID);
         user = new User(Integer.parseInt(userDB.getUid()));
         connectDB();
-
         return user;
     }
 
@@ -44,10 +42,6 @@ public class DatabaseLoader {
                 }
             }
         }
-        /**
-         *
-         */
-
         for (IBudget budget: user.getBudgets()){
             for(ITransaction t : budget.getTransactions()){
                 for(IBudgetPost bp: budget.getBudgetPosts()){
@@ -64,11 +58,10 @@ public class DatabaseLoader {
     private static void fillBudget(){
         HashMap<Integer, List<ITransaction>> map = loadIntTransactions();
         System.out.println(map);
-        TransactionsDB transactionDB = new TransactionsDB(1);
+        TransactionsDB transactionDB = new TransactionsDB(Integer.parseInt(userDB.getUid()));
         ITransaction transaction = transactionDB.getAllTransactions().get(0);
         int fmonth = transaction.getDate().get(Calendar.MONTH);
         int fyear = transaction.getDate().get(Calendar.YEAR);
-        System.out.println((fyear*100 + fmonth));
 
         Calendar today = new GregorianCalendar();
         int lYear = today.get(Calendar.YEAR);
@@ -99,7 +92,7 @@ public class DatabaseLoader {
     private static HashMap<Integer, List<ITransaction>> loadIntTransactions() {
 
         HashMap<Integer, List<ITransaction>> map = new HashMap<>();
-        TransactionsDB uDB = new TransactionsDB(1);
+        TransactionsDB uDB = new TransactionsDB(Integer.parseInt(userDB.getUid()));
         for(ITransaction transaction: uDB.getAllTransactions()){
             int year = transaction.getDate().get(Calendar.YEAR);
             int month = transaction.getDate().get(Calendar.MONTH);
@@ -112,6 +105,7 @@ public class DatabaseLoader {
                 temp.add(transaction);
                 map.put(transactionKey,temp);
             }
+
         }
         return map;
     }

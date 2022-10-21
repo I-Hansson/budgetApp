@@ -14,7 +14,7 @@
 @author Jonathan
         -->
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1280.0" stylesheets="@CSS/Font.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.chalmers.LogInView">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1280.0" stylesheets="@CSS/Font.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.chalmers.LogInView">
    <children>
       <AnchorPane fx:id="createUserPane" layoutX="425.0" layoutY="237.0" prefHeight="262.0" prefWidth="426.0" style="-fx-background-color: EDE9E5; -fx-background-radius: 10;">
          <children>
@@ -52,11 +52,11 @@
       </ImageView>
       <AnchorPane layoutX="426.0" layoutY="237.0" prefHeight="242.0" prefWidth="425.0" style="-fx-background-color: EDE9E5; -fx-background-radius: 10;">
          <children>
-            <TextField layoutX="65.0" layoutY="44.0" prefHeight="27.0" prefWidth="294.0" promptText="SafeBoat ID">
+            <TextField fx:id="userName" layoutX="65.0" layoutY="44.0" prefHeight="27.0" prefWidth="294.0" promptText="SafeBoat ID">
                <font>
                   <Font size="16.0" />
                </font></TextField>
-            <TextField layoutX="65.0" layoutY="97.0" prefHeight="35.0" prefWidth="294.0" promptText="Password">
+            <TextField fx:id="userPassword" layoutX="65.0" layoutY="97.0" prefHeight="35.0" prefWidth="294.0" promptText="Password">
                <font>
                   <Font size="16.0" />
                </font>
