@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import org.chalmers.Controllers.BudgetPostsDetailedLastTransactionsController;
 
 import java.io.IOException;
 
@@ -15,10 +14,6 @@ import java.util.Calendar;
  */
 
 public class BudgetPostsDetailedLastTransactions extends AnchorPane {
-
-    BudgetPostsDetailedLastTransactionsController budgetPostsDetailedLastTransactionsController = new BudgetPostsDetailedLastTransactionsController();
-
-
 
     @FXML Label budgetPostDetailedLastTransaction;
     @FXML Label budgetPostDetailedLastTransactionDate;
@@ -42,10 +37,4 @@ public class BudgetPostsDetailedLastTransactions extends AnchorPane {
         budgetPostDetailedLastTransactionDate.setText("Date: " + DateStringFormatter.getFormattedDate(date));
         budgetPostDetailedLastTransactionAmount.setText("Cost: " + amount + " kr");
     }
-
-
-
-
-
-
 }

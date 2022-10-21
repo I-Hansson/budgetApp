@@ -2,6 +2,8 @@ package org.chalmers.Controllers;
 
 
 import org.chalmers.model.IBudgetPost;
+import org.chalmers.model.ModelFacade;
+
 /**
  * Controller class for the view class BudgetPostDetailedBalance.
  *
@@ -10,12 +12,12 @@ import org.chalmers.model.IBudgetPost;
 
 public class BudgetPostsDetailedBalanceController {
 
-    BudgetPostdetailedViewController budgetPostdetailedViewController = new BudgetPostdetailedViewController();
+    ModelFacade facade = ModelFacade.getInstance();
+    private final IBudgetPost budgetPost;
 
-    public BudgetPostsDetailedBalanceController(){}
-
-
-    private IBudgetPost budgetPost = budgetPostdetailedViewController.getCurrentBudgetPost();
+    public BudgetPostsDetailedBalanceController(){
+        budgetPost = facade.getSelectedBudget().getSelectedBudgetPost();
+    }
 
     public String getRemainingBalance(){
         return String.valueOf((budgetPost.getCurrentBalance()));

@@ -91,11 +91,13 @@ public class BudgetPostsView implements Initializable {
             setRightArrowBlack();
         }
 
-        currentBudgetMonth.setText(DateStringFormatter.getMonthAsString(facade.getUser().getCurrentBudget().getDate()) + " " + facade.getUser().getCurrentBudget().getDate().get(Calendar.YEAR));
-        this.budgetPostsViewGridPane.getChildren().clear();
+        currentBudgetMonth.setText(
+                DateStringFormatter.getMonthAsString(facade.getCurrentBudgetCalendar()) + " " +
+                        facade.getCurrentBudgetCalendar().get(Calendar.YEAR));
+        budgetPostsViewGridPane.getChildren().clear();
         itemController.createBudgetItems();
-        for(int i = 0;i<itemController.getItem().size(); i++) {
-            this.budgetPostsViewGridPane.add(itemController.getItem().get(i), i, 0);
+        for(int i = 0; i<itemController.getItem().size(); i++) {
+            budgetPostsViewGridPane.add(itemController.getItem().get(i), i, 0);
         }
 
     }
@@ -130,7 +132,12 @@ public class BudgetPostsView implements Initializable {
     public void addBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
 
         if (checkInformation()){
-            budgetcontroller.createBudgetPost(budgetPostName.getText(),budgetMax.getText(), budgetPostDescription.getText(), String.valueOf(budgetPostColor.getValue()));
+            budgetcontroller.createBudgetPost(
+                    budgetPostName.getText(),
+                    budgetMax.getText(),
+                    budgetPostDescription.getText(),
+                    String.valueOf(budgetPostColor.getValue())
+            );
             rightInputFeedback();
         }else{
             wrongInformation();

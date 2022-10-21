@@ -144,7 +144,13 @@ public class AddTransactionView implements Initializable {
     public void doneAddTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
 
         if (checkInformationAddTransaction()){
-            addTransactionController.newTransaction(Double.parseDouble(transactionAmount.getText()), transactionName.getText(), transactionDescription.getText(), datePicker.getValue(), AddTransactionBudgetPosts.getGroupValue());
+            addTransactionController.newTransaction(
+                    Double.parseDouble(transactionAmount.getText()),
+                    transactionName.getText(),
+                    transactionDescription.getText(),
+                    datePicker.getValue(),
+                    AddTransactionBudgetPosts.getGroupValue()
+            );
             doneShadowPane.toFront();
             transactionDonePane.toFront();
             clearInputInfo();
@@ -157,10 +163,16 @@ public class AddTransactionView implements Initializable {
     public void doneAddBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
 
         if (checkInformationAddBudgetPost()){
-            budgetPostController.createBudgetPost(addBudgetPostNameField.getText(),addBudgetPostMaxField.getText(), addBudgetPostDescriptionArea.getText(),colorPicker.getValue().toString());
+            budgetPostController.createBudgetPost(
+                    addBudgetPostNameField.getText(),
+                    addBudgetPostMaxField.getText(),
+                    addBudgetPostDescriptionArea.getText(),
+                    colorPicker.getValue().toString()
+            );
             update();
             feedBackAddingBudgetPost();
-        } else {wrongAddBudgetPostInformation();
+        } else {
+            wrongAddBudgetPostInformation();
         }
     }
 

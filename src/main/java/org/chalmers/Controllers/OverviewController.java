@@ -19,7 +19,7 @@ import java.util.List;
 public class OverviewController{
 
     private List<IBudgetPost> budgets = new ArrayList<>();
-    private List<OverviewBudgetPost> budgetPostCards = new ArrayList<OverviewBudgetPost>();
+    private List<OverviewBudgetPost> budgetPostCards = new ArrayList<>();
     ModelFacade facade = ModelFacade.getInstance();
 
 
@@ -32,27 +32,8 @@ public class OverviewController{
 
 
     public Collection<IBudgetPost> getBudgetPostsfromUser(){
-        return facade.budgetPostsfromUser();
+        return facade.getBudgetPosts();
     }
-
-
-    public OverviewController(){
-
-
-    }
-
-    public void SwitchToPastTransactions(){
-
-
-    }
-
-
-    public void UpdateBudgetPanel (){
-
-
-    }
-
-
 
     public void clickedNextMonth(){
         facade.getUser().nextCurrentBudget();
@@ -64,7 +45,7 @@ public class OverviewController{
     public Collection<ITransaction> getLatestTransactions() { //TODO ska hämta data från backend
         List<ITransaction> latestTransactions = new ArrayList<>();
         ITransaction[] userArray = {};
-        userArray = facade.getUser().getCurrentBudget().getTransactions().toArray(userArray);
+        userArray = facade.getCurrentBudget().getTransactions().toArray(userArray);
         for (int i = 1; i <= 5; i++) {
             if (userArray.length-i >= 0)
                 latestTransactions.add(userArray[userArray.length-i]);

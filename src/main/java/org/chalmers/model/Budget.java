@@ -6,20 +6,15 @@ import java.util.*;
  * @author Isac Hansson ,
  * Depends on BudgetPost, Transaction, ITransactionAddedObserver, BudgetPostFactory, ITransactionAddedObserver
  */
-public class Budget implements IBudget{
+public class Budget extends SaveableBudget implements IBudget{
 
     private double startBalance;
     private double currentBalance;
     private double budgetCap;
 
     private List<IBudgetPost> budgetPosts = new ArrayList<>();
-    private List<IBudgetPost> newBudgetPosts = new ArrayList<>();
     private List<ITransaction> transactions = new ArrayList<>();
-    private List<ITransaction> newTransactions = new ArrayList<>();
     private final Calendar calendar;
-
-
-    private final Collection<ITransactionAddedObserver> observers = new ArrayList<>();
 
     public void setTransactions(List<ITransaction> transactions) {
         this.transactions = transactions;
@@ -28,7 +23,7 @@ public class Budget implements IBudget{
     /**
      * Contructor of  the budget,
      * Instantiate four default budgetPosts through a BudgetPostFactory
-     * Instantiate the date for the budget, i.e what month is this budget active.
+     * Instantiate the date for the budget, i.e. what month is this budget active.
      * @param year What year is this active.
      * @param month What month is this active.
      */
@@ -37,13 +32,7 @@ public class Budget implements IBudget{
         calculateCap();
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void setBudgetCap(double newCap) {
-        budgetCap = newCap;
-    }
+    //Getters
 
     /**
      * {@inheritDoc}
@@ -65,39 +54,12 @@ public class Budget implements IBudget{
     }
 
     /**
-     * Returns a list of all ITransactions in this budget which were added during the last session.
-     * @return The list of ITransactions.
-     */
-    @Override
-    public List<ITransaction> getNewTransactions() {
-        return newTransactions;
-    }
-
-    /**
-     * Returns a list of all IBudgetPost in this budget which were added during the last session.
-     * @return The list of IBudgetPost.
-     */
-    @Override
-    public List<IBudgetPost> getNewBudgetPosts(){
-        return newBudgetPosts;
-    }
-
-    /**
      * {@inheritDoc}
      * @return {@inheritDoc}
      */
     @Override
     public Collection<IBudgetPost> getBudgetPosts() {
         return this.budgetPosts;
-    }
-
-    /**
-     * {@inheritDoc}
-     * @param newBalance {@inheritDoc}
-     */
-    @Override
-    public void setCurrentBalance(double newBalance) {
-        currentBalance = newBalance;
     }
 
     /**
@@ -119,6 +81,17 @@ public class Budget implements IBudget{
         return this.transactions;
     }
 
+    //Setters
+
+    /**
+     * {@inheritDoc}
+     * @param newBalance {@inheritDoc}
+     */
+    @Override
+    public void setCurrentBalance(double newBalance) {
+        currentBalance = newBalance;
+    }
+
     /**
      * Sets the new start balance for each month.
      * @param newStartBalance the new starting value for each month.
@@ -131,7 +104,19 @@ public class Budget implements IBudget{
      * {@inheritDoc}
      */
     @Override
+    public void setBudgetCap(double newCap) {
+        budgetCap = newCap;
+    }
+
+    //Methods
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public void addTransaction(ITransaction transaction){
+        if (transactions.contains(transaction))
+            addNewTransaction(transaction);
         this.transactions.add(transaction);
     }
 
@@ -141,18 +126,17 @@ public class Budget implements IBudget{
      */
     @Override
     public void addBudgetPost(IBudgetPost bp){
+        if (budgetPosts.contains(bp))
+            addNewBudgetPost(bp);
         this.budgetPosts.add(bp);
     }
 
-
-    public void addObserver(ITransactionAddedObserver observer) {
-        observers.add(observer);
-    }
-
-    private void notifyObservers(){
-        for (ITransactionAddedObserver o : observers) {
-            o.update(getTransactions());
+    private void updateCurrentBalance(){
+        double temp = 0;
+        for(ITransaction t : this.transactions){
+            temp += t.getAmount();
         }
+        this.currentBalance = temp;
     }
 
     private void calculateCap(){
@@ -162,16 +146,6 @@ public class Budget implements IBudget{
 
         }
         this.setBudgetCap(temp);
-
-    }
-
-    public void updateCurrentBalance(){
-        double temp = 0;
-        for(ITransaction t : this.transactions){
-            temp += t.getAmount();
-        }
-        this.currentBalance = temp;
-
 
     }
 }

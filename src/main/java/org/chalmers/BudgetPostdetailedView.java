@@ -42,22 +42,24 @@ public class BudgetPostdetailedView implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initializeMonthLineChart();
-        updateD();
+        update();
     }
 
-    public void updateD(){
+    public void update(){
         this.paneColorAmount.getChildren().clear();
         this.paneColorAmount.getChildren().add(new BudgetPostsDetailedBalance());
         this.paneLastTransacions.getChildren().clear();
 
-                // TODO Beror på modellen :/, vet ej hur jag ska komma runt det (Av typen "Transaction")
-
-        for(ITransaction Tr : controller.getCurrentBudgetPost().getTransactions()){
-            this.paneLastTransacions.getChildren().add(new BudgetPostsDetailedLastTransactions(Tr.getName(), Tr.getDate(), Tr.getAmount()));
+        for(ITransaction transaction : controller.getCurrentBudgetPost().getTransactions()){
+            this.paneLastTransacions.getChildren().add(
+                    new BudgetPostsDetailedLastTransactions(
+                            transaction.getName(), transaction.getDate(), transaction.getAmount()
+                    )
+            );
         }
 
         this.paneGraphLow.getChildren().clear();
-        this.paneGraphLow.getChildren().add( new BudgetPostDetailedOverLook());
+        this.paneGraphLow.getChildren().add(new BudgetPostDetailedOverLook());
     }
 
     //TODO Ska detta vara en egen klass och isåfall hur?

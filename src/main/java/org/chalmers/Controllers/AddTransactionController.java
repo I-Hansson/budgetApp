@@ -19,25 +19,22 @@ public class AddTransactionController{
 
     ModelFacade facade = ModelFacade.getInstance();
 
-
-
     public AddTransactionController () {
 
     }
 
+    public void newTransaction(double amount, String name, String description, LocalDate date, String budgetpost){
 
-   public void newTransaction(double amount, String name, String description, LocalDate date, String budgetpost){
-
-       facade.addTransaction(name, amount,budgetpost,description, new GregorianCalendar(date.getYear(),date.getMonthValue()-1,date.getDayOfMonth()));
-       System.out.println(facade.getCurrentBudgetTransactions());
-
-   }
-
-
-
-
-
-
-
-
+        facade.addTransaction(
+                name,
+                amount,
+                budgetpost,
+                description,
+                new GregorianCalendar(
+                        date.getYear(),
+                        date.getMonthValue()-1,
+                        date.getDayOfMonth()
+                )
+        );
+    }
 }

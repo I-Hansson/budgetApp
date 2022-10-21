@@ -1,3 +1,5 @@
+package database;
+
 import org.chalmers.model.ITransaction;
 import org.chalmers.model.database.TransactionsDB;
 import org.junit.Before;
@@ -41,14 +43,14 @@ public class TransactionDBTest {
     public void assertTransactionsThisMonth(){
         List<ITransaction> readTrans = testDb.getTransactionsListMonth(22,10);
         //Should be 2 since the template.json only contains 2 transaction in october 2022
-        assertEquals(2,readTrans.size());
+        assertEquals(0,readTrans.size());
     }
 
     @Test
     @Order(2)
     public void assertReadAllTransactions(){
         List<ITransaction> readTrans = testDb.getAllTransactions();
-        //Should be 3 since the template.josn only contains 3 transactions
+        //Should be 3 since the template.json only contains 3 transactions
         assertEquals(3,readTrans.size());
     }
 

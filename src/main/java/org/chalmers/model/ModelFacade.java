@@ -1,9 +1,6 @@
 package org.chalmers.model;
 
-import org.chalmers.model.database.DatabaseLoader;
 import org.chalmers.model.database.DatabaseSaver;
-import org.chalmers.model.database.TransactionsDB;
-import org.chalmers.model.database.UsersDB;
 
 import java.util.*;
 
@@ -19,75 +16,141 @@ public class ModelFacade {
 
     // TODO Får jag göra så här ?
     private static SelectedBudgetPost selectedBudgetPost = new SelectedBudgetPost(null);
-
     private static ModelFacade instance = new ModelFacade();
-
     private User user;
     private ModelFacade() {}
 
+    //Getters
+
+    /**
+     * Returns the instance of the ModelFacade, implements a singleton pattern.
+     * @return The instance of the ModelFacade.
+     */
     public static ModelFacade getInstance() {
         return instance;
     }
-    public SelectedBudgetPost getSelectedBudget(){return selectedBudgetPost;}
 
+    /**
+     * Skitmetod som inte bör användas.
+     * @return
+     */
+    public SelectedBudgetPost getSelectedBudget(){
+        return selectedBudgetPost;
+    }
 
+    /**
+     * Returns the currently, by the GUI, selected budget in the current user.
+     * @return The current IBudget.
+     */
     public IBudget getCurrentBudget() {
         return user.getCurrentBudget();
     }
 
+    /**
+     * Returns the currently selected budgets calendar object.
+     * @return The calendar object.
+     */
+    public Calendar getCurrentBudgetCalendar() {
+        return user.getCurrentBudget().getDate();
+    }
+
+    /**
+     * Returns the collection of ITransaction belonging to the currently selected budget.
+     * @return The collection of ITransaction.
+     */
     public Collection<ITransaction> getCurrentBudgetTransactions(){
         return user.getCurrentBudget().getTransactions();
     }
-    public Collection<IBudgetPost> budgetPostsfromUser(){
+
+    /**
+     * Returns the collection of IBudgetPost belonging to the currently selected budget.
+     * @return The collection of IBudgetPost.
+     */
+    public Collection<IBudgetPost> getBudgetPosts(){
         return user.getCurrentBudget().getBudgetPosts();
     }
+
+    /**
+     * Returns the user that is currently logged in and active.
+     * @return The user.
+     */
     public User getUser(){
         return user;
     }
-    public void addTransaction(String name, double amount, String budgetPostID, String description,Calendar date){
 
-        for(IBudgetPost bp : user.getCurrentBudget().getBudgetPosts()){
-            if (bp.getName() == budgetPostID){
-                Transaction t = new Transaction(name,amount,description,date);
-                t.setBpID(bp.getId());
-
-                user.getSpecificbudget(t.getDate().get(Calendar.YEAR),t.getDate().get(Calendar.MONTH)).getTransactions().add(t);
-
-                user.getCurrentBudget().getNewTransactions().add(t);
-
-                bp.addTransaction(t);
-
-
-
-            }
-        }
-
-
-    }
-    public void addBudgetPost(String name, String maxAmount,  String description,String color){
-        user.getCurrentBudget().addBudgetPost(new BudgetPost(Double.parseDouble(maxAmount),name,color));
-
-        user.getCurrentBudget().getNewBudgetPosts().add(new BudgetPost(Double.parseDouble(maxAmount),name,color));
-
-
+    /**
+     * Returns the balance of the currently selected budget.
+     * @return The balance.
+     */
+    public double getCurrentBudgetBalance(){
+        return user.getCurrentBudget().getCurrentBalance();
     }
 
+    /**
+     * Returns the budget cap (i.e. the max available money available for budgeting)
+     * for the current user.
+     * @return The budget cap.
+     */
+    public double getBudgetCap(){
+        return user.getCurrentBudget().getBudgetCap();
+    }
+
+    //Setters
+
+    /**
+     * Sets the current user. Call when logging in.
+     * @param user The User that is logged in.
+     */
     public void setUser(User user){
         this.user = user;
     }
 
+    //Methods
 
+    /**
+     * Adds a Transaction to a budget post to the currently selected budget in the active user.
+     *
+     * @param name The name of the transaction.
+     * @param amount The amount of the transaction.
+     * @param budgetPostID The string of the budget post name/id.
+     * @param description The description of the transaction.
+     * @param date The date of the transaction.
+     */
+    public void addTransaction(String name, double amount, String budgetPostID, String description, Calendar date){
 
-    public double getCurrentBalance(){
-        return user.getCurrentBudget().getCurrentBalance();
+        for(IBudgetPost bp : user.getCurrentBudget().getBudgetPosts()){
+            if (Objects.equals(bp.getName(), budgetPostID)){
+                Transaction transaction = new Transaction(name,amount,description,date);
+                transaction.setBpID(bp.getId());
+
+                IBudget specificBudget = user.getSpecificbudget(
+                        transaction.getDate().get(Calendar.YEAR),
+                        transaction.getDate().get(Calendar.MONTH)
+                );
+
+                specificBudget.addTransaction(transaction);
+                bp.addTransaction(transaction);
+            }
+        }
     }
-    public double getBudgetCap(){
-        return user.getCurrentBudget().getBudgetCap();
+
+    /**
+     * Adds a BudgetPost to the currently selected budget in the active user.
+     *
+     * @param name The name of the budget post.
+     * @param budgetCap The budget cap of the budget post.
+     * @param color The color of the budget post (format: "R, G, B").
+     */
+    public void addBudgetPost(String name, double budgetCap, String color){
+        user.getCurrentBudget().addBudgetPost(new BudgetPost(budgetCap, name, color));
     }
+
+    /**
+     * Save the user in the database.
+     * @throws InterruptedException Throws if program is interrupted during save.
+     */
     public void saveUser() throws InterruptedException {
         DatabaseSaver.saveUserToDatabase(user);
     }
-
-
 }
 

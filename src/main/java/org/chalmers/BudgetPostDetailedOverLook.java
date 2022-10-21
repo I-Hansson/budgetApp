@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class BudgetPostDetailedOverLook extends AnchorPane {
 
-    BudgetPostDetailedOverLookController budgetPostDetailedOverLookController = new BudgetPostDetailedOverLookController();
+    BudgetPostDetailedOverLookController controller = new BudgetPostDetailedOverLookController();
 
     private double spent;
 
@@ -31,9 +31,9 @@ public class BudgetPostDetailedOverLook extends AnchorPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
-        spent = (budgetPostDetailedOverLookController.getBudgetPostBudgetCap() - budgetPostDetailedOverLookController.getBudgetPostBalance());
+        spent = (controller.getBudgetPostBudgetCap() - controller.getBudgetPostBalance());
         detailedSpent.setText(String.valueOf(spent));
-        detailedAverage.setText(String.valueOf(budgetPostDetailedOverLookController.getBudgetPostAverage()));
+        detailedAverage.setText(String.valueOf(controller.getBudgetPostAverage()));
 
 
     }

@@ -51,8 +51,8 @@ public class PastTransactionView implements Initializable {
 
 
     ModelFacade facade = ModelFacade.getInstance();
-    private OverviewController overviewController = new OverviewController();
-    private PastTransactionController PastTransactionController = new PastTransactionController();
+    private final OverviewController overviewController = new OverviewController();
+    private final PastTransactionController pastTransactionController = new PastTransactionController();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
         try {
@@ -66,6 +66,7 @@ public class PastTransactionView implements Initializable {
     }
     public void update(){
         pastTransactionFlowPane.getChildren().clear();
+
         this.pastTransactionFlowPane.getChildren().clear();
         if(facade.getCurrentBudget() == facade.getUser().getBudgets().get(facade.getUser().getBudgets().size() -1))
         {
@@ -74,8 +75,10 @@ public class PastTransactionView implements Initializable {
             setRightArrowBlack();
         }
 
-        currentBudgetMonth.setText(DateStringFormatter.getMonthAsString(facade.getCurrentBudget().getDate())+ " " + facade.getCurrentBudget().getDate().get(Calendar.YEAR));
-        PastTransactionController.updateItem();
+        currentBudgetMonth.setText(DateStringFormatter.getMonthAsString(facade.getCurrentBudgetCalendar())+ " "
+                + facade.getCurrentBudgetCalendar().get(Calendar.YEAR));
+
+        pastTransactionController.updateItem();
         for(PastTransactionItem i : PastTransactionController.getPastTransactionItemList()){
             this.pastTransactionFlowPane.getChildren().add(i);
         }
@@ -132,8 +135,4 @@ public class PastTransactionView implements Initializable {
         stage.show();
 
     }
-
-
-
-
 }

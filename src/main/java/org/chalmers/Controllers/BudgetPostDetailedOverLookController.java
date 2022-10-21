@@ -7,11 +7,10 @@ import java.util.GregorianCalendar;
 
 public class BudgetPostDetailedOverLookController {
 
-    private ModelFacade facade = ModelFacade.getInstance();
-    private Calendar today = new GregorianCalendar();
+    private final ModelFacade facade = ModelFacade.getInstance();
+    private final Calendar today = new GregorianCalendar();
 
     public BudgetPostDetailedOverLookController(){}
-
 
     public double getBudgetPostBalance(){
         return facade.getSelectedBudget().getSelectedBudgetPost().getCurrentBalance();
@@ -24,7 +23,4 @@ public class BudgetPostDetailedOverLookController {
     public double getBudgetPostAverage(){
         return Math.round(100* (getBudgetPostBalance() / today.get(Calendar.DAY_OF_MONTH))) / 100.0;
     }
-
-
-
 }

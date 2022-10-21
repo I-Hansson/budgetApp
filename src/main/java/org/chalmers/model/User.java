@@ -38,6 +38,18 @@ public class User {
         return budgets;
     }
 
+    public Collection<SaveableBudget> getSaveableBudgets() {
+        Collection<SaveableBudget> saveableBudgets = new ArrayList<>();
+
+        for(IBudget budget : budgets) {
+            if (budget instanceof SaveableBudget) {
+                saveableBudgets.add((SaveableBudget) budget);
+            }
+        }
+
+        return saveableBudgets;
+    }
+
     public int getUserID(){
         return this.id;
     }

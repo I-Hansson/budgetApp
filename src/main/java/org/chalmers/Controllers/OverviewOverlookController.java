@@ -13,16 +13,16 @@ import java.util.GregorianCalendar;
 
 public class OverviewOverlookController {
 
-    private ModelFacade facade = ModelFacade.getInstance();
-    private Calendar today = new GregorianCalendar();
+    private final ModelFacade facade = ModelFacade.getInstance();
+    private final Calendar today = new GregorianCalendar();
 
     public OverviewOverlookController(){}
 
     public double getOverlookBalance(){
-        return facade.getBudgetCap() - facade.getCurrentBalance();
+        return facade.getBudgetCap() - facade.getCurrentBudgetBalance();
     }
     public double getOverlookAverage(){
-        return Math.round(100* (facade.getCurrentBalance() / today.get(Calendar.DAY_OF_MONTH))) / 100.0;
+        return Math.round(100* (facade.getCurrentBudgetBalance() / today.get(Calendar.DAY_OF_MONTH))) / 100.0;
     }
 
 }

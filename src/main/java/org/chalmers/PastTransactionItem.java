@@ -14,7 +14,6 @@ import java.io.IOException;
 
 public class PastTransactionItem extends AnchorPane {
 
-
     @FXML Text nameTransaction;
     @FXML Text costTransaction;
     @FXML Text remainingBalanceTransation;
@@ -23,8 +22,6 @@ public class PastTransactionItem extends AnchorPane {
     @FXML Text dayTransaction;
     @FXML Text budgetpostTransaction;
     @FXML BorderPane colorBoardTransaction;
-
-
 
     public PastTransactionItem(ITransaction transaction){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PastTransactionItem.fxml"));
