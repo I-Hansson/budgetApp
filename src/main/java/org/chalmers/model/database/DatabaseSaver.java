@@ -1,9 +1,6 @@
 package org.chalmers.model.database;
 
-import org.chalmers.model.IBudget;
-import org.chalmers.model.IBudgetPost;
-import org.chalmers.model.ITransaction;
-import org.chalmers.model.User;
+import org.chalmers.model.*;
 
 import java.util.Calendar;
 
@@ -41,7 +38,7 @@ public class DatabaseSaver {
 
     private static void saveTransactions() throws InterruptedException {
         userDB.openSetterTransaction();
-        for(IBudget b : user.getBudgets())
+        for(SaveableBudget b : user.getSaveableBudgets())
             for (ITransaction t: b.getNewTransactions() ){
 
 
@@ -63,7 +60,7 @@ public class DatabaseSaver {
     }
     private static void saveBudgetPost(){
         userDB.openSetters();
-        for(IBudget b : user.getBudgets()) {
+        for(SaveableBudget b : user.getSaveableBudgets()) {
             for (IBudgetPost bp: b.getNewBudgetPosts() ){
                 userDB.addBudgetPost(bp.getName(),String.valueOf(user.getCurrentBudget().getDate().get(Calendar.YEAR)) + String.valueOf(user.getCurrentBudget().getDate().get(Calendar.MONTH)),bp.getColor(),bp.getBudgetCap());
             }

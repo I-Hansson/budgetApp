@@ -6,16 +6,14 @@ import java.util.*;
  * @author Isac Hansson ,
  * Depends on BudgetPost, Transaction, ITransactionAddedObserver, BudgetPostFactory, ITransactionAddedObserver
  */
-public class Budget implements IBudget{
+public class Budget extends SaveableBudget implements IBudget{
 
     private double startBalance;
     private double currentBalance;
     private double budgetCap;
 
     private List<IBudgetPost> budgetPosts = new ArrayList<>();
-    private List<IBudgetPost> newBudgetPosts = new ArrayList<>();
     private List<ITransaction> transactions = new ArrayList<>();
-    private List<ITransaction> newTransactions = new ArrayList<>();
     private final Calendar calendar;
 
 
@@ -37,13 +35,7 @@ public class Budget implements IBudget{
         calculateCap();
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void setBudgetCap(double newCap) {
-        budgetCap = newCap;
-    }
+    //Getters
 
     /**
      * {@inheritDoc}
@@ -65,39 +57,12 @@ public class Budget implements IBudget{
     }
 
     /**
-     * Returns a list of all ITransactions in this budget which were added during the last session.
-     * @return The list of ITransactions.
-     */
-    @Override
-    public List<ITransaction> getNewTransactions() {
-        return newTransactions;
-    }
-
-    /**
-     * Returns a list of all IBudgetPost in this budget which were added during the last session.
-     * @return The list of IBudgetPost.
-     */
-    @Override
-    public List<IBudgetPost> getNewBudgetPosts(){
-        return newBudgetPosts;
-    }
-
-    /**
      * {@inheritDoc}
      * @return {@inheritDoc}
      */
     @Override
     public Collection<IBudgetPost> getBudgetPosts() {
         return this.budgetPosts;
-    }
-
-    /**
-     * {@inheritDoc}
-     * @param newBalance {@inheritDoc}
-     */
-    @Override
-    public void setCurrentBalance(double newBalance) {
-        currentBalance = newBalance;
     }
 
     /**
@@ -119,6 +84,17 @@ public class Budget implements IBudget{
         return this.transactions;
     }
 
+    //Setters
+
+    /**
+     * {@inheritDoc}
+     * @param newBalance {@inheritDoc}
+     */
+    @Override
+    public void setCurrentBalance(double newBalance) {
+        currentBalance = newBalance;
+    }
+
     /**
      * Sets the new start balance for each month.
      * @param newStartBalance the new starting value for each month.
@@ -131,7 +107,19 @@ public class Budget implements IBudget{
      * {@inheritDoc}
      */
     @Override
+    public void setBudgetCap(double newCap) {
+        budgetCap = newCap;
+    }
+
+    //Methods
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public void addTransaction(ITransaction transaction){
+        if (transactions.contains(transaction))
+            newTransactions.add(transaction);
         this.transactions.add(transaction);
     }
 
@@ -141,6 +129,8 @@ public class Budget implements IBudget{
      */
     @Override
     public void addBudgetPost(IBudgetPost bp){
+        if (budgetPosts.contains(bp))
+            newBudgetPosts.add(bp);
         this.budgetPosts.add(bp);
     }
 

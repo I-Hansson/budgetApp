@@ -112,14 +112,16 @@ public class ModelFacade {
 
         for(IBudgetPost bp : user.getCurrentBudget().getBudgetPosts()){
             if (Objects.equals(bp.getName(), budgetPostID)){
-                Transaction t = new Transaction(name,amount,description,date);
-                t.setBpID(bp.getId());
+                Transaction transaction = new Transaction(name,amount,description,date);
+                transaction.setBpID(bp.getId());
 
-                user.getSpecificbudget(t.getDate().get(Calendar.YEAR),t.getDate().get(Calendar.MONTH)).getTransactions().add(t);
+                IBudget specificBudget = user.getSpecificbudget(
+                        transaction.getDate().get(Calendar.YEAR),
+                        transaction.getDate().get(Calendar.MONTH)
+                );
 
-                user.getCurrentBudget().getNewTransactions().add(t);
-
-                bp.addTransaction(t);
+                specificBudget.addTransaction(transaction);
+                bp.addTransaction(transaction);
             }
         }
     }
@@ -133,7 +135,6 @@ public class ModelFacade {
      */
     public void addBudgetPost(String name, double budgetCap, String color){
         user.getCurrentBudget().addBudgetPost(new BudgetPost(budgetCap, name, color));
-        user.getCurrentBudget().getNewBudgetPosts().add(new BudgetPost(budgetCap, name, color));
     }
 
     /**
