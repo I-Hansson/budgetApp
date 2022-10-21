@@ -157,7 +157,7 @@ public class AddTransactionView implements Initializable {
         } else {wrongAddTransactionInformation();}
     }
 
-    //TODO Put in color
+
 
     @FXML
     public void doneAddBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
@@ -178,10 +178,11 @@ public class AddTransactionView implements Initializable {
 
     public void closeDoneAddBudgetPost(){newBudgetPostPane.toBack();}
 
-    //TODO This could probably be done in a more general method
-    //TODO Put in for Date and color
 
     private boolean checkInformationAddTransaction() {
+
+        if (datePicker.getValue() == null){
+            return false;}
 
         if (transactionName.getText().isEmpty()){
             return false;}
@@ -206,13 +207,13 @@ public class AddTransactionView implements Initializable {
 
     private boolean checkInformationAddBudgetPost(){
 
+            if (colorPicker.getValue() == null){
+                return false;}
+
             if (addBudgetPostNameField.getText().isEmpty()){
                 return false;}
 
             if (addBudgetPostMaxField.getText().isEmpty()){
-                return false;}
-
-            if (addBudgetPostDescriptionArea.getText().isEmpty()){
                 return false;}
 
             for (int i = 0; i < addBudgetPostMaxField.getText().length(); i++) {

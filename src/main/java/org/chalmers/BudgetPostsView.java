@@ -188,25 +188,13 @@ public class BudgetPostsView implements Initializable {
 
 
 
-    @FXML
-    public void SwitchToDetailedBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("BudgetPostDetailed.fxml"));
-        stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        clearInputInfo();
-
-
-    }
 
 
     private boolean checkInformation() {
 
+        if (budgetPostColor.getValue() == null){
+            return false;}
 
-        if (budgetPostDescription.getText().isEmpty()){
-            return false;
-        }
         if (budgetPostName.getText().isEmpty()){
             return false;
         }

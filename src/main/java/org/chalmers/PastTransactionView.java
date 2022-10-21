@@ -79,7 +79,7 @@ public class PastTransactionView implements Initializable {
                 + facade.getCurrentBudgetCalendar().get(Calendar.YEAR));
 
         pastTransactionController.updateItem();
-        for(PastTransactionItem i : PastTransactionController.getPastTransactionItemList()){
+        for(PastTransactionItem i : pastTransactionController.getPastTransactionItemList()){
             this.pastTransactionFlowPane.getChildren().add(i);
         }
     }
