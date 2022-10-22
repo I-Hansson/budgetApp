@@ -12,7 +12,9 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 import org.chalmers.Controllers.BudgetPostdetailedViewController;
+import org.chalmers.model.IBudgetPost;
 import org.chalmers.model.ITransaction;
+import org.chalmers.model.ModelFacade;
 import org.chalmers.model.charts.ChartFactory;
 import org.chalmers.modelAdapters.chartAdapters.LineChartFX;
 
@@ -39,6 +41,8 @@ public class BudgetPostdetailedView implements Initializable {
 
     LineChartFX modelChart;
 
+    ModelFacade facade = ModelFacade.getInstance();
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initializeMonthLineChart();
@@ -50,7 +54,7 @@ public class BudgetPostdetailedView implements Initializable {
         this.paneColorAmount.getChildren().add(new BudgetPostsDetailedBalance());
         this.paneLastTransacions.getChildren().clear();
 
-        for(ITransaction transaction : controller.getCurrentBudgetPost().getTransactions()){
+        for(ITransaction transaction : getCurrentBudgetPost().getTransactions()){
             this.paneLastTransacions.getChildren().add(
                     new BudgetPostsDetailedLastTransactions(
                             transaction.getName(), transaction.getDate(), transaction.getAmount()
@@ -65,7 +69,7 @@ public class BudgetPostdetailedView implements Initializable {
     //TODO Ska detta vara en egen klass och isåfall hur?
     private void initializeMonthLineChart() {
         modelChart = new LineChartFX(ChartFactory.createMonthLineChart());
-        modelChart.update(controller.getCurrentBudgetPost().getTransactions());
+        modelChart.update(getCurrentBudgetPost().getTransactions());
         final NumberAxis xAxis = new NumberAxis(1, 31, 1);
         final NumberAxis yAxis = new NumberAxis();
         xAxis.setLabel("Date");
@@ -85,8 +89,8 @@ public class BudgetPostdetailedView implements Initializable {
         series.setName("Spending limit");
         for(int i = 1; i <= 31; i++) {
             series.getData().add(new XYChart.Data<>(i,
-                    (controller.getCurrentBudgetPost().getBudgetCap() -
-                            controller.getCurrentBudgetPost().getCurrentBalance()) / 31));
+                    (getCurrentBudgetPost().getBudgetCap() -
+                            getCurrentBudgetPost().getCurrentBalance()) / 31));
         }
 
 
@@ -140,5 +144,9 @@ public class BudgetPostdetailedView implements Initializable {
         stage.setScene(scene);
         stage.show();
 
+    }
+
+    private IBudgetPost getCurrentBudgetPost(){
+        return facade.getSelectedBudgetPost();
     }
 }

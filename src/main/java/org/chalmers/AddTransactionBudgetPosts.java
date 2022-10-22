@@ -6,9 +6,12 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
+import org.chalmers.model.IBudgetPost;
+import org.chalmers.model.ModelFacade;
 
 
 import java.io.IOException;
+import java.util.Collection;
 
 /**
  * @author Jonathan
@@ -22,6 +25,7 @@ public class AddTransactionBudgetPosts extends AnchorPane {
 
     static ToggleGroup toggleGroup = new ToggleGroup();
 
+    ModelFacade facade = ModelFacade.getInstance();
 
     public AddTransactionBudgetPosts(String name) {
 
@@ -47,5 +51,7 @@ public class AddTransactionBudgetPosts extends AnchorPane {
         return selectedButton.getText();
     }
 
-
+    public Collection<IBudgetPost> getBudgetPosts (){
+        return facade.getBudgetPosts();
+    }
 }

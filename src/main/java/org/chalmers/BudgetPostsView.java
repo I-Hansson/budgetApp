@@ -18,8 +18,8 @@ import javafx.stage.Stage;
 import org.chalmers.Controllers.BudgetPostController;
 
 
-import org.chalmers.Controllers.BudgetPostItemController;
 import org.chalmers.Controllers.OverviewController;
+import org.chalmers.model.IBudgetPost;
 import org.chalmers.model.ModelFacade;
 
 
@@ -27,7 +27,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.ResourceBundle;
 
 /**
@@ -66,7 +68,6 @@ public class BudgetPostsView implements Initializable {
     private BudgetPostController budgetcontroller = new BudgetPostController();
     private OverviewController overviewController = new OverviewController();
     private ModelFacade facade = ModelFacade.getInstance();
-    private BudgetPostItemController itemController = new BudgetPostItemController();
 
     Image arrowRightGrey;
     Image arrowRightBlack;
@@ -95,9 +96,9 @@ public class BudgetPostsView implements Initializable {
                 DateStringFormatter.getMonthAsString(facade.getCurrentBudgetCalendar()) + " " +
                         facade.getCurrentBudgetCalendar().get(Calendar.YEAR));
         budgetPostsViewGridPane.getChildren().clear();
-        itemController.createBudgetItems();
-        for(int i = 0; i<itemController.getItem().size(); i++) {
-            budgetPostsViewGridPane.add(itemController.getItem().get(i), i, 0);
+        List<BudgetPostsItem> bpItems = createBudgetItems();
+        for(int i = 0; i < bpItems.size(); i++) {
+            budgetPostsViewGridPane.add(bpItems.get(i), i, 0);
         }
 
     }
@@ -244,11 +245,19 @@ public class BudgetPostsView implements Initializable {
 
     }
 
-
-
-
-
-
+    private List<BudgetPostsItem> createBudgetItems(){
+        List<BudgetPostsItem> result = new ArrayList<>();
+        for (IBudgetPost bp: facade.getBudgetPosts()){
+            result.add(new BudgetPostsItem(
+                    bp.getName(),
+                    "descrition",
+                    bp.getBudgetCap(),
+                    bp.getTransactions().size(),
+                    bp.getColor()
+            ));
+        }
+        return result;
+    }
 }
 
 

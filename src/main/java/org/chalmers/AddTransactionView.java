@@ -9,20 +9,16 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
-import org.chalmers.Controllers.AddTransactionBudgetPostsController;
 import org.chalmers.Controllers.AddTransactionController;
 import org.chalmers.Controllers.BudgetPostController;
 import org.chalmers.model.IBudgetPost;
 import org.chalmers.model.ModelFacade;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -32,7 +28,8 @@ import java.util.ResourceBundle;
 public class AddTransactionView implements Initializable {
 
    private AddTransactionController addTransactionController = new AddTransactionController();
-   private AddTransactionBudgetPostsController addTransactionBudgetPostsController = new AddTransactionBudgetPostsController();
+
+   private ModelFacade model = ModelFacade.getInstance();
 
     //TODO Might be wrong to use the BudgetPostController
 
@@ -76,7 +73,7 @@ public class AddTransactionView implements Initializable {
     public void update(){
 
         this.BudgetPostsTexFlowPane.getChildren().clear();
-        for (IBudgetPost post : addTransactionBudgetPostsController.getBudgetPosts()){
+        for (IBudgetPost post : model.getBudgetPosts()){
             this.BudgetPostsTexFlowPane.getChildren().add(new AddTransactionBudgetPosts(post.getName()));
         }
     }

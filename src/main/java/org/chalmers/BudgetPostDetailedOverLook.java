@@ -4,13 +4,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import org.chalmers.Controllers.BudgetPostDetailedOverLookController;
+import org.chalmers.model.ModelFacade;
 
 import java.io.IOException;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class BudgetPostDetailedOverLook extends AnchorPane {
 
-    BudgetPostDetailedOverLookController controller = new BudgetPostDetailedOverLookController();
+    private final ModelFacade facade = ModelFacade.getInstance();
+    private final Calendar today = new GregorianCalendar();
 
     private double spent;
 
@@ -31,13 +34,23 @@ public class BudgetPostDetailedOverLook extends AnchorPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
-        spent = (controller.getBudgetPostBudgetCap() - controller.getBudgetPostBalance());
+        spent = (getBudgetPostBudgetCap() - getBudgetPostBalance());
         detailedSpent.setText(String.valueOf(spent));
-        detailedAverage.setText(String.valueOf(controller.getBudgetPostAverage()));
+        detailedAverage.setText(String.valueOf(getBudgetPostAverage()));
 
 
     }
 
+    private double getBudgetPostBalance(){
+        return facade.getSelectedBudget().getSelectedBudgetPost().getCurrentBalance();
+    }
 
 
+    private double getBudgetPostBudgetCap(){
+        return facade.getSelectedBudget().getSelectedBudgetPost().getBudgetCap();
+    }
+
+    private double getBudgetPostAverage(){
+        return Math.round(100* (getBudgetPostBalance() / today.get(Calendar.DAY_OF_MONTH))) / 100.0;
+    }
 }

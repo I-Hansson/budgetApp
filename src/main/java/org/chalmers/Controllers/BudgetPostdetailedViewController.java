@@ -18,14 +18,10 @@ public class BudgetPostdetailedViewController {
 
     ModelFacade facade = ModelFacade.getInstance();
 
-    public IBudgetPost getCurrentBudgetPost(){
-        return facade.getSelectedBudget().getSelectedBudgetPost();
-    }
-
     public void setCorrspondingId(String name) {
         for(IBudgetPost bp : facade.getBudgetPosts()){
             if(Objects.equals(bp.getName(), name)) {
-                  facade.getSelectedBudget().setSelectedBudgetPost(bp);
+                  facade.setSelectedBudgetPost(bp);
             }
         }
 

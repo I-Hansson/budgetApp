@@ -25,8 +25,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Calendar;
-import java.util.ResourceBundle;
+import java.util.*;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 
@@ -236,7 +236,7 @@ public class OverviewView implements Initializable {
         }
 
         latestTransactionsListView.getItems().clear();
-        for (ITransaction transaction : controller.getLatestTransactions()) {
+        for (ITransaction transaction : getLatestTransactions()) {
             Label tempLabel = new Label("-" + transaction.getAmount() + "kr " + transaction.getName());
             latestTransactionsListView.getItems().add(tempLabel);
         }
@@ -245,7 +245,7 @@ public class OverviewView implements Initializable {
 
     public void createBudgetPostCards(){
         controller.getBudgetPostCards().clear();
-        for (IBudgetPost i : controller.getBudgetPostsfromUser()){
+        for (IBudgetPost i : getBudgetPostsfromUser()){
             controller.getBudgetPostCards().add(new OverviewBudgetPost(
                             i.getName(),
                             i.getCurrentBalance(),
@@ -263,6 +263,22 @@ public class OverviewView implements Initializable {
     }
 
 
+    private Collection<IBudgetPost> getBudgetPostsfromUser(){
+        return facade.getBudgetPosts();
+    }
+
+    private Collection<ITransaction> getLatestTransactions() {
+        List<ITransaction> latestTransactions = new ArrayList<>();
+        ITransaction[] userArray = {};
+        userArray = facade.getCurrentBudget().getTransactions().toArray(userArray);
+        for (int i = 1; i <= 5; i++) {
+            if (userArray.length-i >= 0)
+                latestTransactions.add(userArray[userArray.length-i]);
+            else
+                break;
+        }
+        return latestTransactions;
+    }
 }
 
 

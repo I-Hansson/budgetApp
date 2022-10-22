@@ -17,9 +17,8 @@ public class LogInController {
     ModelFacade facade = ModelFacade.getInstance(); //todo fix
 
 
-    public void createUser(String name, String id,String password){
+    public void createUser(String name, String id,String password){}
 
-    }
     public void signInUser(String username, String password){
 
          int  id = Database.signIntoDB(username,password);
