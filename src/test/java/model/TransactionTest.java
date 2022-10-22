@@ -1,3 +1,5 @@
+package model;
+
 import org.chalmers.model.Transaction;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;

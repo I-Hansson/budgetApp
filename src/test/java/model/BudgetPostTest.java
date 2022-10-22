@@ -1,3 +1,5 @@
+package model;
+
 import org.chalmers.model.BudgetPost;
 import javafx.scene.paint.Color;
 import org.chalmers.model.Transaction;
@@ -56,5 +58,16 @@ public class BudgetPostTest {
     public void getTransactionsReturnsCorrectInstance() {
         testBp.addTransaction(testTransaction);
         assertTrue(testBp.getTransactions().contains(testTransaction));
+    }
+
+    @Test
+    @Order(6)
+    public void constructorOverloadingWorks() {
+        testBp = new BudgetPost("test1");
+        assertEquals("test1", testBp.getName());
+
+        testBp = new BudgetPost(13, "test2");
+        assertEquals(13, testBp.getBudgetCap());
+        assertEquals("test2", testBp.getName());
     }
 }

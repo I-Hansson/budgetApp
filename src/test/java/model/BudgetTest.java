@@ -1,3 +1,5 @@
+package model;
+
 import org.chalmers.model.Budget;
 import org.chalmers.model.BudgetPost;
 import org.chalmers.model.Transaction;
