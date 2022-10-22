@@ -42,9 +42,11 @@ public class BudgetPostsItem extends AnchorPane {
     BorderPane budgetBannerColorBoard;
     @FXML
     Text budgetBannerAmountTransactions;
+    @FXML
+    Text budgetBannerMAX;
 
 
-    public BudgetPostsItem(String bpNamn, String bpDesc, double amount, int amountTransactions, String color) {
+    public BudgetPostsItem(String bpNamn, String bpDesc, double amount, int amountTransactions, String color, double currentAmount) {
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("BudgetPostsItem.fxml"));
         fxmlLoader.setRoot(this);
@@ -59,9 +61,10 @@ public class BudgetPostsItem extends AnchorPane {
 
         budgetBannerName.setText(bpNamn);
         budgetBannerDescription.setText(bpDesc);
-        budgetBannerAmount.setText(amount + "kr");
+        budgetBannerAmount.setText(currentAmount + "kr");
+        budgetBannerMAX.setText(amount + "kr");
         budgetBannerAmountTransactions.setText("Total transactions: " + amountTransactions);
-        budgetBannerLastTransaction.setText("bajs");
+        budgetBannerLastTransaction.setText("");
         budgetBannerColorBoard.setStyle("-fx-background-color: rgb(" + color + " );");
 
         paneBudgetPost.setOnMouseClicked(mouseEvent -> {

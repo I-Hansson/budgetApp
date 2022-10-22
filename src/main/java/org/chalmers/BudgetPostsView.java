@@ -139,9 +139,13 @@ public class BudgetPostsView implements Initializable {
                     String.valueOf(budgetPostColor.getValue())
             );
             rightInputFeedback();
+            addBudgetPostGreyBackground.toBack();
+            newBudgetPostPane.toBack();
+            update();
         }else{
             wrongInformation();
         }
+
 
     }
 
