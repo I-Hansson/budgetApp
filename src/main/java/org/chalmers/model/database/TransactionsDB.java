@@ -101,7 +101,83 @@ public class TransactionsDB {
 
     }
 
-    //TODO make an addTransaction method that takes one arguement of the type Transaction
+    public void setName(String date, String oldName, String newName){
+        openSetters();
+        JSONArray postsDB = (JSONArray) oldDB.get("transactions");
+        JSONArray result = new JSONArray();
+        if(postsDB.size() > 0){
+            for(Object obj: postsDB){
+                JSONObject jsonObject = (JSONObject) obj;
+                if(jsonObject.get("name").equals(oldName) && jsonObject.get("date").equals(date)){
+                    jsonObject.put("name", newName);
+                    result.add(jsonObject);
+                }else{
+                    result.add(jsonObject);
+                }
+            }
+            oldDB.put("budgetPosts", result);
+        }
+        closeSetter();
+    }
+
+    public void setAmount(String date, String name, Double newAmount){
+        openSetters();
+        JSONArray postsDB = (JSONArray) oldDB.get("transactions");
+        JSONArray result = new JSONArray();
+        if(postsDB.size() > 0){
+            for(Object obj: postsDB){
+                JSONObject jsonObject = (JSONObject) obj;
+                if(jsonObject.get("name").equals(name) && jsonObject.get("date").equals(date)){
+
+                    jsonObject.put("amount", newAmount);
+                    result.add(jsonObject);
+                }else{
+                    result.add(jsonObject);
+                }
+            }
+            oldDB.put("budgetPosts", result);
+        }
+        closeSetter();
+    }
+
+    public void setDescription(String date, String name, String newDescription){
+        openSetters();
+        JSONArray transactionsDB = (JSONArray) oldDB.get("transactions");
+        JSONArray result = new JSONArray();
+        if(transactionsDB.size() > 0){
+            for(Object obj: transactionsDB){
+                JSONObject jsonObject = (JSONObject) obj;
+                if(jsonObject.get("name").equals(name) && jsonObject.get("date").equals(date)){
+                    jsonObject.put("description", newDescription);
+                    result.add(jsonObject);
+                }else{
+                    result.add(jsonObject);
+                }
+            }
+            oldDB.put("budgetPosts", result);
+        }
+        closeSetter();
+    }
+
+    public void setBudgetPostName(String date, String name, String newBudgetPostName){
+        openSetters();
+        JSONArray transactionsDB = (JSONArray) oldDB.get("transactions");
+        JSONArray result = new JSONArray();
+        if(transactionsDB.size() > 0){
+            for(Object obj: transactionsDB){
+                JSONObject jsonObject = (JSONObject) obj;
+                if(jsonObject.get("name").equals(name) && jsonObject.get("date").equals(date)){
+                    jsonObject.put("budgetPostName", newBudgetPostName);
+                    result.add(jsonObject);
+                }else{
+                    result.add(jsonObject);
+                }
+            }
+            oldDB.put("budgetPosts", result);
+        }
+        closeSetter();
+    }
+
 
     /**
      * Call this method so that you can edit the database.
