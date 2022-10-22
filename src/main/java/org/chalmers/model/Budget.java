@@ -3,7 +3,7 @@ package org.chalmers.model;
 import java.util.*;
 
 /**
- * @author Isac Hansson ,
+ * @author Isac Hansson
  * Depends on BudgetPost, Transaction, ITransactionAddedObserver, BudgetPostFactory, ITransactionAddedObserver
  */
 public class Budget extends SaveableBudget implements IBudget{

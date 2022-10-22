@@ -37,8 +37,6 @@ public class BudgetPostDetailedOverLook extends AnchorPane {
         spent = (getBudgetPostBudgetCap() - getBudgetPostBalance());
         detailedSpent.setText(String.valueOf(spent));
         detailedAverage.setText(String.valueOf(getBudgetPostAverage()));
-
-
     }
 
     private double getBudgetPostBalance(){
@@ -51,6 +49,6 @@ public class BudgetPostDetailedOverLook extends AnchorPane {
     }
 
     private double getBudgetPostAverage(){
-        return Math.round(100* (getBudgetPostBalance() / today.get(Calendar.DAY_OF_MONTH))) / 100.0;
+        return Math.round(100 * (getBudgetPostBalance() / today.get(Calendar.DAY_OF_MONTH))) / 100.0;
     }
 }
