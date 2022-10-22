@@ -37,10 +37,7 @@ public class AddTransactionView implements Initializable {
     //TODO Might be wrong to use the BudgetPostController
 
    private BudgetPostController budgetPostController = new BudgetPostController();
-
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
+    SceneController sceneController = new SceneController();
 
     @FXML TextField addBudgetPostNameField;
     @FXML TextField addBudgetPostMaxField;
@@ -94,45 +91,22 @@ public class AddTransactionView implements Initializable {
     }
 
 
-
-
     @FXML
-    public void SwitchToOverview(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-
-        root = FXMLLoader.load(getClass().getResource("Overview.fxml"));
-        stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        clearInputInfo();
-
+    public void SwitchToPastTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        sceneController.pastTransaction(mouseEvent);
     }
 
     @FXML
     public void SwitchToBudgetPosts(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-
-        root = FXMLLoader.load(getClass().getResource("BudgetPostsView.fxml"));
-        stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        clearInputInfo();
-
-
+        sceneController.budgetPostView(mouseEvent);
     }
 
     @FXML
-    public void SwitchToPastTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-
-        root = FXMLLoader.load(getClass().getResource("PastTransactionView.fxml"));
-        stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        clearInputInfo();
-
-
+    public void SwitchToOverview (javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        sceneController.overviewView(mouseEvent);
     }
+
+
 
     public void closeDonePane(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
         doneShadowPane.toBack();
