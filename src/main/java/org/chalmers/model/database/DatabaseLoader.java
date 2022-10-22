@@ -48,7 +48,6 @@ public class DatabaseLoader {
             for(ITransaction t : budget.getTransactions()){
                 for(IBudgetPost bp: budget.getBudgetPosts()){
                     DBTransaction temp = (DBTransaction) t;
-                    System.out.println(t.getBudgetPostName());
                     if(temp.getBudgetPostName().equals(bp.getName())){
                         temp.setBpID(bp.getId());
                         bp.addTransaction(t);
