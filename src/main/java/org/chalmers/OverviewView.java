@@ -231,7 +231,7 @@ public class OverviewView implements Initializable {
 
         createBudgetPostCards();
 
-        for (int i = 0; i < 4; i++){
+        for (int i = 0; i < controller.getBudgetPostCards().size(); i++){
             budgetPostsGridPane.add(controller.getBudgetPostCards().get(i), i,0);
         }
 

@@ -19,6 +19,8 @@ public class LogInController {
 
     public void createUser(String name, String id,String password){
 
+        facade.createNewUser( name, id, password);
+
     }
     public void signInUser(String username, String password){
 

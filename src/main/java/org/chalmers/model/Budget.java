@@ -14,6 +14,8 @@ public class Budget extends SaveableBudget implements IBudget{
 
     private List<IBudgetPost> budgetPosts = new ArrayList<>();
     private List<ITransaction> transactions = new ArrayList<>();
+    private Collection<IBudgetPost> newBudgetPosts = new ArrayList<>();
+    private Collection<ITransaction> newTransactions = new ArrayList<>();
     private final Calendar calendar;
 
     public void setTransactions(List<ITransaction> transactions) {
@@ -33,6 +35,16 @@ public class Budget extends SaveableBudget implements IBudget{
     }
 
     //Getters
+
+    @Override
+    public Collection<IBudgetPost> getNewBudgetPosts() {
+        return newBudgetPosts;
+    }
+
+    @Override
+    public Collection<ITransaction> getNewTransactions() {
+        return newTransactions;
+    }
 
     /**
      * {@inheritDoc}
@@ -117,6 +129,7 @@ public class Budget extends SaveableBudget implements IBudget{
     public void addTransaction(ITransaction transaction){
         if (transactions.contains(transaction))
             addNewTransaction(transaction);
+            newTransactions.add(transaction);
         this.transactions.add(transaction);
     }
 
@@ -128,6 +141,7 @@ public class Budget extends SaveableBudget implements IBudget{
     public void addBudgetPost(IBudgetPost bp){
         if (budgetPosts.contains(bp))
             addNewBudgetPost(bp);
+        newBudgetPosts.add(bp);
         this.budgetPosts.add(bp);
     }
 
