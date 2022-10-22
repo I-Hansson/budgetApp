@@ -42,12 +42,12 @@ public class BudgetPostDetailedOverLook extends AnchorPane {
     }
 
     private double getBudgetPostBalance(){
-        return facade.getSelectedBudget().getSelectedBudgetPost().getCurrentBalance();
+        return facade.getSelectedBudgetPost().getCurrentBalance();
     }
 
 
     private double getBudgetPostBudgetCap(){
-        return facade.getSelectedBudget().getSelectedBudgetPost().getBudgetCap();
+        return facade.getSelectedBudgetPost().getBudgetCap();
     }
 
     private double getBudgetPostAverage(){
