@@ -1,1 +1,18 @@
-{"transactions":[{"date":"202208061247","amount":125.59,"budgetPostName":"Matvaror","name":"maxi","description":"Snus & Nocco"},{"date":"20220921","amount":1000,"budgetPostName":"Matvaror","name":"sada","description":"ad"}]}
+{
+  "transactions": [
+    {
+      "date": "202208061247",
+      "amount": 125.59,
+      "budgetPostName": "Matvaror",
+      "name": "maxi",
+      "description": "Snus & Nocco"
+    },
+    {
+      "date": "20220921",
+      "amount": 1000,
+      "budgetPostName": "Matvaror",
+      "name": "sada",
+      "description": "ad"
+    }
+  ]
+}
