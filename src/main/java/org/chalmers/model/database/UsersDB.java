@@ -151,6 +151,46 @@ public class UsersDB {
         return result;
     }
 
+    public void setBudgetPostCap(String name, String dateOfCreation, Double newCap){
+        openSetters();
+        JSONArray postsDB = (JSONArray) oldDB.get("budgetPosts");
+        JSONArray result = new JSONArray();
+        if(postsDB.size() > 0){
+            for(Object obj: postsDB){
+                JSONObject jsonObject = (JSONObject) obj;
+                if(jsonObject.get("name").equals(name) && jsonObject.get("dateOfCreation").equals(dateOfCreation)){
+                    System.out.println("HÄR ÄR JAG");
+                    jsonObject.put("cap", newCap);
+                    result.add(jsonObject);
+                }else{
+                    result.add(jsonObject);
+                }
+            }
+            oldDB.put("budgetPosts", result);
+        }
+        closeSetter();
+    }
+
+    public void setBudgetPostName(String dateOfCreation,String oldName, String newName){
+        openSetters();
+        JSONArray postsDB = (JSONArray) oldDB.get("budgetPosts");
+        JSONArray result = new JSONArray();
+        if(postsDB.size() > 0){
+            for(Object obj: postsDB){
+                JSONObject jsonObject = (JSONObject) obj;
+                if(jsonObject.get("name").equals(oldName) && jsonObject.get("dateOfCreation").equals(dateOfCreation)){
+                    System.out.println("HÄR ÄR JAG");
+                    jsonObject.put("name", newName);
+                    result.add(jsonObject);
+                }else{
+                    result.add(jsonObject);
+                }
+            }
+            oldDB.put("budgetPosts", result);
+        }
+        closeSetter();
+    }
+
     /**
      * Call this method so that you can edit the database.
      */

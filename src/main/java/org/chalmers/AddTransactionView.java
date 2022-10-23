@@ -37,10 +37,7 @@ public class AddTransactionView implements Initializable {
     //TODO Might be wrong to use the BudgetPostController
 
    private BudgetPostController budgetPostController = new BudgetPostController();
-
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
+    SceneController sceneController = new SceneController();
 
     @FXML TextField addBudgetPostNameField;
     @FXML TextField addBudgetPostMaxField;
@@ -94,45 +91,22 @@ public class AddTransactionView implements Initializable {
     }
 
 
-
-
     @FXML
-    public void SwitchToOverview(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-
-        root = FXMLLoader.load(getClass().getResource("Overview.fxml"));
-        stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        clearInputInfo();
-
+    public void SwitchToPastTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        sceneController.pastTransaction(mouseEvent);
     }
 
     @FXML
     public void SwitchToBudgetPosts(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-
-        root = FXMLLoader.load(getClass().getResource("BudgetPostsView.fxml"));
-        stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        clearInputInfo();
-
-
+        sceneController.budgetPostView(mouseEvent);
     }
 
     @FXML
-    public void SwitchToPastTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-
-        root = FXMLLoader.load(getClass().getResource("PastTransactionView.fxml"));
-        stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        clearInputInfo();
-
-
+    public void SwitchToOverview (javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        sceneController.overviewView(mouseEvent);
     }
+
+
 
     public void closeDonePane(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
         doneShadowPane.toBack();
@@ -157,7 +131,7 @@ public class AddTransactionView implements Initializable {
         } else {wrongAddTransactionInformation();}
     }
 
-    //TODO Put in color
+
 
     @FXML
     public void doneAddBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
@@ -178,10 +152,11 @@ public class AddTransactionView implements Initializable {
 
     public void closeDoneAddBudgetPost(){newBudgetPostPane.toBack();}
 
-    //TODO This could probably be done in a more general method
-    //TODO Put in for Date and color
 
     private boolean checkInformationAddTransaction() {
+
+        if (datePicker.getValue() == null){
+            return false;}
 
         if (transactionName.getText().isEmpty()){
             return false;}
@@ -206,13 +181,13 @@ public class AddTransactionView implements Initializable {
 
     private boolean checkInformationAddBudgetPost(){
 
+            if (colorPicker.getValue() == null){
+                return false;}
+
             if (addBudgetPostNameField.getText().isEmpty()){
                 return false;}
 
             if (addBudgetPostMaxField.getText().isEmpty()){
-                return false;}
-
-            if (addBudgetPostDescriptionArea.getText().isEmpty()){
                 return false;}
 
             for (int i = 0; i < addBudgetPostMaxField.getText().length(); i++) {

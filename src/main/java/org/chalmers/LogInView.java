@@ -15,8 +15,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.chalmers.Controllers.LogInController;
-import org.chalmers.model.ModelFacade;
-import org.chalmers.model.database.DatabaseLoader;
 
 import java.io.IOException;
 
@@ -51,10 +49,7 @@ public class LogInView {
     @FXML
     AnchorPane joinAnchorPane;
 
-
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
+    SceneController sceneController = new SceneController();
 
     @FXML
     public void createAccount(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
@@ -84,11 +79,7 @@ public class LogInView {
         controller.signInUser(userName.getText(), userPassword.getText());
 
         if (controller.userIsSignedIn()){
-            root = FXMLLoader.load(getClass().getResource("Overview.fxml"));
-            stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+            sceneController.overviewView(mouseEvent);
         }
     }
 

@@ -58,11 +58,6 @@ public class BudgetPostsView implements Initializable {
 
     @FXML ImageView rightArrow;
 
-
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
     private BudgetPostController budgetcontroller = new BudgetPostController();
     private OverviewController overviewController = new OverviewController();
     private ModelFacade facade = ModelFacade.getInstance();
@@ -70,6 +65,9 @@ public class BudgetPostsView implements Initializable {
 
     Image arrowRightGrey;
     Image arrowRightBlack;
+
+    SceneController sceneController = new SceneController();
+
     @Override
     public void initialize (URL url, ResourceBundle resourceBundle) {
         try {
@@ -159,58 +157,27 @@ public class BudgetPostsView implements Initializable {
 
 
     @FXML
-    public void SwitchToOverview(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-
-        root = FXMLLoader.load(getClass().getResource("Overview.fxml"));
-        stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        clearInputInfo();
-
-    }
-
-    @FXML
     public void SwitchToPastTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-
-        root = FXMLLoader.load(getClass().getResource("PastTransactionView.fxml"));
-        stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        clearInputInfo();
+        sceneController.pastTransaction(mouseEvent);
     }
     @FXML
     public void SwitchToAddTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("AddTransaction.fxml"));
-        stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        clearInputInfo();
+        sceneController.addTransaction(mouseEvent);
     }
-
-
-
     @FXML
-    public void SwitchToDetailedBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("BudgetPostDetailed.fxml"));
-        stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        clearInputInfo();
-
-
+    public void SwitchToOverview (javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        sceneController.overviewView(mouseEvent);
     }
+
+
+
 
 
     private boolean checkInformation() {
 
+        if (budgetPostColor.getValue() == null){
+            return false;}
 
-        if (budgetPostDescription.getText().isEmpty()){
-            return false;
-        }
         if (budgetPostName.getText().isEmpty()){
             return false;
         }

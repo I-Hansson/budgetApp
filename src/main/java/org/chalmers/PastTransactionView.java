@@ -29,10 +29,6 @@ import java.util.ResourceBundle;
 
 public class PastTransactionView implements Initializable {
 
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
     @FXML FlowPane AddTransactionFlowPane;
 
     @FXML Text overviewTitelPanel;
@@ -51,6 +47,10 @@ public class PastTransactionView implements Initializable {
 
 
     ModelFacade facade = ModelFacade.getInstance();
+
+    SceneController sceneController = new SceneController();
+
+
     private final OverviewController overviewController = new OverviewController();
     private final PastTransactionController pastTransactionController = new PastTransactionController();
     @Override
@@ -103,36 +103,18 @@ public class PastTransactionView implements Initializable {
 
     }
 
-
     @FXML
-    public void SwitchToOverview(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-
-        root = FXMLLoader.load(getClass().getResource("Overview.fxml"));
-        stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-
+    public void SwitchToOverview (javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        sceneController.overviewView(mouseEvent);
     }
 
     @FXML
     public void SwitchToBudgetPosts(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-
-        root = FXMLLoader.load(getClass().getResource("BudgetPostsView.fxml"));
-        stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-
-
+        sceneController.budgetPostView(mouseEvent);
     }
+
     @FXML
     public void SwitchToAddTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("AddTransaction.fxml"));
-        stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-
+        sceneController.addTransaction(mouseEvent);
     }
 }
