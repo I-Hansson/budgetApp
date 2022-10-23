@@ -133,6 +133,9 @@ public class ModelFacade {
                 Transaction transaction = new Transaction(name,amount,description,date);
                 transaction.setBpID(bp.getId());
 
+                System.out.println(transaction.getDate().get(Calendar.YEAR));
+                System.out.println(transaction.getDate().get(Calendar.MONTH));
+
                 IBudget specificBudget = user.getSpecificbudget(
                         transaction.getDate().get(Calendar.YEAR),
                         transaction.getDate().get(Calendar.MONTH)

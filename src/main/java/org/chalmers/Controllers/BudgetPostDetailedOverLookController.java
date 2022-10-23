@@ -17,7 +17,7 @@ public class BudgetPostDetailedOverLookController {
     }
 
     public double getBudgetPostBudgetCap(){
-        return facade.getSelectedBudget().getSelectedBudgetPost().getBudgetCap();
+        return facade.getSelectedBudgetPost().getBudgetCap();
     }
 
     public double getBudgetPostAverage(){

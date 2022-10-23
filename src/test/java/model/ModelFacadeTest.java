@@ -1,5 +1,7 @@
 package model;
 
+import org.chalmers.model.Budget;
+import org.chalmers.model.IBudget;
 import org.chalmers.model.ModelFacade;
 import org.chalmers.model.User;
 import org.junit.Before;
@@ -18,6 +20,7 @@ public class ModelFacadeTest {
 
     ModelFacade testFacade = ModelFacade.getInstance();
     User testUser = new User(1);
+    IBudget testBudget = new Budget(2022, 9);
 
     @Before
     public void init() {
@@ -37,7 +40,7 @@ public class ModelFacadeTest {
     public void getCurrentBudgetCalendarReturnsCorrectInstance() {
         Calendar today = new GregorianCalendar();
         assertEquals(
-                today.get(Calendar.MONTH) + 1,
+                today.get(Calendar.MONTH),
                 testFacade.getCurrentBudgetCalendar().get(Calendar.MONTH)
         );
     }
@@ -45,6 +48,12 @@ public class ModelFacadeTest {
     @Test
     @Order(2)
     public void transactionsCollectionIsMutable() {
+        testFacade.getUser().getBudgets().add(testBudget);
+        testFacade.getUser().setCurrentBudget(testBudget);
+        testFacade.addBudgetPost(
+                "Uncategorized",
+                1,
+                "");
         testFacade.addTransaction(
                 "",
                 1,
@@ -52,14 +61,13 @@ public class ModelFacadeTest {
                 "",
                 new GregorianCalendar());
 
-        assertEquals(0, testFacade.getCurrentBudgetTransactions().size());
+        assertEquals(1, testFacade.getCurrentBudgetTransactions().size());
     }
 
-
-    //TODO funkar inte som det ska
     @Test
     @Order(1)
     public void budgetPostsCollectionIsMutable() {
+
         testFacade.addBudgetPost(
                 "Uncategorized",
                 1,
@@ -71,13 +79,19 @@ public class ModelFacadeTest {
     //TODO Funkar inte som det ska
     @Test
     public void getCurrentBudgetBalanceReturnsCorrectDouble() {
+        testFacade.getUser().getBudgets().add(testBudget);
+        testFacade.getUser().setCurrentBudget(testBudget);
+        testFacade.addBudgetPost(
+                "Uncategorized",
+                1,
+                "");
         testFacade.addTransaction(
                 "",
                 1,
-                "",
+                "Uncategorized",
                 "",
                 new GregorianCalendar());
 
-        assertEquals(0, testFacade.getCurrentBudgetBalance());
+        assertEquals(1, testFacade.getCurrentBudgetBalance());
     }
 }
