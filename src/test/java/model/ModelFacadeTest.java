@@ -35,7 +35,6 @@ public class ModelFacadeTest {
                 );
     }
 
-    //TODO Funkar inte som det ska
     @Test
     public void getCurrentBudgetCalendarReturnsCorrectInstance() {
         Calendar today = new GregorianCalendar();
@@ -76,7 +75,6 @@ public class ModelFacadeTest {
         assertEquals(1, testFacade.getBudgetPosts().size());
     }
 
-    //TODO Funkar inte som det ska
     @Test
     public void getCurrentBudgetBalanceReturnsCorrectDouble() {
         testFacade.getUser().getBudgets().add(testBudget);
