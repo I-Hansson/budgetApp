@@ -2,27 +2,18 @@ package org.chalmers;
 
 import javafx.fxml.FXML;
 
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.paint.Paint;
-import javafx.stage.Stage;
-import org.chalmers.Controllers.AddTransactionBudgetPostsController;
 import org.chalmers.Controllers.AddTransactionController;
 import org.chalmers.Controllers.BudgetPostController;
 import org.chalmers.model.IBudgetPost;
 import org.chalmers.model.ModelFacade;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -32,7 +23,6 @@ import java.util.ResourceBundle;
 public class AddTransactionView implements Initializable {
 
    private AddTransactionController addTransactionController = new AddTransactionController();
-   private AddTransactionBudgetPostsController addTransactionBudgetPostsController = new AddTransactionBudgetPostsController();
 
     //TODO Might be wrong to use the BudgetPostController
 
@@ -60,6 +50,8 @@ public class AddTransactionView implements Initializable {
     @FXML AnchorPane transactionDonePane;
     @FXML Button donePaneButton;
 
+    ModelFacade facade = ModelFacade.getInstance();
+
 
     /**
      * Initializes the read of information from the controller
@@ -74,7 +66,7 @@ public class AddTransactionView implements Initializable {
      */
     private void update(){
         this.BudgetPostsTexFlowPane.getChildren().clear();
-        for (IBudgetPost post : addTransactionBudgetPostsController.getBudgetPosts()){
+        for (IBudgetPost post : facade.getBudgetPosts()){
             this.BudgetPostsTexFlowPane.getChildren().add(new AddTransactionBudgetPosts(post.getName()));
         }
     }
@@ -121,9 +113,9 @@ public class AddTransactionView implements Initializable {
         sceneController.overviewView(mouseEvent);
     }
 
-
-
-
+    /**
+     * Closes the done pane
+     */
     @FXML
     private void closeDonePane(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
         doneShadowPane.toBack();

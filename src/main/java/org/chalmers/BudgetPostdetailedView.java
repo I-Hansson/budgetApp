@@ -28,7 +28,7 @@ import java.util.ResourceBundle;
 
 public class BudgetPostdetailedView implements Initializable {
 
-    ModelFacade facade = ModelFacade.getInstance();
+    private final ModelFacade facade = ModelFacade.getInstance();
     BudgetPostdetailedViewController controller = new BudgetPostdetailedViewController();
     SceneController sceneController = new SceneController();
 
@@ -46,6 +46,7 @@ public class BudgetPostdetailedView implements Initializable {
     @FXML FlowPane paneGraphLow;
 
     LineChartFX modelChart;
+
 
     /**
      * Initalizes the page
@@ -67,7 +68,7 @@ public class BudgetPostdetailedView implements Initializable {
         this.paneColorAmount.getChildren().add(new BudgetPostsDetailedBalance());
         this.paneLastTransacions.getChildren().clear();
 
-        for(ITransaction transaction : controller.getCurrentBudgetPost().getTransactions()){
+        for(ITransaction transaction : facade.getSelectedBudgetPost().getTransactions()){
             this.paneLastTransacions.getChildren().add(
                     new BudgetPostsDetailedLastTransactions(
                             transaction.getName(), transaction.getDate(), transaction.getAmount()
@@ -82,7 +83,7 @@ public class BudgetPostdetailedView implements Initializable {
     //TODO Ska detta vara en egen klass och isåfall hur?
     private void initializeMonthLineChart() {
         modelChart = new LineChartFX(ChartFactory.createMonthLineChart());
-        modelChart.update(controller.getCurrentBudgetPost().getTransactions());
+        modelChart.update(facade.getSelectedBudgetPost().getTransactions());
         final NumberAxis xAxis = new NumberAxis(1, 31, 1);
         final NumberAxis yAxis = new NumberAxis();
         xAxis.setLabel("Date");
@@ -102,8 +103,8 @@ public class BudgetPostdetailedView implements Initializable {
         series.setName("Spending limit");
         for(int i = 1; i <= 31; i++) {
             series.getData().add(new XYChart.Data<>(i,
-                    (controller.getCurrentBudgetPost().getBudgetCap() -
-                            controller.getCurrentBudgetPost().getCurrentBalance()) / 31));
+                    (facade.getSelectedBudgetPost().getBudgetCap() -
+                            facade.getSelectedBudgetPost().getCurrentBalance()) / 31));
         }
 
 

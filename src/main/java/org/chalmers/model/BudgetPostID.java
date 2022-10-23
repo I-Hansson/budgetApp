@@ -25,6 +25,8 @@ public class BudgetPostID {
         return color;
     }
 
-    public void setName (String newName ){this.name = newName; }
+    public void setName (String newName){
+        this.name = newName;
+    }
 
 }

@@ -12,6 +12,7 @@ import javafx.scene.text.Text;
 
 import javafx.util.Duration;
 import org.chalmers.Controllers.LogInController;
+import org.chalmers.model.ModelFacade;
 
 import java.io.IOException;
 
@@ -46,6 +47,7 @@ public class LogInView {
     @FXML
     AnchorPane joinAnchorPane;
 
+    ModelFacade facade = ModelFacade.getInstance();
     SceneController sceneController = new SceneController();
 
     @FXML
@@ -76,7 +78,7 @@ public class LogInView {
     private void SwitchToOverviewPage(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         controller.signInUser(userName.getText(), userPassword.getText());
 
-        if (controller.userIsSignedIn()){
+        if (userIsSignedIn()){
             sceneController.overviewView(mouseEvent);
         }
     }
@@ -148,5 +150,8 @@ public class LogInView {
         createUserPane.toBack();
     }
 
+    private boolean userIsSignedIn() {
+        return facade.getUser() != null;
+    }
 
 }

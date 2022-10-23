@@ -1,26 +1,23 @@
 package org.chalmers;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import org.chalmers.Controllers.OverviewController;
-import org.chalmers.Controllers.PastTransactionController;
+import org.chalmers.model.ITransaction;
 import org.chalmers.model.ModelFacade;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.ResourceBundle;
 
 /**
@@ -47,12 +44,12 @@ public class PastTransactionView implements Initializable {
 
 
     ModelFacade facade = ModelFacade.getInstance();
+    private List<PastTransactionItem>  pastTransactionItemList = new ArrayList<>();
 
     SceneController sceneController = new SceneController();
 
 
     private final OverviewController overviewController = new OverviewController();
-    private final PastTransactionController pastTransactionController = new PastTransactionController();
 
     /**
      * Initalizes the update method
@@ -88,8 +85,8 @@ public class PastTransactionView implements Initializable {
         currentBudgetMonth.setText(DateStringFormatter.getMonthAsString(facade.getCurrentBudgetCalendar())+ " "
                 + facade.getCurrentBudgetCalendar().get(Calendar.YEAR));
 
-        pastTransactionController.updateItem();
-        for(PastTransactionItem i : pastTransactionController.getPastTransactionItemList()){
+        updateItem();
+        for(PastTransactionItem i : pastTransactionItemList){
             this.pastTransactionFlowPane.getChildren().add(i);
         }
     }
@@ -141,5 +138,15 @@ public class PastTransactionView implements Initializable {
     @FXML
     private void SwitchToAddTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.addTransaction(mouseEvent);
+    }
+
+    public void updateItem(){
+        pastTransactionItemList.clear();
+        for(ITransaction t : facade.getCurrentBudgetTransactions()) {
+            pastTransactionItemList.add(new PastTransactionItem(t));
+        }
+    }
+    public List<PastTransactionItem> getPastTransactionItemList() {
+        return this.pastTransactionItemList;
     }
 }

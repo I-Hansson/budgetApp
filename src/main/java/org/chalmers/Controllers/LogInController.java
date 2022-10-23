@@ -34,11 +34,6 @@ public class LogInController {
              facade.setUser(DatabaseLoader.getUserFromDatabase(id));
          }
     }
-
-    public boolean userIsSignedIn() {
-        return facade.getUser() != null;
-    }
-
 }
 
 

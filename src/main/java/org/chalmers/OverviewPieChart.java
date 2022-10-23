@@ -9,8 +9,8 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
-import org.chalmers.Controllers.OverviewPieChartController;
 import org.chalmers.model.IBudgetPost;
+import org.chalmers.model.ModelFacade;
 import org.chalmers.model.charts.ChartFactory;
 import org.chalmers.modelAdapters.chartAdapters.PieChartFX;
 
@@ -36,12 +36,11 @@ public class OverviewPieChart extends AnchorPane {
     @FXML private Label caption4; //TODO implementera så att denna representerar övrigt
 
     private final double pieChartTotal;
-
-    OverviewPieChartController controller = new OverviewPieChartController();
+    ModelFacade facade = ModelFacade.getInstance();
 
     public OverviewPieChart(){;
         PieChartFX modelChart = new PieChartFX(ChartFactory.createPieChart());
-        modelChart.update(controller.getBudget().getTransactions());
+        modelChart.update(facade.getCurrentBudget().getTransactions());
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Overviewpiechart.fxml"));
         fxmlLoader.setRoot(this);
@@ -167,7 +166,7 @@ public class OverviewPieChart extends AnchorPane {
             piechart.getData().get(0).getNode().setStyle("-fx-pie-color: gray");
             return;
         }
-        Collection<IBudgetPost> bps = controller.getBudgetPosts();
+        Collection<IBudgetPost> bps = facade.getBudgetPosts();
 
         HashMap<String,String> map =  new HashMap<>();
         for(IBudgetPost bp :bps){
