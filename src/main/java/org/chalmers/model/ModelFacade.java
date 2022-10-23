@@ -164,8 +164,16 @@ public class ModelFacade {
     public void saveUser() throws InterruptedException {
         DatabaseSaver.saveUserToDatabase(user);
     }
+
+    /**
+     * Creates a new user in the database.
+     *
+     * @param name The name of the user.
+     * @param id The ID of the user.
+     * @param password The password of the user.
+     */
     public void createNewUser(String name, String id,String password){
-        DatabaseCreateUser.createDB( name, id, password);
+        DatabaseCreateUser.createDB(name, id, password);
     }
 
 }
