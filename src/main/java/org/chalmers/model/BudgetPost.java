@@ -9,7 +9,7 @@ import java.util.List;
  * This class represents a budget post.
  * Depends on Transaction, BudgetPostID, IBudgetPostsObserver
  *
- * @author Isac Hansson
+ * @author Isac Hansson, Jonathan Svantesson
  */
 public class BudgetPost implements IBudgetPost{
     //TODO give Icon attribute
@@ -43,6 +43,10 @@ public class BudgetPost implements IBudgetPost{
     /**
      * {@inheritDoc}
      */
+<<<<<<< HEAD
+=======
+    @Override
+>>>>>>> a7010380edd3ffdfba28cda82d7d8aceffc7a72e
     public void setBudgetCap(double newCap){
         this.budgetCap = newCap;
     }
@@ -83,6 +87,14 @@ public class BudgetPost implements IBudgetPost{
     public String getName() {
         return getId().getName();
     }
+
+    /**
+     * @param newName The new name for the budget post.
+     */
+    @Override
+    public void setName (String newName ) {getId().setName(newName);}
+
+
 
     /**
      * {@inheritDoc}

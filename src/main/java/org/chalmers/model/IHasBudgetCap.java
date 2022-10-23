@@ -10,4 +10,7 @@ public interface IHasBudgetCap {
      * @return The budget cap
      */
     double getBudgetCap();
+
+
 }
+

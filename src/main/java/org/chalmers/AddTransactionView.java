@@ -61,61 +61,83 @@ public class AddTransactionView implements Initializable {
     @FXML Button donePaneButton;
 
 
-
-
-
+    /**
+     * Initializes the read of information from the controller
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-
         update();
-        }
-    public void update(){
+    }
 
+    /**
+     * Reads the content that shall be rendered
+     */
+    private void update(){
         this.BudgetPostsTexFlowPane.getChildren().clear();
         for (IBudgetPost post : addTransactionBudgetPostsController.getBudgetPosts()){
             this.BudgetPostsTexFlowPane.getChildren().add(new AddTransactionBudgetPosts(post.getName()));
         }
     }
 
-
+    /**
+     * Opens the add budget post modal
+     */
     @FXML
-    public void showAddBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
+    private void showAddBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
         newBudgetPostPane.toFront();
         clearInputInfo();
     }
+
+    /**
+     * Closes the add budget post modal
+     */
     @FXML
-    public void closeAddBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
+    private void closeAddBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
         closeDoneAddBudgetPost();
         clearInputInfo();
     }
 
-
+    /**
+     * turns the user to the past transactions view
+     */
     @FXML
-    public void SwitchToPastTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void SwitchToPastTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.pastTransaction(mouseEvent);
     }
 
+    /**
+     * turns the user to the budgetPosts view
+     */
     @FXML
-    public void SwitchToBudgetPosts(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void SwitchToBudgetPosts(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.budgetPostView(mouseEvent);
     }
 
+    /**
+     * Sends the user to the overview view
+     */
     @FXML
-    public void SwitchToOverview (javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void SwitchToOverview (javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.overviewView(mouseEvent);
     }
 
 
 
-    public void closeDonePane(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
+    /**
+     * Closes the done pane
+     */
+    private void closeDonePane(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
         doneShadowPane.toBack();
         transactionDonePane.toBack();
 
     }
 
+    /**
+     * When the form is filled out and verified correctly it will submit
+     * the information to the transaction controller.
+     */
     @FXML
-    public void doneAddTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
+    private void doneAddTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
 
         if (checkInformationAddTransaction()){
             addTransactionController.newTransaction(
@@ -132,9 +154,12 @@ public class AddTransactionView implements Initializable {
     }
 
 
-
+    /**
+     * When the form is filled out and verified correctly it will submit
+     * the information to the budget post controller.
+     */
     @FXML
-    public void doneAddBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
+    private void doneAddBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
 
         if (checkInformationAddBudgetPost()){
             budgetPostController.createBudgetPost(
@@ -150,7 +175,9 @@ public class AddTransactionView implements Initializable {
         }
     }
 
-    public void closeDoneAddBudgetPost(){newBudgetPostPane.toBack();}
+    private void closeDoneAddBudgetPost(){
+        newBudgetPostPane.toBack();
+    }
 
 
     private boolean checkInformationAddTransaction() {
@@ -180,30 +207,22 @@ public class AddTransactionView implements Initializable {
     }
 
     private boolean checkInformationAddBudgetPost(){
+        if (colorPicker.getValue() == null)
+            return false;
+        if (addBudgetPostNameField.getText().isEmpty())
+            return false;
+        if (addBudgetPostMaxField.getText().isEmpty())
+            return false;
 
-            if (colorPicker.getValue() == null){
-                return false;}
+        for (int i = 0; i < addBudgetPostMaxField.getText().length(); i++)
+            if (Character.isLetter(addBudgetPostMaxField.getText().charAt(i)))
+                return false;
 
-            if (addBudgetPostNameField.getText().isEmpty()){
-                return false;}
-
-            if (addBudgetPostMaxField.getText().isEmpty()){
-                return false;}
-
-            for (int i = 0; i < addBudgetPostMaxField.getText().length(); i++) {
-                if (Character.isLetter(addBudgetPostMaxField.getText().charAt(i))) {
-                    return false;
-                }}
-
-            for (int i = 0; i < addBudgetPostNameField.getText().length(); i++) {
-                if (Character.isDigit(addBudgetPostNameField.getText().charAt(i))) {
-                    return false;
-                }
-            }
-            return true;
-        }
-
-
+        for (int i = 0; i < addBudgetPostNameField.getText().length(); i++)
+            if (Character.isDigit(addBudgetPostNameField.getText().charAt(i)))
+                return false;
+        return true;
+    }
 
     private void wrongAddTransactionInformation(){
         errorLabel.setTextFill(Paint.valueOf("FF0000"));
@@ -215,6 +234,7 @@ public class AddTransactionView implements Initializable {
         budgetPostErrorLabel.setTextFill(Paint.valueOf("FF0000"));
         budgetPostErrorLabel.setText("The information is incorrectly filled out!");
     }
+
     private void feedBackAddingBudgetPost(){
         budgetPostErrorLabel.setText("The budget post have been added!");
         budgetPostErrorLabel.setTextFill(Paint.valueOf( "1E77BD" ));

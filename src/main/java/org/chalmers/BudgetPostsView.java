@@ -27,7 +27,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.ResourceBundle;
 
 /**
@@ -58,6 +60,10 @@ public class BudgetPostsView implements Initializable {
 
     @FXML ImageView rightArrow;
 
+
+    List<BudgetPostsItem> currentFourPanels;
+    List<List<BudgetPostsItem>> bpList = new ArrayList<>();
+
     private BudgetPostController budgetcontroller = new BudgetPostController();
     private OverviewController overviewController = new OverviewController();
     private ModelFacade facade = ModelFacade.getInstance();
@@ -68,6 +74,9 @@ public class BudgetPostsView implements Initializable {
 
     SceneController sceneController = new SceneController();
 
+    /**
+     * Initalizes the information by calling update
+     */
     @Override
     public void initialize (URL url, ResourceBundle resourceBundle) {
         try {
@@ -80,54 +89,111 @@ public class BudgetPostsView implements Initializable {
         update();
     }
 
+    /**
+     * Updates the content that is dependent on user input
+     *  - if the slider arrows shall be grayed
+     *  - the budgetpost information that is specific for this month
+     */
     public void update(){
-
         if(facade.getCurrentBudget() == facade.getUser().getBudgets().get(facade.getUser().getBudgets().size() -1))
         {
             setRightArrowGrey();
         }else{
             setRightArrowBlack();
         }
-
         currentBudgetMonth.setText(
                 DateStringFormatter.getMonthAsString(facade.getCurrentBudgetCalendar()) + " " +
                         facade.getCurrentBudgetCalendar().get(Calendar.YEAR));
         budgetPostsViewGridPane.getChildren().clear();
         itemController.createBudgetItems();
-        for(int i = 0; i<itemController.getItem().size(); i++) {
-            budgetPostsViewGridPane.add(itemController.getItem().get(i), i, 0);
-        }
+      sortPanels();
+      paintPanel();
 
     }
+    public void sortPanels(){
+        bpList.clear();
+        List<BudgetPostsItem> tempBp = new ArrayList<>();
+        for(int i = 0; i <= itemController.getItem().size()-1; i++ ){
+            if(i == 4){
+                bpList.add(tempBp);
+                tempBp = new ArrayList<>();
+            }
+            tempBp.add(itemController.getItem().get(i));
+        }
+        bpList.add(tempBp);
+        currentFourPanels  =  bpList.get(0);
+    }
+
+    public void paintPanel(){
+        budgetPostsViewGridPane.getChildren().clear();
+        for(int i = 0; i<currentFourPanels.size(); i++) {
+            budgetPostsViewGridPane.add(currentFourPanels.get(i), i, 0);
+        }
+    }
+    @FXML
+    public void rightArrowPanel(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        int index = bpList.indexOf(currentFourPanels);
+        if(index + 1 >= bpList.size()){
+            index = -1;
+        }
+        currentFourPanels = bpList.get(index+1);
+        paintPanel();
+    }
+
+    @FXML
+    public void leftArrowPanel(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        int index = bpList.indexOf(currentFourPanels);
+        if(index <= 0){
+            index = bpList.size();
+        }
+        currentFourPanels = bpList.get(index-1);
+        paintPanel();
+    }
+
+
     private void setRightArrowGrey()  {
         rightArrow.setImage(arrowRightGrey);
     }
+
     private void setRightArrowBlack(){
         rightArrow.setImage(arrowRightBlack);
     }
 
+    /**
+     * "Scrolls" the user to the next months budget
+     */
     @FXML
-    public void nextMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void nextMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         overviewController.clickedNextMonth();
         update();
     }
+
+    /**
+     * "Scrolls" the user to the previous months budget
+     */
     @FXML
-    public void prevMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void prevMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         System.out.println("next");
         overviewController.clickedPrevMonth();
         update();
 
     }
 
+    /**
+     * Sends the budgetPostPane to the front
+     */
     @FXML
-    public void goToAddBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void goToAddBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         addBudgetPostGreyBackground.toFront();
         newBudgetPostPane.toFront();
         clearInputInfo();
     }
 
+    /**
+     * Submits the given information to the budget controller
+     */
     @FXML
-    public void addBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void addBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
 
         if (checkInformation()){
             budgetcontroller.createBudgetPost(
@@ -148,7 +214,7 @@ public class BudgetPostsView implements Initializable {
     }
 
     @FXML
-    public void closeWindow(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
+    private void closeWindow(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
         addBudgetPostGreyBackground.toBack();
         newBudgetPostPane.toBack();
         clearInputInfo();
@@ -157,15 +223,15 @@ public class BudgetPostsView implements Initializable {
 
 
     @FXML
-    public void SwitchToPastTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void SwitchToPastTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.pastTransaction(mouseEvent);
     }
     @FXML
-    public void SwitchToAddTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void SwitchToAddTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.addTransaction(mouseEvent);
     }
     @FXML
-    public void SwitchToOverview (javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void SwitchToOverview (javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.overviewView(mouseEvent);
     }
 
