@@ -64,7 +64,7 @@ public class PastTransactionView implements Initializable {
 
     update();
     }
-    public void update(){
+    private void update(){
         pastTransactionFlowPane.getChildren().clear();
 
         this.pastTransactionFlowPane.getChildren().clear();
@@ -92,29 +92,29 @@ public class PastTransactionView implements Initializable {
     }
 
     @FXML
-    public void nextMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void nextMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         overviewController.clickedNextMonth();
         update();
     }
     @FXML
-    public void prevMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void prevMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         overviewController.clickedPrevMonth();
         update();
 
     }
 
     @FXML
-    public void SwitchToOverview (javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void SwitchToOverview (javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.overviewView(mouseEvent);
     }
 
     @FXML
-    public void SwitchToBudgetPosts(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void SwitchToBudgetPosts(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.budgetPostView(mouseEvent);
     }
 
     @FXML
-    public void SwitchToAddTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void SwitchToAddTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.addTransaction(mouseEvent);
     }
 }
