@@ -17,7 +17,7 @@ import java.util.*;
 public class ModelFacade {
 
     // TODO Får jag göra så här ?
-    private static SelectedBudgetPost selectedBudgetPost = new SelectedBudgetPost(null);
+    private static IBudgetPost selectedBudgetPost;
     private static ModelFacade instance = new ModelFacade();
     private User user;
     private ModelFacade() {}
@@ -36,7 +36,7 @@ public class ModelFacade {
      * Skitmetod som inte bör användas.
      * @return
      */
-    public SelectedBudgetPost getSelectedBudget(){
+    public IBudgetPost getSelectedBudgetPost(){
         return selectedBudgetPost;
     }
 
@@ -105,6 +105,14 @@ public class ModelFacade {
      */
     public void setUser(User user){
         this.user = user;
+    }
+
+    /**
+     * Skitmetod som inte bör användas.
+     * @return
+     */
+    public void setSelectedBudgetPost(IBudgetPost budgetPost){
+        selectedBudgetPost = budgetPost;
     }
 
     //Methods

@@ -3,7 +3,6 @@ package charts;
 import org.chalmers.model.ITransaction;
 import org.chalmers.model.Transaction;
 import org.chalmers.model.charts.ChartFactory;
-import org.chalmers.model.charts.ChartTypeLine;
 import org.chalmers.model.charts.ChartTypePie;
 import org.junit.Test;
 

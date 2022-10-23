@@ -16,7 +16,7 @@ public class BudgetPostsDetailedBalanceController {
     private final IBudgetPost budgetPost;
 
     public BudgetPostsDetailedBalanceController(){
-        budgetPost = facade.getSelectedBudget().getSelectedBudgetPost();
+        budgetPost = facade.getSelectedBudgetPost();
     }
 
     public String getRemainingBalance(){
