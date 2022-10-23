@@ -39,6 +39,7 @@ public class Budget extends SaveableBudget implements IBudget{
         return budgetCap;
     }
 
+
     /**
      * {@inheritDoc}
      * @return {@inheritDoc}

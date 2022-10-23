@@ -132,7 +132,10 @@ public class BudgetPostdetailedView implements Initializable {
     @FXML
     public void changeBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         if (checkInformation()) {
+            facade.getSelectedBudgetPost().setBudgetCap(Double.parseDouble(budgetMax.getText()));
+            facade.getSelectedBudgetPost().setName(budgetPostName.getText());
             rightInputFeedback();
+            update();
         }else {
             wrongInformation();
         }
@@ -148,9 +151,8 @@ public class BudgetPostdetailedView implements Initializable {
 
     private boolean checkInformation() {
 
-        if (budgetPostName.getText().isEmpty()){
+        if ((budgetPostName.getText().isEmpty()) && (budgetMax.getText().isEmpty())) {
             return false;}
-        if (budgetMax.getText().isEmpty()){return false;}
 
         for (int i = 0; i < budgetMax.getText().length(); i++) {
             if (Character.isLetter(budgetMax.getText().charAt(i))) {
