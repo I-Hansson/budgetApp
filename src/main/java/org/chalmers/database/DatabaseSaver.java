@@ -1,4 +1,4 @@
-package org.chalmers.model.database;
+package org.chalmers.database;
 
 import org.chalmers.model.*;
 
@@ -39,7 +39,7 @@ public class DatabaseSaver {
 
 
     private static void saveTransactions() throws InterruptedException {
-        userDB.openSetterTransaction();
+        //userDB.openSetterTransaction();
         for(SaveableBudget b : user.getSaveableBudgets())
             for (ITransaction t: b.getNewTransactions() ){
 
@@ -58,7 +58,7 @@ public class DatabaseSaver {
                 userDB.addTransaction(t.getName(),t.getDescription(),t.getAmount(),temp,t.getBudgetPostName());
 
             }
-        userDB.closeSetterTransaction();
+        //userDB.closeSetterTransaction();
     }
     private static void saveBudgetPost(){
         userDB.openSetters();
