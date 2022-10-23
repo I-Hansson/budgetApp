@@ -29,6 +29,7 @@ public class DatabaseSaver {
             userDB = new UsersDB(user.getUserID());
 
             saveTransactions();
+
             saveBudgetPost();
         }else{
             System.out.println("no user");
@@ -61,8 +62,10 @@ public class DatabaseSaver {
     }
     private static void saveBudgetPost(){
         userDB.openSetters();
-        for(SaveableBudget b : user.getSaveableBudgets()) {
-            for (IBudgetPost bp: b.getNewBudgetPosts() ){
+        for(SaveableBudget b :  user.getSaveableBudgets()) {
+
+            for (IBudgetPost bp: b.getNewBudgetPosts()){
+                System.out.println("loop");
                 userDB.addBudgetPost(bp.getName(),String.valueOf(user.getCurrentBudget().getDate().get(Calendar.YEAR)) + String.valueOf(user.getCurrentBudget().getDate().get(Calendar.MONTH)),bp.getColor(),bp.getBudgetCap());
             }
         }

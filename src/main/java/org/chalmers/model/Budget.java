@@ -117,6 +117,7 @@ public class Budget extends SaveableBudget implements IBudget{
     public void addTransaction(ITransaction transaction){
         if (transactions.contains(transaction))
             addNewTransaction(transaction);
+        addNewTransaction(transaction);
         this.transactions.add(transaction);
     }
 
@@ -128,6 +129,7 @@ public class Budget extends SaveableBudget implements IBudget{
     public void addBudgetPost(IBudgetPost bp){
         if (budgetPosts.contains(bp))
             addNewBudgetPost(bp);
+        addNewBudgetPost(bp);
         this.budgetPosts.add(bp);
     }
 

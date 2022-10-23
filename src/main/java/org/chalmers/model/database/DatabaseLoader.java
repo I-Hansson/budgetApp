@@ -61,31 +61,40 @@ public class DatabaseLoader {
         HashMap<Integer, List<ITransaction>> map = loadIntTransactions();
         System.out.println(map);
         TransactionsDB transactionDB = new TransactionsDB(Integer.parseInt(userDB.getUid()));
-        ITransaction transaction = transactionDB.getAllTransactions().get(0);
-        int fmonth = transaction.getDate().get(Calendar.MONTH);
-        int fyear = transaction.getDate().get(Calendar.YEAR);
+        if(!transactionDB.getAllTransactions().isEmpty()){
+            ITransaction transaction = transactionDB.getAllTransactions().get(0);
+            int fmonth = transaction.getDate().get(Calendar.MONTH);
+            int fyear = transaction.getDate().get(Calendar.YEAR);
 
-        Calendar today = new GregorianCalendar();
-        int lYear = today.get(Calendar.YEAR);
-        int lMonth = today.get(Calendar.MONTH);
-        Calendar newCalender = new GregorianCalendar(
-                transaction.getDate().get(Calendar.YEAR),
-                transaction.getDate().get(Calendar.MONTH),
-                transaction.getDate().get(Calendar.DAY_OF_MONTH)
-        );
-        do {
-            Budget budget = new Budget(fyear,fmonth);
+            Calendar today = new GregorianCalendar();
+            int lYear = today.get(Calendar.YEAR);
+            int lMonth = today.get(Calendar.MONTH);
+            Calendar newCalender = new GregorianCalendar(
+                    transaction.getDate().get(Calendar.YEAR),
+                    transaction.getDate().get(Calendar.MONTH),
+                    transaction.getDate().get(Calendar.DAY_OF_MONTH)
+            );
+            do {
+                Budget budget = new Budget(fyear,fmonth);
 
-            if ( map.containsKey(fyear*100 + fmonth)){
-                budget.getTransactions().addAll(map.get(fyear*100 + fmonth));
-            }
-            user.getBudgets().add(budget);
+                if ( map.containsKey(fyear*100 + fmonth)){
+                    budget.getTransactions().addAll(map.get(fyear*100 + fmonth));
+                }
+                user.getBudgets().add(budget);
 
 
-            newCalender.add(Calendar.MONTH,1);
-            fmonth = newCalender.get(Calendar.MONTH);
-            fyear = newCalender.get(Calendar.YEAR);
-        } while (fyear*100 + fmonth <= (lYear*100 + lMonth));
+                newCalender.add(Calendar.MONTH,1);
+                fmonth = newCalender.get(Calendar.MONTH);
+                fyear = newCalender.get(Calendar.YEAR);
+            } while (fyear*100 + fmonth <= (lYear*100 + lMonth));
+        }else{
+            Calendar today = new GregorianCalendar();
+            int lYear = today.get(Calendar.YEAR);
+            int lMonth = today.get(Calendar.MONTH);
+            user.getBudgets().add(new Budget(lYear,lMonth));
+        }
+
+
 
         user.setCurrentBudget(user.getBudgets().get((user.getBudgets().size()-1)));
 
