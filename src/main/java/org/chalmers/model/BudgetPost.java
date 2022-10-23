@@ -43,10 +43,7 @@ public class BudgetPost implements IBudgetPost{
     /**
      * {@inheritDoc}
      */
-<<<<<<< HEAD
-=======
     @Override
->>>>>>> a7010380edd3ffdfba28cda82d7d8aceffc7a72e
     public void setBudgetCap(double newCap){
         this.budgetCap = newCap;
     }

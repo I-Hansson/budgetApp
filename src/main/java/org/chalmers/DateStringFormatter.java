@@ -19,7 +19,7 @@ public class DateStringFormatter {
 
     public static String getMonthAsString(Calendar date) {
         String[] month =
-                {"January", "February", "Mars", "April", "May", "june", "July", "August", "September",
+                {"January", "February", "Mars", "April", "May", "June", "July", "August", "September",
                         "October", "November", "December"};
         return month[date.get(Calendar.MONTH)];
     }

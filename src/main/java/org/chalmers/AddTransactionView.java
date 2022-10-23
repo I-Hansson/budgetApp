@@ -120,10 +120,10 @@ public class AddTransactionView implements Initializable {
     private void SwitchToOverview (javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.overviewView(mouseEvent);
     }
-
-
-
-
+    
+    /**
+     * Closes the done pane
+     */
     @FXML
     private void closeDonePane(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
         doneShadowPane.toBack();
