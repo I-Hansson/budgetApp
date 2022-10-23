@@ -1,20 +1,79 @@
 package model;
 
+import org.chalmers.model.Budget;
+import org.chalmers.model.IBudget;
+import org.chalmers.model.SaveableBudget;
 import org.chalmers.model.User;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class UserTest {
 
-    User testUser;
+    User testUser = new User(1);;
+    IBudget testBudget = new Budget(2021, 8);
+    IBudget testBudget2 = new Budget(2022, 2);
+
     @Test
-    @Order(1)
-    public void initUser() {
-        testUser = new User(1);
+    @Order(2)
+    public void getSpecificBudgetReturnsCorrectInstance() {
+        testUser.getBudgets().add(testBudget);
+        assertEquals(testBudget, testUser.getSpecificbudget(2021, 8));
+    }
 
+    @Test
+    @Order(3)
+    public void getSaveableBudgetsReturnsCorrectTypes() {
+        for (int i = 0; i < testUser.getSaveableBudgets().size(); i++) {
+            assertTrue(testUser.getSaveableBudgets().get(i) instanceof SaveableBudget);
+        }
+    }
 
+    @Test
+    @Order(4)
+    public void getNameReturnsCorrectString() {
+        assertEquals("temp", testUser.getName());
+    }
+
+    @Test
+    @Order(5)
+    public void getUserIDReturnsCorrectInt() {
+        assertEquals(1, testUser.getUserID());
+    }
+
+    @Test
+    @Order(6)
+    public void currentBudgetIsMutable() {
+        testUser.setCurrentBudget(testBudget);
+        assertEquals(testBudget, testUser.getCurrentBudget());
+    }
+
+    @Test
+    @Order(7)
+    public void nextCurrentBudgetSwitchesBudget() {
+        testUser.getBudgets().clear();
+        testUser.getBudgets().add(testBudget);
+        testUser.getBudgets().add(testBudget2);
+        testUser.setCurrentBudget(testBudget);
+
+        testUser.nextCurrentBudget();
+        assertEquals(testBudget2, testUser.getCurrentBudget());
+    }
+
+    @Test
+    @Order(8)
+    public void previousCurrentBudgetSwitchesBudget() {
+        testUser.getBudgets().clear();
+        testUser.getBudgets().add(testBudget);
+        testUser.getBudgets().add(testBudget2);
+        testUser.setCurrentBudget(testBudget2);
+
+        testUser.previousCurrentBudget();
+        assertEquals(testBudget, testUser.getCurrentBudget());
     }
 }

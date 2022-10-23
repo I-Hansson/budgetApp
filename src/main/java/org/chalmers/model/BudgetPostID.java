@@ -6,13 +6,13 @@ package org.chalmers.model;
  *
  * @author Isac Hansson
  */
-class BudgetPostID {
+public class BudgetPostID {
 
     private String name;
     private String color;
 
 
-    BudgetPostID(String name, String color) {
+    public BudgetPostID(String name, String color) {
         this.name = name;
         this.color = color;
     }

@@ -1,5 +1,6 @@
 package model;
 
+import org.chalmers.model.BudgetPostID;
 import org.chalmers.model.Transaction;
 
 import org.junit.Before;
@@ -21,6 +22,7 @@ public class TransactionTest {
                         " ",
                 today
                 );
+    BudgetPostID bpId = new BudgetPostID("test2", "0, 0, 0");
 
     @Before
     public void init() {
@@ -61,5 +63,12 @@ public class TransactionTest {
     @Order(6)
     public void getDescriptionReturnsCorrectString() {
         assertEquals(" ", testTransaction.getDescription());
+    }
+
+    @Test
+    @Order(7)
+    public void budgetPostIdIsMutable() {
+        testTransaction.setBpID(bpId);
+        assertEquals("test2", testTransaction.getBudgetPostName());
     }
 }

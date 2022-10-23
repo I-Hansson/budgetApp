@@ -20,14 +20,14 @@ public class User {
     public User(int id){
         this.name = "temp";
         this.id = id;
-        this.currentBudget = new Budget(2022,10);
+        this.currentBudget = new Budget(2022,9);
     }
 
     //Getters
-    public Budget getSpecificbudget(int year, int month) {
+    public IBudget getSpecificbudget(int year, int month) {
         for (IBudget budget : budgets) {
             if (budget.getDate().get(Calendar.YEAR) == year && budget.getDate().get(Calendar.MONTH) == month) {
-                return (Budget) budget;
+                return budget;
             }
         }
         return null;
@@ -38,8 +38,8 @@ public class User {
         return budgets;
     }
 
-    public Collection<SaveableBudget> getSaveableBudgets() {
-        Collection<SaveableBudget> saveableBudgets = new ArrayList<>();
+    public List<SaveableBudget> getSaveableBudgets() {
+        List<SaveableBudget> saveableBudgets = new ArrayList<>();
 
         for(IBudget budget : budgets) {
             if (budget instanceof SaveableBudget) {
