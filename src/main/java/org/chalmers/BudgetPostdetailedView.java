@@ -27,10 +27,8 @@ import java.util.ResourceBundle;
 public class BudgetPostdetailedView implements Initializable {
 
     BudgetPostdetailedViewController controller = new BudgetPostdetailedViewController();
+    SceneController sceneController = new SceneController();
 
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
 
     @FXML FlowPane paneColorAmount;
     @FXML FlowPane paneLastTransacions;
@@ -98,47 +96,20 @@ public class BudgetPostdetailedView implements Initializable {
 
     @FXML
     public void SwitchToPastTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-
-        root = FXMLLoader.load(getClass().getResource("PastTransactionView.fxml"));
-        stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-
-
+        sceneController.pastTransaction(mouseEvent);
     }
 
     @FXML
     public void SwitchToBudgetPosts(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-
-        root = FXMLLoader.load(getClass().getResource("BudgetPostsView.fxml"));
-        stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-
-
+        sceneController.budgetPostView(mouseEvent);
     }
 
     @FXML
     public void SwitchToAddTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("AddTransaction.fxml"));
-        stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-
-
+        sceneController.addTransaction(mouseEvent);
     }
-
     @FXML
-    public void SwitchToOverview(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-
-        root = FXMLLoader.load(getClass().getResource("Overview.fxml"));
-        stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-
+    public void SwitchToOverview (javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        sceneController.overviewView(mouseEvent);
     }
 }

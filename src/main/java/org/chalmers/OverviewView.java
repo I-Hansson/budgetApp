@@ -20,7 +20,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -44,6 +43,7 @@ import org.chalmers.model.ModelFacade;
 
 
 public class OverviewView implements Initializable {
+
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -74,6 +74,7 @@ public class OverviewView implements Initializable {
     Image arrowRightBlack;
 
     // controllers
+    SceneController sceneController = new SceneController();
     OverviewController controller = new OverviewController();
     ModelFacade facade = ModelFacade.getInstance();
 
@@ -166,37 +167,17 @@ public class OverviewView implements Initializable {
 
     @FXML
     public void SwitchToPastTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-
-        root = FXMLLoader.load(getClass().getResource("PastTransactionView.fxml"));
-        stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-
-
+        sceneController.pastTransaction(mouseEvent);
     }
 
     @FXML
     public void SwitchToBudgetPosts(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-
-        root = FXMLLoader.load(getClass().getResource("BudgetPostsView.fxml"));
-        System.out.println("2");
-        stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-
-
+        sceneController.budgetPostView(mouseEvent);
     }
 
     @FXML
     public void SwitchToAddTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("AddTransaction.fxml"));
-        stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-
+        sceneController.addTransaction(mouseEvent);
     }
 
     @FXML

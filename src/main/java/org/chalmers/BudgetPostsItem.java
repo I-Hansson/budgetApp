@@ -43,6 +43,7 @@ public class BudgetPostsItem extends AnchorPane {
     @FXML
     Text budgetBannerAmountTransactions;
 
+    SceneController sceneController = new SceneController();
 
     public BudgetPostsItem(String bpNamn, String bpDesc, double amount, int amountTransactions, String color) {
 
@@ -67,16 +68,7 @@ public class BudgetPostsItem extends AnchorPane {
         paneBudgetPost.setOnMouseClicked(mouseEvent -> {
             System.out.println(this.budgetBannerName.getText());
             budgetPostdetailedViewController.setCorrspondingId(((this.budgetBannerName.getText())));
-
-            try {
-                root = FXMLLoader.load(getClass().getResource("BudgetPostDetailed.fxml"));
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+            sceneController.budgetPostDetailed(mouseEvent);
 
         });
 
