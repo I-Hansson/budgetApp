@@ -32,7 +32,7 @@ public class BudgetPost implements IBudgetPost{
         this.currentBalance = budgetCap;
     }
 
-    BudgetPost(double budgetCap, String name) {
+    public BudgetPost(double budgetCap, String name) {
         this.id = new BudgetPostID(name, "5, 51, 92");
         this.budgetCap = budgetCap;
         this.currentBalance = budgetCap;
@@ -43,7 +43,7 @@ public class BudgetPost implements IBudgetPost{
     /**
      * {@inheritDoc}
      */
-    @Override
+
     public void setBudgetCap(double newCap){
         this.budgetCap = newCap;
     }
@@ -51,7 +51,7 @@ public class BudgetPost implements IBudgetPost{
     /**
      * {@inheritDoc}
      */
-    @Override
+
     public void setCurrentBalance(double x){
         this.currentBalance = x;
     }
@@ -82,7 +82,7 @@ public class BudgetPost implements IBudgetPost{
      */
     @Override
     public String getName() {
-        return id.getName();
+        return getId().getName();
     }
 
     /**
@@ -91,7 +91,7 @@ public class BudgetPost implements IBudgetPost{
      */
     @Override
     public String getColor() {
-        return id.getColor();
+        return getId().getColor();
     }
 
     /**

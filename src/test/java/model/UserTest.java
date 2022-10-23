@@ -1,14 +1,20 @@
-import org.chalmers.model.Transaction;
+package model;
+
+import org.chalmers.model.User;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class TransactionTest {
+public class UserTest {
 
-    Transaction testTransaction;
-
+    User testUser;
+    @Test
     @Order(1)
-    public void init() {
+    public void initUser() {
+        testUser = new User(1);
+
+
     }
 }

@@ -7,12 +7,6 @@ package org.chalmers.model;
  */
 public interface IHasBudgetCap {
     /**
-     * Sets the budget cap to the given budget cap.
-     * @param newCap The new cap.
-     */
-    void setBudgetCap(double newCap);
-
-    /**
      * @return The budget cap
      */
     double getBudgetCap();

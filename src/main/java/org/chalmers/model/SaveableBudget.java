@@ -35,7 +35,7 @@ public abstract class SaveableBudget implements IBudget{
      * Adds a ITransaction to the collection of new transactions.
      * @param transaction The transaction to be added.
      */
-    protected void addNewTransaction(ITransaction transaction) {
+    public void addNewTransaction(ITransaction transaction) {
         newTransactions.add(transaction);
     }
 
@@ -43,7 +43,7 @@ public abstract class SaveableBudget implements IBudget{
      * Adds a IBudgetPost to the collection of new budget posts.
      * @param budgetPost The budget post to be added.
      */
-    protected void addNewBudgetPost(IBudgetPost budgetPost) {
+    public void addNewBudgetPost(IBudgetPost budgetPost) {
         newBudgetPosts.add(budgetPost);
     }
 }

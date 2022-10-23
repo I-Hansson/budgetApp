@@ -1,3 +1,5 @@
+package model;
+
 import org.chalmers.model.Budget;
 import org.chalmers.model.BudgetPost;
 import org.chalmers.model.Transaction;
@@ -41,4 +43,26 @@ public class BudgetTest {
         testBudget.addTransaction(testTransaction);
         assertTrue(testBudget.getTransactions().contains(testTransaction));
     }
+
+    @Test
+    @Order(4)
+    public void getBudgetCapReturnsCorrectDouble() {
+             testBudget.addBudgetPost(testBp);
+            assertEquals(100, testBudget.getBudgetCap());
+    }
+    @Test
+    @Order(3)
+    public void budgetPostListIsMutable() {
+        testBudget.addBudgetPost(testBp);
+        assertTrue(testBudget.getBudgetPosts().contains(testBp));
+    }
+    @Test
+    @Order(5)
+    public void getCurrentBalanceReturnsCurrentBalance() {
+        testBudget.addTransaction(testTransaction);
+        assertEquals(10,testBudget.getCurrentBalance());
+
+    }
+
+
 }

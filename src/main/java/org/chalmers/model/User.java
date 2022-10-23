@@ -20,7 +20,7 @@ public class User {
     public User(int id){
         this.name = "temp";
         this.id = id;
-        this.currentBudget = new Budget(2011,2);
+        this.currentBudget = new Budget(2022,10);
     }
 
     //Getters

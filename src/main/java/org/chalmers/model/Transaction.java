@@ -25,12 +25,6 @@ public class Transaction implements ITransaction {
         this.description = description;
     }
 
-
-    public void setBpID(BudgetPostID budgetPostID){
-        System.out.println(this.getDate());
-        this.budgetPostID = budgetPostID;
-    }
-
     //Getters
     /**
      * {@inheritDoc}
@@ -87,6 +81,11 @@ public class Transaction implements ITransaction {
         return description;
     }
 
+    //Setters
+
+    public void setBpID(BudgetPostID budgetPostID){
+        this.budgetPostID = budgetPostID;
+    }
 
     // Methods
 
