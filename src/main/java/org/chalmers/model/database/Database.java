@@ -1,4 +1,4 @@
-package org.chalmers.database;
+package org.chalmers.model.database;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
