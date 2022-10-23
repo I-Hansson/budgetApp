@@ -53,7 +53,7 @@ public class BudgetPostdetailedView implements Initializable {
         update();
     }
 
-    public void update(){
+    private void update(){
         this.paneColorAmount.getChildren().clear();
         this.paneColorAmount.getChildren().add(new BudgetPostsDetailedBalance());
         this.paneLastTransacions.getChildren().clear();
@@ -105,32 +105,32 @@ public class BudgetPostdetailedView implements Initializable {
     }
 
     @FXML
-    public void SwitchToPastTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void SwitchToPastTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.pastTransaction(mouseEvent);
     }
 
     @FXML
-    public void SwitchToBudgetPosts(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void SwitchToBudgetPosts(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.budgetPostView(mouseEvent);
     }
 
     @FXML
-    public void SwitchToAddTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void SwitchToAddTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.addTransaction(mouseEvent);
     }
     @FXML
-    public void SwitchToOverview (javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void SwitchToOverview (javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.overviewView(mouseEvent);
     }
 
     @FXML
-    public void goToChangeBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void goToChangeBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         changeBudgetPostPaneGreyBackground.toFront();
         changeBudgetPostPane.toFront();
     }
 
     @FXML
-    public void changeBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void changeBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         if (checkInformation()) {
             if (!budgetMax.getText().isEmpty()) {
                 facade.getSelectedBudgetPost().setBudgetCap(Double.parseDouble(budgetMax.getText()));

@@ -70,7 +70,7 @@ public class AddTransactionView implements Initializable {
 
         update();
         }
-    public void update(){
+    private void update(){
 
         this.BudgetPostsTexFlowPane.getChildren().clear();
         for (IBudgetPost post : addTransactionBudgetPostsController.getBudgetPosts()){
@@ -80,42 +80,42 @@ public class AddTransactionView implements Initializable {
 
 
     @FXML
-    public void showAddBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
+    private void showAddBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
         newBudgetPostPane.toFront();
         clearInputInfo();
     }
     @FXML
-    public void closeAddBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
+    private void closeAddBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
         closeDoneAddBudgetPost();
         clearInputInfo();
     }
 
 
     @FXML
-    public void SwitchToPastTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void SwitchToPastTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.pastTransaction(mouseEvent);
     }
 
     @FXML
-    public void SwitchToBudgetPosts(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void SwitchToBudgetPosts(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.budgetPostView(mouseEvent);
     }
 
     @FXML
-    public void SwitchToOverview (javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void SwitchToOverview (javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.overviewView(mouseEvent);
     }
 
 
 
-    public void closeDonePane(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
+    private void closeDonePane(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
         doneShadowPane.toBack();
         transactionDonePane.toBack();
 
     }
 
     @FXML
-    public void doneAddTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
+    private void doneAddTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
 
         if (checkInformationAddTransaction()){
             addTransactionController.newTransaction(
@@ -134,7 +134,7 @@ public class AddTransactionView implements Initializable {
 
 
     @FXML
-    public void doneAddBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
+    private void doneAddBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
 
         if (checkInformationAddBudgetPost()){
             budgetPostController.createBudgetPost(
@@ -150,7 +150,7 @@ public class AddTransactionView implements Initializable {
         }
     }
 
-    public void closeDoneAddBudgetPost(){newBudgetPostPane.toBack();}
+    private void closeDoneAddBudgetPost(){newBudgetPostPane.toBack();}
 
 
     private boolean checkInformationAddTransaction() {

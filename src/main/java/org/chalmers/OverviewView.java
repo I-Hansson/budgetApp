@@ -5,7 +5,6 @@ import javafx.animation.ScaleTransition;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
@@ -45,10 +44,6 @@ import org.chalmers.model.ModelFacade;
 
 
 public class OverviewView implements Initializable {
-
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
 
     @FXML FlowPane AddTransactionFlowPane;
     @FXML Text overviewTitelPanel;
@@ -161,7 +156,7 @@ public class OverviewView implements Initializable {
     }
 
     @FXML
-    public void labelHinting(Text text) {
+    private void labelHinting(Text text) {
         text.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -170,33 +165,33 @@ public class OverviewView implements Initializable {
     }
 
     @FXML
-    public void SwitchToPastTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void SwitchToPastTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.pastTransaction(mouseEvent);
     }
 
     @FXML
-    public void SwitchToBudgetPosts(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void SwitchToBudgetPosts(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.budgetPostView(mouseEvent);
     }
 
     @FXML
-    public void SwitchToAddTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void SwitchToAddTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.addTransaction(mouseEvent);
     }
 
     @FXML
-    public void nextMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void nextMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         controller.clickedNextMonth();
         update();
     }
     @FXML
-    public void prevMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void prevMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         controller.clickedPrevMonth();
         update();
     }
 
 
-    public void update() {
+    private void update() {
 
 
         this.overlookPane.getChildren().clear();
@@ -224,7 +219,7 @@ public class OverviewView implements Initializable {
         }
     }
 
-    public void sortPanels(){
+    private void sortPanels(){
         bpList.clear();
         List<OverviewBudgetPost> tempBp = new ArrayList<>();
         for(int i = 0; i <= controller.getBudgetPostCards().size()-1; i++ ){
@@ -240,7 +235,7 @@ public class OverviewView implements Initializable {
         currentFourPanels  =  bpList.get(0);
     }
 
-    public void paintPanels(){
+    private void paintPanels(){
         budgetPostsGridPane.getChildren().clear();
         for (int i = 0; i < currentFourPanels.size(); i++){
             budgetPostsGridPane.add(currentFourPanels.get(i), i,0);
@@ -248,7 +243,7 @@ public class OverviewView implements Initializable {
     }
 
     @FXML
-    public void rightArrowPanel(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void rightArrowPanel(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         int index = bpList.indexOf(currentFourPanels);
         if(index + 1 >= bpList.size()){
             index = -1;
@@ -258,7 +253,7 @@ public class OverviewView implements Initializable {
 
     }
     @FXML
-    public void leftArrowPanel(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void leftArrowPanel(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         int index = bpList.indexOf(currentFourPanels);
         if(index <= 0){
                 index = bpList.size();
@@ -269,7 +264,7 @@ public class OverviewView implements Initializable {
 
 
 
-    public void createBudgetPostCards(){
+    private void createBudgetPostCards(){
         controller.getBudgetPostCards().clear();
         for (IBudgetPost i : controller.getBudgetPostsfromUser()){
             controller.getBudgetPostCards().add(new OverviewBudgetPost(
@@ -283,7 +278,7 @@ public class OverviewView implements Initializable {
 
     }
 
-    public String getComplementColor(String rgb) {
+    private String getComplementColor(String rgb) {
         Color color = Color.web("rgb(" + rgb + ")");
         Color newColor = color.brighter();
         return ""+newColor.getRed()*255+"," + newColor.getGreen()*255 +","+ newColor.getBlue()*255;
