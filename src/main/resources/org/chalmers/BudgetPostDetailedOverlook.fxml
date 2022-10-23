@@ -5,7 +5,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="282.0" prefWidth="878.0" styleClass="focusWhiteWithRadius" stylesheets="@CSS/Font.css" type="AnchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="282.0" prefWidth="878.0" styleClass="focusWhiteWithRadius" stylesheets="@CSS/Font.css" type="AnchorPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label fx:id="detailedSpent" alignment="CENTER" layoutX="674.0" layoutY="53.0" prefHeight="55.0" prefWidth="171.0" styleClass="overviewText" text="800 kr" />
       <Line endX="-101.20001220703125" endY="115.5999755859375" layoutX="738.0" layoutY="149.0" startX="-101.20001220703125" startY="-131.60000610351562" />
@@ -17,6 +17,6 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="42.0" layoutY="176.0" prefHeight="55.0" prefWidth="558.0" styleClass="panelTitel" text="Average spend in this budget post:" textAlignment="CENTER" />
+      <Label layoutX="42.0" layoutY="176.0" prefHeight="55.0" prefWidth="558.0" styleClass="panelTitel" text="Budget Cap:" textAlignment="CENTER" />
    </children>
 </fx:root>

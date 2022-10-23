@@ -35,8 +35,9 @@ public class BudgetPostTest {
 
     @Test
     @Order(2)
-    public void getNameReturnsCorrectString() {
-        assertEquals("test", testBp.getName());
+    public void nameIsMutable() {
+        testBp.setName("hej");
+        assertEquals("hej", testBp.getName());
     }
 
     @Test
