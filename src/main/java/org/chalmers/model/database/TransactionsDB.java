@@ -23,7 +23,7 @@ public class TransactionsDB {
 
         connector = new DatabaseConnector("./src/main/database/transactions/"+uid+".json");
         file = null;
-        oldDB = null;
+        oldDB = getTransactionsJSONObj();
         populateTransactionsList();
     }
 
@@ -73,6 +73,7 @@ public class TransactionsDB {
     }
 
     public List<ITransaction> getAllTransactions(){
+        populateTransactionsList();
         List<ITransaction> copy = new ArrayList<>();
         System.out.println();
         copy.addAll(transactionsList);
@@ -94,11 +95,11 @@ public class TransactionsDB {
         newTrans.put("budgetPostName", budgetPostName);
         newTrans.put("amount", amount);
         newTrans.put("description", description.toLowerCase(Locale.ROOT));
-        System.out.println(oldDB.toJSONString());
+        openSetters();
         JSONArray transactions = (JSONArray) getTransactionsJSONObj().get("transactions");
         transactions.add(newTrans);
         oldDB.put("transactions", transactions);
-
+        closeSetter();
     }
 
     public void setName(String date, String oldName, String newName){
@@ -176,6 +177,22 @@ public class TransactionsDB {
             oldDB.put("budgetPosts", result);
         }
         closeSetter();
+    }
+
+    public Map<String, Object> getTransaction(String name, String date){
+        JSONArray transactionsDB = (JSONArray) oldDB.get("transactions");
+        Map<String, Object> map = new HashMap<>();
+        for(Object obj: transactionsDB){
+            JSONObject jsonObject = (JSONObject) obj;
+            if(jsonObject.get("name").equals(name) && jsonObject.get("date").equals(date)){
+                map.put("name", jsonObject.get("name"));
+                map.put("description", jsonObject.get("description"));
+                map.put("amount", jsonObject.get("amount"));
+                map.put("date", jsonObject.get("date"));
+                map.put("budgetPostName", jsonObject.get("budgetPostName"));
+            }
+        }
+        return map;
     }
 
 
