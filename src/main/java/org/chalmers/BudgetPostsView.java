@@ -163,7 +163,7 @@ public class BudgetPostsView implements Initializable {
      * "Scrolls" the user to the next months budget
      */
     @FXML
-    public void nextMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void nextMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         overviewController.clickedNextMonth();
         update();
     }
@@ -172,7 +172,7 @@ public class BudgetPostsView implements Initializable {
      * "Scrolls" the user to the previous months budget
      */
     @FXML
-    public void prevMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void prevMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         System.out.println("next");
         overviewController.clickedPrevMonth();
         update();
@@ -183,7 +183,7 @@ public class BudgetPostsView implements Initializable {
      * Sends the budgetPostPane to the front
      */
     @FXML
-    public void goToAddBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void goToAddBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         addBudgetPostGreyBackground.toFront();
         newBudgetPostPane.toFront();
         clearInputInfo();
@@ -193,7 +193,7 @@ public class BudgetPostsView implements Initializable {
      * Submits the given information to the budget controller
      */
     @FXML
-    public void addBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void addBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
 
         if (checkInformation()){
             budgetcontroller.createBudgetPost(
@@ -214,7 +214,7 @@ public class BudgetPostsView implements Initializable {
     }
 
     @FXML
-    public void closeWindow(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
+    private void closeWindow(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
         addBudgetPostGreyBackground.toBack();
         newBudgetPostPane.toBack();
         clearInputInfo();
@@ -223,15 +223,15 @@ public class BudgetPostsView implements Initializable {
 
 
     @FXML
-    public void SwitchToPastTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void SwitchToPastTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.pastTransaction(mouseEvent);
     }
     @FXML
-    public void SwitchToAddTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void SwitchToAddTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.addTransaction(mouseEvent);
     }
     @FXML
-    public void SwitchToOverview (javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void SwitchToOverview (javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.overviewView(mouseEvent);
     }
 

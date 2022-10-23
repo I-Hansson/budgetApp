@@ -56,11 +56,13 @@ public class BudgetPostdetailedView implements Initializable {
         update();
     }
 
+
     /**
      * Reads and renders the information given by the controllers for all the
      * listed view objects such as the chart and table.
      */
-    public void update(){
+    private void update(){
+
         this.paneColorAmount.getChildren().clear();
         this.paneColorAmount.getChildren().add(new BudgetPostsDetailedBalance());
         this.paneLastTransacions.getChildren().clear();
@@ -115,7 +117,7 @@ public class BudgetPostdetailedView implements Initializable {
      * Switches to the past transaction view
      */
     @FXML
-    public void SwitchToPastTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void SwitchToPastTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.pastTransaction(mouseEvent);
     }
 
@@ -123,7 +125,7 @@ public class BudgetPostdetailedView implements Initializable {
      * Switches to the add budget posts view
      */
     @FXML
-    public void SwitchToBudgetPosts(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void SwitchToBudgetPosts(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.budgetPostView(mouseEvent);
     }
 
@@ -131,7 +133,7 @@ public class BudgetPostdetailedView implements Initializable {
      * Switches to the add transaction view
      */
     @FXML
-    public void SwitchToAddTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void SwitchToAddTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.addTransaction(mouseEvent);
     }
 
@@ -139,20 +141,27 @@ public class BudgetPostdetailedView implements Initializable {
      * Switches to the overview view
      */
     @FXML
-    public void SwitchToOverview (javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void SwitchToOverview (javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.overviewView(mouseEvent);
     }
 
     @FXML
-    public void goToChangeBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void goToChangeBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         changeBudgetPostPaneGreyBackground.toFront();
         changeBudgetPostPane.toFront();
     }
 
     @FXML
-    public void changeBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void changeBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         if (checkInformation()) {
+            if (!budgetMax.getText().isEmpty()) {
+                facade.getSelectedBudgetPost().setBudgetCap(Double.parseDouble(budgetMax.getText()));
+            }
+            if (!budgetPostName.getText().isEmpty()) {
+                facade.getSelectedBudgetPost().setName(budgetPostName.getText());
+            }
             rightInputFeedback();
+            update();
         }else {
             wrongInformation();
         }
@@ -168,9 +177,8 @@ public class BudgetPostdetailedView implements Initializable {
 
     private boolean checkInformation() {
 
-        if (budgetPostName.getText().isEmpty()){
+        if ((budgetPostName.getText().isEmpty()) && (budgetMax.getText().isEmpty())){
             return false;}
-        if (budgetMax.getText().isEmpty()){return false;}
 
         for (int i = 0; i < budgetMax.getText().length(); i++) {
             if (Character.isLetter(budgetMax.getText().charAt(i))) {

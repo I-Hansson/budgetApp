@@ -3,7 +3,7 @@ package org.chalmers.model;
 /**
  * An interface for classes that represent the concept of a budget post
  *
- * @author williamfrisk
+ * @author williamfrisk, Jonathan Svantesson
  */
 public interface IBudgetPost extends IHasTransactions, IHasBalance, IHasBudgetCap{
     /**
@@ -23,4 +23,16 @@ public interface IBudgetPost extends IHasTransactions, IHasBalance, IHasBudgetCa
      * @return The object containing name and color.
      */
     BudgetPostID getId();
+
+    /**
+     * Sets a new name for the specific budget post.
+     */
+    void setName(String newName);
+
+    /**
+     * @param newCap The new budget cap
+     */
+    void setBudgetCap(double newCap);
+
+
 }

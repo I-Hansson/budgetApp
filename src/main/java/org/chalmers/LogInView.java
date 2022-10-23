@@ -66,7 +66,7 @@ public class LogInView {
     }
 
     @FXML
-    public void goToCreateAccount(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void goToCreateAccount(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         createUserPane.toFront();
     }
 
@@ -75,7 +75,7 @@ public class LogInView {
 
 
     @FXML
-    public void SwitchToOverviewPage(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void SwitchToOverviewPage(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         controller.signInUser(userName.getText(), userPassword.getText());
 
         if (controller.userIsSignedIn()){
@@ -84,7 +84,7 @@ public class LogInView {
     }
 
     @FXML
-    public void signInButtonOnHover() {
+    private void signInButtonOnHover() {
         ScaleTransition scaleTransition = new ScaleTransition();
         scaleTransition.setDuration(Duration.millis(100));
         scaleTransition.setCycleCount(1);
@@ -97,7 +97,7 @@ public class LogInView {
     }
 
     @FXML
-    public void signInButtonStopHover() {
+    private void signInButtonStopHover() {
         ScaleTransition scaleTransition = new ScaleTransition();
         scaleTransition.setDuration(Duration.millis(100));
         scaleTransition.setCycleCount(1);

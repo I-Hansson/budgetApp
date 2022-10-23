@@ -72,7 +72,7 @@ public class AddTransactionView implements Initializable {
     /**
      * Reads the content that shall be rendered
      */
-    public void update(){
+    private void update(){
         this.BudgetPostsTexFlowPane.getChildren().clear();
         for (IBudgetPost post : addTransactionBudgetPostsController.getBudgetPosts()){
             this.BudgetPostsTexFlowPane.getChildren().add(new AddTransactionBudgetPosts(post.getName()));
@@ -83,7 +83,7 @@ public class AddTransactionView implements Initializable {
      * Opens the add budget post modal
      */
     @FXML
-    public void showAddBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
+    private void showAddBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
         newBudgetPostPane.toFront();
         clearInputInfo();
     }
@@ -92,7 +92,7 @@ public class AddTransactionView implements Initializable {
      * Closes the add budget post modal
      */
     @FXML
-    public void closeAddBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
+    private void closeAddBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
         closeDoneAddBudgetPost();
         clearInputInfo();
     }
@@ -101,7 +101,7 @@ public class AddTransactionView implements Initializable {
      * turns the user to the past transactions view
      */
     @FXML
-    public void SwitchToPastTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void SwitchToPastTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.pastTransaction(mouseEvent);
     }
 
@@ -109,7 +109,7 @@ public class AddTransactionView implements Initializable {
      * turns the user to the budgetPosts view
      */
     @FXML
-    public void SwitchToBudgetPosts(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void SwitchToBudgetPosts(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.budgetPostView(mouseEvent);
     }
 
@@ -117,15 +117,16 @@ public class AddTransactionView implements Initializable {
      * Sends the user to the overview view
      */
     @FXML
-    public void SwitchToOverview (javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void SwitchToOverview (javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.overviewView(mouseEvent);
     }
+
 
 
     /**
      * Closes the done pane
      */
-    public void closeDonePane(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
+    private void closeDonePane(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
         doneShadowPane.toBack();
         transactionDonePane.toBack();
 
@@ -136,7 +137,7 @@ public class AddTransactionView implements Initializable {
      * the information to the transaction controller.
      */
     @FXML
-    public void doneAddTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
+    private void doneAddTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
 
         if (checkInformationAddTransaction()){
             addTransactionController.newTransaction(
@@ -158,7 +159,7 @@ public class AddTransactionView implements Initializable {
      * the information to the budget post controller.
      */
     @FXML
-    public void doneAddBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
+    private void doneAddBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
 
         if (checkInformationAddBudgetPost()){
             budgetPostController.createBudgetPost(
@@ -174,8 +175,9 @@ public class AddTransactionView implements Initializable {
         }
     }
 
-
-    public void closeDoneAddBudgetPost(){newBudgetPostPane.toBack();}
+    private void closeDoneAddBudgetPost(){
+        newBudgetPostPane.toBack();
+    }
 
 
     private boolean checkInformationAddTransaction() {

@@ -73,7 +73,8 @@ public class PastTransactionView implements Initializable {
      * Updates the dynamic information
      * by reading and rendering the information.
      */
-    public void update(){
+    private void update(){
+
         pastTransactionFlowPane.getChildren().clear();
 
         this.pastTransactionFlowPane.getChildren().clear();
@@ -104,7 +105,7 @@ public class PastTransactionView implements Initializable {
      * goes to next months budget
      */
     @FXML
-    public void nextMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void nextMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         overviewController.clickedNextMonth();
         update();
     }
@@ -112,7 +113,7 @@ public class PastTransactionView implements Initializable {
      * goes to previous months budget
      */
     @FXML
-    public void prevMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void prevMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         overviewController.clickedPrevMonth();
         update();
 
@@ -122,7 +123,7 @@ public class PastTransactionView implements Initializable {
      * navigates to the overview view
      */
     @FXML
-    public void SwitchToOverview (javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void SwitchToOverview (javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.overviewView(mouseEvent);
     }
 
@@ -130,7 +131,7 @@ public class PastTransactionView implements Initializable {
      * navigates to the budget posts view
      */
     @FXML
-    public void SwitchToBudgetPosts(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void SwitchToBudgetPosts(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.budgetPostView(mouseEvent);
     }
 
@@ -138,7 +139,7 @@ public class PastTransactionView implements Initializable {
      * navigates to the add transaction view
      */
     @FXML
-    public void SwitchToAddTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void SwitchToAddTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.addTransaction(mouseEvent);
     }
 }
