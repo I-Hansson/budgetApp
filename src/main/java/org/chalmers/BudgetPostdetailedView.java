@@ -37,12 +37,19 @@ public class BudgetPostdetailedView implements Initializable {
 
     LineChartFX modelChart;
 
+    /**
+     * Initalizes the page
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initializeMonthLineChart();
         update();
     }
 
+    /**
+     * Reads and renders the information given by the controllers for all the
+     * listed view objects such as the chart and table.
+     */
     public void update(){
         this.paneColorAmount.getChildren().clear();
         this.paneColorAmount.getChildren().add(new BudgetPostsDetailedBalance());
@@ -94,20 +101,33 @@ public class BudgetPostdetailedView implements Initializable {
         paneGraphHigh.getChildren().add(lineChart);
     }
 
+    /**
+     * Switches to the past transaction view
+     */
     @FXML
     public void SwitchToPastTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.pastTransaction(mouseEvent);
     }
 
+    /**
+     * Switches to the add budget posts view
+     */
     @FXML
     public void SwitchToBudgetPosts(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.budgetPostView(mouseEvent);
     }
 
+    /**
+     * Switches to the add transaction view
+     */
     @FXML
     public void SwitchToAddTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.addTransaction(mouseEvent);
     }
+
+    /**
+     * Switches to the overview view
+     */
     @FXML
     public void SwitchToOverview (javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.overviewView(mouseEvent);

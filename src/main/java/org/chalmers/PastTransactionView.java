@@ -53,6 +53,10 @@ public class PastTransactionView implements Initializable {
 
     private final OverviewController overviewController = new OverviewController();
     private final PastTransactionController pastTransactionController = new PastTransactionController();
+
+    /**
+     * Initalizes the update method
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
         try {
@@ -64,6 +68,11 @@ public class PastTransactionView implements Initializable {
 
     update();
     }
+
+    /**
+     * Updates the dynamic information
+     * by reading and rendering the information.
+     */
     public void update(){
         pastTransactionFlowPane.getChildren().clear();
 
@@ -91,11 +100,17 @@ public class PastTransactionView implements Initializable {
         rightArrow.setImage(arrowRightBlack);
     }
 
+    /**
+     * goes to next months budget
+     */
     @FXML
     public void nextMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         overviewController.clickedNextMonth();
         update();
     }
+    /**
+     * goes to previous months budget
+     */
     @FXML
     public void prevMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         overviewController.clickedPrevMonth();
@@ -103,16 +118,25 @@ public class PastTransactionView implements Initializable {
 
     }
 
+    /**
+     * navigates to the overview view
+     */
     @FXML
     public void SwitchToOverview (javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.overviewView(mouseEvent);
     }
 
+    /**
+     * navigates to the budget posts view
+     */
     @FXML
     public void SwitchToBudgetPosts(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.budgetPostView(mouseEvent);
     }
 
+    /**
+     * navigates to the add transaction view
+     */
     @FXML
     public void SwitchToAddTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.addTransaction(mouseEvent);

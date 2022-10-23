@@ -78,6 +78,9 @@ public class OverviewView implements Initializable {
     OverviewController controller = new OverviewController();
     ModelFacade facade = ModelFacade.getInstance();
 
+    /**
+     * Initalizes the overview view
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -156,6 +159,10 @@ public class OverviewView implements Initializable {
 
     }
 
+    /**
+     * The adds a hinting text on hover
+     * @param text the text that shall be displayed
+     */
     @FXML
     public void labelHinting(Text text) {
         text.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
@@ -165,33 +172,50 @@ public class OverviewView implements Initializable {
         });
     }
 
+    /**
+     * switches to the past transactions view
+     */
     @FXML
     public void SwitchToPastTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.pastTransaction(mouseEvent);
     }
 
+    /**
+     * switches to the budget posts view
+     */
     @FXML
     public void SwitchToBudgetPosts(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.budgetPostView(mouseEvent);
     }
 
+    /**
+     * switches to the add transactions view
+     */
     @FXML
     public void SwitchToAddTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.addTransaction(mouseEvent);
     }
 
+    /**
+     *  switches to next in the carousel
+     */
     @FXML
     public void nextMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         controller.clickedNextMonth();
         update();
     }
+    /**
+     *  switches to previous in the carousel
+     */
     @FXML
     public void prevMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         controller.clickedPrevMonth();
         update();
     }
 
-
+    /**
+     * Read and renders the information given by the controller
+     */
     public void update() {
 
 
@@ -223,7 +247,9 @@ public class OverviewView implements Initializable {
         }
     }
 
-
+    /**
+     * Generates a budget post cards
+     */
     public void createBudgetPostCards(){
         controller.getBudgetPostCards().clear();
         for (IBudgetPost i : controller.getBudgetPostsfromUser()){
@@ -237,6 +263,10 @@ public class OverviewView implements Initializable {
 
     }
 
+    /**
+     * @param rgb R,G,B in the range of 0-255
+     * @return the complement color
+     */
     public String getComplementColor(String rgb) {
         Color color = Color.web("rgb(" + rgb + ")");
         Color newColor = color.brighter();

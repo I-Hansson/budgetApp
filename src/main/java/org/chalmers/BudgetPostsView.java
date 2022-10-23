@@ -68,6 +68,9 @@ public class BudgetPostsView implements Initializable {
 
     SceneController sceneController = new SceneController();
 
+    /**
+     * Initalizes the information by calling update
+     */
     @Override
     public void initialize (URL url, ResourceBundle resourceBundle) {
         try {
@@ -80,6 +83,11 @@ public class BudgetPostsView implements Initializable {
         update();
     }
 
+    /**
+     * Updates the content that is dependent on user input
+     *  - if the slider arrows shall be grayed
+     *  - the budgetpost information that is specific for this month
+     */
     public void update(){
 
         if(facade.getCurrentBudget() == facade.getUser().getBudgets().get(facade.getUser().getBudgets().size() -1))
@@ -102,15 +110,23 @@ public class BudgetPostsView implements Initializable {
     private void setRightArrowGrey()  {
         rightArrow.setImage(arrowRightGrey);
     }
+
     private void setRightArrowBlack(){
         rightArrow.setImage(arrowRightBlack);
     }
 
+    /**
+     * "Scrolls" the user to the next months budget
+     */
     @FXML
     public void nextMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         overviewController.clickedNextMonth();
         update();
     }
+
+    /**
+     * "Scrolls" the user to the previous months budget
+     */
     @FXML
     public void prevMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         System.out.println("next");
@@ -119,6 +135,9 @@ public class BudgetPostsView implements Initializable {
 
     }
 
+    /**
+     * Sends the budgetPostPane to the front
+     */
     @FXML
     public void goToAddBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         addBudgetPostGreyBackground.toFront();
@@ -126,6 +145,9 @@ public class BudgetPostsView implements Initializable {
         clearInputInfo();
     }
 
+    /**
+     * Submits the given information to the budget controller
+     */
     @FXML
     public void addBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
 
