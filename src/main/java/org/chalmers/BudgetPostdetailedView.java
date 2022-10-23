@@ -7,12 +7,14 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 
 import javafx.scene.paint.Paint;
 import org.chalmers.Controllers.BudgetPostdetailedViewController;
 import org.chalmers.model.ITransaction;
+import org.chalmers.model.ModelFacade;
 import org.chalmers.model.charts.ChartFactory;
 import org.chalmers.modelAdapters.chartAdapters.LineChartFX;
 
@@ -26,11 +28,13 @@ import java.util.ResourceBundle;
 
 public class BudgetPostdetailedView implements Initializable {
 
+    ModelFacade facade = ModelFacade.getInstance();
     BudgetPostdetailedViewController controller = new BudgetPostdetailedViewController();
     SceneController sceneController = new SceneController();
 
-    @FXML Label budgetPostName;
-    @FXML Label budgetMax;
+
+    @FXML TextField budgetPostName;
+    @FXML TextField budgetMax;
     @FXML Label errorLabel;
 
     @FXML AnchorPane changeBudgetPostPane;
@@ -135,7 +139,7 @@ public class BudgetPostdetailedView implements Initializable {
     }
 
     @FXML
-    public void closeWindow(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
+    private void closeWindow(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
         changeBudgetPostPane.toBack();
         changeBudgetPostPaneGreyBackground.toBack();
         clearInputInfo();
