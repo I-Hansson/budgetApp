@@ -31,8 +31,6 @@ public class Database {
                 jsonObject.put("name", name);
                 jsonObject.put("password", pwd);
                 jsonObject.put("email", email);
-                jsonObject.put("startBalance", 0);
-                jsonObject.put("currentBalance", 0);
                 jsonObject.put("id", nextID);
             } finally {
                 incomingFile.write(jsonObject.toJSONString());
