@@ -1,5 +1,7 @@
 package org.chalmers.model;
 
+import org.chalmers.model.database.Database;
+import org.chalmers.model.database.DatabaseCreateUser;
 import org.chalmers.model.database.DatabaseSaver;
 
 import java.util.*;
@@ -15,7 +17,7 @@ import java.util.*;
 public class ModelFacade {
 
     // TODO Får jag göra så här ?
-    private static SelectedBudgetPost selectedBudgetPost = new SelectedBudgetPost(null);
+    private static IBudgetPost selectedBudgetPost;
     private static ModelFacade instance = new ModelFacade();
     private User user;
     private ModelFacade() {}
@@ -34,7 +36,7 @@ public class ModelFacade {
      * Skitmetod som inte bör användas.
      * @return
      */
-    public SelectedBudgetPost getSelectedBudget(){
+    public IBudgetPost getSelectedBudgetPost(){
         return selectedBudgetPost;
     }
 
@@ -105,6 +107,14 @@ public class ModelFacade {
         this.user = user;
     }
 
+    /**
+     * Skitmetod som inte bör användas.
+     * @return
+     */
+    public void setSelectedBudgetPost(IBudgetPost budgetPost){
+        selectedBudgetPost = budgetPost;
+    }
+
     //Methods
 
     /**
@@ -122,6 +132,9 @@ public class ModelFacade {
             if (Objects.equals(bp.getName(), budgetPostID)){
                 Transaction transaction = new Transaction(name,amount,description,date);
                 transaction.setBpID(bp.getId());
+
+                System.out.println(transaction.getDate().get(Calendar.YEAR));
+                System.out.println(transaction.getDate().get(Calendar.MONTH));
 
                 IBudget specificBudget = user.getSpecificbudget(
                         transaction.getDate().get(Calendar.YEAR),
@@ -152,5 +165,9 @@ public class ModelFacade {
     public void saveUser() throws InterruptedException {
         DatabaseSaver.saveUserToDatabase(user);
     }
+    public void createNewUser(String name, String id,String password){
+        DatabaseCreateUser.createDB( name, id, password);
+    }
+
 }
 

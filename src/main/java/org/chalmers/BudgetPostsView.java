@@ -27,7 +27,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.ResourceBundle;
 
 /**
@@ -57,6 +59,10 @@ public class BudgetPostsView implements Initializable {
     @FXML Text currentBudgetMonth;
 
     @FXML ImageView rightArrow;
+
+
+    List<BudgetPostsItem> currentFourPanels;
+    List<List<BudgetPostsItem>> bpList = new ArrayList<>();
 
     private BudgetPostController budgetcontroller = new BudgetPostController();
     private OverviewController overviewController = new OverviewController();
@@ -89,24 +95,62 @@ public class BudgetPostsView implements Initializable {
      *  - the budgetpost information that is specific for this month
      */
     public void update(){
-
         if(facade.getCurrentBudget() == facade.getUser().getBudgets().get(facade.getUser().getBudgets().size() -1))
         {
             setRightArrowGrey();
         }else{
             setRightArrowBlack();
         }
-
         currentBudgetMonth.setText(
                 DateStringFormatter.getMonthAsString(facade.getCurrentBudgetCalendar()) + " " +
                         facade.getCurrentBudgetCalendar().get(Calendar.YEAR));
         budgetPostsViewGridPane.getChildren().clear();
         itemController.createBudgetItems();
-        for(int i = 0; i<itemController.getItem().size(); i++) {
-            budgetPostsViewGridPane.add(itemController.getItem().get(i), i, 0);
-        }
+      sortPanels();
+      paintPanel();
 
     }
+    public void sortPanels(){
+        bpList.clear();
+        List<BudgetPostsItem> tempBp = new ArrayList<>();
+        for(int i = 0; i <= itemController.getItem().size()-1; i++ ){
+            if(i == 4){
+                bpList.add(tempBp);
+                tempBp = new ArrayList<>();
+            }
+            tempBp.add(itemController.getItem().get(i));
+        }
+        bpList.add(tempBp);
+        currentFourPanels  =  bpList.get(0);
+    }
+
+    public void paintPanel(){
+        budgetPostsViewGridPane.getChildren().clear();
+        for(int i = 0; i<currentFourPanels.size(); i++) {
+            budgetPostsViewGridPane.add(currentFourPanels.get(i), i, 0);
+        }
+    }
+    @FXML
+    public void rightArrowPanel(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        int index = bpList.indexOf(currentFourPanels);
+        if(index + 1 >= bpList.size()){
+            index = -1;
+        }
+        currentFourPanels = bpList.get(index+1);
+        paintPanel();
+    }
+
+    @FXML
+    public void leftArrowPanel(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        int index = bpList.indexOf(currentFourPanels);
+        if(index <= 0){
+            index = bpList.size();
+        }
+        currentFourPanels = bpList.get(index-1);
+        paintPanel();
+    }
+
+
     private void setRightArrowGrey()  {
         rightArrow.setImage(arrowRightGrey);
     }
@@ -159,9 +203,13 @@ public class BudgetPostsView implements Initializable {
                     String.valueOf(budgetPostColor.getValue())
             );
             rightInputFeedback();
+            addBudgetPostGreyBackground.toBack();
+            newBudgetPostPane.toBack();
+            update();
         }else{
             wrongInformation();
         }
+
 
     }
 

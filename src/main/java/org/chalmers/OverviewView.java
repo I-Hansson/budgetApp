@@ -24,7 +24,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -72,6 +74,8 @@ public class OverviewView implements Initializable {
 
     Image arrowRightGrey;
     Image arrowRightBlack;
+    List<OverviewBudgetPost> currentFourPanels;
+    List<List<OverviewBudgetPost>> bpList = new ArrayList<>();
 
     // controllers
     SceneController sceneController = new SceneController();
@@ -233,13 +237,10 @@ public class OverviewView implements Initializable {
         this.PiechartFlowPane.getChildren().clear();
         this.budgetPostsGridPane.getChildren().clear();
         this.PiechartFlowPane.getChildren().add(new OverviewPieChart());
-
+        //controller.getBudgetPostCards().clear();
         createBudgetPostCards();
-
-        for (int i = 0; i < 4; i++){
-            budgetPostsGridPane.add(controller.getBudgetPostCards().get(i), i,0);
-        }
-
+        sortPanels();
+        paintPanels();
         latestTransactionsListView.getItems().clear();
         for (ITransaction transaction : controller.getLatestTransactions()) {
             Label tempLabel = new Label("-" + transaction.getAmount() + "kr " + transaction.getName());
@@ -250,6 +251,51 @@ public class OverviewView implements Initializable {
     /**
      * Generates a budget post cards
      */
+    public void sortPanels(){
+        bpList.clear();
+        List<OverviewBudgetPost> tempBp = new ArrayList<>();
+        for(int i = 0; i <= controller.getBudgetPostCards().size()-1; i++ ){
+            if(i == 4){
+                bpList.add(tempBp);
+                tempBp = new ArrayList<>();
+
+            }
+            tempBp.add(controller.getBudgetPostCards().get(i));
+        }
+        bpList.add(tempBp);
+        System.out.println(bpList);
+        currentFourPanels  =  bpList.get(0);
+    }
+
+    public void paintPanels(){
+        budgetPostsGridPane.getChildren().clear();
+        for (int i = 0; i < currentFourPanels.size(); i++){
+            budgetPostsGridPane.add(currentFourPanels.get(i), i,0);
+        }
+    }
+
+    @FXML
+    public void rightArrowPanel(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        int index = bpList.indexOf(currentFourPanels);
+        if(index + 1 >= bpList.size()){
+            index = -1;
+        }
+            currentFourPanels = bpList.get(index+1);
+            paintPanels();
+
+    }
+    @FXML
+    public void leftArrowPanel(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        int index = bpList.indexOf(currentFourPanels);
+        if(index <= 0){
+                index = bpList.size();
+        }
+            currentFourPanels = bpList.get(index-1);
+       paintPanels();
+    }
+
+
+
     public void createBudgetPostCards(){
         controller.getBudgetPostCards().clear();
         for (IBudgetPost i : controller.getBudgetPostsfromUser()){
@@ -259,6 +305,7 @@ public class OverviewView implements Initializable {
                             i.getCurrentBalance()/i.getBudgetCap(),
                             i.getColor(),getComplementColor(i.getColor())
                     ));
+
         }
 
     }

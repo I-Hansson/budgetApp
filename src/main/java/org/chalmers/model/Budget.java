@@ -8,7 +8,6 @@ import java.util.*;
  */
 public class Budget extends SaveableBudget implements IBudget{
 
-    private double startBalance;
     private double currentBalance;
     private double budgetCap;
 
@@ -16,14 +15,10 @@ public class Budget extends SaveableBudget implements IBudget{
     private List<ITransaction> transactions = new ArrayList<>();
     private final Calendar calendar;
 
-    public void setTransactions(List<ITransaction> transactions) {
-        this.transactions = transactions;
-    }
 
     /**
-     * Contructor of  the budget,
-     * Instantiate four default budgetPosts through a BudgetPostFactory
-     * Instantiate the date for the budget, i.e. what month is this budget active.
+     * Instantiates the Budget class.
+     *
      * @param year What year is this active.
      * @param month What month is this active.
      */
@@ -83,30 +78,7 @@ public class Budget extends SaveableBudget implements IBudget{
 
     //Setters
 
-    /**
-     * {@inheritDoc}
-     * @param newBalance {@inheritDoc}
-     */
-    @Override
-    public void setCurrentBalance(double newBalance) {
-        currentBalance = newBalance;
-    }
 
-    /**
-     * Sets the new start balance for each month.
-     * @param newStartBalance the new starting value for each month.
-     */
-    public void setStartBalance(double newStartBalance){
-        startBalance = newStartBalance;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void setBudgetCap(double newCap) {
-        budgetCap = newCap;
-    }
 
     //Methods
 
@@ -117,6 +89,7 @@ public class Budget extends SaveableBudget implements IBudget{
     public void addTransaction(ITransaction transaction){
         if (transactions.contains(transaction))
             addNewTransaction(transaction);
+        addNewTransaction(transaction);
         this.transactions.add(transaction);
     }
 
@@ -128,6 +101,7 @@ public class Budget extends SaveableBudget implements IBudget{
     public void addBudgetPost(IBudgetPost bp){
         if (budgetPosts.contains(bp))
             addNewBudgetPost(bp);
+        addNewBudgetPost(bp);
         this.budgetPosts.add(bp);
     }
 
@@ -140,12 +114,9 @@ public class Budget extends SaveableBudget implements IBudget{
     }
 
     private void calculateCap(){
-        double temp = 0;
+        budgetCap = 0;
         for(IBudgetPost bp : this.budgetPosts){
-            temp += bp.getBudgetCap();
-
+            budgetCap += bp.getBudgetCap();
         }
-        this.setBudgetCap(temp);
-
     }
 }

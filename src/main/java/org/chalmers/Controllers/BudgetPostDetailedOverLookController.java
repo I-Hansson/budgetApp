@@ -13,11 +13,11 @@ public class BudgetPostDetailedOverLookController {
     public BudgetPostDetailedOverLookController(){}
 
     public double getBudgetPostBalance(){
-        return facade.getSelectedBudget().getSelectedBudgetPost().getCurrentBalance();
+        return facade.getSelectedBudgetPost().getCurrentBalance();
     }
 
     public double getBudgetPostBudgetCap(){
-        return facade.getSelectedBudget().getSelectedBudgetPost().getBudgetCap();
+        return facade.getSelectedBudgetPost().getBudgetCap();
     }
 
     public double getBudgetPostAverage(){
