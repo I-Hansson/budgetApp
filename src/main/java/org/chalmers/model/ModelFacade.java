@@ -1,7 +1,7 @@
 package org.chalmers.model;
 
-import org.chalmers.model.database.DatabaseCreateUser;
-import org.chalmers.model.database.DatabaseSaver;
+import org.chalmers.database.DatabaseCreateUser;
+import org.chalmers.database.DatabaseSaver;
 
 import java.util.*;
 
