@@ -71,6 +71,7 @@ public class OverviewView implements Initializable {
 
     @FXML ImageView rightArrow;
     @FXML ImageView leftArrow;
+    @FXML Text welcomeText;
 
     Image arrowRightGrey;
     Image arrowRightBlack;
@@ -81,6 +82,7 @@ public class OverviewView implements Initializable {
     SceneController sceneController = new SceneController();
     OverviewController controller = new OverviewController();
     ModelFacade facade = ModelFacade.getInstance();
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -222,7 +224,16 @@ public class OverviewView implements Initializable {
             Label tempLabel = new Label("-" + transaction.getAmount() + "kr " + transaction.getName());
             latestTransactionsListView.getItems().add(tempLabel);
         }
+        updateMessege();
     }
+    private void updateMessege(){
+            if(facade.getCurrentBudget().getTransactions().isEmpty()){
+                welcomeText.setText("Hej " + facade.getUser().getName()+"! Du har inga transaktioner inlagda i denna månaden!");
+            }else{
+                welcomeText.setText("Hej " + facade.getUser().getName()+"! Du ligger inom din månadsbudget!");
+            }
+    }
+
 
     public void sortPanels(){
         bpList.clear();

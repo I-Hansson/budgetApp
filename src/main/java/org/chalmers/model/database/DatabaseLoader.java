@@ -23,7 +23,9 @@ public class DatabaseLoader {
 
         userDB = new UsersDB(userID);
         user = new User(Integer.parseInt(userDB.getUid()));
+        user.setName(userDB.getUserName());
         connectDB();
+
 
         return user;
     }

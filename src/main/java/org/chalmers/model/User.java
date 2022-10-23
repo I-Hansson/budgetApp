@@ -67,6 +67,7 @@ public class User {
         this.currentBudget = currentBudget;
     }
 
+    public void setName(String name){ this.name = name;}
     //Methods
 
     //TODO bättre kommentarer
