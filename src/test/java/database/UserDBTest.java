@@ -1,3 +1,5 @@
+package database;
+
 import org.chalmers.model.database.UsersDB;
 import org.junit.Before;
 import org.junit.Test;

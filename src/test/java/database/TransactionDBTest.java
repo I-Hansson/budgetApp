@@ -1,3 +1,5 @@
+package database;
+
 import org.chalmers.model.ITransaction;
 import org.chalmers.model.database.TransactionsDB;
 import org.chalmers.model.database.UsersDB;
