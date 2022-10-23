@@ -1,9 +1,6 @@
 package model;
 
-import org.chalmers.model.Budget;
-import org.chalmers.model.IBudget;
-import org.chalmers.model.ModelFacade;
-import org.chalmers.model.User;
+import org.chalmers.model.*;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.MethodOrderer;
@@ -17,10 +14,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ModelFacadeTest {
+    //saveUser() and createNewUser() are untestable with our skills in testing.
 
     ModelFacade testFacade = ModelFacade.getInstance();
     User testUser = new User(1);
     IBudget testBudget = new Budget(2022, 9);
+    IBudgetPost testBp = new BudgetPost("test");
 
     @Before
     public void init() {
@@ -35,7 +34,6 @@ public class ModelFacadeTest {
                 );
     }
 
-    //TODO Funkar inte som det ska
     @Test
     public void getCurrentBudgetCalendarReturnsCorrectInstance() {
         Calendar today = new GregorianCalendar();
@@ -76,7 +74,6 @@ public class ModelFacadeTest {
         assertEquals(1, testFacade.getBudgetPosts().size());
     }
 
-    //TODO Funkar inte som det ska
     @Test
     public void getCurrentBudgetBalanceReturnsCorrectDouble() {
         testFacade.getUser().getBudgets().add(testBudget);
@@ -93,5 +90,17 @@ public class ModelFacadeTest {
                 new GregorianCalendar());
 
         assertEquals(1, testFacade.getCurrentBudgetBalance());
+    }
+
+    @Test
+    public void selectedBudgetPostIsMutable() {
+        testFacade.setSelectedBudgetPost(testBp);
+        assertEquals(testBp, testFacade.getSelectedBudgetPost());
+    }
+
+    @Test
+    public void getBudgetCapReturnsCorrectDouble() {
+        testFacade.addBudgetPost("", 100, "");
+        assertEquals(100, testFacade.getBudgetCap());
     }
 }

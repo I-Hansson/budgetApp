@@ -1,8 +1,7 @@
 package org.chalmers.model;
 
-import org.chalmers.model.database.Database;
-import org.chalmers.model.database.DatabaseCreateUser;
-import org.chalmers.model.database.DatabaseSaver;
+import org.chalmers.database.Database;
+import org.chalmers.database.DatabaseSaver;
 
 import java.util.*;
 
@@ -126,21 +125,21 @@ public class ModelFacade {
      * @param description The description of the transaction.
      * @param date The date of the transaction.
      */
-    public void addTransaction(String name, double amount, String budgetPostID, String description, Calendar date){
+    public void addTransaction(String name, double amount, String budgetPostID, String description, Calendar date) throws IllegalArgumentException{
 
         for(IBudgetPost bp : user.getCurrentBudget().getBudgetPosts()){
             if (Objects.equals(bp.getName(), budgetPostID)){
                 Transaction transaction = new Transaction(name,amount,description,date);
                 transaction.setBpID(bp.getId());
 
-                System.out.println(transaction.getDate().get(Calendar.YEAR));
-                System.out.println(transaction.getDate().get(Calendar.MONTH));
 
                 IBudget specificBudget = user.getSpecificbudget(
                         transaction.getDate().get(Calendar.YEAR),
                         transaction.getDate().get(Calendar.MONTH)
                 );
 
+                if(bp.getCurrentBalance() < transaction.getAmount())
+                    throw new IllegalArgumentException();
                 specificBudget.addTransaction(transaction);
                 bp.addTransaction(transaction);
             }
@@ -165,8 +164,16 @@ public class ModelFacade {
     public void saveUser() throws InterruptedException {
         DatabaseSaver.saveUserToDatabase(user);
     }
+
+    /**
+     * Creates a new user in the database.
+     *
+     * @param name The name of the user.
+     * @param id The ID of the user.
+     * @param password The password of the user.
+     */
     public void createNewUser(String name, String id,String password){
-        DatabaseCreateUser.createDB( name, id, password);
+        Database.createUserDoc(name, id, password);
     }
 
 }

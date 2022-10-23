@@ -1,16 +1,12 @@
-import org.chalmers.model.ITransaction;
-import org.chalmers.model.database.TransactionsDB;
-import org.chalmers.model.database.UsersDB;
+package database;
+
+import org.chalmers.database.TransactionsDB;
 import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Order;
 
 import java.io.*;
 import java.nio.channels.FileChannel;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

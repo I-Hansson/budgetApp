@@ -1,4 +1,4 @@
-package org.chalmers.model.database;
+package org.chalmers.database;
 
 import org.chalmers.model.*;
 
@@ -15,9 +15,10 @@ public class DatabaseLoader {
 
 
     /**
+     * Creates an instance of User from data in the database.
      *
      * @param userID int that decides what json files to load in from.
-     * @return the acuall user
+     * @return The User instance.
      */
     public static User getUserFromDatabase(int userID){
 

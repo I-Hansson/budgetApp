@@ -1,4 +1,4 @@
-package org.chalmers.model.database;
+package org.chalmers.database;
 
 import org.chalmers.model.*;
 
@@ -12,16 +12,14 @@ import java.util.Calendar;
 
 public class DatabaseSaver {
 
-
     private static User user;
     private static UsersDB userDB ;
 
     /**
      * Save the user to the database
-     * @param tempUser
+     * @param tempUser The User to be saved.
      * @throws InterruptedException
      */
-
     public static void saveUserToDatabase(User tempUser) throws InterruptedException {
         if (tempUser != null){
             user = tempUser;
@@ -34,15 +32,11 @@ public class DatabaseSaver {
         }else{
             System.out.println("no user");
         }
-        }
+    }
 
-
-
-    private static void saveTransactions() throws InterruptedException {
-        userDB.openSetterTransaction();
+    private static void saveTransactions() {
         for(SaveableBudget b : user.getSaveableBudgets())
             for (ITransaction t: b.getNewTransactions() ){
-
 
                 String year = String.valueOf(t.getDate().get(Calendar.YEAR));
                 String month = String.valueOf(t.getDate().get(Calendar.MONTH));
@@ -58,9 +52,8 @@ public class DatabaseSaver {
                 userDB.addTransaction(t.getName(),t.getDescription(),t.getAmount(),temp,t.getBudgetPostName());
 
             }
-        userDB.closeSetterTransaction();
     }
-    private static void saveBudgetPost(){
+    private static void saveBudgetPost() {
         userDB.openSetters();
         for(SaveableBudget b :  user.getSaveableBudgets()) {
 

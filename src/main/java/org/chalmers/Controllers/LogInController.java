@@ -1,8 +1,8 @@
 package org.chalmers.Controllers;
 
 import org.chalmers.model.ModelFacade;
-import org.chalmers.model.database.Database;
-import org.chalmers.model.database.DatabaseLoader;
+import org.chalmers.database.Database;
+import org.chalmers.database.DatabaseLoader;
 
 /**
  * Controller class for the view class LogInView.
