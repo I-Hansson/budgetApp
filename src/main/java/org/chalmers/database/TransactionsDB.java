@@ -1,4 +1,4 @@
-package org.chalmers.model.database;
+package org.chalmers.database;
 
 import org.chalmers.model.ITransaction;
 import org.json.simple.JSONArray;

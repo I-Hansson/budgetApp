@@ -31,6 +31,7 @@ public class OverviewController{
     }
 
 
+
     public Collection<IBudgetPost> getBudgetPostsfromUser(){
         return facade.getBudgetPosts();
     }
@@ -38,6 +39,7 @@ public class OverviewController{
     public void clickedNextMonth(){
         facade.getUser().nextCurrentBudget();
     }
+
     public void clickedPrevMonth(){
         facade.getUser().previousCurrentBudget();
     }

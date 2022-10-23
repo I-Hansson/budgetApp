@@ -1,6 +1,5 @@
-package org.chalmers.model.database;
+package org.chalmers.database;
 
-import org.chalmers.model.User;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 

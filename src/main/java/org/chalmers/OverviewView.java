@@ -66,6 +66,7 @@ public class OverviewView implements Initializable {
 
     @FXML ImageView rightArrow;
     @FXML ImageView leftArrow;
+    @FXML Text welcomeText;
 
     Image arrowRightGrey;
     Image arrowRightBlack;
@@ -77,6 +78,9 @@ public class OverviewView implements Initializable {
     OverviewController controller = new OverviewController();
     ModelFacade facade = ModelFacade.getInstance();
 
+    /**
+     * Initalizes the overview view
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -155,6 +159,10 @@ public class OverviewView implements Initializable {
 
     }
 
+    /**
+     * The adds a hinting text on hover
+     * @param text the text that shall be displayed
+     */
     @FXML
     private void labelHinting(Text text) {
         text.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
@@ -164,26 +172,41 @@ public class OverviewView implements Initializable {
         });
     }
 
+    /**
+     * switches to the past transactions view
+     */
     @FXML
     private void SwitchToPastTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.pastTransaction(mouseEvent);
     }
 
+    /**
+     * switches to the budget posts view
+     */
     @FXML
     private void SwitchToBudgetPosts(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.budgetPostView(mouseEvent);
     }
 
+    /**
+     * switches to the add transactions view
+     */
     @FXML
     private void SwitchToAddTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.addTransaction(mouseEvent);
     }
 
+    /**
+     *  switches to next in the carousel
+     */
     @FXML
     private void nextMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         controller.clickedNextMonth();
         update();
     }
+    /**
+     *  switches to previous in the carousel
+     */
     @FXML
     private void prevMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         controller.clickedPrevMonth();
@@ -191,8 +214,10 @@ public class OverviewView implements Initializable {
     }
 
 
+    /**
+     * Read and renders the information given by the controller
+     */
     private void update() {
-
 
         this.overlookPane.getChildren().clear();
         this.overlookPane.getChildren().add(new OverviewOverlookView());
@@ -217,9 +242,22 @@ public class OverviewView implements Initializable {
             Label tempLabel = new Label("-" + transaction.getAmount() + "kr " + transaction.getName());
             latestTransactionsListView.getItems().add(tempLabel);
         }
+        updateMessege();
+    }
+    private void updateMessege(){
+            if(facade.getCurrentBudget().getTransactions().isEmpty()){
+                welcomeText.setText("Hej " + facade.getUser().getName()+"! Du har inga transaktioner inlagda i denna månaden!");
+            }else{
+                welcomeText.setText("Hej " + facade.getUser().getName()+"! Du ligger inom din månadsbudget!");
+            }
     }
 
+
+    /**
+     * Generates a budget post cards
+     */
     private void sortPanels(){
+
         bpList.clear();
         List<OverviewBudgetPost> tempBp = new ArrayList<>();
         for(int i = 0; i <= controller.getBudgetPostCards().size()-1; i++ ){
@@ -278,7 +316,12 @@ public class OverviewView implements Initializable {
 
     }
 
+    /**
+     * @param rgb R,G,B in the range of 0-255
+     * @return the complement color
+     */
     private String getComplementColor(String rgb) {
+
         Color color = Color.web("rgb(" + rgb + ")");
         Color newColor = color.brighter();
         return ""+newColor.getRed()*255+"," + newColor.getGreen()*255 +","+ newColor.getBlue()*255;

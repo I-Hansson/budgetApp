@@ -7,13 +7,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import org.chalmers.model.ModelFacade;
-import org.chalmers.model.database.DatabaseSaver;
-
-import java.util.Objects;
 
 /**
  * JavaFX App
@@ -44,7 +40,6 @@ public class App extends Application{
         });
 
     }
-
 
     public static void main(String[] args) {
         launch(args);

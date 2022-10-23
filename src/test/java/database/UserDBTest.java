@@ -1,4 +1,6 @@
-import org.chalmers.model.database.UsersDB;
+package database;
+
+import org.chalmers.database.UsersDB;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.*;
