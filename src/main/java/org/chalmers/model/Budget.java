@@ -17,9 +17,8 @@ public class Budget extends SaveableBudget implements IBudget{
 
 
     /**
-     * Contructor of  the budget,
-     * Instantiate four default budgetPosts through a BudgetPostFactory
-     * Instantiate the date for the budget, i.e. what month is this budget active.
+     * Instantiates the Budget class.
+     *
      * @param year What year is this active.
      * @param month What month is this active.
      */

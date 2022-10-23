@@ -38,8 +38,8 @@ public class User {
         return budgets;
     }
 
-    public Collection<SaveableBudget> getSaveableBudgets() {
-        Collection<SaveableBudget> saveableBudgets = new ArrayList<>();
+    public List<SaveableBudget> getSaveableBudgets() {
+        List<SaveableBudget> saveableBudgets = new ArrayList<>();
 
         for(IBudget budget : budgets) {
             if (budget instanceof SaveableBudget) {
