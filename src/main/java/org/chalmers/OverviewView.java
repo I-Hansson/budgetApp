@@ -215,33 +215,31 @@ public class OverviewView implements Initializable {
         this.PiechartFlowPane.getChildren().add(new OverviewPieChart());
         //controller.getBudgetPostCards().clear();
         createBudgetPostCards();
-
-
-        for(OverviewBudgetPost bp : controller.getBudgetPostCards()){
-            System.out.println("hej" + bp.budgetPostName.getText());
-        }
-        bpList.clear();
-        List<OverviewBudgetPost> tempBp = new ArrayList<>();
-        for(int i = 0; i <= controller.getBudgetPostCards().size()-1; i++ ){
-            if(i >= 4){
-                    bpList.add(tempBp);
-                    tempBp = new ArrayList<>();
-            }
-                tempBp.add(controller.getBudgetPostCards().get(i));
-        }
-        bpList.add(tempBp);
-        System.out.println(bpList);
-         currentFourPanels  =  bpList.get(0);
-
-
-      paintPanels();
-
+        sortPanels();
+        paintPanels();
         latestTransactionsListView.getItems().clear();
         for (ITransaction transaction : controller.getLatestTransactions()) {
             Label tempLabel = new Label("-" + transaction.getAmount() + "kr " + transaction.getName());
             latestTransactionsListView.getItems().add(tempLabel);
         }
     }
+
+    public void sortPanels(){
+        bpList.clear();
+        List<OverviewBudgetPost> tempBp = new ArrayList<>();
+        for(int i = 0; i <= controller.getBudgetPostCards().size()-1; i++ ){
+            if(i == 4){
+                bpList.add(tempBp);
+                tempBp = new ArrayList<>();
+
+            }
+            tempBp.add(controller.getBudgetPostCards().get(i));
+        }
+        bpList.add(tempBp);
+        System.out.println(bpList);
+        currentFourPanels  =  bpList.get(0);
+    }
+
     public void paintPanels(){
         budgetPostsGridPane.getChildren().clear();
         for (int i = 0; i < currentFourPanels.size(); i++){
