@@ -1,18 +1,20 @@
 package org.chalmers;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
-import javafx.stage.Stage;
+
+import javafx.scene.paint.Paint;
 import org.chalmers.Controllers.BudgetPostdetailedViewController;
 import org.chalmers.model.ITransaction;
+import org.chalmers.model.ModelFacade;
 import org.chalmers.model.charts.ChartFactory;
 import org.chalmers.modelAdapters.chartAdapters.LineChartFX;
 
@@ -26,9 +28,17 @@ import java.util.ResourceBundle;
 
 public class BudgetPostdetailedView implements Initializable {
 
+    ModelFacade facade = ModelFacade.getInstance();
     BudgetPostdetailedViewController controller = new BudgetPostdetailedViewController();
     SceneController sceneController = new SceneController();
 
+
+    @FXML TextField budgetPostName;
+    @FXML TextField budgetMax;
+    @FXML Label errorLabel;
+
+    @FXML AnchorPane changeBudgetPostPane;
+    @FXML AnchorPane changeBudgetPostPaneGreyBackground;
 
     @FXML FlowPane paneColorAmount;
     @FXML FlowPane paneLastTransacions;
@@ -112,4 +122,65 @@ public class BudgetPostdetailedView implements Initializable {
     public void SwitchToOverview (javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.overviewView(mouseEvent);
     }
+
+    @FXML
+    public void goToChangeBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        changeBudgetPostPaneGreyBackground.toFront();
+        changeBudgetPostPane.toFront();
+    }
+
+    @FXML
+    public void changeBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        if (checkInformation()) {
+            rightInputFeedback();
+        }else {
+            wrongInformation();
+        }
+    }
+
+    @FXML
+    private void closeWindow(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
+        changeBudgetPostPane.toBack();
+        changeBudgetPostPaneGreyBackground.toBack();
+        clearInputInfo();
+    }
+
+
+    private boolean checkInformation() {
+
+        if (budgetPostName.getText().isEmpty()){
+            return false;}
+        if (budgetMax.getText().isEmpty()){return false;}
+
+        for (int i = 0; i < budgetMax.getText().length(); i++) {
+            if (Character.isLetter(budgetMax.getText().charAt(i))) {
+                return false;
+            }}
+
+        for (int i = 0; i < budgetPostName.getText().length(); i++) {
+            if (Character.isDigit(budgetPostName.getText().charAt(i))) {
+                return false ;
+            }
+        }
+        return true;
+    }
+
+    private void wrongInformation(){
+        errorLabel.setTextFill(Paint.valueOf("FF0000"));
+        errorLabel.setText("The information is incorretctly filled out!");
+    }
+    private  void rightInputFeedback(){
+        errorLabel.setText("The budget post has been added!");
+        errorLabel.setTextFill(Paint.valueOf( "1E77BD" ));
+    }
+
+    private void clearInputInfo(){
+        errorLabel.setText("");
+        budgetPostName.setText("");
+        budgetMax.setText("");
+    }
+
+
+
+
 }

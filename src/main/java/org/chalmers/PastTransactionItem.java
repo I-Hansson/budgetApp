@@ -16,7 +16,6 @@ public class PastTransactionItem extends AnchorPane {
 
     @FXML Text nameTransaction;
     @FXML Text costTransaction;
-    @FXML Text remainingBalanceTransation;
     @FXML Text descriptionTransaction;
     @FXML Text dateTransaction;
     @FXML Text dayTransaction;

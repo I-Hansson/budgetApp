@@ -13,14 +13,7 @@ import javafx.stage.Stage;
 
 public class SceneController {
 
-
-
-    public SceneController(){
-
-
-    }
-
-
+    public SceneController(){}
 
     public void getStage(MouseEvent event, String view){
         try {
@@ -36,10 +29,7 @@ public class SceneController {
     }
 }
 
-    public void budgetPostView(MouseEvent event){
-
-        getStage(event,"BudgetPostsView.fxml");
-    }
+    public void budgetPostView(MouseEvent event){getStage(event,"BudgetPostsView.fxml");}
     public void overviewView(MouseEvent event){
         getStage(event,"Overview.fxml");
     }
