@@ -45,7 +45,11 @@ public class BudgetPost implements IBudgetPost{
      */
     @Override
     public void setBudgetCap(double newCap){
+        if (currentBalance > newCap) {
+            currentBalance = newCap - (budgetCap - currentBalance);
+        }
         this.budgetCap = newCap;
+
     }
 
     /**

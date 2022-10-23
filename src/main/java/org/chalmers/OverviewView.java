@@ -23,10 +23,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 
@@ -72,6 +70,8 @@ public class OverviewView implements Initializable {
     Image arrowRightBlack;
     List<OverviewBudgetPost> currentFourPanels;
     List<List<OverviewBudgetPost>> bpList = new ArrayList<>();
+
+    private List<OverviewBudgetPost> budgetPostCards = new ArrayList<>();
 
     // controllers
     SceneController sceneController = new SceneController();
@@ -238,7 +238,7 @@ public class OverviewView implements Initializable {
         sortPanels();
         paintPanels();
         latestTransactionsListView.getItems().clear();
-        for (ITransaction transaction : controller.getLatestTransactions()) {
+        for (ITransaction transaction : getLatestTransactions()) {
             Label tempLabel = new Label("-" + transaction.getAmount() + "kr " + transaction.getName());
             latestTransactionsListView.getItems().add(tempLabel);
         }
@@ -260,13 +260,13 @@ public class OverviewView implements Initializable {
 
         bpList.clear();
         List<OverviewBudgetPost> tempBp = new ArrayList<>();
-        for(int i = 0; i <= controller.getBudgetPostCards().size()-1; i++ ){
+        for(int i = 0; i <= budgetPostCards.size()-1; i++ ){
             if(i == 4){
                 bpList.add(tempBp);
                 tempBp = new ArrayList<>();
 
             }
-            tempBp.add(controller.getBudgetPostCards().get(i));
+            tempBp.add(budgetPostCards.get(i));
         }
         bpList.add(tempBp);
         System.out.println(bpList);
@@ -303,9 +303,9 @@ public class OverviewView implements Initializable {
 
 
     private void createBudgetPostCards(){
-        controller.getBudgetPostCards().clear();
-        for (IBudgetPost i : controller.getBudgetPostsfromUser()){
-            controller.getBudgetPostCards().add(new OverviewBudgetPost(
+        budgetPostCards.clear();
+        for (IBudgetPost i : facade.getBudgetPosts()){
+            budgetPostCards.add(new OverviewBudgetPost(
                             i.getName(),
                             i.getCurrentBalance(),
                             i.getCurrentBalance()/i.getBudgetCap(),
@@ -327,6 +327,18 @@ public class OverviewView implements Initializable {
         return ""+newColor.getRed()*255+"," + newColor.getGreen()*255 +","+ newColor.getBlue()*255;
     }
 
+    private Collection<ITransaction> getLatestTransactions() {
+        List<ITransaction> latestTransactions = new ArrayList<>();
+        ITransaction[] userArray = {};
+        userArray = facade.getCurrentBudget().getTransactions().toArray(userArray);
+        for (int i = 1; i <= 5; i++) {
+            if (userArray.length-i >= 0)
+                latestTransactions.add(userArray[userArray.length-i]);
+            else
+                break;
+        }
+        return latestTransactions;
+    }
 
 }
 

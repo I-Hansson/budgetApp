@@ -4,20 +4,20 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import org.chalmers.Controllers.BudgetPostDetailedOverLookController;
+import org.chalmers.model.ModelFacade;
 
 import java.io.IOException;
 
 public class BudgetPostDetailedOverLook extends AnchorPane {
 
-    BudgetPostDetailedOverLookController controller = new BudgetPostDetailedOverLookController();
+    private final ModelFacade facade = ModelFacade.getInstance();
 
     private double spent;
 
     @FXML
-    Label detailedSpent;
+    private Label detailedSpent;
     @FXML
-    Label detailedAverage;
+    private Label detailedAverage;
 
     public BudgetPostDetailedOverLook(){
 
@@ -31,9 +31,9 @@ public class BudgetPostDetailedOverLook extends AnchorPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
-        spent = (controller.getBudgetPostBudgetCap() - controller.getBudgetPostBalance());
+        spent = (facade.getSelectedBudgetPost().getBudgetCap()) - facade.getSelectedBudgetPost().getCurrentBalance();
         detailedSpent.setText(String.valueOf(spent));
-        detailedAverage.setText(String.valueOf(controller.getBudgetPostAverage()));
+        detailedAverage.setText(String.valueOf(facade.getSelectedBudgetPost().getBudgetCap()));
 
 
     }

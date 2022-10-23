@@ -1,11 +1,7 @@
 package org.chalmers;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -13,13 +9,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 import org.chalmers.Controllers.BudgetPostController;
 
 
-import org.chalmers.Controllers.BudgetPostItemController;
 import org.chalmers.Controllers.OverviewController;
+import org.chalmers.model.IBudgetPost;
 import org.chalmers.model.ModelFacade;
 
 
@@ -64,11 +59,11 @@ public class BudgetPostsView implements Initializable {
     List<BudgetPostsItem> currentFourPanels;
     List<List<BudgetPostsItem>> bpList = new ArrayList<>();
 
+    List<BudgetPostsItem> items = new ArrayList<>();
+
     private BudgetPostController budgetcontroller = new BudgetPostController();
     private OverviewController overviewController = new OverviewController();
     private ModelFacade facade = ModelFacade.getInstance();
-    private BudgetPostItemController itemController = new BudgetPostItemController();
-
     Image arrowRightGrey;
     Image arrowRightBlack;
 
@@ -105,7 +100,7 @@ public class BudgetPostsView implements Initializable {
                 DateStringFormatter.getMonthAsString(facade.getCurrentBudgetCalendar()) + " " +
                         facade.getCurrentBudgetCalendar().get(Calendar.YEAR));
         budgetPostsViewGridPane.getChildren().clear();
-        itemController.createBudgetItems();
+        items = createBudgetItems();
       sortPanels();
       paintPanel();
 
@@ -113,12 +108,12 @@ public class BudgetPostsView implements Initializable {
     public void sortPanels(){
         bpList.clear();
         List<BudgetPostsItem> tempBp = new ArrayList<>();
-        for(int i = 0; i <= itemController.getItem().size()-1; i++ ){
+        for(int i = 0; i <= items.size()-1; i++ ){
             if(i == 4){
                 bpList.add(tempBp);
                 tempBp = new ArrayList<>();
             }
-            tempBp.add(itemController.getItem().get(i));
+            tempBp.add(items.get(i));
         }
         bpList.add(tempBp);
         currentFourPanels  =  bpList.get(0);
@@ -281,11 +276,20 @@ public class BudgetPostsView implements Initializable {
 
     }
 
-
-
-
-
-
+    private List<BudgetPostsItem> createBudgetItems(){
+        List<BudgetPostsItem> result = new ArrayList<>();
+        for (IBudgetPost bp: facade.getBudgetPosts()){
+            result.add(new BudgetPostsItem(
+                    bp.getName(),
+                    "",
+                    bp.getBudgetCap(),
+                    bp.getTransactions().size(),
+                    bp.getColor(),
+                    bp.getCurrentBalance()
+            ));
+        }
+        return result;
+    }
 }
 
 
