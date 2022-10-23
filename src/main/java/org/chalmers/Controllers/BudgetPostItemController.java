@@ -29,10 +29,11 @@ public class BudgetPostItemController {
         for (IBudgetPost bp: facade.getBudgetPosts()){
             item.add(new BudgetPostsItem(
                     bp.getName(),
-                    "descrition",
+                    "",
                     bp.getBudgetCap(),
                     bp.getTransactions().size(),
-                    bp.getColor()
+                    bp.getColor(),
+                    bp.getCurrentBalance()
             ));
         }
     }

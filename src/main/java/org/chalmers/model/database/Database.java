@@ -29,9 +29,10 @@ public class Database {
             JSONObject jsonObject = new JSONObject();
             try{
                 jsonObject.put("name", name);
-                jsonObject.put("password", pwd);
                 jsonObject.put("email", email);
+                jsonObject.put("password", pwd);
                 jsonObject.put("id", nextID);
+                jsonObject.put("budgetPosts", new JSONArray());
             } finally {
                 incomingFile.write(jsonObject.toJSONString());
                 incomingFile.flush();

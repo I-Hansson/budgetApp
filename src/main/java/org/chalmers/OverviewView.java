@@ -20,12 +20,13 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -44,6 +45,7 @@ import org.chalmers.model.ModelFacade;
 
 
 public class OverviewView implements Initializable {
+
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -72,8 +74,11 @@ public class OverviewView implements Initializable {
 
     Image arrowRightGrey;
     Image arrowRightBlack;
+    List<OverviewBudgetPost> currentFourPanels;
+    List<List<OverviewBudgetPost>> bpList = new ArrayList<>();
 
     // controllers
+    SceneController sceneController = new SceneController();
     OverviewController controller = new OverviewController();
     ModelFacade facade = ModelFacade.getInstance();
 
@@ -166,37 +171,17 @@ public class OverviewView implements Initializable {
 
     @FXML
     public void SwitchToPastTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-
-        root = FXMLLoader.load(getClass().getResource("PastTransactionView.fxml"));
-        stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-
-
+        sceneController.pastTransaction(mouseEvent);
     }
 
     @FXML
     public void SwitchToBudgetPosts(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-
-        root = FXMLLoader.load(getClass().getResource("BudgetPostsView.fxml"));
-        System.out.println("2");
-        stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-
-
+        sceneController.budgetPostView(mouseEvent);
     }
 
     @FXML
     public void SwitchToAddTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("AddTransaction.fxml"));
-        stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-
+        sceneController.addTransaction(mouseEvent);
     }
 
     @FXML
@@ -228,12 +213,28 @@ public class OverviewView implements Initializable {
         this.PiechartFlowPane.getChildren().clear();
         this.budgetPostsGridPane.getChildren().clear();
         this.PiechartFlowPane.getChildren().add(new OverviewPieChart());
-
+        //controller.getBudgetPostCards().clear();
         createBudgetPostCards();
 
-        for (int i = 0; i < 4; i++){
-            budgetPostsGridPane.add(controller.getBudgetPostCards().get(i), i,0);
+
+        for(OverviewBudgetPost bp : controller.getBudgetPostCards()){
+            System.out.println("hej" + bp.budgetPostName.getText());
         }
+        bpList.clear();
+        List<OverviewBudgetPost> tempBp = new ArrayList<>();
+        for(int i = 0; i <= controller.getBudgetPostCards().size()-1; i++ ){
+            if(i >= 4){
+                    bpList.add(tempBp);
+                    tempBp = new ArrayList<>();
+            }
+                tempBp.add(controller.getBudgetPostCards().get(i));
+        }
+        bpList.add(tempBp);
+        System.out.println(bpList);
+         currentFourPanels  =  bpList.get(0);
+
+
+      paintPanels();
 
         latestTransactionsListView.getItems().clear();
         for (ITransaction transaction : controller.getLatestTransactions()) {
@@ -241,6 +242,33 @@ public class OverviewView implements Initializable {
             latestTransactionsListView.getItems().add(tempLabel);
         }
     }
+    public void paintPanels(){
+        budgetPostsGridPane.getChildren().clear();
+        for (int i = 0; i < currentFourPanels.size(); i++){
+            budgetPostsGridPane.add(currentFourPanels.get(i), i,0);
+        }
+    }
+
+    @FXML
+    public void rightArrowPanel(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        int index = bpList.indexOf(currentFourPanels);
+        if(index + 1 >= bpList.size()){
+            index = -1;
+        }
+            currentFourPanels = bpList.get(index+1);
+            paintPanels();
+
+    }
+    @FXML
+    public void leftArrowPanel(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        int index = bpList.indexOf(currentFourPanels);
+        if(index <= 0){
+                index = bpList.size();
+        }
+            currentFourPanels = bpList.get(index-1);
+       paintPanels();
+    }
+
 
 
     public void createBudgetPostCards(){
@@ -252,6 +280,7 @@ public class OverviewView implements Initializable {
                             i.getCurrentBalance()/i.getBudgetCap(),
                             i.getColor(),getComplementColor(i.getColor())
                     ));
+
         }
 
     }

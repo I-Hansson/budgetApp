@@ -1,5 +1,7 @@
 package org.chalmers.model;
 
+import org.chalmers.model.database.Database;
+import org.chalmers.model.database.DatabaseCreateUser;
 import org.chalmers.model.database.DatabaseSaver;
 
 import java.util.*;
@@ -152,5 +154,9 @@ public class ModelFacade {
     public void saveUser() throws InterruptedException {
         DatabaseSaver.saveUserToDatabase(user);
     }
+    public void createNewUser(String name, String id,String password){
+        DatabaseCreateUser.createDB( name, id, password);
+    }
+
 }
 
