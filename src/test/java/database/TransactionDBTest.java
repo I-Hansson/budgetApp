@@ -1,6 +1,6 @@
 package database;
 
-import org.chalmers.model.database.TransactionsDB;
+import org.chalmers.database.TransactionsDB;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
