@@ -2,17 +2,14 @@ package org.chalmers;
 
 import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
+
 import javafx.util.Duration;
 import org.chalmers.Controllers.LogInController;
 
@@ -52,7 +49,7 @@ public class LogInView {
     SceneController sceneController = new SceneController();
 
     @FXML
-    public void createAccount(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void createAccount(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         if (checkInformation()) {
             createUserPane.toBack();
             controller.createUser(
@@ -64,6 +61,7 @@ public class LogInView {
         }
         wrongInformation();
     }
+
 
     @FXML
     private void goToCreateAccount(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
@@ -144,4 +142,11 @@ public class LogInView {
         passwordCreateUserTextField.setText("");
         nameCreateUserTextField.setText("");
     }
+
+    @FXML
+    private void closeNewUser(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        createUserPane.toBack();
+    }
+
+
 }

@@ -123,9 +123,8 @@ public class AddTransactionView implements Initializable {
 
 
 
-    /**
-     * Closes the done pane
-     */
+
+    @FXML
     private void closeDonePane(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
         doneShadowPane.toBack();
         transactionDonePane.toBack();
