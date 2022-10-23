@@ -14,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ModelFacadeTest {
+    //saveUser() and createNewUser() are untestable with our skills in testing.
 
     ModelFacade testFacade = ModelFacade.getInstance();
     User testUser = new User(1);
