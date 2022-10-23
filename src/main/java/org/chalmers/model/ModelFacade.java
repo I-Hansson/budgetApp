@@ -1,6 +1,6 @@
 package org.chalmers.model;
 
-import org.chalmers.database.DatabaseCreateUser;
+import org.chalmers.database.Database;
 import org.chalmers.database.DatabaseSaver;
 
 import java.util.*;
@@ -173,7 +173,7 @@ public class ModelFacade {
      * @param password The password of the user.
      */
     public void createNewUser(String name, String id,String password){
-        DatabaseCreateUser.createDB(name, id, password);
+        Database.createUserDoc(name, id, password);
     }
 
 }
