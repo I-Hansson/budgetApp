@@ -1,13 +1,1 @@
-{
-  "id": "1",
-  "password": "test1",
-  "currentBalance": 1000,
-  "name": "oscar",
-  "email": "test1@test.com",
-  "budgetPosts": [
-    {"dateOfCreation": "2210","name":  "mat", "cap":  1500, "color": "100,50,50"},
-    {"dateOfCreation": "2210","name":  "tobak", "cap":  1000, "color": "100,50,150"},
-    {"dateOfCreation": "2210","name":  "alkohol", "cap":  2500, "color": "100,150,50"},
-    {"dateOfCreation": "2210","name":  "bostad", "cap":  5000, "color": "100,0,50"}
-  ]
-}
+{"password":"test1","currentBalance":1000,"name":"oscar","budgetPosts":[{"cap":1500,"color":"100,50,50","name":"mat","dateOfCreation":"2210"},{"cap":1000,"color":"100,50,150","name":"tobak","dateOfCreation":"2210"},{"cap":2500,"color":"100,150,50","name":"alkohol","dateOfCreation":"2210"},{"cap":5000,"color":"100,0,50","name":"bostad","dateOfCreation":"2210"}],"id":"1","email":"test1@test.com"}

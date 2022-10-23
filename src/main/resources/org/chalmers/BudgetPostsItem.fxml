@@ -10,10 +10,10 @@
 @author Jonathan
         -->
 
-<fx:root fx:id="paneBudgetPost" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="247.0" stylesheets="@CSS/Font.css" type="AnchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="paneBudgetPost" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="247.0" stylesheets="@CSS/Font.css" type="AnchorPane" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <Text fx:id="budgetBannerName" layoutX="40.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="normalStrongText" text="Name" textAlignment="CENTER" wrappingWidth="166.0296630859375" />
    <Text fx:id="budgetBannerAmountTransactions" layoutX="18.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="greySmallTextBudgetBanner" text="Amount of transactions" textAlignment="CENTER" wrappingWidth="210.2789306640625" />
-   <Text layoutX="61.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="greySmallTextBudgetBanner" text="Remainig" textAlignment="CENTER" wrappingWidth="124.48595809936523" />
+   <Text fx:id="budgetBannerMAX" layoutX="61.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="greySmallTextBudgetBanner" text="Remainig" textAlignment="CENTER" wrappingWidth="124.48595809936523" />
    <Text fx:id="budgetBannerLastTransaction" layoutX="18.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="greySmallTextBudgetBanner" text="Last Transaction" textAlignment="CENTER" wrappingWidth="210.2789306640625" />
    <Text fx:id="budgetBannerAmount" layoutX="18.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="priceTitelBudgetBanner" text="Amount" textAlignment="CENTER" wrappingWidth="210.2789306640625" />
    <Line endX="100.0" layoutX="123.0" layoutY="236.0" startX="-100.0" />

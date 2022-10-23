@@ -1,5 +1,3 @@
-package database;
-
 import org.chalmers.model.database.UsersDB;
 import org.junit.Before;
 import org.junit.Test;
@@ -40,31 +38,27 @@ public class UserDBTest {
     @Order(1)
     public void assertGetUserName(){
         String expectedName = "Kalle";
-        System.out.println(1);
         assertEquals(expectedName, db.getUserName());
     }
 
     @Test
     @Order(2)
-    public void B_assertGetBalance(){
+    public void assertGetBalance(){
         Double expectedBalance = 1000.0;
-        System.out.println(2);
         assertEquals(expectedBalance, db.getBalance());
     }
 
     @Test
     @Order(3)
-    public void C_assertGetUid(){
+    public void assertGetUid(){
         String expectedID = "0";
-        System.out.println(3);
         assertEquals(expectedID, db.getUid());
     }
 
     @Test
     @Order(4)
-    public void D_getStandardBalance(){
+    public void getStandardBalance(){
         Double exptectedBal = 10000.0;
-        System.out.println(4);
         assertEquals(exptectedBal, db.getStandardBalance());
     }
 }

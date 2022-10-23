@@ -23,7 +23,7 @@ public class TransactionsDB {
 
         connector = new DatabaseConnector("./src/main/database/transactions/"+uid+".json");
         file = null;
-        oldDB = null;
+        oldDB = getTransactionsJSONObj();
         populateTransactionsList();
     }
 
@@ -73,6 +73,7 @@ public class TransactionsDB {
     }
 
     public List<ITransaction> getAllTransactions(){
+        populateTransactionsList();
         List<ITransaction> copy = new ArrayList<>();
         System.out.println();
         copy.addAll(transactionsList);
@@ -94,14 +95,106 @@ public class TransactionsDB {
         newTrans.put("budgetPostName", budgetPostName);
         newTrans.put("amount", amount);
         newTrans.put("description", description.toLowerCase(Locale.ROOT));
-        System.out.println(oldDB.toJSONString());
+        openSetters();
         JSONArray transactions = (JSONArray) getTransactionsJSONObj().get("transactions");
         transactions.add(newTrans);
         oldDB.put("transactions", transactions);
-
+        closeSetter();
     }
 
-    //TODO make an addTransaction method that takes one arguement of the type Transaction
+    public void setName(String date, String oldName, String newName){
+        openSetters();
+        JSONArray postsDB = (JSONArray) oldDB.get("transactions");
+        JSONArray result = new JSONArray();
+        if(postsDB.size() > 0){
+            for(Object obj: postsDB){
+                JSONObject jsonObject = (JSONObject) obj;
+                if(jsonObject.get("name").equals(oldName) && jsonObject.get("date").equals(date)){
+                    jsonObject.put("name", newName);
+                    result.add(jsonObject);
+                }else{
+                    result.add(jsonObject);
+                }
+            }
+            oldDB.put("budgetPosts", result);
+        }
+        closeSetter();
+    }
+
+    public void setAmount(String date, String name, Double newAmount){
+        openSetters();
+        JSONArray postsDB = (JSONArray) oldDB.get("transactions");
+        JSONArray result = new JSONArray();
+        if(postsDB.size() > 0){
+            for(Object obj: postsDB){
+                JSONObject jsonObject = (JSONObject) obj;
+                if(jsonObject.get("name").equals(name) && jsonObject.get("date").equals(date)){
+
+                    jsonObject.put("amount", newAmount);
+                    result.add(jsonObject);
+                }else{
+                    result.add(jsonObject);
+                }
+            }
+            oldDB.put("budgetPosts", result);
+        }
+        closeSetter();
+    }
+
+    public void setDescription(String date, String name, String newDescription){
+        openSetters();
+        JSONArray transactionsDB = (JSONArray) oldDB.get("transactions");
+        JSONArray result = new JSONArray();
+        if(transactionsDB.size() > 0){
+            for(Object obj: transactionsDB){
+                JSONObject jsonObject = (JSONObject) obj;
+                if(jsonObject.get("name").equals(name) && jsonObject.get("date").equals(date)){
+                    jsonObject.put("description", newDescription);
+                    result.add(jsonObject);
+                }else{
+                    result.add(jsonObject);
+                }
+            }
+            oldDB.put("budgetPosts", result);
+        }
+        closeSetter();
+    }
+
+    public void setBudgetPostName(String date, String name, String newBudgetPostName){
+        openSetters();
+        JSONArray transactionsDB = (JSONArray) oldDB.get("transactions");
+        JSONArray result = new JSONArray();
+        if(transactionsDB.size() > 0){
+            for(Object obj: transactionsDB){
+                JSONObject jsonObject = (JSONObject) obj;
+                if(jsonObject.get("name").equals(name) && jsonObject.get("date").equals(date)){
+                    jsonObject.put("budgetPostName", newBudgetPostName);
+                    result.add(jsonObject);
+                }else{
+                    result.add(jsonObject);
+                }
+            }
+            oldDB.put("budgetPosts", result);
+        }
+        closeSetter();
+    }
+
+    public Map<String, Object> getTransaction(String name, String date){
+        JSONArray transactionsDB = (JSONArray) oldDB.get("transactions");
+        Map<String, Object> map = new HashMap<>();
+        for(Object obj: transactionsDB){
+            JSONObject jsonObject = (JSONObject) obj;
+            if(jsonObject.get("name").equals(name) && jsonObject.get("date").equals(date)){
+                map.put("name", jsonObject.get("name"));
+                map.put("description", jsonObject.get("description"));
+                map.put("amount", jsonObject.get("amount"));
+                map.put("date", jsonObject.get("date"));
+                map.put("budgetPostName", jsonObject.get("budgetPostName"));
+            }
+        }
+        return map;
+    }
+
 
     /**
      * Call this method so that you can edit the database.

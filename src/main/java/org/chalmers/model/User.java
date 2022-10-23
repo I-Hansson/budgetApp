@@ -88,7 +88,6 @@ public class User {
      */
     public void previousCurrentBudget(){
         int index = budgets.indexOf(this.currentBudget);
-        System.out.println(index);
         if (index <= 0){
             index = budgets.size();
         }

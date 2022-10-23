@@ -21,18 +21,18 @@ public class Database {
      * a new user.
      * @param name the name of the new user
      * @param pwd the password for the new user
-     * @param balance the start balance for the new user
+     * @param email the email of the new user
      */
-    public static void createUserDoc(String name, String pwd, Double balance){
+    public static void createUserDoc(String name, String email, String pwd){
         try{
             FileWriter incomingFile = new FileWriter("./src/main/database/users/incoming.json");
             JSONObject jsonObject = new JSONObject();
             try{
                 jsonObject.put("name", name);
+                jsonObject.put("email", email);
                 jsonObject.put("password", pwd);
-                jsonObject.put("currentBalance", balance);
-                jsonObject.put("startBalance", balance);
                 jsonObject.put("id", nextID);
+                jsonObject.put("budgetPosts", new JSONArray());
             } finally {
                 incomingFile.write(jsonObject.toJSONString());
                 incomingFile.flush();
