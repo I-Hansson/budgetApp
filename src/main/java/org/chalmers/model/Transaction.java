@@ -83,6 +83,10 @@ public class Transaction implements ITransaction {
 
     //Setters
 
+    /**
+     * Sets the BudgetPostID of the transaction.
+     * @param budgetPostID The BudgetPostID
+     */
     public void setBpID(BudgetPostID budgetPostID){
         this.budgetPostID = budgetPostID;
     }
