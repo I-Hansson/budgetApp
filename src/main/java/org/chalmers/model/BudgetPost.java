@@ -45,9 +45,8 @@ public class BudgetPost implements IBudgetPost{
      */
     @Override
     public void setBudgetCap(double newCap){
-        if (currentBalance > newCap) {
-            currentBalance = newCap - (budgetCap - currentBalance);
-        }
+        currentBalance = newCap;
+        updateCurrentBalance();
         this.budgetCap = newCap;
 
     }
@@ -141,4 +140,5 @@ public class BudgetPost implements IBudgetPost{
             this.currentBalance -= t.getAmount();
         }
     }
+
 }
