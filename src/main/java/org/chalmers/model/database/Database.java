@@ -21,6 +21,7 @@ public class Database {
      * a new user.
      * @param name the name of the new user
      * @param pwd the password for the new user
+     * @param email the email of the new user
      */
     public static void createUserDoc(String name, String email, String pwd){
         try{
