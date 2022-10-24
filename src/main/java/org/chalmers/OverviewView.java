@@ -71,7 +71,7 @@ public class OverviewView implements Initializable {
     List<OverviewBudgetPost> currentFourPanels;
     List<List<OverviewBudgetPost>> bpList = new ArrayList<>();
 
-    private List<OverviewBudgetPost> budgetPostCards = new ArrayList<>();
+    private final List<OverviewBudgetPost> budgetPostCards = new ArrayList<>();
 
     // controllers
     SceneController sceneController = new SceneController();

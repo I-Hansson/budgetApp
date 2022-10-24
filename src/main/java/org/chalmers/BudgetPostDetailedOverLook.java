@@ -12,8 +12,6 @@ public class BudgetPostDetailedOverLook extends AnchorPane {
 
     private final ModelFacade facade = ModelFacade.getInstance();
 
-    private double spent;
-
     @FXML
     private Label detailedSpent;
     @FXML
@@ -31,7 +29,7 @@ public class BudgetPostDetailedOverLook extends AnchorPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
-        spent = (facade.getSelectedBudgetPost().getBudgetCap()) - facade.getSelectedBudgetPost().getCurrentBalance();
+        double spent = (facade.getSelectedBudgetPost().getBudgetCap()) - facade.getSelectedBudgetPost().getCurrentBalance();
         detailedSpent.setText(String.valueOf(spent));
         detailedAverage.setText(String.valueOf(facade.getSelectedBudgetPost().getBudgetCap()));
 

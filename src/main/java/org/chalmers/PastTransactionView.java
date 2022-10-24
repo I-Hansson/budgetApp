@@ -43,7 +43,7 @@ public class PastTransactionView implements Initializable {
 
 
     ModelFacade facade = ModelFacade.getInstance();
-    private List<PastTransactionItem>  pastTransactionItemList = new ArrayList<>();
+    private final List<PastTransactionItem>  pastTransactionItemList = new ArrayList<>();
 
     SceneController sceneController = new SceneController();
 

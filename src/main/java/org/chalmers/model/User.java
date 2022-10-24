@@ -5,17 +5,25 @@ import java.util.Calendar;
 import java.util.List;
 
 /**
- * This class represents a user
- * Depends on Budget
+ * This class represents a user. Stores all budgets.
+ * <p>
+ * Uses: IBudget, Budget, SaveableBudget
+ * Used by: ModelFacade
  *
  * @author Isac Hansson
  * @author williamfrisk
  */
 public class User {
     private String name;
-    private List<IBudget> budgets = new ArrayList<>();
+    private final List<IBudget> budgets = new ArrayList<>();
     private IBudget currentBudget;
-    private int id;
+    private final int id;
+
+    /**
+     * Constructs an instance of User.
+     * 
+     * @param id The desired id for the User.
+     */
     public User(int id){
         this.name = "temp";
         this.id = id;
@@ -23,6 +31,14 @@ public class User {
     }
 
     //Getters
+
+    /**
+     * Returns the budget for the given date.
+     *
+     * @param year The year of the budget.
+     * @param month The month of the budget.
+     * @return The IBudget.
+     */
     public IBudget getSpecificbudget(int year, int month) {
         for (IBudget budget : budgets) {
             if (budget.getDate().get(Calendar.YEAR) == year && budget.getDate().get(Calendar.MONTH) == month) {
@@ -32,11 +48,19 @@ public class User {
         return null;
     }
 
-
+    /**
+     * Returns a List of all budgets in the user.
+     * @return The list of IBudget.
+     */
     public List<IBudget> getBudgets() {
         return budgets;
     }
 
+    /**
+     * Returns a list of the budgets in the user that are saveable.
+     *
+     * @return The list of SaveableBudget.
+     */
     public List<SaveableBudget> getSaveableBudgets() {
         List<SaveableBudget> saveableBudgets = new ArrayList<>();
 
@@ -49,29 +73,50 @@ public class User {
         return saveableBudgets;
     }
 
+    /**
+     * Returns the user's id.
+     *
+     * @return The user id int.
+     */
     public int getUserID(){
         return this.id;
     }
 
+    /**
+     * Returns the currently active budget.
+     * @return The active IBudget.
+     */
     public IBudget getCurrentBudget() {
         return currentBudget;
     }
 
+    /**
+     * Returns the name of the user.
+     * @return The name String.
+     */
     public String getName(){
         return name;
     }
 
     //Setters
+
+    /**
+     * Sets the currently active budget.
+     * @param currentBudget The budget to be set.
+     */
     public void setCurrentBudget(IBudget currentBudget) {
         this.currentBudget = currentBudget;
     }
 
+    /**
+     * Sets the name of the user.
+     * @param name The name to be set.
+     */
     public void setName(String name){ this.name = name;}
     //Methods
 
-    //TODO bättre kommentarer
     /**
-     * Switches currentBudget
+     * Switches the currently active budget to the next in the collection of budgets.
      */
     public void nextCurrentBudget(){
         int index = budgets.indexOf(this.currentBudget);
@@ -84,7 +129,7 @@ public class User {
     }
 
     /**
-     * Switches currentBudget
+     * Switches the currently active budget to the previous in the collection of budgets.
      */
     public void previousCurrentBudget(){
         int index = budgets.indexOf(this.currentBudget);

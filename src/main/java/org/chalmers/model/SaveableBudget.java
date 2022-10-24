@@ -8,12 +8,15 @@ import java.util.Collection;
  * or budget post that were added during the last session
  * and is able to return them.
  *
+ * Used by: database module, User
+ * Uses: IBudgetPost, ITransaction
+ *
  * @author williamfrisk
  */
-public abstract class SaveableBudget implements IBudget{
+public abstract class SaveableBudget {
 
-    private Collection<IBudgetPost> newBudgetPosts = new ArrayList<>();
-    private Collection<ITransaction> newTransactions = new ArrayList<>();
+    private final Collection<IBudgetPost> newBudgetPosts = new ArrayList<>();
+    private final Collection<ITransaction> newTransactions = new ArrayList<>();
 
     /**
      * Returns all new budget post added by the user during the last session.

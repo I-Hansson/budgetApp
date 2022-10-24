@@ -14,7 +14,7 @@ import java.util.*;
  *
  */
 public class TransactionsDB {
-    private DatabaseConnector connector;
+    private final DatabaseConnector connector;
     private FileWriter file;
     private JSONObject oldDB;
     private List<DBTransaction> transactionsList;

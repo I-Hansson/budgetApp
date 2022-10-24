@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class SaveableBudgetTest {
 
-    private SaveableBudget testBudget = new Budget(0, 0);
+    private final SaveableBudget testBudget = new Budget(0, 0);
 
     @Test
     void newTransactionsCollectionIsMutable() {

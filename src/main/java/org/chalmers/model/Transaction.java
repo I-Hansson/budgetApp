@@ -4,17 +4,18 @@ import java.util.Calendar;
 
 /**
  * This class represents a transaction.
- *
- * Depends on BudgetPostID
+ * <p>
+ * Uses: BudgetPostID
+ * Used by: ModelFacade
  *
  * @author Isac Hansson
  */
 public class Transaction implements ITransaction {
-    private Calendar dateOfTransaction;
-    private double amount;
+    private final Calendar dateOfTransaction;
+    private final double amount;
     private BudgetPostID budgetPostID;
-    private String description;
-    private String name;
+    private final String description;
+    private final String name;
 
     public Transaction(String name, double amount, String description, Calendar dateOfTransaction){
         this.name = name;

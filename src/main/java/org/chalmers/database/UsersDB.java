@@ -13,10 +13,12 @@ import java.util.*;
  * TODO skriv utförligare
  */
 public class UsersDB {
-    private DatabaseConnector connector;
+    private final DatabaseConnector connector;
     private FileWriter file;
     private JSONObject oldDB;
+
     private TransactionsDB transactionsDB;
+
 
     public UsersDB(int uid){
         connector = new DatabaseConnector("src/main/database/users/" + uid +".json");

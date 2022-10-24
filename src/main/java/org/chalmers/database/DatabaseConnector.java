@@ -11,7 +11,7 @@ import java.io.IOException;
 public class DatabaseConnector {
 
     private JSONObject dbObj;
-    private String path;
+    private final String path;
     JSONParser parser = new JSONParser();
 
     /**

@@ -8,6 +8,9 @@ import java.util.*;
 /**
  * This class gives functionality for displaying line charts.
  * Depends on ILineChartExtent & Transaction
+ * <p>
+ * Uses: ILineChartExtent
+ * Used by: ChartFactory, LineChartFX
  *
  * @author williamfrisk
  */

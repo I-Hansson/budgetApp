@@ -5,7 +5,8 @@ package org.chalmers.model.charts;
  * This class is used to create instances of chart classes.
  * Its purpose is obscuring implementation from client code.
  *
- * Depends on ChartTypePie and ChartTypeLine.
+ * Uses: ChartTypeLine, ChartTypePie.
+ * Used by: View module
  *
  * @author williamfrisk
  */
