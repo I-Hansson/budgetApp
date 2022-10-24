@@ -2,13 +2,11 @@ package org.chalmers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
+
 import org.chalmers.Controllers.BudgetPostdetailedViewController;
 
 import java.io.IOException;
@@ -19,14 +17,7 @@ import java.io.IOException;
 
 public class BudgetPostsItem extends AnchorPane {
 
-
     BudgetPostdetailedViewController budgetPostdetailedViewController = new BudgetPostdetailedViewController();
-
-
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
 
     @FXML
     AnchorPane paneBudgetPost;
@@ -69,7 +60,7 @@ public class BudgetPostsItem extends AnchorPane {
         budgetBannerColorBoard.setStyle("-fx-background-color: rgb(" + color + " );");
 
         paneBudgetPost.setOnMouseClicked(mouseEvent -> {
-            System.out.println(this.budgetBannerName.getText());
+
             budgetPostdetailedViewController.setCorrspondingId(((this.budgetBannerName.getText())));
             sceneController.budgetPostDetailed(mouseEvent);
 

@@ -26,11 +26,12 @@ public class LogInController {
 
          int  id = Database.signIntoDB(username,password);
          if (id == 404){
+             //TODO
              System.out.println("wrong password");
          }else if( id == 403){
              System.out.println("User not found");
          }else{
-             System.out.println("User: " + id);
+
              facade.setUser(DatabaseLoader.getUserFromDatabase(id));
          }
     }

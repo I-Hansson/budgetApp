@@ -269,7 +269,7 @@ public class OverviewView implements Initializable {
             tempBp.add(budgetPostCards.get(i));
         }
         bpList.add(tempBp);
-        System.out.println(bpList);
+
         currentFourPanels  =  bpList.get(0);
     }
 

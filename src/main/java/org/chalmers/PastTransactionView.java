@@ -26,8 +26,7 @@ import java.util.ResourceBundle;
 
 public class PastTransactionView implements Initializable {
 
-    @FXML FlowPane AddTransactionFlowPane;
-
+    @FXML FlowPane addTransactionFlowPane;
     @FXML Text overviewTitelPanel;
     @FXML Text budgetPostsTitelPanel;
     @FXML Text pastTransactionsTitelPanel;
@@ -102,7 +101,7 @@ public class PastTransactionView implements Initializable {
      * goes to next months budget
      */
     @FXML
-    private void nextMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void nextMonth() {
         overviewController.clickedNextMonth();
         update();
     }
@@ -110,7 +109,7 @@ public class PastTransactionView implements Initializable {
      * goes to previous months budget
      */
     @FXML
-    private void prevMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void prevMonth(){
         overviewController.clickedPrevMonth();
         update();
 

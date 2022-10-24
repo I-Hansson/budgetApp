@@ -51,7 +51,7 @@ public class LogInView {
     SceneController sceneController = new SceneController();
 
     @FXML
-    private void createAccount(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void createAccount(){
         if (checkInformation()) {
             createUserPane.toBack();
             controller.createUser(
@@ -66,7 +66,7 @@ public class LogInView {
 
 
     @FXML
-    private void goToCreateAccount(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void goToCreateAccount(){
         createUserPane.toFront();
     }
 
@@ -146,7 +146,7 @@ public class LogInView {
     }
 
     @FXML
-    private void closeNewUser(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void closeNewUser(){
         createUserPane.toBack();
     }
 
