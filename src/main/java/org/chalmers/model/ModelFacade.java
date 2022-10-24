@@ -8,16 +8,19 @@ import java.util.*;
 /**
  * This class is a facade for the entire model.
  * Its purpose is providing an interface for the client code and allow interaction with the model.
- * Depends on everything :))))
+ * <p>
+ * Uses: IBudgetPost, ITransaction, Transaction, BudgetPost, IBudget
+ * Used by: View and Controller modules
+ *
  * @author williamfrisk
  * @author Isac Hansson
  * @author Jonathan
  */
-public class ModelFacade {
+public final class ModelFacade {
 
     // TODO Får jag göra så här ?
     private static IBudgetPost selectedBudgetPost;
-    private static ModelFacade instance = new ModelFacade();
+    private static final ModelFacade instance = new ModelFacade();
     private User user;
     private ModelFacade() {}
 

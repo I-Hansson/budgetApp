@@ -22,7 +22,7 @@ import java.io.IOException;
 
 public class LogInView {
 
-    private LogInController controller = new LogInController();
+    private final LogInController controller = new LogInController();
 
     @FXML
     TextField userName;

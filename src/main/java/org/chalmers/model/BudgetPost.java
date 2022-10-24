@@ -6,17 +6,19 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * This class represents a budget post.
- * Depends on Transaction, BudgetPostID, IBudgetPostsObserver
+ * This class represents a budget post and stores all transactions
+ * in the budget post.
+ * <p>
+ * Uses: ITransaction, BudgetPostID
+ * Used by: ModelFacade
  *
  * @author Isac Hansson, Jonathan Svantesson
  */
 public class BudgetPost implements IBudgetPost{
-    //TODO give Icon attribute
 
     private double budgetCap; //The most you want to spend in a surtain budget-post.
     private double currentBalance;
-    private BudgetPostID id;
+    private final BudgetPostID id;
     private final List<ITransaction> transactions = new ArrayList<>();
 
     public BudgetPost(double budgetCap, String name, String color){

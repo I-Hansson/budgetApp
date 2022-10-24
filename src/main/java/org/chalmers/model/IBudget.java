@@ -5,7 +5,7 @@ package org.chalmers.model;
  *
  * @author williamfrisk
  */
-public interface IBudget extends IHasTransactions, IHasDate, IHasBalance, IHasBudgetCap, IHasBudgetPosts{
+public interface IBudget extends IHasTransactions, IHasDate, IHasBalance, IHasBudgetCap, IHasBudgetPosts {
 
 
 }

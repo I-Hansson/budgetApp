@@ -61,9 +61,9 @@ public class BudgetPostsView implements Initializable {
 
     List<BudgetPostsItem> items = new ArrayList<>();
 
-    private BudgetPostController budgetcontroller = new BudgetPostController();
-    private OverviewController overviewController = new OverviewController();
-    private ModelFacade facade = ModelFacade.getInstance();
+    private final BudgetPostController budgetcontroller = new BudgetPostController();
+    private final OverviewController overviewController = new OverviewController();
+    private final ModelFacade facade = ModelFacade.getInstance();
     Image arrowRightGrey;
     Image arrowRightBlack;
 
