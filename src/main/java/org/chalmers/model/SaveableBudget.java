@@ -10,7 +10,7 @@ import java.util.Collection;
  *
  * @author williamfrisk
  */
-public abstract class SaveableBudget implements IBudget{
+public abstract class SaveableBudget {
 
     private Collection<IBudgetPost> newBudgetPosts = new ArrayList<>();
     private Collection<ITransaction> newTransactions = new ArrayList<>();
