@@ -4,7 +4,7 @@ import org.chalmers.model.ModelFacade;
 
 /**
  * Controller class for the view class BudgetPostView.
- *
+ * Depends on: ModelFacade.
  * @author Jonathan
  */
 
@@ -15,6 +15,14 @@ public class BudgetPostController {
     public BudgetPostController(){
 
     }
+
+    /**
+     * Creation of budget post.
+     * @param name The budget post name.
+     * @param maxAmount The budgetcap for the budget post.
+     * @param description The description for the budget post.
+     * @param color The selected color for the budget post.
+     */
 
     public void createBudgetPost(String name, String maxAmount, String description,String color){
 

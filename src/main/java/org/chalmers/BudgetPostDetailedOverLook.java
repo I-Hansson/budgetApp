@@ -8,6 +8,13 @@ import org.chalmers.model.ModelFacade;
 
 import java.io.IOException;
 
+
+/**
+ * Acts as the view class of Budget Post Detailed Overlook.
+ * Depends on: ModelFacade,
+ * @author Jonathan
+ */
+
 public class BudgetPostDetailedOverLook extends AnchorPane {
 
     private final ModelFacade facade = ModelFacade.getInstance();
@@ -17,6 +24,9 @@ public class BudgetPostDetailedOverLook extends AnchorPane {
     @FXML
     private Label detailedAverage;
 
+    /**
+     * Creates the dynamic view.
+     */
     public BudgetPostDetailedOverLook(){
 
 

@@ -6,7 +6,7 @@ import org.chalmers.database.DatabaseLoader;
 
 /**
  * Controller class for the view class LogInView.
- *
+ * Depends on: ModelFacade.
  * @author Jonathan
  */
 
@@ -14,14 +14,25 @@ public class LogInController {
 
 
     public LogInController(){}
-    ModelFacade facade = ModelFacade.getInstance(); //todo fix
+    ModelFacade facade = ModelFacade.getInstance();
 
+    /**
+     * Creation of the user.
+     * @param name The user name.
+     * @param id The user id.
+     * @param password The user password
+     */
 
     public void createUser(String name, String id,String password){
-
         facade.createNewUser( name, id, password);
-
     }
+
+    /**
+     * Signs in the user.
+     * @param username The username of the user.
+     * @param password The password of the user.
+     */
+
     public void signInUser(String username, String password){
 
          int  id = Database.signIntoDB(username,password);
