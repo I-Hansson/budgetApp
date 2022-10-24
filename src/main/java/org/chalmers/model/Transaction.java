@@ -5,8 +5,9 @@ import java.util.Calendar;
 
 /**
  * This class represents a transaction.
- *
- * Depends on BudgetPostID
+ * <p>
+ * Uses: BudgetPostID
+ * Used by: ModelFacade
  *
  * @author Isac Hansson
  */

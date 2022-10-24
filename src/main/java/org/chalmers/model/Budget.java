@@ -3,8 +3,13 @@ package org.chalmers.model;
 import java.util.*;
 
 /**
- * @author Isac Hansson ,
- * Depends on BudgetPost, Transaction, ITransactionAddedObserver, BudgetPostFactory, ITransactionAddedObserver
+ * This class represents the concept of a budget and stores all transactions
+ * and budget posts in the budget. A budget spans a month.
+ * <p>
+ * Uses: IBudgetPost, ITransaction
+ * Used by: User
+ *
+ * @author Isac Hansson
  */
 public class Budget extends SaveableBudget implements IBudget{
 

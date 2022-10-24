@@ -8,6 +8,9 @@ import java.util.Collection;
  * or budget post that were added during the last session
  * and is able to return them.
  *
+ * Used by: database module, User
+ * Uses: IBudgetPost, ITransaction
+ *
  * @author williamfrisk
  */
 public abstract class SaveableBudget {

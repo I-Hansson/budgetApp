@@ -8,6 +8,7 @@ import java.util.Map;
 
 /**
  * A class that provides implementation to a line chart that needs to span a year.
+ * @author williamfrisk
  */
 class LineChartYear implements ILineChartExtent {
 

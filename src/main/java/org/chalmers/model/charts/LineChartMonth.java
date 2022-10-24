@@ -8,6 +8,8 @@ import java.util.Map;
 
 /**
  * A class that provides implementation to a line chart that needs to span a month.
+ *
+ * @author williamfrisk
  */
 class LineChartMonth implements ILineChartExtent {
     public LineChartMonth() {}

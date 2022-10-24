@@ -8,6 +8,7 @@ import java.util.Map;
 
 /**
  * A class that provides implementation to a line chart that needs to span a week.
+ * @author williamfrisk
  */
 class LineChartWeek implements ILineChartExtent {
     public LineChartWeek() {}

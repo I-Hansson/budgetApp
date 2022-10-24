@@ -8,7 +8,10 @@ import java.util.*;
 /**
  * This class is a facade for the entire model.
  * Its purpose is providing an interface for the client code and allow interaction with the model.
- * Depends on everything :))))
+ * <p>
+ * Uses: IBudgetPost, ITransaction, Transaction, BudgetPost, IBudget
+ * Used by: View and Controller modules
+ *
  * @author williamfrisk
  * @author Isac Hansson
  * @author Jonathan

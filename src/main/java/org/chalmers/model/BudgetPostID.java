@@ -3,6 +3,8 @@ package org.chalmers.model;
 /**
  * This class represents an ID for a budget post.
  * Its purpose is to loosen dependencies between Transaction and BudgetPost
+ * <p>
+ * Used by: Transaction, BudgetPost
  *
  * @author Isac Hansson, Jonathan Svantesson
  */

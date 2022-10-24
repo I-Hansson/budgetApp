@@ -6,8 +6,11 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * This class represents a budget post.
- * Depends on Transaction, BudgetPostID, IBudgetPostsObserver
+ * This class represents a budget post and stores all transactions
+ * in the budget post.
+ * <p>
+ * Uses: ITransaction, BudgetPostID
+ * Used by: ModelFacade
  *
  * @author Isac Hansson, Jonathan Svantesson
  */

@@ -4,7 +4,7 @@ import org.chalmers.model.ITransaction;
 import java.util.Map;
 
 /**
- * An interface for classes that represent the algorithm for a extent of a line chart.
+ * An interface for classes that represent the algorithm for an extent of a line chart.
  *
  * @author williamfrisk
  */

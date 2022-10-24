@@ -6,7 +6,9 @@ import java.util.List;
 
 /**
  * This class represents a user. Stores all budgets.
- * Depends on Budget
+ * <p>
+ * Uses: IBudget, Budget, SaveableBudget
+ * Used by: ModelFacade
  *
  * @author Isac Hansson
  * @author williamfrisk
