@@ -1,23 +1,22 @@
 package database;
 
 import org.chalmers.database.TransactionsDB;
-import org.junit.After;
-import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
-
 import java.io.*;
 import java.nio.channels.FileChannel;
 import java.util.Map;
 
+import org.junit.After;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
 
 /**
  * Written by Oscar Cronvall
  *
  */
 
-public class TransactionDBTest {
+class TransactionDBTest {
 
     TransactionsDB tdb = new TransactionsDB(0);
 
@@ -36,15 +35,15 @@ public class TransactionDBTest {
     }
 
     @Test
-    public void assertSetAmount(){
+    void assertSetAmount(){
         Double expectedAmount = 500.0;
-        tdb.setAmount("202104061247", "maxi", expectedAmount);
-        Map<String, Object> transaction = tdb.getTransaction("maxi", "202104061247");
+        tdb.setAmount("202104061247", "Ica Maxi", expectedAmount);
+        Map<String, Object> transaction = tdb.getTransaction("Ica Maxi", "202104061247");
         assertEquals(expectedAmount, transaction.get("amount"));
     }
 
     @Test
-    public void assertSetName(){
+    void assertSetName(){
         String expectedName = "Ica Maxi";
         tdb.setName("202104061247", "maxi", expectedName);
         Map<String, Object> transaction = tdb.getTransaction(expectedName, "202104061247");
@@ -52,10 +51,10 @@ public class TransactionDBTest {
     }
 
     @Test
-    public void assertSetDescription(){
+        void assertSetDescription(){
         String expectedDescription = "Jag handlar nudlar på maxi";
-        tdb.setDescription("202104061247", "maxi", expectedDescription);
-        Map<String, Object> transaction = tdb.getTransaction("maxi", "202104061247");
+        tdb.setDescription("202104061247", "Ica Maxi", expectedDescription);
+        Map<String, Object> transaction = tdb.getTransaction("Ica Maxi", "202104061247");
         assertEquals(expectedDescription, transaction.get("description"));
     }
 }

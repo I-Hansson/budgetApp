@@ -168,7 +168,7 @@ public class BudgetPostsView implements Initializable {
      */
     @FXML
     private void prevMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-        System.out.println("next");
+
         overviewController.clickedPrevMonth();
         update();
 

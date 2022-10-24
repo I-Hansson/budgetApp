@@ -1,6 +1,5 @@
 package org.chalmers.model;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 /**
@@ -21,7 +20,7 @@ public class Transaction implements ITransaction {
     public Transaction(String name, double amount, String description, Calendar dateOfTransaction){
         this.name = name;
         this.amount = amount;
-        this.budgetPostID = Config.uncategorizedBudgetPostID;
+        this.budgetPostID = Config.UNCATEGORIZED_BUDGET_POST_ID;
         this.dateOfTransaction = dateOfTransaction;
         this.description = description;
     }

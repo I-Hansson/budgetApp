@@ -1,19 +1,14 @@
 package model;
-
 import org.chalmers.model.*;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.TestMethodOrder;
-
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class ModelFacadeTest {
+    class ModelFacadeTest {
     //saveUser() and createNewUser() are untestable with our skills in testing.
 
     ModelFacade testFacade = ModelFacade.getInstance();
@@ -21,13 +16,11 @@ public class ModelFacadeTest {
     IBudget testBudget = new Budget(2022, 9);
     IBudgetPost testBp = new BudgetPost("test");
 
-    @Before
-    public void init() {
-        testFacade.setUser(testUser);
-    }
+
 
     @Test
-    public void getCurrentBudgetReturnsCorrectInstance() {
+    void getCurrentBudgetReturnsCorrectInstance() {
+        testFacade.setUser(testUser);
         assertEquals(
                 testFacade.getUser().getCurrentBudget(),
                 testFacade.getCurrentBudget()
@@ -35,7 +28,8 @@ public class ModelFacadeTest {
     }
 
     @Test
-    public void getCurrentBudgetCalendarReturnsCorrectInstance() {
+    void getCurrentBudgetCalendarReturnsCorrectInstance() {
+        testFacade.setUser(testUser);
         Calendar today = new GregorianCalendar();
         assertEquals(
                 today.get(Calendar.MONTH),
@@ -45,7 +39,8 @@ public class ModelFacadeTest {
 
     @Test
     @Order(2)
-    public void transactionsCollectionIsMutable() {
+    void transactionsCollectionIsMutable() {
+        testFacade.setUser(testUser);
         testFacade.getUser().getBudgets().add(testBudget);
         testFacade.getUser().setCurrentBudget(testBudget);
         testFacade.addBudgetPost(
@@ -64,7 +59,8 @@ public class ModelFacadeTest {
 
     @Test
     @Order(1)
-    public void budgetPostsCollectionIsMutable() {
+    void budgetPostsCollectionIsMutable() {
+        testFacade.setUser(testUser);
 
         testFacade.addBudgetPost(
                 "Uncategorized",
@@ -75,7 +71,8 @@ public class ModelFacadeTest {
     }
 
     @Test
-    public void getCurrentBudgetBalanceReturnsCorrectDouble() {
+    void getCurrentBudgetBalanceReturnsCorrectDouble() {
+        testFacade.setUser(testUser);
         testFacade.getUser().getBudgets().add(testBudget);
         testFacade.getUser().setCurrentBudget(testBudget);
         testFacade.addBudgetPost(
@@ -93,13 +90,15 @@ public class ModelFacadeTest {
     }
 
     @Test
-    public void selectedBudgetPostIsMutable() {
+    void selectedBudgetPostIsMutable() {
+        testFacade.setUser(testUser);
         testFacade.setSelectedBudgetPost(testBp);
         assertEquals(testBp, testFacade.getSelectedBudgetPost());
     }
 
     @Test
-    public void getBudgetCapReturnsCorrectDouble() {
+    void getBudgetCapReturnsCorrectDouble() {
+        testFacade.setUser(testUser);
         testFacade.addBudgetPost("", 100, "");
         assertEquals(100, testFacade.getBudgetCap());
     }

@@ -34,7 +34,7 @@ public class OverviewBudgetPost extends AnchorPane{
     @FXML Text budgetPostTotalAmount;
     @FXML AnchorPane budgetPostCard;
     @FXML AnchorPane increasingPaneBudgetPost;
-    @FXML AnchorPane AnchorPaneBudgetPostCard;
+    @FXML AnchorPane anchorPaneBudgetPostCard;
 
 
     public OverviewBudgetPost(String name, double moneyLeft, double procent, String color, String complementColor){
@@ -57,7 +57,7 @@ public class OverviewBudgetPost extends AnchorPane{
 
         increasingPaneBudgetPost.setPrefHeight(250);
 
-        System.out.println(procent);
+
         TranslateTransition translate = new TranslateTransition();
         translate.setDuration(Duration.millis(1000));
         translate.setByY(250*((1-procent)/2));

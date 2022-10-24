@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class UserTest {
+class UserTest {
 
     User testUser = new User(1);;
     IBudget testBudget = new Budget(2021, 8);
@@ -21,14 +21,14 @@ public class UserTest {
 
     @Test
     @Order(2)
-    public void getSpecificBudgetReturnsCorrectInstance() {
+    void getSpecificBudgetReturnsCorrectInstance() {
         testUser.getBudgets().add(testBudget);
         assertEquals(testBudget, testUser.getSpecificbudget(2021, 8));
     }
 
     @Test
     @Order(3)
-    public void getSaveableBudgetsReturnsCorrectTypes() {
+    void getSaveableBudgetsReturnsCorrectTypes() {
         for (int i = 0; i < testUser.getSaveableBudgets().size(); i++) {
             assertTrue(testUser.getSaveableBudgets().get(i) instanceof SaveableBudget);
         }
@@ -36,26 +36,26 @@ public class UserTest {
 
     @Test
     @Order(4)
-    public void getNameReturnsCorrectString() {
+    void getNameReturnsCorrectString() {
         assertEquals("temp", testUser.getName());
     }
 
     @Test
     @Order(5)
-    public void getUserIDReturnsCorrectInt() {
+    void getUserIDReturnsCorrectInt() {
         assertEquals(1, testUser.getUserID());
     }
 
     @Test
     @Order(6)
-    public void currentBudgetIsMutable() {
+    void currentBudgetIsMutable() {
         testUser.setCurrentBudget(testBudget);
         assertEquals(testBudget, testUser.getCurrentBudget());
     }
 
     @Test
     @Order(7)
-    public void nextCurrentBudgetSwitchesBudget() {
+    void nextCurrentBudgetSwitchesBudget() {
         testUser.getBudgets().clear();
         testUser.getBudgets().add(testBudget);
         testUser.getBudgets().add(testBudget2);
@@ -67,7 +67,7 @@ public class UserTest {
 
     @Test
     @Order(8)
-    public void previousCurrentBudgetSwitchesBudget() {
+    void previousCurrentBudgetSwitchesBudget() {
         testUser.getBudgets().clear();
         testUser.getBudgets().add(testBudget);
         testUser.getBudgets().add(testBudget2);

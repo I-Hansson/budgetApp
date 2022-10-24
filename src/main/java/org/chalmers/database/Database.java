@@ -51,12 +51,6 @@ public class Database {
 
     private static void createUserTransactionDoc(){
         try{
-            File newFile = new File("./src/main/database/transactions/" + nextID + ".json");
-            if(newFile.createNewFile())
-                System.out.println("Transaction document created");
-            else
-                System.out.println("Document of that id already exists");
-
             JSONObject jsonObject = new JSONObject();
             JSONArray transactions = new JSONArray();
             jsonObject.put("transactions", transactions);
@@ -89,13 +83,13 @@ public class Database {
                     if(udb.matchesPassword(pwd))
                         return i;
                     else{
-                        System.out.println("Password doesn't match");
+
                         return 404;
                     }
                 }
             }
         }
-        System.out.println("No user with that email was found");
+
         return 403;
     }
 }

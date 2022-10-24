@@ -81,7 +81,7 @@ public class OverviewPieChart extends AnchorPane {
 
     private void setupSliceCaptions() {
         caption4.setVisible(false); //TODO ta bort när övrigt är implementerat
-        if(piechart.getData().get(0).getName().equals("1")){
+        if("1".equals( piechart.getData().get(0).getName())){
             caption.setText("Inga transaktioner");
             caption.setTranslateX(-30);
             caption1.setVisible(false);
@@ -162,7 +162,7 @@ public class OverviewPieChart extends AnchorPane {
      * Used for applying correct colors to the pie chart.
      */
     private void applyColors() {
-        if(piechart.getData().get(0).getName().equals("1")) {
+        if("1".equals(piechart.getData().get(0).getName())) {
             piechart.getData().get(0).getNode().setStyle("-fx-pie-color: gray");
             return;
         }
@@ -172,7 +172,7 @@ public class OverviewPieChart extends AnchorPane {
         for(IBudgetPost bp :bps){
             map.put(bp.getName(),bp.getColor());
         }
-        System.out.println(map.values());
+
         for (PieChart.Data data : piechart.getData()) {
                 data.getNode().setStyle("-fx-pie-color: rgb(" + map.get(data.getName())  + ");");
 

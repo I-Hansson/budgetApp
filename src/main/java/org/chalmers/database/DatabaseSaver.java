@@ -30,6 +30,7 @@ public class DatabaseSaver {
 
             saveBudgetPost();
         }else{
+            //TODO
             System.out.println("no user");
         }
     }
@@ -58,7 +59,7 @@ public class DatabaseSaver {
         for(SaveableBudget b :  user.getSaveableBudgets()) {
 
             for (IBudgetPost bp: b.getNewBudgetPosts()){
-                System.out.println("loop");
+
                 userDB.addBudgetPost(bp.getName(),String.valueOf(user.getCurrentBudget().getDate().get(Calendar.YEAR)) + String.valueOf(user.getCurrentBudget().getDate().get(Calendar.MONTH)),bp.getColor(),bp.getBudgetCap());
             }
         }

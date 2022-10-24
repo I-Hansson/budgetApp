@@ -16,6 +16,7 @@ import org.chalmers.model.ModelFacade;
  */
 public class App extends Application{
     ModelFacade facade = ModelFacade.getInstance();
+    @Override
     public void start (Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load((getClass().getResource("LogInView.fxml")));
         primaryStage.setTitle("SAFE BOAT");

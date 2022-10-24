@@ -4,18 +4,16 @@ import org.chalmers.model.ITransaction;
 import org.chalmers.model.Transaction;
 import org.chalmers.model.charts.ChartFactory;
 import org.chalmers.model.charts.ChartTypePie;
-import org.junit.Test;
-
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-public class ChartTypePieTest {
+class ChartTypePieTest {
 
     @Test
-    public void monthLineChartUpdatesDataMapCorrectly() {
+    void monthLineChartUpdatesDataMapCorrectly() {
         ChartTypePie testChart = ChartFactory.createPieChart();
         List<ITransaction> dataPoints = new ArrayList<>();
         ITransaction dataPoint = new Transaction("test", 100, " ", new GregorianCalendar());

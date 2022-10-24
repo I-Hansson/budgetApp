@@ -1,18 +1,21 @@
 package model;
 
 import org.chalmers.model.*;
-import org.junit.Test;
 
 import java.util.GregorianCalendar;
+import org.chalmers.model.Transaction;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class SaveableBudgetTest {
+
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+class SaveableBudgetTest {
 
     private final SaveableBudget testBudget = new Budget(0, 0);
 
     @Test
-    public void newTransactionsCollectionIsMutable() {
+    void newTransactionsCollectionIsMutable() {
         ITransaction tempTransaction = new Transaction(
                 "",
                 10,
@@ -24,7 +27,7 @@ public class SaveableBudgetTest {
     }
 
     @Test
-    public void newBudgetPostsCollectionIsMutable() {
+    void newBudgetPostsCollectionIsMutable() {
         IBudgetPost tempBudgetPost = new BudgetPost("test");
         testBudget.addNewBudgetPost(tempBudgetPost);
 

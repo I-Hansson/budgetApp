@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 
 @TestMethodOrder(OrderAnnotation.class)
-public class TransactionTest {
+ class TransactionTest {
 
     Calendar today = new GregorianCalendar();
     Transaction testTransaction = new Transaction(
@@ -31,43 +31,43 @@ public class TransactionTest {
 
     @Test
     @Order(1)
-    public void getBudgetPostNameReturnsCorrectString(){
+    void getBudgetPostNameReturnsCorrectString(){
         assertEquals("Uncategorized", testTransaction.getBudgetPostName());
     }
 
     @Test
     @Order(2)
-    public void getBudgetPostColorReturnsCorrectString() {
+    void getBudgetPostColorReturnsCorrectString() {
         assertEquals("0,0,0", testTransaction.getBudgetPostColor());
     }
 
     @Test
     @Order(3)
-    public void getNameReturnsCorrectString() {
+    void getNameReturnsCorrectString() {
         assertEquals("Test", testTransaction.getName());
     }
 
     @Test
     @Order(4)
-    public void getDateReturnsCorrectInstance() {
+    void getDateReturnsCorrectInstance() {
         assertEquals(today, testTransaction.getDate());
     }
 
     @Test
     @Order(5)
-    public void getAmountReturnsCorrectDouble() {
+    void getAmountReturnsCorrectDouble() {
         assertEquals(100, testTransaction.getAmount());
     }
 
     @Test
     @Order(6)
-    public void getDescriptionReturnsCorrectString() {
+    void getDescriptionReturnsCorrectString() {
         assertEquals(" ", testTransaction.getDescription());
     }
 
     @Test
     @Order(7)
-    public void budgetPostIdIsMutable() {
+    void budgetPostIdIsMutable() {
         testTransaction.setBpID(bpId);
         assertEquals("test2", testTransaction.getBudgetPostName());
     }
