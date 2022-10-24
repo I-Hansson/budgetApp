@@ -13,7 +13,7 @@ import java.util.*;
  * @author Isac Hansson
  * @author Jonathan
  */
-public class ModelFacade {
+public final class ModelFacade {
 
     // TODO Får jag göra så här ?
     private static IBudgetPost selectedBudgetPost;
