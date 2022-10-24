@@ -21,7 +21,10 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 /**
+ * Acts as a view class for PastTransactionView.
+ * Depends on: OverviewController, ModelFacade, PastTransactionItem and SceneController.
  * @author Jonathan
+ *
  */
 
 public class PastTransactionView implements Initializable {
@@ -98,17 +101,13 @@ public class PastTransactionView implements Initializable {
         rightArrow.setImage(arrowRightBlack);
     }
 
-    /**
-     * goes to next months budget
-     */
+
     @FXML
     private void nextMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         overviewController.clickedNextMonth();
         update();
     }
-    /**
-     * goes to previous months budget
-     */
+
     @FXML
     private void prevMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         overviewController.clickedPrevMonth();
@@ -116,25 +115,19 @@ public class PastTransactionView implements Initializable {
 
     }
 
-    /**
-     * navigates to the overview view
-     */
+
     @FXML
     private void SwitchToOverview (javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.overviewView(mouseEvent);
     }
 
-    /**
-     * navigates to the budget posts view
-     */
+
     @FXML
     private void SwitchToBudgetPosts(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.budgetPostView(mouseEvent);
     }
 
-    /**
-     * navigates to the add transaction view
-     */
+
     @FXML
     private void SwitchToAddTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.addTransaction(mouseEvent);

@@ -2,31 +2,24 @@ package org.chalmers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
+
 import org.chalmers.Controllers.BudgetPostdetailedViewController;
 
 import java.io.IOException;
 
 /**
+ * Acts as the view class for Budget Post Item.
+ * Depends on: BudgetPostdetailedViewController and SceneController.
  * @author Jonathan
  */
 
 public class BudgetPostsItem extends AnchorPane {
 
-
     BudgetPostdetailedViewController budgetPostdetailedViewController = new BudgetPostdetailedViewController();
-
-
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
 
     @FXML
     AnchorPane paneBudgetPost;
@@ -46,6 +39,16 @@ public class BudgetPostsItem extends AnchorPane {
     Text budgetBannerMAX;
 
     SceneController sceneController = new SceneController();
+
+    /**
+     * Creates the dynamic view.
+     * @param bpNamn The budget post name.
+     * @param bpDesc The budget post description.
+     * @param amount The budget post.
+     * @param amountTransactions The amount of transactions in budget post.
+     * @param color The specific color.
+     * @param currentAmount The amount remaining.
+     */
 
     public BudgetPostsItem(String bpNamn, String bpDesc, double amount, int amountTransactions, String color, double currentAmount) {
 

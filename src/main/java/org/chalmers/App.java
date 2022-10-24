@@ -12,10 +12,17 @@ import javafx.stage.WindowEvent;
 import org.chalmers.model.ModelFacade;
 
 /**
- * JavaFX App
+ * Starts the application
+ * Depends on: ModelFacade.
+ *
  */
 public class App extends Application{
     ModelFacade facade = ModelFacade.getInstance();
+
+    /**
+     * Setts the necessary information for the start of the application.
+     */
+
     public void start (Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load((getClass().getResource("LogInView.fxml")));
         primaryStage.setTitle("SAFE BOAT");

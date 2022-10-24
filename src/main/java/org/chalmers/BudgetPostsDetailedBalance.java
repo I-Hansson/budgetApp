@@ -10,6 +10,8 @@ import org.chalmers.model.ModelFacade;
 import java.io.IOException;
 
 /**
+ * Acts as the view class of Budget Post Detailed Balance.
+ * Depends on: ModelFacade.
  * @author Jonathan
  */
 
@@ -20,6 +22,10 @@ public class BudgetPostsDetailedBalance extends AnchorPane {
 
     ModelFacade facade = ModelFacade.getInstance();
 
+
+    /**
+     * Creates the dynamic view.
+     */
 
     public BudgetPostsDetailedBalance(){
 
@@ -33,7 +39,7 @@ public class BudgetPostsDetailedBalance extends AnchorPane {
             throw new RuntimeException(exception);
         }
 
-        budgetPostAmount.setText(String.valueOf((facade.getSelectedBudgetPost().getCurrentBalance())) + " Kr");
+        budgetPostAmount.setText(((facade.getSelectedBudgetPost().getCurrentBalance())) + " Kr");
         budgetPostColorBakground.setStyle(
                 "-fx-background-color: rgb(" + facade.getSelectedBudgetPost().getColor() + " );"
         );

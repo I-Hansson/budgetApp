@@ -9,6 +9,8 @@ import org.chalmers.model.ITransaction;
 import java.io.IOException;
 
 /**
+ * Acts as a view class for Past Transaction Item.
+ * Depends on:
  * @author Jonathan
  */
 
@@ -21,6 +23,11 @@ public class PastTransactionItem extends AnchorPane {
     @FXML Text dayTransaction;
     @FXML Text budgetpostTransaction;
     @FXML BorderPane colorBoardTransaction;
+
+    /**
+     * Creates the dynamic view.
+     * @param transaction The transaction which will be presented.
+     */
 
     public PastTransactionItem(ITransaction transaction){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PastTransactionItem.fxml"));

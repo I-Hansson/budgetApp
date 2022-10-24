@@ -23,6 +23,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
+ * Acts as the view class of Budget Post Detailed View.
+ * Depends on: ModelFacade, SceneController, BudgetPostdetailedViewController, BudgetPostsDetailedBalance,
+ * BudgetPostDetailedOverLook and BudgetPostsDetailedLastTransactions.
+ *
  * @author Jonathan
  */
 
@@ -61,6 +65,7 @@ public class BudgetPostdetailedView implements Initializable {
     /**
      * Reads and renders the information given by the controllers for all the
      * listed view objects such as the chart and table.
+     *
      */
     private void update(){
 
@@ -80,7 +85,7 @@ public class BudgetPostdetailedView implements Initializable {
         this.paneGraphLow.getChildren().add(new BudgetPostDetailedOverLook());
     }
 
-    //TODO Ska detta vara en egen klass och isåfall hur?
+
     private void initializeMonthLineChart() {
         modelChart = new LineChartFX(ChartFactory.createMonthLineChart());
         modelChart.update(facade.getSelectedBudgetPost().getTransactions());
@@ -114,33 +119,24 @@ public class BudgetPostdetailedView implements Initializable {
         paneGraphHigh.getChildren().add(lineChart);
     }
 
-    /**
-     * Switches to the past transaction view
-     */
+
     @FXML
     private void SwitchToPastTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.pastTransaction(mouseEvent);
     }
 
-    /**
-     * Switches to the add budget posts view
-     */
     @FXML
     private void SwitchToBudgetPosts(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.budgetPostView(mouseEvent);
     }
 
-    /**
-     * Switches to the add transaction view
-     */
+
     @FXML
     private void SwitchToAddTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.addTransaction(mouseEvent);
     }
 
-    /**
-     * Switches to the overview view
-     */
+
     @FXML
     private void SwitchToOverview (javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.overviewView(mouseEvent);

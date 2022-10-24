@@ -28,6 +28,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 /**
+ * Acts as the view class of Budget Post View.
+ * Depends on: BudgetPostController, OverviewController, ModelFacade and SceneController
  * @author Jonathan
  */
 
@@ -84,12 +86,7 @@ public class BudgetPostsView implements Initializable {
         update();
     }
 
-    /**
-     * Updates the content that is dependent on user input
-     *  - if the slider arrows shall be grayed
-     *  - the budgetpost information that is specific for this month
-     */
-    public void update(){
+    private void update(){
         if(facade.getCurrentBudget() == facade.getUser().getBudgets().get(facade.getUser().getBudgets().size() -1))
         {
             setRightArrowGrey();
@@ -105,7 +102,7 @@ public class BudgetPostsView implements Initializable {
       paintPanel();
 
     }
-    public void sortPanels(){
+    private void sortPanels(){
         bpList.clear();
         List<BudgetPostsItem> tempBp = new ArrayList<>();
         for(int i = 0; i <= items.size()-1; i++ ){
@@ -119,14 +116,14 @@ public class BudgetPostsView implements Initializable {
         currentFourPanels  =  bpList.get(0);
     }
 
-    public void paintPanel(){
+    private void paintPanel(){
         budgetPostsViewGridPane.getChildren().clear();
         for(int i = 0; i<currentFourPanels.size(); i++) {
             budgetPostsViewGridPane.add(currentFourPanels.get(i), i, 0);
         }
     }
     @FXML
-    public void rightArrowPanel(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void rightArrowPanel(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         int index = bpList.indexOf(currentFourPanels);
         if(index + 1 >= bpList.size()){
             index = -1;
@@ -136,7 +133,7 @@ public class BudgetPostsView implements Initializable {
     }
 
     @FXML
-    public void leftArrowPanel(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+    private void leftArrowPanel(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         int index = bpList.indexOf(currentFourPanels);
         if(index <= 0){
             index = bpList.size();
@@ -154,18 +151,13 @@ public class BudgetPostsView implements Initializable {
         rightArrow.setImage(arrowRightBlack);
     }
 
-    /**
-     * "Scrolls" the user to the next months budget
-     */
     @FXML
     private void nextMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         overviewController.clickedNextMonth();
         update();
     }
 
-    /**
-     * "Scrolls" the user to the previous months budget
-     */
+
     @FXML
     private void prevMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         System.out.println("next");
@@ -174,9 +166,6 @@ public class BudgetPostsView implements Initializable {
 
     }
 
-    /**
-     * Sends the budgetPostPane to the front
-     */
     @FXML
     private void goToAddBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         addBudgetPostGreyBackground.toFront();
@@ -184,9 +173,6 @@ public class BudgetPostsView implements Initializable {
         clearInputInfo();
     }
 
-    /**
-     * Submits the given information to the budget controller
-     */
     @FXML
     private void addBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
 

@@ -18,6 +18,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 /**
+ *
+ * The view class for the Add Transaction View.
+ * Depends on BudgetPostController, SceneController, ModelFacade and AddTransactionBudgetPosts.
+ *
  * @author Jonathan
  */
 public class AddTransactionView implements Initializable {
@@ -52,18 +56,16 @@ public class AddTransactionView implements Initializable {
 
     ModelFacade facade = ModelFacade.getInstance();
 
-
     /**
-     * Initializes the read of information from the controller
+     * Initalizes the information by calling update.
      */
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         update();
     }
 
-    /**
-     * Reads the content that shall be rendered
-     */
+
     private void update(){
         this.BudgetPostsTexFlowPane.getChildren().clear();
         for (IBudgetPost post : facade.getBudgetPosts()){
@@ -71,51 +73,38 @@ public class AddTransactionView implements Initializable {
         }
     }
 
-    /**
-     * Opens the add budget post modal
-     */
+
     @FXML
     private void showAddBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
         newBudgetPostPane.toFront();
         clearInputInfo();
     }
 
-    /**
-     * Closes the add budget post modal
-     */
+
     @FXML
     private void closeAddBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
         closeDoneAddBudgetPost();
         clearInputInfo();
     }
 
-    /**
-     * turns the user to the past transactions view
-     */
+
     @FXML
     private void SwitchToPastTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.pastTransaction(mouseEvent);
     }
 
-    /**
-     * turns the user to the budgetPosts view
-     */
+
     @FXML
     private void SwitchToBudgetPosts(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.budgetPostView(mouseEvent);
     }
 
-    /**
-     * Sends the user to the overview view
-     */
     @FXML
     private void SwitchToOverview (javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         sceneController.overviewView(mouseEvent);
     }
 
-    /**
-     * Closes the done pane
-     */
+
     @FXML
     private void closeDonePane(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
         doneShadowPane.toBack();
@@ -123,10 +112,7 @@ public class AddTransactionView implements Initializable {
 
     }
 
-    /**
-     * When the form is filled out and verified correctly it will submit
-     * the information to the transaction controller.
-     */
+
     @FXML
     private void doneAddTransaction(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
 
@@ -145,10 +131,6 @@ public class AddTransactionView implements Initializable {
     }
 
 
-    /**
-     * When the form is filled out and verified correctly it will submit
-     * the information to the budget post controller.
-     */
     @FXML
     private void doneAddBudgetPost(javafx.scene.input.MouseEvent mouseEvent) throws IOException{
 
