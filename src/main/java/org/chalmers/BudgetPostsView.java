@@ -31,6 +31,7 @@ import java.util.ResourceBundle;
  * Acts as the view class of Budget Post View.
  * Depends on: BudgetPostController, OverviewController, ModelFacade and SceneController
  * @author Jonathan
+ * @author Isac Hansson
  */
 
 public class BudgetPostsView implements Initializable {
