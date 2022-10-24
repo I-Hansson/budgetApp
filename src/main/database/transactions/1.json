@@ -1,1 +1,53 @@
-{"transactions":[{"date":"202104061247","amount":125.59,"budgetPostName":"mat","name":"maxi","description":"Snus & Nocco"},{"date":"202208061247","amount":125.59,"budgetPostName":"mat","name":"icaaaa","description":"Snus & Nocco"},{"date":"202209021453","amount":49,"budgetPostName":"mat","name":"coop","description":"Virke"},{"date":"202209012354","amount":199,"budgetPostName":"bostad","name":"Uber","description":"resa hem"},{"date":"20220923","amount":100.0,"budgetPostName":"mat","name":"nytransaktion","description":"  "},{"date":"20220923","amount":100.0,"budgetPostName":"tobak","name":"sexyboi","description":"adscf"}]}
+{
+  "transactions": [
+    {
+      "date": "202104061247",
+      "amount": 125.59,
+      "budgetPostName": "Matvaror",
+      "name": "maxi",
+      "description": "Snus & Nocco"
+    },
+    {
+      "date": "202209012354",
+      "amount": 199,
+      "budgetPostName": "bostad",
+      "name": "Uber",
+      "description": "resa hem"
+    },
+    {
+      "date": "20220913",
+      "amount": 180,
+      "budgetPostName": "Matvaror",
+      "name": "Veckohandling",
+      "description": "kyckling, ris , curry"
+    },
+    {
+      "date": "20220914",
+      "amount": 99,
+      "budgetPostName": "Matvaror",
+      "name": "Snacks",
+      "description": "godis"
+    },
+    {
+      "date": "20220923",
+      "amount": 99,
+      "budgetPostName": "tobak",
+      "name": "Snus",
+      "description": "snus"
+    },
+    {
+      "date": "20220924",
+      "amount": 299,
+      "budgetPostName": "Shopping",
+      "name": "Jeans",
+      "description": "hm"
+    },
+    {
+      "date": "20220923",
+      "amount": 40,
+      "budgetPostName": "Matvaror",
+      "name": "grapes",
+      "description": "r�da"
+    }
+  ]
+}

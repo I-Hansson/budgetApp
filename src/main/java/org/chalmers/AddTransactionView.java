@@ -194,6 +194,9 @@ public class AddTransactionView implements Initializable {
                 return false ;
             }
         }
+        if(AddTransactionBudgetPosts.getGroupValue().isEmpty()){
+            return false;
+        }
         return true;
     }
 

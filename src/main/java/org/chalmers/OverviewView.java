@@ -331,7 +331,7 @@ public class OverviewView implements Initializable {
         List<ITransaction> latestTransactions = new ArrayList<>();
         ITransaction[] userArray = {};
         userArray = facade.getCurrentBudget().getTransactions().toArray(userArray);
-        for (int i = 1; i <= 5; i++) {
+        for (int i = 1; i <= 4; i++) {
             if (userArray.length-i >= 0)
                 latestTransactions.add(userArray[userArray.length-i]);
             else

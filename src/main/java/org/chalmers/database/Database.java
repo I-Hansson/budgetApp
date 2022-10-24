@@ -26,12 +26,20 @@ public class Database {
         try{
             FileWriter incomingFile = new FileWriter("./src/main/database/users/incoming.json");
             JSONObject jsonObject = new JSONObject();
+            JSONObject bp = new JSONObject();
+            bp.put("name", "Matvaror");
+            bp.put("cap", 1500);
+            bp.put("color", "100,50,50");
+            bp.put("name", "Matvaror");
+            bp.put("dateOfCreation", "2210");
+            JSONArray list = new JSONArray();
+            list.add(bp);
             try{
                 jsonObject.put("name", name);
                 jsonObject.put("email", email);
                 jsonObject.put("password", pwd);
                 jsonObject.put("id", nextID);
-                jsonObject.put("budgetPosts", new JSONArray());
+                jsonObject.put("budgetPosts", list);
             } finally {
                 incomingFile.write(jsonObject.toJSONString());
                 incomingFile.flush();
