@@ -6,7 +6,7 @@ package org.chalmers.model;
  * <p>
  * Used by: Transaction, BudgetPost
  *
- * @author Isac Hansson, Jonathan Svantesson
+ * @author Isac Hansson
  */
 public class BudgetPostID {
 

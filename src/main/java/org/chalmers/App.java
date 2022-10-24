@@ -12,6 +12,7 @@ import javafx.stage.WindowEvent;
 import org.chalmers.model.ModelFacade;
 
 /**
+ * @author Isac Hansson
  * Starts the application
  * Depends on: ModelFacade.
  *

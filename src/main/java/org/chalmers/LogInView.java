@@ -20,6 +20,7 @@ import java.io.IOException;
  * Acts as a view class for the Log In View.
  * Depends on: ModelFacade, LogInController and SceneController.
  * @author Jonathan
+ * @author Isac Hansson 
  */
 
 public class LogInView {

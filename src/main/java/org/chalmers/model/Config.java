@@ -1,6 +1,7 @@
 package org.chalmers.model;
 
 /**
+ * @author Isac Hansson
  * A class containing default values.
  */
 public class Config {

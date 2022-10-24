@@ -14,7 +14,6 @@ import java.util.*;
  *
  * @author williamfrisk
  * @author Isac Hansson
- * @author Jonathan
  */
 public final class ModelFacade {
 

@@ -37,6 +37,7 @@ import org.chalmers.model.ModelFacade;
  * Depends on: SceneController, OverviewController, ModelFacade, OverviewOverlookView,
  * OverviewPieChart and OverviewBudgetPost.
  * @author Jonathan
+ * @author Isac Hansson
  */
 
 

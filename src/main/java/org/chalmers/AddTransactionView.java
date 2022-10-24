@@ -23,6 +23,7 @@ import java.util.ResourceBundle;
  * Depends on BudgetPostController, SceneController, ModelFacade and AddTransactionBudgetPosts.
  *
  * @author Jonathan
+ * @author Isac Hansson
  */
 public class AddTransactionView implements Initializable {
 

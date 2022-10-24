@@ -15,6 +15,7 @@ import java.io.IOException;
  * Acts as the view class for Budget Post Item.
  * Depends on: BudgetPostdetailedViewController and SceneController.
  * @author Jonathan
+ * @author Isac Hansson
  */
 
 public class BudgetPostsItem extends AnchorPane {

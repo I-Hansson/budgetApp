@@ -11,7 +11,7 @@ import java.util.List;
  * Uses: ITransaction, BudgetPostID
  * Used by: ModelFacade
  *
- * @author Isac Hansson, Jonathan Svantesson
+ * @author Isac Hansson
  */
 public class BudgetPost implements IBudgetPost{
 
