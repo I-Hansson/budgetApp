@@ -26,11 +26,11 @@ import java.util.ResourceBundle;
  */
 public class AddTransactionView implements Initializable {
 
-   private AddTransactionController addTransactionController = new AddTransactionController();
+   private final AddTransactionController addTransactionController = new AddTransactionController();
 
     //TODO Might be wrong to use the BudgetPostController
 
-   private BudgetPostController budgetPostController = new BudgetPostController();
+   private final BudgetPostController budgetPostController = new BudgetPostController();
     SceneController sceneController = new SceneController();
 
     @FXML TextField addBudgetPostNameField;

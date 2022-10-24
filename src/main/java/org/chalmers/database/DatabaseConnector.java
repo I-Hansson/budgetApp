@@ -11,15 +11,15 @@ import java.io.IOException;
 public class DatabaseConnector {
 
     private JSONObject dbObj;
-    private String path;
+    private final String path;
     JSONParser parser = new JSONParser();
 
     /**
      * Use when communicating with the JSON files (the database).
-     * @param JSONUri the URI for the specified JSON file.
+     * @param jsonUri the URI for the specified JSON file.
      */
-    public DatabaseConnector(String JSONUri){
-        path = JSONUri;
+    public DatabaseConnector(String jsonUri){
+        path = jsonUri;
         try{
             dbObj = (JSONObject) parser.parse(new FileReader(path));
         }catch (FileNotFoundException e) {

@@ -23,6 +23,7 @@ public class App extends Application{
      * Setts the necessary information for the start of the application.
      */
 
+    @Override
     public void start (Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load((getClass().getResource("LogInView.fxml")));
         primaryStage.setTitle("SAFE BOAT");

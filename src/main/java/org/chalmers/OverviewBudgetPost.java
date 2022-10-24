@@ -37,6 +37,8 @@ public class OverviewBudgetPost extends AnchorPane{
     @FXML AnchorPane budgetPostCard;
     @FXML AnchorPane increasingPaneBudgetPost;
 
+    @FXML AnchorPane anchorPaneBudgetPostCard;
+
     /**
      * Creates the dynamic view.
      * @param name The budget post name.

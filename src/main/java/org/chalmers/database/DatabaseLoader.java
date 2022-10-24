@@ -60,8 +60,8 @@ public class DatabaseLoader {
         }
     }
     private static void fillBudget(){
-        HashMap<Integer, List<ITransaction>> map = loadIntTransactions();
-        System.out.println(map);
+        Map<Integer, List<ITransaction>> map = loadIntTransactions();
+
         TransactionsDB transactionDB = new TransactionsDB(Integer.parseInt(userDB.getUid()));
         if(!transactionDB.getAllTransactions().isEmpty()){
             ITransaction transaction = transactionDB.getAllTransactions().get(0);
@@ -102,7 +102,7 @@ public class DatabaseLoader {
 
     }
 
-    private static HashMap<Integer, List<ITransaction>> loadIntTransactions() {
+    private static Map<Integer, List<ITransaction>> loadIntTransactions() {
 
         HashMap<Integer, List<ITransaction>> map = new HashMap<>();
         TransactionsDB uDB = new TransactionsDB(Integer.parseInt(userDB.getUid()));
@@ -110,7 +110,7 @@ public class DatabaseLoader {
             int year = transaction.getDate().get(Calendar.YEAR);
             int month = transaction.getDate().get(Calendar.MONTH);
             Integer transactionKey = year *100 + month;
-            System.out.println("TKEY: " + transactionKey);
+
             if(map.containsKey(transactionKey)){
                 map.get(transactionKey).add(transaction);
             }else{

@@ -63,9 +63,9 @@ public class BudgetPostsView implements Initializable {
 
     List<BudgetPostsItem> items = new ArrayList<>();
 
-    private BudgetPostController budgetcontroller = new BudgetPostController();
-    private OverviewController overviewController = new OverviewController();
-    private ModelFacade facade = ModelFacade.getInstance();
+    private final BudgetPostController budgetcontroller = new BudgetPostController();
+    private final OverviewController overviewController = new OverviewController();
+    private final ModelFacade facade = ModelFacade.getInstance();
     Image arrowRightGrey;
     Image arrowRightBlack;
 
@@ -160,7 +160,7 @@ public class BudgetPostsView implements Initializable {
 
     @FXML
     private void prevMonth(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-        System.out.println("next");
+
         overviewController.clickedPrevMonth();
         update();
 

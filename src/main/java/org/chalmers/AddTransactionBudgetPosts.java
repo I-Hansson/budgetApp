@@ -18,7 +18,7 @@ import java.io.IOException;
 
 public class AddTransactionBudgetPosts extends AnchorPane {
 
-    static Toggle selectedButton;
+    private static Toggle selectedButton;
 
     @FXML RadioButton budgetPost;
 

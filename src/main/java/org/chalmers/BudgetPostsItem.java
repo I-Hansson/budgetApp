@@ -72,7 +72,7 @@ public class BudgetPostsItem extends AnchorPane {
         budgetBannerColorBoard.setStyle("-fx-background-color: rgb(" + color + " );");
 
         paneBudgetPost.setOnMouseClicked(mouseEvent -> {
-            System.out.println(this.budgetBannerName.getText());
+
             budgetPostdetailedViewController.setCorrspondingId(((this.budgetBannerName.getText())));
             sceneController.budgetPostDetailed(mouseEvent);
 

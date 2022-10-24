@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import java.io.IOException;
 
 /**
  * Managing all the functionality regarding switching view.
@@ -14,6 +15,7 @@ import javafx.stage.Stage;
  * Should be in controller package but the class is not able to find fxml files when it's
  * placed in the controller package.
  */
+
 
 public class SceneController { // Should be in controller package but cant find fxml file then...
 
@@ -28,7 +30,7 @@ public class SceneController { // Should be in controller package but cant find 
             stage.setResizable(false);
             stage.show();
 
-        } catch (Exception e){
+        } catch (IOException e){
             System.out.println(e);
     }
 }

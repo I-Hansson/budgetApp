@@ -14,7 +14,7 @@ import java.util.*;
  *
  */
 public class TransactionsDB {
-    private DatabaseConnector connector;
+    private final DatabaseConnector connector;
     private FileWriter file;
     private JSONObject oldDB;
     private List<DBTransaction> transactionsList;
@@ -64,8 +64,6 @@ public class TransactionsDB {
         for(DBTransaction trans: transactionsList){
             Integer readYear = trans.getDate().get(Calendar.YEAR);
             Integer readMonth = trans.getDate().get(Calendar.MONTH);
-            System.out.print("Month: "+ readMonth);
-            System.out.println(" Year: "+ readYear);
             if(year.equals(readYear) && month.equals(readMonth))
                 result.add(trans);
         }
@@ -75,7 +73,7 @@ public class TransactionsDB {
     public List<ITransaction> getAllTransactions(){
         populateTransactionsList();
         List<ITransaction> copy = new ArrayList<>();
-        System.out.println();
+
         copy.addAll(transactionsList);
         return copy;
     }

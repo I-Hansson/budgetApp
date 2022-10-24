@@ -13,11 +13,12 @@ import java.util.*;
  * TODO skriv utförligare
  */
 public class UsersDB {
-    private DatabaseConnector connector;
+    private final DatabaseConnector connector;
     private FileWriter file;
     private JSONObject oldDB;
+
     private TransactionsDB transactionsDB;
-    private static int nextID = Objects.requireNonNull(new File("./src/main/database/users").list()).length - 2;
+
 
     public UsersDB(int uid){
         connector = new DatabaseConnector("src/main/database/users/" + uid +".json");
@@ -159,7 +160,7 @@ public class UsersDB {
             for(Object obj: postsDB){
                 JSONObject jsonObject = (JSONObject) obj;
                 if(jsonObject.get("name").equals(name) && jsonObject.get("dateOfCreation").equals(dateOfCreation)){
-                    System.out.println("HÄR ÄR JAG");
+
                     jsonObject.put("cap", newCap);
                     result.add(jsonObject);
                 }else{
@@ -179,7 +180,7 @@ public class UsersDB {
             for(Object obj: postsDB){
                 JSONObject jsonObject = (JSONObject) obj;
                 if(jsonObject.get("name").equals(oldName) && jsonObject.get("dateOfCreation").equals(dateOfCreation)){
-                    System.out.println("HÄR ÄR JAG");
+
                     jsonObject.put("name", newName);
                     result.add(jsonObject);
                 }else{

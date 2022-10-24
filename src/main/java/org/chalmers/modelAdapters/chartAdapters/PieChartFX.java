@@ -10,7 +10,9 @@ import java.util.Collection;
 
 /**
  * An adapter class that makes ChartTypePie useable with JavaFX.
- * Depends on ChartTypePie and JavaFX.
+ * <p>
+ * Uses: ChartTypePie
+ * Used by: View module
  *
  * @author williamfrisk
  */
@@ -18,10 +20,21 @@ public class PieChartFX {
 
     private final ChartTypePie modelChart;
 
+    /**
+     * Constructs the PieChartFX with a given chart instance from the model.
+     *
+     * @param chart The ChartTypePie instance to be used.
+     */
     public PieChartFX(ChartTypePie chart) {
         modelChart = chart;
     }
 
+    /**
+     * Returns an ObservableList containing PieChart.Data which is needed by
+     * JavaFX to create a pie chart.
+     *
+     * @return The ObservableList.
+     */
     public ObservableList<PieChart.Data> getObservableList() {
         ObservableList<PieChart.Data> dataObservableList = FXCollections.observableArrayList();
 
@@ -34,6 +47,11 @@ public class PieChartFX {
         return dataObservableList;
     }
 
+    /**
+     * Updates the LineChartFX with new transactions.
+     *
+     * @param transactions The transactions to be used.
+     */
     public void update(Collection<ITransaction> transactions) {
         this.modelChart.update(transactions);
     }

@@ -7,7 +7,8 @@ import java.util.Map;
 
 /**
  * This class gives functionality for displaying pie charts.
- * Depends on Transaction.
+ * <p>
+ * Used by: ChartFactory, PieChartFX
  *
  * @author williamfrisk
  */

@@ -1,7 +1,6 @@
 package org.chalmers.Controllers;
 
 
-
 import org.chalmers.model.ModelFacade;
 
 
