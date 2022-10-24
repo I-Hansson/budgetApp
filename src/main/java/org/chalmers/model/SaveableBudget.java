@@ -12,8 +12,8 @@ import java.util.Collection;
  */
 public abstract class SaveableBudget {
 
-    private Collection<IBudgetPost> newBudgetPosts = new ArrayList<>();
-    private Collection<ITransaction> newTransactions = new ArrayList<>();
+    private final Collection<IBudgetPost> newBudgetPosts = new ArrayList<>();
+    private final Collection<ITransaction> newTransactions = new ArrayList<>();
 
     /**
      * Returns all new budget post added by the user during the last session.

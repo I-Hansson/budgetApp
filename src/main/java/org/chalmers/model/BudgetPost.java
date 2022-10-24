@@ -12,11 +12,10 @@ import java.util.List;
  * @author Isac Hansson, Jonathan Svantesson
  */
 public class BudgetPost implements IBudgetPost{
-    //TODO give Icon attribute
 
     private double budgetCap; //The most you want to spend in a surtain budget-post.
     private double currentBalance;
-    private BudgetPostID id;
+    private final BudgetPostID id;
     private final List<ITransaction> transactions = new ArrayList<>();
 
     public BudgetPost(double budgetCap, String name, String color){

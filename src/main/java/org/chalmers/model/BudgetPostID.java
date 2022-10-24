@@ -9,7 +9,7 @@ package org.chalmers.model;
 public class BudgetPostID {
 
     private String name;
-    private String color;
+    private final String color;
 
 
     public BudgetPostID(String name, String color) {

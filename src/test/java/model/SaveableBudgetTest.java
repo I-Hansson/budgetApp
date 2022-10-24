@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SaveableBudgetTest {
 
-    private SaveableBudget testBudget = new Budget(0, 0);
+    private final SaveableBudget testBudget = new Budget(0, 0);
 
     @Test
     public void newTransactionsCollectionIsMutable() {

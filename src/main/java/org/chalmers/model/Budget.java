@@ -11,8 +11,8 @@ public class Budget extends SaveableBudget implements IBudget{
     private double currentBalance;
     private double budgetCap;
 
-    private List<IBudgetPost> budgetPosts = new ArrayList<>();
-    private List<ITransaction> transactions = new ArrayList<>();
+    private final List<IBudgetPost> budgetPosts = new ArrayList<>();
+    private final List<ITransaction> transactions = new ArrayList<>();
     private final Calendar calendar;
 
 

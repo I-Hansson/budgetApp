@@ -13,9 +13,9 @@ import java.util.List;
  */
 public class User {
     private String name;
-    private List<IBudget> budgets = new ArrayList<>();
+    private final List<IBudget> budgets = new ArrayList<>();
     private IBudget currentBudget;
-    private int id;
+    private final int id;
 
     /**
      * Constructs an instance of User.

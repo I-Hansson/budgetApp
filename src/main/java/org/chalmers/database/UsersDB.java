@@ -13,10 +13,10 @@ import java.util.*;
  * TODO skriv utförligare
  */
 public class UsersDB {
-    private DatabaseConnector connector;
+    private final DatabaseConnector connector;
     private FileWriter file;
     private JSONObject oldDB;
-    private TransactionsDB transactionsDB;
+    private final TransactionsDB transactionsDB;
     private static int nextID = Objects.requireNonNull(new File("./src/main/database/users").list()).length - 2;
 
     public UsersDB(int uid){

@@ -17,7 +17,7 @@ public class ModelFacade {
 
     // TODO Får jag göra så här ?
     private static IBudgetPost selectedBudgetPost;
-    private static ModelFacade instance = new ModelFacade();
+    private static final ModelFacade instance = new ModelFacade();
     private User user;
     private ModelFacade() {}
 
