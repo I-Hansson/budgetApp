@@ -8,7 +8,9 @@ import java.util.Collection;
 
 /**
  * An adapter class that makes ChartTypeLine useable with JavaFX.
- * Depends on ChartTypeLine and JavaFX.
+ * <p>
+ * Uses: ChartTypeLine
+ * Used by: View module
  *
  * @author williamfrisk
  */
@@ -17,11 +19,22 @@ public class LineChartFX {
     private final ChartTypeLine modelChart;
     private final XYChart.Series<Number, Number> series;
 
+    /**
+     * Constructs the LineChartFX with a given chart instance from the model.
+     *
+     * @param chart The ChartTypeLine instance to be used.
+     */
     public LineChartFX(ChartTypeLine chart) {
         this.modelChart = chart;
         this.series = createSeries(modelChart.getDataMap().size());
     }
-    
+
+    /**
+     * Returns an XYChart.Series which is the datatype required to create a
+     * line chart using JavaFX
+     *
+     * @return The XYChart.Series
+     */
     public XYChart.Series<Number, Number> getXYSeries() {
         for (Integer date : modelChart.getDataMap().keySet()) {
             if(modelChart.getDataMap().get(date) != 0) {
@@ -35,6 +48,11 @@ public class LineChartFX {
         return series;
     }
 
+    /**
+     * Updates the LineChartFX with new transactions.
+     *
+     * @param transactions The transactions to be used.
+     */
     public void update(Collection<ITransaction> transactions) {
         modelChart.update(transactions);
     }
