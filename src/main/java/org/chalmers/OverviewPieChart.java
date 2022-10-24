@@ -22,7 +22,7 @@ import java.util.HashMap;
 
 /**
  * A view class for the pie chart on the main page
- *
+ * Depends on: ModelFacade and ChartFactory.
  * @author williamfrisk
  * @author I-Hansson
  */
@@ -37,6 +37,10 @@ public class OverviewPieChart extends AnchorPane {
 
     private final double pieChartTotal;
     ModelFacade facade = ModelFacade.getInstance();
+    /**
+     * Creates the dynamic view.
+     */
+
 
     public OverviewPieChart(){;
         PieChartFX modelChart = new PieChartFX(ChartFactory.createPieChart());

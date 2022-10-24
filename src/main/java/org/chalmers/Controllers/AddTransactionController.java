@@ -9,7 +9,7 @@ import java.util.GregorianCalendar;
 
 /**
  * Controller class for the view class AddTransactionView.
- *
+ * Depends on: Modelfacade.
  * @author Jonathan
  */
 
@@ -21,6 +21,15 @@ public class AddTransactionController{
     public AddTransactionController () {
 
     }
+
+    /**
+     * Creation of a new Transaction.
+     * @param amount The tranaction amount.
+     * @param name The transaction name.
+     * @param description The transaction description.
+     * @param date The date chosen for the transaction.
+     * @param budgetpost The selected budget post.
+     */
 
     public void newTransaction(double amount, String name, String description, LocalDate date, String budgetpost){
         try {

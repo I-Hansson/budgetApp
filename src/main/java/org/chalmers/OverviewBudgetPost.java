@@ -19,6 +19,8 @@ import org.chalmers.Controllers.BudgetPostdetailedViewController;
 
 import java.io.IOException;
 /**
+ * Acts as a view class for the Overview Budget Post.
+ * Depends on: BudgetPostdetailedViewController,
  * @author Jonathan
  */
 
@@ -34,9 +36,17 @@ public class OverviewBudgetPost extends AnchorPane{
     @FXML Text budgetPostTotalAmount;
     @FXML AnchorPane budgetPostCard;
     @FXML AnchorPane increasingPaneBudgetPost;
+
     @FXML AnchorPane anchorPaneBudgetPostCard;
 
-
+    /**
+     * Creates the dynamic view.
+     * @param name The budget post name.
+     * @param moneyLeft The money left of the budget post.
+     * @param procent The amount of money left to spend in percent.
+     * @param color The budget post color.
+     * @param complementColor The complementing color.
+     */
     public OverviewBudgetPost(String name, double moneyLeft, double procent, String color, String complementColor){
 
 
@@ -56,7 +66,6 @@ public class OverviewBudgetPost extends AnchorPane{
         increasingPaneBudgetPost.setStyle("-fx-background-color: rgb("+ complementColor+" );");
 
         increasingPaneBudgetPost.setPrefHeight(250);
-
 
         TranslateTransition translate = new TranslateTransition();
         translate.setDuration(Duration.millis(1000));
@@ -79,7 +88,7 @@ public class OverviewBudgetPost extends AnchorPane{
             budgetPostdetailedViewController.setCorrspondingId(((this.budgetPostName.getText())));
 
             try {
-                root = FXMLLoader.load(getClass().getResource("BudgetPostDetailed.fxml"));
+                root = FXMLLoader.load(getClass().getResource("BudgetPostDetailedView.fxml"));
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

@@ -11,6 +11,8 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 /**
+ * Act as the view class for the Overview Overlook View.
+ * Depends on: ModelFacade,
  * @author Jonathan
  */
 
@@ -20,6 +22,11 @@ public class OverviewOverlookView extends AnchorPane {
 
     @FXML Label remainingBalance;
     @FXML Label averageDailySpent;
+
+
+    /**
+     * Creates the dynamic view.
+     */
 
     public OverviewOverlookView() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("OverviewOverlook.fxml"));

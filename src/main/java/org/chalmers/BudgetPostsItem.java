@@ -12,6 +12,8 @@ import org.chalmers.Controllers.BudgetPostdetailedViewController;
 import java.io.IOException;
 
 /**
+ * Acts as the view class for Budget Post Item.
+ * Depends on: BudgetPostdetailedViewController and SceneController.
  * @author Jonathan
  */
 
@@ -37,6 +39,16 @@ public class BudgetPostsItem extends AnchorPane {
     Text budgetBannerMAX;
 
     SceneController sceneController = new SceneController();
+
+    /**
+     * Creates the dynamic view.
+     * @param bpNamn The budget post name.
+     * @param bpDesc The budget post description.
+     * @param amount The budget post.
+     * @param amountTransactions The amount of transactions in budget post.
+     * @param color The specific color.
+     * @param currentAmount The amount remaining.
+     */
 
     public BudgetPostsItem(String bpNamn, String bpDesc, double amount, int amountTransactions, String color, double currentAmount) {
 

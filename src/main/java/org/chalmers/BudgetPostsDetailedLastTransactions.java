@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.util.Calendar;
 
 /**
+ * Acts as the view class for Budget Post Detailed Last Transactions.
+ *
  * @author Jonathan
  */
 
@@ -18,6 +20,13 @@ public class BudgetPostsDetailedLastTransactions extends AnchorPane {
     @FXML Label budgetPostDetailedLastTransaction;
     @FXML Label budgetPostDetailedLastTransactionDate;
     @FXML Label budgetPostDetailedLastTransactionAmount;
+
+    /**
+     * Creates the dynamic view.
+     * @param transactionName specific name of the transaction.
+     * @param date specific chosen date of the transaction.
+     * @param amount specific amount of the transaction.
+     */
 
     public BudgetPostsDetailedLastTransactions(String transactionName,Calendar date, double amount){
 
